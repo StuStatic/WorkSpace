@@ -56,7 +56,6 @@ public class MainActivity extends App implements View.OnClickListener {
         selectionLayout.setOnClickListener(this);
         serviceLayout.setOnClickListener(this);
         socialLayout.setOnClickListener(this);
-
     }
 
 
