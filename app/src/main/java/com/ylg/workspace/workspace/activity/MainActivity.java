@@ -2,11 +2,15 @@ package com.ylg.workspace.workspace.activity;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.DialogInterface;
 import android.graphics.Color;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 
+import com.ylg.workspace.workspace.Application.App;
 import com.ylg.workspace.workspace.R;
 import com.ylg.workspace.workspace.fragment.HomeFragment;
 import com.ylg.workspace.workspace.fragment.MineFragment;
@@ -14,7 +18,7 @@ import com.ylg.workspace.workspace.fragment.SelectionFragment;
 import com.ylg.workspace.workspace.fragment.ServiceFragment;
 import com.ylg.workspace.workspace.fragment.SocialFragment;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends App implements View.OnClickListener {
     //Fragment
     private HomeFragment homeFragment;
     private MineFragment mineFragment;
@@ -22,9 +26,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ServiceFragment serviceFragment;
     private SocialFragment socialFragment;
     //主界面下面的tab
-    private View homeLayout,mineLayout,selectionLayout,serviceLayout,socialLayout;
+    private View homeLayout, mineLayout, selectionLayout, serviceLayout, socialLayout;
     //fragmentManager
     private FragmentManager fragmentManager;
+    private long exitTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,11 +44,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initView() {
         //初始化视图
-        homeLayout=findViewById(R.id.home_layout);
-        mineLayout=findViewById(R.id.mine_layout);
-        selectionLayout=findViewById(R.id.selection_layout);
-        serviceLayout=findViewById(R.id.service_layout);
-        socialLayout=findViewById(R.id.social_layout);
+        homeLayout = findViewById(R.id.home_layout);
+        mineLayout = findViewById(R.id.mine_layout);
+        selectionLayout = findViewById(R.id.selection_layout);
+        serviceLayout = findViewById(R.id.service_layout);
+        socialLayout = findViewById(R.id.social_layout);
 
         //绑定适配器
         homeLayout.setOnClickListener(this);
@@ -86,8 +91,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     /**
      * 根据传入的index参数来设置选中的tab页。
      *
-     * @param index
-     *            每个tab页对应的下标。0表示消息，1表示联系人，2表示动态，3表示设置。
+     * @param index 每个tab页对应的下标。0表示消息，1表示联系人，2表示动态，3表示设置。
      */
     private void setTabSelection(int index) {
         // 每次选中之前先清楚掉上次的选中状态
@@ -106,7 +110,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (homeFragment == null) {
                     // 如果HomeFragment为空，则创建一个并添加到界面上
                     homeFragment = new HomeFragment();
-                    transaction.add(R.id.content,homeFragment);
+                    transaction.add(R.id.content, homeFragment);
                 } else {
                     // 如果HomeFragment不为空，则直接将它显示出来
                     transaction.show(homeFragment);
@@ -206,12 +210,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-
     /**
      * 将所有的Fragment都置为隐藏状态。
      *
-     * @param transaction
-     *            用于对Fragment执行操作的事务
+     * @param transaction 用于对Fragment执行操作的事务
      */
     private void hideFragments(FragmentTransaction transaction) {
         if (homeFragment != null) {
@@ -229,5 +231,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (mineFragment != null) {
             transaction.hide(mineFragment);
         }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if ((System.currentTimeMillis() - exitTime) > 1000) {
+                exitTime = System.currentTimeMillis();
+            } else {
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("提示");
+                builder.setMessage("确定要退出吗？");
+                builder.setPositiveButton("退出", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // 一键退出
+                        App.destoryAll();
+                    }
+                });
+                builder.setNegativeButton("再看看", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                builder.show();
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }
