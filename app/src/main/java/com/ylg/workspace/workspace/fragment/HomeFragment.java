@@ -24,6 +24,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeFragment extends android.app.Fragment {
+
+    //
     private View homeLayout;
     private ViewPager mViewPager;
     private List<ImageView> mImageViewList;
