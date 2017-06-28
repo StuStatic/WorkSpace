@@ -11,7 +11,7 @@ public class WelcomeActivity extends App {
     private Handler handler = new Handler(new Handler.Callback() {
         @Override
         public boolean handleMessage(Message message) {
-            if(message.what==1) {
+            if (message.what == 1) {
                 //主线程跳转
 //                Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
 //                startActivity(intent);
@@ -22,6 +22,7 @@ public class WelcomeActivity extends App {
             return false;
         }
     });
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +34,7 @@ public class WelcomeActivity extends App {
     //初始化控件
     private void init() {
         //延迟3s发送消息
-        handler.sendEmptyMessageDelayed(1,3000);
+        handler.sendEmptyMessageDelayed(1, 3000);
     }
 
 
