@@ -1,9 +1,7 @@
 package com.ylg.workspace.workspace.activity;
 
-import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.ylg.workspace.workspace.Application.App;
@@ -15,8 +13,9 @@ public class WelcomeActivity extends App {
         public boolean handleMessage(Message message) {
             if(message.what==1) {
                 //主线程跳转
-                Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
+//                startActivity(intent);
+                startActivity(MainActivity.class);
                 //关闭本界面
                 finish();
             }
