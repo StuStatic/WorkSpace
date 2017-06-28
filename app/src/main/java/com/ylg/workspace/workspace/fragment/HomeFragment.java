@@ -24,7 +24,8 @@ public class HomeFragment extends android.app.Fragment {
                 container, false);
         return homeLayout;
     }
-
+///
+    ////
 
 
 
