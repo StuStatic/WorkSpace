@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.ylg.workspace.workspace.Application.App;
 import com.ylg.workspace.workspace.R;
@@ -27,9 +29,14 @@ public class MainActivity extends App implements View.OnClickListener {
     private SocialFragment socialFragment;
     //主界面下面的tab
     private View homeLayout, mineLayout, serviceLayout, socialLayout;
+
     //fragmentManager
     private FragmentManager fragmentManager;
     private long exitTime;
+    //tab图片
+    private ImageView home_img,social_img,service_img,mine_img;
+    //tab文字
+    private TextView home_tv,social_tv,service_tv,mine_tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +56,18 @@ public class MainActivity extends App implements View.OnClickListener {
 //        selectionLayout = findViewById(R.id.selection_layout);
         serviceLayout = findViewById(R.id.service_layout);
         socialLayout = findViewById(R.id.social_layout);
+
+        //tab图片初始化
+        home_img = (ImageView)findViewById(R.id.home_image);
+        social_img = (ImageView)findViewById(R.id.social_image);
+        service_img = (ImageView)findViewById(R.id.service_image);
+        mine_img = (ImageView)findViewById(R.id.mine_image);
+
+        //tab文字初始化
+        home_tv = (TextView)findViewById(R.id.home_text);
+        social_tv = (TextView)findViewById(R.id.social_text);
+        service_tv = (TextView)findViewById(R.id.service_text);
+        mine_tv = (TextView)findViewById(R.id.mine_text);
 
         //绑定适配器
         homeLayout.setOnClickListener(this);
@@ -102,9 +121,9 @@ public class MainActivity extends App implements View.OnClickListener {
         switch (index) {
             case 0:
                 // 当点击了tab时，改变控件的图片和文字颜色
-//                messageImage.setImageResource(R.drawable.message_selected);
-//                messageText.setTextColor(Color.WHITE);
-                homeLayout.setBackgroundColor(Color.GRAY);
+                home_img.setImageResource(R.drawable.home_icon);
+                home_tv.setTextColor(Color.parseColor("#0080FF"));
+//                homeLayout.setBackgroundColor(Color.GRAY);
 
                 if (homeFragment == null) {
                     // 如果HomeFragment为空，则创建一个并添加到界面上
@@ -118,9 +137,9 @@ public class MainActivity extends App implements View.OnClickListener {
                 break;
             case 1:
                 // 当点击了tab时，改变控件的图片和文字颜色
-//                contactsImage.setImageResource(R.drawable.contacts_selected);
-//                contactsText.setTextColor(Color.WHITE);
-                socialLayout.setBackgroundColor(Color.GRAY);
+                social_img.setImageResource(R.drawable.social_icon);
+                social_tv.setTextColor(Color.parseColor("#0080FF"));
+//                socialLayout.setBackgroundColor(Color.GRAY);
 
                 if (socialFragment == null) {
                     // 如果SocialFragment为空，则创建一个并添加到界面上
@@ -134,11 +153,11 @@ public class MainActivity extends App implements View.OnClickListener {
                 break;
             case 2:
                 // 当点击了动态tab时，改变控件的图片和文字颜色
-//                newsImage.setImageResource(R.drawable.news_selected);
-//                newsText.setTextColor(Color.WHITE);
+                service_img.setImageResource(R.drawable.service_icon);
+                service_tv.setTextColor(Color.parseColor("#0080FF"));
 //                serviceLayout.setBackgroundColor(Color.GRAY);
 
-                serviceLayout.setBackgroundColor(Color.GRAY);
+
 
                 if (serviceFragment == null) {
                     // 如果ServiceFragment为空，则创建一个并添加到界面上
@@ -168,11 +187,11 @@ public class MainActivity extends App implements View.OnClickListener {
 //                break;
             case 4:
                 // 当点击了tab时，改变控件的图片和文字颜色
-//                settingImage.setImageResource(R.drawable.setting_selected);
-//                settingText.setTextColor(Color.WHITE);
+                mine_img.setImageResource(R.drawable.my_icon);
+                mine_tv.setTextColor(Color.parseColor("#0080FF"));
 //                mineLayout.setBackgroundColor(Color.GRAY);
 
-                mineLayout.setBackgroundColor(Color.GRAY);
+
                 if (mineFragment == null) {
                     // 如果mineFragment为空，则创建一个并添加到界面上
                     mineFragment = new MineFragment();
@@ -201,11 +220,20 @@ public class MainActivity extends App implements View.OnClickListener {
 //        newsText.setTextColor(Color.parseColor("#82858b"));
 //        settingImage.setImageResource(R.drawable.setting_unselected);
 //        settingText.setTextColor(Color.parseColor("#82858b"));
-        homeLayout.setBackgroundColor(Color.WHITE);
-        socialLayout.setBackgroundColor(Color.WHITE);
-        serviceLayout.setBackgroundColor(Color.WHITE);
-//        selectionLayout.setBackgroundColor(Color.WHITE);
-        mineLayout.setBackgroundColor(Color.WHITE);
+//        homeLayout.setBackgroundColor(Color.WHITE);
+//        socialLayout.setBackgroundColor(Color.WHITE);
+//        serviceLayout.setBackgroundColor(Color.WHITE);
+////        selectionLayout.setBackgroundColor(Color.WHITE);
+//        mineLayout.setBackgroundColor(Color.WHITE);
+        home_img.setImageResource(R.drawable.home_icon2);
+            home_tv.setTextColor(Color.GRAY);
+        social_img.setImageResource(R.drawable.social_icon2);
+        social_tv.setTextColor(Color.GRAY);
+        service_img.setImageResource(R.drawable.service_icon2);
+        service_tv.setTextColor(Color.GRAY);
+        mine_img.setImageResource(R.drawable.my_icon2);
+        mine_tv.setTextColor(Color.GRAY);
+
     }
 
 
