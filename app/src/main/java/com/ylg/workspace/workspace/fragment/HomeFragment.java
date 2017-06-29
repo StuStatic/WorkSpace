@@ -58,8 +58,8 @@ public class HomeFragment extends android.app.Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         homeLayout = inflater.inflate(R.layout.fragment_home, container, false);
-        mViewPager= (ViewPager)homeLayout.findViewById(R.id.vp_main);
-        mLinearLayoutDot= (LinearLayout)homeLayout.findViewById(R.id.ll_main_dot);
+        mViewPager= (ViewPager)homeLayout.findViewById(R.id.vp_home1);
+        mLinearLayoutDot= (LinearLayout)homeLayout.findViewById(R.id.ll_home1_dot);
         initView();
 
         initData(homeLayout.getContext());
