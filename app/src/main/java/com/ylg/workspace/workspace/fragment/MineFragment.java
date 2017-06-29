@@ -14,14 +14,11 @@ public class MineFragment extends android.app.Fragment {
 
 
     public MineFragment() {
-        // Required empty public constructor
     }
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View mineLayout = inflater.inflate(R.layout.fragment_mine, container, false);
         return mineLayout;
     }

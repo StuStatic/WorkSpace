@@ -56,6 +56,7 @@
                     app:lightColor="#ffff0000"
                     app:radiusPercent="0.7"
                     app:scrollSpeed="3"/>
+                    />
             </FrameLayout>
 
             <!--底部轮播视图-->

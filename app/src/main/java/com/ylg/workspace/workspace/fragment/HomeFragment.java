@@ -83,16 +83,24 @@ public class HomeFragment extends android.app.Fragment {
     }
     private void initView() {
         mStrings = new ArrayList<>();
-        mStrings.add("张雨不要脸");
-        mStrings.add("张雨是山炮");
-        mStrings.add("赵亮亮不要脸");
-        mStrings.add("赵亮亮是山炮");
-        mStrings.add("赵亮亮没有买票");
-        mStrings.add("张雨没有买票");
-        mStrings.add("哈哈哈");
-        mStrings.add("非常好");
-        mStrings.add("我赞成");
-        mStrings.add("我们都赞成");
+        mStrings.add("活动");
+        mStrings.add("咨询");
+        mStrings.add("友邻");
+        mStrings.add("集市");
+        mStrings.add("集市");
+        mStrings.add("集市");
+        mStrings.add("集市");
+        mStrings.add("集市");
+        mStrings.add("订工位");
+        mStrings.add("开门");
+        mStrings.add("发集市");
+        mStrings.add("访客预约");
+        mStrings.add("预定场地");
+        mStrings.add("精选");
+        mStrings.add("订会议室");
+        mStrings.add("一键报修");
+        mStrings.add("企业介绍");
+        mStrings.add("意见反馈");
         tcv = (TagCloudView) homeLayout.findViewById(R.id.tcv);
         TagAdapter tagsAdapter = new TagAdapter(mStrings);
         tcv.setAdapter(tagsAdapter);
