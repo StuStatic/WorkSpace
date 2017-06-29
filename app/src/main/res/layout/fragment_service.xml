@@ -4,9 +4,11 @@
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
     tools:context="com.ylg.workspace.workspace.fragment.ServiceFragment">
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:scrollbars="none">
 
 
         <LinearLayout
@@ -19,18 +21,20 @@
                 android:id="@+id/layout_toobar"
                 android:layout_width="match_parent"
                 android:layout_height="50dp">
+
                 <android.support.v7.widget.Toolbar
                     android:id="@+id/toolBar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/colorWhite"></android.support.v7.widget.Toolbar>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
                     android:text="众创空间移动客户端"
-                    android:textSize="20dp"
                     android:textColor="@color/colorBlack"
-                    android:layout_centerInParent="true"/>
+                    android:textSize="20dp" />
             </RelativeLayout>
 
 
@@ -41,7 +45,7 @@
                 <android.support.v4.view.ViewPager
                     android:id="@+id/vp_service1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content" />
 
                 <LinearLayout
                     android:id="@+id/ll_service1_dot"
@@ -50,7 +54,7 @@
                     android:layout_alignBottom="@id/vp_service1"
                     android:layout_marginBottom="10dp"
                     android:gravity="center_horizontal"
-                    android:orientation="horizontal"/>
+                    android:orientation="horizontal" />
             </RelativeLayout>
 
 
