@@ -22,11 +22,11 @@ public class MainActivity extends App implements View.OnClickListener {
     //Fragment
     private HomeFragment homeFragment;
     private MineFragment mineFragment;
-    private SelectionFragment selectionFragment;
+//    private SelectionFragment selectionFragment;
     private ServiceFragment serviceFragment;
     private SocialFragment socialFragment;
     //主界面下面的tab
-    private View homeLayout, mineLayout, selectionLayout, serviceLayout, socialLayout;
+    private View homeLayout, mineLayout, serviceLayout, socialLayout;
     //fragmentManager
     private FragmentManager fragmentManager;
     private long exitTime;
@@ -46,14 +46,14 @@ public class MainActivity extends App implements View.OnClickListener {
         //初始化视图
         homeLayout = findViewById(R.id.home_layout);
         mineLayout = findViewById(R.id.mine_layout);
-        selectionLayout = findViewById(R.id.selection_layout);
+//        selectionLayout = findViewById(R.id.selection_layout);
         serviceLayout = findViewById(R.id.service_layout);
         socialLayout = findViewById(R.id.social_layout);
 
         //绑定适配器
         homeLayout.setOnClickListener(this);
         mineLayout.setOnClickListener(this);
-        selectionLayout.setOnClickListener(this);
+//        selectionLayout.setOnClickListener(this);
         serviceLayout.setOnClickListener(this);
         socialLayout.setOnClickListener(this);
     }
@@ -74,10 +74,10 @@ public class MainActivity extends App implements View.OnClickListener {
                 // 当点击了服务tab时，选中第3个tab
                 setTabSelection(2);
                 break;
-            case R.id.selection_layout:
-                // 当点击了精选tab时，选中第4个tab
-                setTabSelection(3);
-                break;
+//            case R.id.selection_layout:
+//                // 当点击了精选tab时，选中第4个tab
+//                setTabSelection(3);
+//                break;
             case R.id.mine_layout:
                 // 当点击了我的tab时，选中第5个tab
                 setTabSelection(4);
@@ -149,23 +149,23 @@ public class MainActivity extends App implements View.OnClickListener {
                     transaction.show(serviceFragment);
                 }
                 break;
-            case 3:
-                // 当点击了tab时，改变控件的图片和文字颜色
-//                settingImage.setImageResource(R.drawable.setting_selected);
-//                settingText.setTextColor(Color.WHITE);
+//            case 3:
+//                // 当点击了tab时，改变控件的图片和文字颜色
+////                settingImage.setImageResource(R.drawable.setting_selected);
+////                settingText.setTextColor(Color.WHITE);
+////                selectionLayout.setBackgroundColor(Color.GRAY);
+//
 //                selectionLayout.setBackgroundColor(Color.GRAY);
-
-                selectionLayout.setBackgroundColor(Color.GRAY);
-
-                if (selectionFragment == null) {
-                    // 如果SelectionFragment为空，则创建一个并添加到界面上
-                    selectionFragment = new SelectionFragment();
-                    transaction.add(R.id.content, selectionFragment);
-                } else {
-                    // 如果SelectionFragment不为空，则直接将它显示出来
-                    transaction.show(selectionFragment);
-                }
-                break;
+//
+//                if (selectionFragment == null) {
+//                    // 如果SelectionFragment为空，则创建一个并添加到界面上
+//                    selectionFragment = new SelectionFragment();
+//                    transaction.add(R.id.content, selectionFragment);
+//                } else {
+//                    // 如果SelectionFragment不为空，则直接将它显示出来
+//                    transaction.show(selectionFragment);
+//                }
+//                break;
             case 4:
                 // 当点击了tab时，改变控件的图片和文字颜色
 //                settingImage.setImageResource(R.drawable.setting_selected);
@@ -204,7 +204,7 @@ public class MainActivity extends App implements View.OnClickListener {
         homeLayout.setBackgroundColor(Color.WHITE);
         socialLayout.setBackgroundColor(Color.WHITE);
         serviceLayout.setBackgroundColor(Color.WHITE);
-        selectionLayout.setBackgroundColor(Color.WHITE);
+//        selectionLayout.setBackgroundColor(Color.WHITE);
         mineLayout.setBackgroundColor(Color.WHITE);
     }
 
@@ -224,9 +224,9 @@ public class MainActivity extends App implements View.OnClickListener {
         if (serviceFragment != null) {
             transaction.hide(serviceFragment);
         }
-        if (selectionFragment != null) {
-            transaction.hide(selectionFragment);
-        }
+//        if (selectionFragment != null) {
+//            transaction.hide(selectionFragment);
+//        }
         if (mineFragment != null) {
             transaction.hide(mineFragment);
         }

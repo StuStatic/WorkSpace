@@ -8,13 +8,14 @@ import android.widget.ImageView;
 import java.util.List;
 
 /**
- * Created by stu on 2017/6/28.
+ * Created by stu on 2017/6/29.
  */
 
-public class ViewPagerAdater_Home01 extends PagerAdapter {
+public class ViewPagerAdapter_Service01 extends PagerAdapter{
     private List<ImageView> list;
 
-    public ViewPagerAdater_Home01(List<ImageView> list) {
+
+    public ViewPagerAdapter_Service01(List<ImageView> list){
         this.list = list;
     }
 
