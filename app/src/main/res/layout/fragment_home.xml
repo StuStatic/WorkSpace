@@ -36,7 +36,7 @@
             <!--动态球星图-->
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="500dp"
+                android:layout_height="400dp"
                 android:background="#CCCCCC">
                 <TextView
                     android:layout_width="wrap_content"
@@ -49,7 +49,7 @@
                 <com.moxun.tagcloudlib.view.TagCloudView
                     android:id="@+id/tcv"
                     android:layout_width="match_parent"
-                    android:layout_height="250dp"
+                    android:layout_height="400dp"
                     android:layout_centerInParent="true"
                     app:autoScrollMode="uniform"
                     app:darkColor="#ff00ff00"
