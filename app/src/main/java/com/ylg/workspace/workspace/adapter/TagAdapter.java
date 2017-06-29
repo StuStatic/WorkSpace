@@ -37,7 +37,7 @@ public class TagAdapter  extends TagsAdapter {
         ViewGroup.MarginLayoutParams marginLayoutParams = new ViewGroup.MarginLayoutParams(200, 200);
         tv.setLayoutParams(marginLayoutParams);
         tv.setText(mStrings.get(position));
-        tv.setTextSize(13);
+        tv.setTextSize(16);
         tv.setGravity(Gravity.CENTER);
 //        tv.setCompoundDrawables(null,drawable,null,null);
 

@@ -81,51 +81,34 @@ public class HomeFragment extends android.app.Fragment {
 
         return homeLayout;
     }
-
     private void initView() {
         mStrings = new ArrayList<>();
         mStrings.add("活动");
         mStrings.add("咨询");
         mStrings.add("友邻");
         mStrings.add("集市");
-        mStrings.add("定工位");
+        mStrings.add("集市");
+        mStrings.add("集市");
+        mStrings.add("集市");
+        mStrings.add("集市");
+        mStrings.add("订工位");
         mStrings.add("开门");
         mStrings.add("发集市");
-        mStrings.add("集市");
         mStrings.add("访客预约");
         mStrings.add("预定场地");
         mStrings.add("精选");
-        mStrings.add("灯光");
-        mStrings.add("集市");
-        mStrings.add("定会议室");
-        mStrings.add("一键保修");
+        mStrings.add("订会议室");
+        mStrings.add("一键报修");
         mStrings.add("企业介绍");
-        mStrings.add("集市");
-        mStrings.add("集市");
         mStrings.add("意见反馈");
         tcv = (TagCloudView) homeLayout.findViewById(R.id.tcv);
         TagAdapter tagsAdapter = new TagAdapter(mStrings);
         tcv.setAdapter(tagsAdapter);
+
     }
 
 
     private void initData(Context context) {
-        mImageViewList = new ArrayList<>();
-        mImageViewDotList = new ArrayList();
-        ImageView imageView;
-        for (int i = 0; i < images.length + 2; i++) {
-            if (i == 0) {   //判断当i=0为该处的ImageView设置最后一张图片作为背景
-                imageView = new ImageView(context);
-                imageView.setBackgroundResource(images[images.length - 1]);
-                mImageViewList.add(imageView);
-            } else if (i == images.length + 1) {   //判断当i=images.length+1时为该处的ImageView设置第一张图片作为背景
-                imageView = new ImageView(context);
-                imageView.setBackgroundResource(images[0]);
-                mImageViewList.add(imageView);
-            } else {  //其他情况则为ImageView设置images[i-1]的图片作为背景
-                imageView = new ImageView(context);
-                imageView.setBackgroundResource(images[i - 1]);
-                mImageViewList.add(imageView);
         //头部视图轮播数据初始化
         mImageViewList1=new ArrayList<>();
         mImageViewDotList1=new ArrayList();
