@@ -5,13 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.ylg.workspace.workspace.activity.MainActivity">
-    <FrameLayout
-        android:id="@+id/content"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </FrameLayout>
 
+    <!--底部选项栏-->
     <LinearLayout
+        android:id="@+id/chooseitem"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@color/colorWhite"
@@ -162,4 +159,13 @@
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
+
+
+    <!--fragment-->
+    <FrameLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/chooseitem">
+    </FrameLayout>
 </RelativeLayout>
