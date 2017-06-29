@@ -37,17 +37,18 @@
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="400dp"
-                android:background="#CCCCCC"
-                >
+                android:layout_height="300dp"
+                android:background="#CCCCCC">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="文字"
                     android:layout_margin="10sp"
-                    android:textSize="18sp"
+                    android:text="文字"
                     android:textColor="#000000"
+                    android:textSize="18sp"
                     />
+
                 <com.moxun.tagcloudlib.view.TagCloudView
                     android:id="@+id/tcv"
                     android:layout_width="match_parent"
@@ -59,9 +60,6 @@
                     app:radiusPercent="0.7"
                     app:scrollSpeed="3"
                     />
-
-
-
             </FrameLayout>
 
         </LinearLayout>
