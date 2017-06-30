@@ -18,6 +18,8 @@
         <activity android:name=".activity.MainActivity"/>
         <activity android:name=".activity.personaldetails.SetUpActivity">
         </activity>
+        <activity android:name=".activity.personaldetails.MyHistoryActivity">
+        </activity>
     </application>
 
 </manifest>

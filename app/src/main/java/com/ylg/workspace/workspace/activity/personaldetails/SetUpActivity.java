@@ -34,4 +34,10 @@ public class SetUpActivity extends App implements View.OnClickListener{
                 break;
         }
     }
+
+    @Override
+    protected void onDestroy() {
+        App.removeActivity(this);
+        super.onDestroy();
+    }
 }
