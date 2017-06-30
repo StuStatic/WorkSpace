@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:orientation="vertical"
+    tools:context="com.ylg.workspace.workspace.activity.service.ServiceRegisterActivity">
+
+    <include layout="@layout/include_title" />
+
+    <include layout="@layout/item_line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15sp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="企业Logo"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/et1"
+            style="?android:attr/textViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15sp"
+            android:background="@null"
+            android:cursorVisible="false"
+            android:hint="请选择企业Logo"
+            android:paddingBottom="5dip"
+            android:paddingTop="5dip"
+            android:textColor="@color/colorBlack"
+            android:textColorHint="@color/colorGray"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <include layout="@layout/item_line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15sp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="企业名称"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/et2"
+            style="?android:attr/textViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15sp"
+            android:background="@null"
+            android:cursorVisible="false"
+            android:hint="请输入企业名称"
+            android:paddingBottom="5dip"
+            android:paddingTop="5dip"
+            android:textColor="@color/colorBlack"
+            android:textColorHint="@color/colorGray"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <include layout="@layout/item_line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15sp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="经营范围"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/et3"
+            style="?android:attr/textViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15sp"
+            android:background="@null"
+            android:cursorVisible="false"
+            android:hint="请选择经营范围"
+            android:paddingBottom="5dip"
+            android:paddingTop="5dip"
+            android:textColor="@color/colorBlack"
+            android:textColorHint="@color/colorGray"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <include layout="@layout/item_line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15sp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="联系人"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/et4"
+            style="?android:attr/textViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15sp"
+            android:background="@null"
+            android:cursorVisible="false"
+            android:hint="请输入联系人"
+            android:paddingBottom="5dip"
+            android:paddingTop="5dip"
+            android:textColor="@color/colorBlack"
+            android:textColorHint="@color/colorGray"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <include layout="@layout/item_line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15sp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="联系方式"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/et5"
+            style="?android:attr/textViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15sp"
+            android:background="@null"
+            android:cursorVisible="false"
+            android:hint="请输入联系方式"
+            android:paddingBottom="5dip"
+            android:paddingTop="5dip"
+            android:textColor="@color/colorBlack"
+            android:textColorHint="@color/colorGray"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <include layout="@layout/item_line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15sp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="服务商类别"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/et6"
+            style="?android:attr/textViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15sp"
+            android:background="@null"
+            android:cursorVisible="false"
+            android:hint="请选择服务商类别"
+            android:paddingBottom="5dip"
+            android:paddingTop="5dip"
+            android:textColor="@color/colorBlack"
+            android:textColorHint="@color/colorGray"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <include layout="@layout/item_line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15sp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="服务社区"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/et7"
+            style="?android:attr/textViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15sp"
+            android:background="@null"
+            android:cursorVisible="false"
+            android:hint="全部社区"
+            android:paddingBottom="5dip"
+            android:paddingTop="5dip"
+            android:textColor="@color/colorBlack"
+            android:textColorHint="@color/colorGray"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <include layout="@layout/item_line" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="50dp"
+        android:background="@color/colorWhite"
+        android:text="提交"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+</LinearLayout>

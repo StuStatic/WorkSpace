@@ -62,6 +62,7 @@
             <include layout="@layout/item_line" />
 
             <LinearLayout
+                android:id="@+id/service_ll1"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:orientation="horizontal">
@@ -69,7 +70,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginLeft="15sp"
                     android:gravity="center_vertical"
                     android:text="申请成为平台服务商"
                     android:textColor="@color/black"
@@ -79,7 +80,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginLeft="15sp"
                     android:src="@mipmap/right" />
 
             </LinearLayout>
@@ -92,6 +93,7 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/service_ll2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -116,6 +118,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/service_ll3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -140,6 +143,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/service_ll4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -164,6 +168,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/service_ll5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -195,6 +200,7 @@
             <include layout="@layout/item_line" />
 
             <LinearLayout
+                android:id="@+id/service_ll6"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:orientation="horizontal">
@@ -202,7 +208,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginLeft="15sp"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:text="访客预约"
@@ -214,7 +220,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="15dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginRight="15sp"
                     android:src="@mipmap/right" />
 
             </LinearLayout>
@@ -222,6 +228,7 @@
             <include layout="@layout/item_line" />
 
             <LinearLayout
+                android:id="@+id/service_ll7"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:orientation="horizontal">
@@ -229,7 +236,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginLeft="15sp"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:text="问题报修"
@@ -241,7 +248,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="15dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginRight="15sp"
                     android:src="@mipmap/right" />
 
             </LinearLayout>
@@ -249,6 +256,7 @@
             <include layout="@layout/item_line" />
 
             <LinearLayout
+                android:id="@+id/service_ll8"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:orientation="horizontal">
@@ -256,7 +264,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginLeft="15sp"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:text="一键开门"
@@ -268,7 +276,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="15dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginRight="15sp"
                     android:src="@mipmap/right" />
 
             </LinearLayout>
@@ -276,6 +284,7 @@
             <include layout="@layout/item_line" />
 
             <LinearLayout
+                android:id="@+id/service_ll9"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:orientation="horizontal">
@@ -283,7 +292,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginLeft="15sp"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:text="意见反馈"
@@ -295,7 +304,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="15dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginRight="15sp"
                     android:src="@mipmap/right" />
 
             </LinearLayout>
@@ -307,6 +316,7 @@
             <include layout="@layout/item_line" />
 
             <LinearLayout
+                android:id="@+id/service_ll10"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:orientation="horizontal">
@@ -314,7 +324,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginLeft="15sp"
                     android:gravity="center_vertical"
                     android:text="可操控设备"
                     android:textColor="@color/black"
