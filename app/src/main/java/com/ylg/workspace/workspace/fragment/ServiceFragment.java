@@ -9,11 +9,13 @@ import android.os.Message;
 import android.os.SystemClock;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.moxun.tagcloudlib.view.TagCloudView;
 import com.ylg.workspace.workspace.R;
@@ -150,6 +152,47 @@ public class ServiceFragment extends android.app.Fragment {
                 if(state==ViewPager.SCROLL_STATE_IDLE){
                     mViewPager.setCurrentItem(currentPosition,false);
                 }
+            }
+        });
+
+
+
+        //viewpager点击事件
+        //viewpager点击事件
+        mViewPager.setOnTouchListener(new View.OnTouchListener() {
+            int flag = 0;
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                switch (motionEvent.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        flag = 0 ;
+                        break ;
+                    case MotionEvent.ACTION_MOVE:
+                        flag = 1 ;
+                        break ;
+                    case  MotionEvent.ACTION_UP :
+                        if (flag == 0) {
+                            int item = mViewPager.getCurrentItem();
+                            if (item == 0) {
+//                                Intent intent = new Intent(sa, NoNetWork.class);
+//                                sa.startActivity(intent);
+                            } else if (item == 1) {
+//                                Intent intent = new Intent(sa, NoNetWork.class);
+//                                sa.startActivity(intent);
+                            } else if (item == 2) {
+//                                Intent intent = new Intent(sa, NoNetWork.class);
+//                                sa.startActivity(intent);
+                            }else if (item == 3) {
+//                                Intent intent = new Intent(sa, NoNetWork.class);
+//                                sa.startActivity(intent);
+                            }
+                            Toast.makeText(serviceLayout.getContext(), ""+item, Toast.LENGTH_SHORT).show();
+                        }
+                        break ;
+
+
+                }
+                return false;
             }
         });
     }
