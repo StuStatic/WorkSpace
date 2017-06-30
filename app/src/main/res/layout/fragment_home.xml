@@ -3,7 +3,7 @@
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             android:background="@color/colorWhite"
+             android:background="@color/colorGrayLight"
              tools:context="com.ylg.workspace.workspace.fragment.HomeFragment">
 
     <ScrollView
@@ -54,16 +54,40 @@
                 />
             </FrameLayout>
 
+            <!--众创空间文字索引-->
+            <RelativeLayout
+                android:id="@+id/word01"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/colorWhite">
+                <TextView
+                    android:id="@+id/workspace_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="众创空间"
+                    android:textSize="18dp"
+                    android:textColor="@color/colorBlack"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"/>
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/icon_arrow01"
+                    android:layout_toRightOf="@id/workspace_tv"
+                    android:layout_marginLeft="10dp"
+                    android:layout_centerVertical="true"/>
+            </RelativeLayout>
+
             <!--底部轮播视图-->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="200dp">
-
+                <!--viewpager-->
                 <android.support.v4.view.ViewPager
                     android:id="@+id/vp_home2"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
+                    android:layout_height="wrap_content" />
+                <!--小圆点布局-->
                 <LinearLayout
                     android:id="@+id/ll_home2_dot"
                     android:layout_width="match_parent"
@@ -72,6 +96,109 @@
                     android:layout_marginBottom="10dp"
                     android:gravity="center_horizontal"
                     android:orientation="horizontal"/>
+            </RelativeLayout>
+
+            <!--活动推荐文字索引-->
+            <RelativeLayout
+                android:id="@+id/word02"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/colorWhite">
+                <TextView
+                    android:id="@+id/recommend_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="活动推荐"
+                    android:textSize="18dp"
+                    android:textColor="@color/colorBlack"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"/>
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/icon_arrow01"
+                    android:layout_toRightOf="@id/recommend_tv"
+                    android:layout_marginLeft="10dp"
+                    android:layout_centerVertical="true"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/recommend_content"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@color/colorWhite">
+                <ImageView
+                    android:id="@+id/recommend_contentimg"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/icon_recommend"/>
+                <TextView
+                    android:id="@+id/recommend_contenttv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="如果你无法简洁的表达你的想法，那只说明你还不够了解它。"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15dp"
+                    android:layout_below="@id/recommend_contentimg"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"/>
+            </RelativeLayout>
+
+
+            <!--最新资讯文字索引&ndash;&gt;-->
+            <RelativeLayout
+                android:id="@+id/word03"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/colorWhite">
+                <TextView
+                    android:id="@+id/news_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="最新资讯"
+                    android:textSize="18dp"
+                    android:textColor="@color/colorBlack"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"/>
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/icon_arrow01"
+                    android:layout_toRightOf="@id/news_tv"
+                    android:layout_marginLeft="10dp"
+                    android:layout_centerVertical="true"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/news_content"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:background="@color/colorWhite">
+                <TextView
+                    android:id="@+id/news_contenttv"
+                    android:layout_width="260dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="如果你无法简洁的表达你的想法，那只说明你还不够了解它。"
+                    android:textSize="15dp"
+                    android:textColor="@color/colorBlack"/>
+                <ImageView
+                    android:id="@+id/news_contentimg"
+                    android:layout_width="100dp"
+                    android:layout_height="60dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/icon_recommend"/>
+                <TextView
+                    android:id="@+id/news_contentdate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2017-07-13"
+                    android:textSize="15dp"
+                    android:textColor="@color/colorGray"
+                    android:layout_marginLeft="20dp"
+                    android:layout_alignParentBottom="true"/>
             </RelativeLayout>
 
         </LinearLayout>
