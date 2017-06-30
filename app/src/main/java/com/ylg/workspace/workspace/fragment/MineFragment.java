@@ -29,14 +29,14 @@ public class MineFragment extends android.app.Fragment implements View.OnClickLi
     }
 
     private void init(View mView) {
-        iv_set = (ImageView) mView.findViewById(R.id.include_iv_intent);
+        iv_set = (ImageView) mView.findViewById(R.id.mine_iv_intent);
         iv_set.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.include_iv_intent:
+            case R.id.mine_iv_intent:
                 Log.i("dyy","设置个人中心");
                 Intent i = new Intent(getActivity(),SetUpActivity.class);
                 startActivity(i);
