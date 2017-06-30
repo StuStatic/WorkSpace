@@ -79,24 +79,37 @@
             </RelativeLayout>
 
             <!--底部轮播视图-->
-            <RelativeLayout
+            <!--<RelativeLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="200dp">-->
+                <!--&lt;!&ndash;viewpager&ndash;&gt;-->
+                <!--<android.support.v4.view.ViewPager-->
+                    <!--android:id="@+id/vp_home2"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content" />-->
+                <!--&lt;!&ndash;小圆点布局&ndash;&gt;-->
+                <!--<LinearLayout-->
+                    <!--android:id="@+id/ll_home2_dot"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_alignBottom="@id/vp_home2"-->
+                    <!--android:layout_marginBottom="10dp"-->
+                    <!--android:gravity="center_horizontal"-->
+                    <!--android:orientation="horizontal"/>-->
+            <!--</RelativeLayout>-->
+            <com.ylg.workspace.workspace.view.MyHorizontalScrollView
+                android:id="@+id/id_hsv"
                 android:layout_width="match_parent"
-                android:layout_height="200dp">
-                <!--viewpager-->
-                <android.support.v4.view.ViewPager
-                    android:id="@+id/vp_home2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-                <!--小圆点布局-->
+                android:layout_height="200dp"
+                android:scrollbars="none">
                 <LinearLayout
-                    android:id="@+id/ll_home2_dot"
-                    android:layout_width="match_parent"
+                    android:id="@+id/id_gallary"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignBottom="@id/vp_home2"
-                    android:layout_marginBottom="10dp"
-                    android:gravity="center_horizontal"
-                    android:orientation="horizontal"/>
-            </RelativeLayout>
+                    android:orientation="horizontal">
+
+                </LinearLayout>
+            </com.ylg.workspace.workspace.view.MyHorizontalScrollView>
 
             <!--活动推荐文字索引-->
             <RelativeLayout
