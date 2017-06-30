@@ -30,5 +30,6 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta4'
     compile 'com.github.bumptech.glide:okhttp-integration:1.4.0'
     compile 'com.moxun:tagcloudlib:1.0.3'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
 }

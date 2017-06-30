@@ -226,7 +226,7 @@ public class MainActivity extends App implements View.OnClickListener {
 ////        selectionLayout.setBackgroundColor(Color.WHITE);
 //        mineLayout.setBackgroundColor(Color.WHITE);
         home_img.setImageResource(R.drawable.home_icon2);
-            home_tv.setTextColor(Color.GRAY);
+        home_tv.setTextColor(Color.GRAY);
         social_img.setImageResource(R.drawable.social_icon2);
         social_tv.setTextColor(Color.GRAY);
         service_img.setImageResource(R.drawable.service_icon2);
