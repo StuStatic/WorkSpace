@@ -133,12 +133,19 @@
         </RelativeLayout>
     </LinearLayout>
 
+    <View
+        android:id="@+id/line_home"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorGrayLight"
+        android:layout_above="@id/chooseitem"/>
+
 
     <!--fragment-->
     <FrameLayout
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/chooseitem">
+        android:layout_above="@id/line_home">
     </FrameLayout>
 </RelativeLayout>

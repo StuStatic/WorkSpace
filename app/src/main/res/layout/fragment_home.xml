@@ -3,7 +3,7 @@
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             android:background="@color/colorGrayLight"
+             android:background="@color/colorWhite"
              tools:context="com.ylg.workspace.workspace.fragment.HomeFragment">
 
     <ScrollView
@@ -68,7 +68,7 @@
                     android:textSize="18dp"
                     android:textColor="@color/colorBlack"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"/>
+                    android:layout_marginLeft="15sp"/>
                 <ImageView
                     android:layout_width="15dp"
                     android:layout_height="15dp"
@@ -97,19 +97,23 @@
                     <!--android:gravity="center_horizontal"-->
                     <!--android:orientation="horizontal"/>-->
             <!--</RelativeLayout>-->
+
+
             <com.ylg.workspace.workspace.view.MyHorizontalScrollView
                 android:id="@+id/id_hsv"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:scrollbars="none">
+                android:scrollbars="none"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="15sp">
                 <LinearLayout
                     android:id="@+id/id_gallary"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
-
                 </LinearLayout>
             </com.ylg.workspace.workspace.view.MyHorizontalScrollView>
+
 
             <!--活动推荐文字索引-->
             <RelativeLayout
@@ -125,7 +129,7 @@
                     android:textSize="18dp"
                     android:textColor="@color/colorBlack"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"/>
+                    android:layout_marginLeft="15sp"/>
                 <ImageView
                     android:layout_width="15dp"
                     android:layout_height="15dp"
@@ -143,8 +147,8 @@
                     android:id="@+id/recommend_contentimg"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="15sp"
+                    android:layout_marginRight="15sp"
                     android:background="@drawable/icon_recommend"/>
                 <TextView
                     android:id="@+id/recommend_contenttv"
@@ -154,17 +158,21 @@
                     android:textColor="@color/colorBlack"
                     android:textSize="15dp"
                     android:layout_below="@id/recommend_contentimg"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"/>
+                    android:layout_marginLeft="15sp"
+                    android:layout_marginRight="15sp"/>
             </RelativeLayout>
 
-
+            <View
+                android:id="@+id/partgray"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="@color/colorGrayLight"></View>
             <!--最新资讯文字索引&ndash;&gt;-->
             <RelativeLayout
                 android:id="@+id/word03"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginTop="20dp"
+
                 android:background="@color/colorWhite">
                 <TextView
                     android:id="@+id/news_tv"
@@ -174,7 +182,7 @@
                     android:textSize="18dp"
                     android:textColor="@color/colorBlack"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"/>
+                    android:layout_marginLeft="15sp"/>
                 <ImageView
                     android:layout_width="15dp"
                     android:layout_height="15dp"
@@ -190,9 +198,9 @@
                 android:background="@color/colorWhite">
                 <TextView
                     android:id="@+id/news_contenttv"
-                    android:layout_width="260dp"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="15sp"
                     android:text="如果你无法简洁的表达你的想法，那只说明你还不够了解它。"
                     android:textSize="15dp"
                     android:textColor="@color/colorBlack"/>
@@ -201,7 +209,8 @@
                     android:layout_width="100dp"
                     android:layout_height="60dp"
                     android:layout_alignParentRight="true"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginRight="15sp"
+                    android:layout_toRightOf="@id/news_contenttv"
                     android:background="@drawable/icon_recommend"/>
                 <TextView
                     android:id="@+id/news_contentdate"
