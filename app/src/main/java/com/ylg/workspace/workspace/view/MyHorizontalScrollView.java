@@ -37,6 +37,7 @@ public class MyHorizontalScrollView extends HorizontalScrollView implements View
      *
      * @author stu
      *
+     *
      */
     public interface OnItemClickListener
     {
@@ -153,7 +154,7 @@ public class MyHorizontalScrollView extends HorizontalScrollView implements View
         int index = mCurrentIndex - mCountOneScreen;
         if (index >= 0)
         {
-//          mContainer = (LinearLayout) getChildAt(0);
+            mContainer = (LinearLayout) getChildAt(0);
             //移除最后一张
             int oldViewPos = mContainer.getChildCount() - 1;
             mViewPos.remove(mContainer.getChildAt(oldViewPos));
@@ -173,6 +174,7 @@ public class MyHorizontalScrollView extends HorizontalScrollView implements View
             if (mListener != null)
             {
                 notifyCurrentImgChanged();
+                Log.e("滑动监听","滑动监听");
 
             }
         }
@@ -209,10 +211,10 @@ public class MyHorizontalScrollView extends HorizontalScrollView implements View
         // 强制计算当前View的宽和高
         if (mChildWidth == 0 && mChildHeight == 0)
         {
-            int w = View.MeasureSpec.makeMeasureSpec(0,
-                    View.MeasureSpec.UNSPECIFIED);
-            int h = View.MeasureSpec.makeMeasureSpec(0,
-                    View.MeasureSpec.UNSPECIFIED);
+            int w = MeasureSpec.makeMeasureSpec(0,
+                    MeasureSpec.UNSPECIFIED);
+            int h = MeasureSpec.makeMeasureSpec(0,
+                    MeasureSpec.UNSPECIFIED);
             view.measure(w, h);
             mChildHeight = view.getMeasuredHeight();
             mChildWidth = view.getMeasuredWidth();
@@ -257,29 +259,7 @@ public class MyHorizontalScrollView extends HorizontalScrollView implements View
 
     }
 
-//    @Override
-//    public boolean onTouchEvent(MotionEvent ev)
-//    {
-//        switch (ev.getAction())
-//        {
-//            case MotionEvent.ACTION_MOVE:
-////          Log.e(TAG, getScrollX() + "");
-//
-//                int scrollX = getScrollX();
-//                // 如果当前scrollX为view的宽度，加载下一张，移除第一张
-//                if (scrollX >= mChildWidth)
-//                {
-//                    loadNextImg();
-//                }
-//                // 如果当前scrollX = 0， 往前设置一张，移除最后一张
-//                if (scrollX == 0)
-//                {
-//                    loadPreImg();
-//                }
-//                break;
-//        }
-//        return super.onTouchEvent(ev);
-//    }
+
 
 
     @Override

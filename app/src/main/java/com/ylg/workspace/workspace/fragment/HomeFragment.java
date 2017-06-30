@@ -11,7 +11,6 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -20,7 +19,6 @@ import com.moxun.tagcloudlib.view.TagCloudView;
 import com.ylg.workspace.workspace.R;
 import com.ylg.workspace.workspace.adapter.HorizontalScrollViewAdapter_Home;
 import com.ylg.workspace.workspace.adapter.TagAdapter;
-import com.ylg.workspace.workspace.adapter.ViewPagerAdapter_Home02;
 import com.ylg.workspace.workspace.adapter.ViewPagerAdater_Home01;
 import com.ylg.workspace.workspace.view.MyHorizontalScrollView;
 
@@ -49,7 +47,7 @@ public class HomeFragment extends android.app.Fragment {
     private MyHorizontalScrollView mHorizontalScrollView;
     private HorizontalScrollViewAdapter_Home mAdapter;
     private ImageView mImg;
-    private List<Integer> mDatas = new ArrayList<Integer>(Arrays.asList(R.mipmap.a4,R.mipmap.a5,R.mipmap.a4,R.mipmap.a5,R.mipmap.a4));
+    private List<Integer> mDatas = new ArrayList<Integer>(Arrays.asList(R.mipmap.a4,R.mipmap.a5,R.mipmap.a4,R.mipmap.a5,R.mipmap.a4,R.mipmap.a5,R.mipmap.a4,R.mipmap.a5,R.mipmap.a4,R.mipmap.a5));
     Handler handler=new Handler(){
         @Override
         public void handleMessage(Message msg) {

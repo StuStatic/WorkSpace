@@ -48,10 +48,8 @@ public class HorizontalScrollViewAdapter_Home {
         if (convertView == null)
         {
             viewHolder = new ViewHolder();
-            convertView = mInflater.inflate(
-                    R.layout.item_horizontalscrollview, parent, false);
-            viewHolder.mImg = (ImageView) convertView
-                    .findViewById(R.id.hsv_img);
+            convertView = mInflater.inflate(R.layout.item_horizontalscrollview, parent, false);
+            viewHolder.mImg = (ImageView) convertView.findViewById(R.id.hsv_img);
 //            viewHolder.mText = (TextView) convertView
 //                    .findViewById(R.id.id_index_gallery_item_text);
 
