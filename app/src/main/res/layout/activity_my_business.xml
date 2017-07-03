@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f3f3f3"
+    tools:context="com.ylg.workspace.workspace.activity.personaldetails.MyBusinessActivity">
+
+    <include
+        android:id="@+id/include_business"
+        layout="@layout/include_title"
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/include_business"
+        android:layout_marginTop="5sp"
+        android:orientation="vertical"
+        android:weightSum="10"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="#FFFFFF"
+            >
+            <View
+                android:id="@+id/business_view2"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="30sp"
+                android:layout_marginRight="30sp"
+                android:layout_marginTop="20sp"
+                android:background="#888888"
+                />
+            <LinearLayout
+                android:id="@+id/business_ll_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/business_view2"
+                android:orientation="horizontal"
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15sp"
+                    android:background="@drawable/search_icon"
+                    android:layout_gravity="center_vertical"
+                    />
+
+                <TextView
+                    android:id="@+id/business_tv_add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="加入企业"
+                    android:textColor="#333333"
+                    android:textSize="18sp"
+                    />
+            </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:id="@+id/business_ll_new"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/business_view2"
+                android:orientation="horizontal"
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15sp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/new_icon"
+                    />
+
+                <TextView
+                    android:id="@+id/business_tv_new"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="创建企业"
+                    android:textColor="#333333"
+                    android:textSize="18sp"
+                    />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="20sp"
+            android:layout_weight="9"
+            >
+
+            <com.ylg.workspace.workspace.view.SwipeRefreshView
+                android:id="@+id/business_srv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FFFFFF">
+
+                <ListView
+                    android:id="@+id/business_lv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </com.ylg.workspace.workspace.view.SwipeRefreshView>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>

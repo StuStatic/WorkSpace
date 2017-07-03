@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF">
+
+    <ImageView
+        android:id="@+id/business_item_lv_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/logo_qu"
+        android:layout_margin="15sp"
+        />
+    <TextView
+        android:id="@+id/business_item_tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="北京物联港科技发展有限公司"
+        android:textColor="#888888"
+        android:textSize="13sp"
+        android:layout_marginRight="36sp"
+        android:layout_toRightOf="@id/business_item_lv_logo"
+        android:layout_marginTop="23sp"
+        />
+    <TextView
+        android:id="@+id/business_item_tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2017-06-12"
+        android:textColor="#888888"
+        android:textSize="13sp"
+        android:layout_toRightOf="@id/business_item_lv_logo"
+        android:layout_marginTop="58sp"
+        />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/arrow_right_icon"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="15sp"
+        />
+
+
+</RelativeLayout>
