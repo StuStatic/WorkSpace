@@ -1,4 +1,4 @@
-package com.ylg.workspace.workspace.activity.CircleGraph;
+package com.ylg.workspace.workspace.activity.ballgraph;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +11,8 @@ import android.widget.Toast;
 import com.ylg.workspace.workspace.R;
 import com.ylg.workspace.workspace.adapter.Adapter01_CircleGraph;
 import com.ylg.workspace.workspace.adapter.Adapter02_CircleGraph;
+import com.ylg.workspace.workspace.util.SetCompanyListViewItemHeight;
+import com.ylg.workspace.workspace.util.SetSpaceListViewItemHeight;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,8 +57,13 @@ public class InfoActivity extends AppCompatActivity {
         //初始化adapter
         adapter_space = new Adapter01_CircleGraph(this,datas_space);
         listView_space.setAdapter(adapter_space);
+        //重新设置listview的item的高度
+        SetSpaceListViewItemHeight.setHeight(listView_space);
+        //同上
         adapter_company = new Adapter02_CircleGraph(this,datas_company);
         listView_company.setAdapter(adapter_company);
+        SetCompanyListViewItemHeight.setHeight(listView_company);
+
 
 
         //绑定适配器

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ylg.workspace.workspace.activity.CircleGraph.InfoActivity"
+    tools:context="com.ylg.workspace.workspace.activity.ballgraph.InfoActivity"
     android:background="@color/colorWhite"
     android:orientation="vertical">
 
@@ -33,6 +33,15 @@
             android:layout_marginLeft="15dp" />
 
     </RelativeLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
     <include layout="@layout/item_grayspan" />
 
@@ -91,6 +100,8 @@
         android:layout_height="1dp"
         android:background="@color/colorGray" />
 
+        </LinearLayout>
 
+    </ScrollView>
 
 </LinearLayout>

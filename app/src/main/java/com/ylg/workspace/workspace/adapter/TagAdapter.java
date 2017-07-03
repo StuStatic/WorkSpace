@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.moxun.tagcloudlib.view.TagsAdapter;
 import com.ylg.workspace.workspace.R;
-import com.ylg.workspace.workspace.activity.CircleGraph.InfoActivity;
+import com.ylg.workspace.workspace.activity.ballgraph.InfoActivity;
 
 import java.util.List;
 

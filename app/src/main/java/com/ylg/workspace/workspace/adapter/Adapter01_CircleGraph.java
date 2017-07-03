@@ -43,7 +43,7 @@ public class Adapter01_CircleGraph extends BaseAdapter{
     public View getView(int i, View view, ViewGroup viewGroup) {
         ViewHolder viewHolder;
         if(view==null){
-            view=inflater.inflate(R.layout.item_spacelistview,viewGroup ,false);
+            view=inflater.inflate(R.layout.item_infolistview,viewGroup ,false);
             viewHolder=new ViewHolder(view);
             view.setTag(viewHolder);
         }else{
