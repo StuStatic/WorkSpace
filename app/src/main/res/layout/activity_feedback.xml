@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:orientation="vertical"
+    tools:context="com.ylg.workspace.workspace.activity.service.FeedbackActivity">
+
+    <include layout="@layout/include_title"></include>
+
+    <include layout="@layout/item_line"></include>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/et1"
+                style="?android:attr/textViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="245sp"
+                android:background="@null"
+                android:cursorVisible="false"
+                android:gravity="top|left"
+                android:hint="您的意见是我们前进的动力"
+                android:textColor="@color/colorBlack"
+                android:textColorHint="@color/colorGray"
+                android:textSize="16sp" />
+
+            <include layout="@layout/item_line"></include>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="25sp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="联系电话"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/et2"
+                    style="?android:attr/textViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="25sp"
+                    android:background="@null"
+                    android:cursorVisible="false"
+                    android:hint="选填"
+                    android:paddingBottom="5dip"
+                    android:paddingTop="5dip"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/colorGray"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <include layout="@layout/item_line"></include>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40sp"
+                android:layout_marginRight="40sp"
+                android:layout_marginTop="40sp"
+                android:background="@color/color_bt"
+                android:text="提交"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="200sp"
+                android:layout_height="40sp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="50sp"
+                android:background="@color/color_bg_normal"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="25sp"
+                    android:layout_height="25sp"
+                    android:layout_marginLeft="10sp"
+                    android:src="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="400-8888-888"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="24sp"
+                android:layout_gravity="center_horizontal"
+                android:text="如有任何问题，请拨打电话"
+                android:textColor="@color/colorGray"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
