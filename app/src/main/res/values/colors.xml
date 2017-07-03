@@ -12,4 +12,5 @@
     <color name="black">#ff000000</color>
     <color name="colorBlue">#0080FF</color>
     <color name="blue">#ff33b5e5</color>
+    <color name="colorAlpha">#00000000</color>
 </resources>

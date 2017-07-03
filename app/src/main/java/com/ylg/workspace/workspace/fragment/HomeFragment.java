@@ -94,10 +94,10 @@ public class HomeFragment extends android.app.Fragment {
     }
     private void initView() {
         mStrings = new ArrayList<>();
+        mStrings.add("集市");
         mStrings.add("活动");
         mStrings.add("资讯");
         mStrings.add("友邻");
-        mStrings.add("集市");
         mStrings.add("集市");
         mStrings.add("集市");
         mStrings.add("集市");

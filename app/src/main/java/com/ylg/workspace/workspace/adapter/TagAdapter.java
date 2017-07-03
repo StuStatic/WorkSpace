@@ -10,7 +10,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.moxun.tagcloudlib.view.TagsAdapter;
+import com.ylg.workspace.workspace.Application.App;
 import com.ylg.workspace.workspace.R;
+import com.ylg.workspace.workspace.activity.ballgraph.ExerciseActivity;
 import com.ylg.workspace.workspace.activity.ballgraph.InfoActivity;
 
 import java.util.List;
@@ -49,10 +51,18 @@ public class TagAdapter  extends TagsAdapter {
             public void onClick(View v) {
                 Toast.makeText(context, mStrings.get(position), Toast.LENGTH_SHORT).show();
                 switch (mStrings.get(position)){
+                    case "活动":
+                        //跳转到活动 相应界面
+                        Intent i_exer = new Intent(context, ExerciseActivity.class);
+                        context.startActivity(i_exer);
+                        break;
                     case "资讯":
-                        //跳转到资讯相应界面
-                        Intent i = new Intent(context,InfoActivity.class);
-                        context.startActivity(i);
+                        //跳转到资讯 相应界面
+                        Intent i_info = new Intent(context,InfoActivity.class);
+                        context.startActivity(i_info);
+                        break;
+                    default:
+                        break;
 
                 }
             }
