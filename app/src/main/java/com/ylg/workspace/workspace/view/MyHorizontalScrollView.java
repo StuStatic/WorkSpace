@@ -148,8 +148,9 @@ public class MyHorizontalScrollView extends HorizontalScrollView implements View
     protected void loadPreImg()
     {
         //如果当前已经是第一张，则返回
-        if (mFristIndex == 0)
+        if (mFristIndex == 0) {
             return;
+        }
         //获得当前应该显示为第一张图片的下标
         int index = mCurrentIndex - mCountOneScreen;
         if (index >= 0)

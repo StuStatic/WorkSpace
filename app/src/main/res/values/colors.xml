@@ -5,6 +5,8 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorWhite">#ffffff</color>
     <color name="colorGrayLight">#F0F0F0</color>
+    <color name="colorGray">#ADADAD</color>
+    <color name="colorGrayDark">#666</color>
     <color name="colorGray">#666</color>
     <color name="colorLine">#d6d6d6</color>
     <color name="colorBlack">#000000</color>
@@ -14,6 +16,7 @@
     <color name="black2">#666</color>
     <color name="black3">#888</color>
     <color name="colorBlue">#0080FF</color>
+    <color name="blue">#ff33b5e5</color>
     <color name="color_bg_selected">#e0301e</color>
     <color name="color_bg_normal">#e7e7e8</color>
     <color name="color_bt">#009688</color>

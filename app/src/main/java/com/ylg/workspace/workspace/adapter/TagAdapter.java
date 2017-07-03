@@ -1,6 +1,7 @@
 package com.ylg.workspace.workspace.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.view.Gravity;
 import android.view.View;
@@ -10,16 +11,18 @@ import android.widget.Toast;
 
 import com.moxun.tagcloudlib.view.TagsAdapter;
 import com.ylg.workspace.workspace.R;
+import com.ylg.workspace.workspace.activity.ballgraph.InfoActivity;
 
 import java.util.List;
 
 public class TagAdapter  extends TagsAdapter {
 
     private List<String> mStrings;
+    private Context context;
 
-
-    public TagAdapter(List<String> strings) {
+    public TagAdapter(Context context ,List<String> strings) {
         mStrings = strings;
+        this.context = context;
     }
 
     @Override
@@ -45,6 +48,13 @@ public class TagAdapter  extends TagsAdapter {
             @Override
             public void onClick(View v) {
                 Toast.makeText(context, mStrings.get(position), Toast.LENGTH_SHORT).show();
+                switch (mStrings.get(position)){
+                    case "资讯":
+                        //跳转到资讯相应界面
+                        Intent i = new Intent(context,InfoActivity.class);
+                        context.startActivity(i);
+
+                }
             }
         });
         return tv;
