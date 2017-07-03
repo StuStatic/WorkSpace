@@ -10,7 +10,7 @@ import com.ylg.workspace.workspace.adapter.Adapter01_CircleGraph;
  * Created by stu on 2017/7/3.
  */
 
-public class SetSpaceListViewItemHeight {
+public class SetSpaceListViewItemHeight {//
 
     public static void setHeight(ListView listView) {
         Adapter01_CircleGraph listAdapter = (Adapter01_CircleGraph) listView.getAdapter();

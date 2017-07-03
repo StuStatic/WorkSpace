@@ -11,7 +11,7 @@ import com.ylg.workspace.workspace.adapter.Adapter02_CircleGraph;
  * Created by stu on 2017/7/3.
  */
 
-public class SetCompanyListViewItemHeight {
+public class SetCompanyListViewItemHeight {//
     //手动设置item的高度（否则会与scrollview冲突，出现每个listview值显示一个item的情况）
     public static void setHeight(ListView listView) {
         Adapter02_CircleGraph listAdapter = (Adapter02_CircleGraph) listView.getAdapter();

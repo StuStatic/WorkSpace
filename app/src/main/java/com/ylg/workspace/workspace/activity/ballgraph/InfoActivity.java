@@ -17,7 +17,7 @@ import com.ylg.workspace.workspace.util.SetSpaceListViewItemHeight;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InfoActivity extends AppCompatActivity {
+public class InfoActivity extends AppCompatActivity {//
     private List<String> datas_space,datas_company;
     private ListView listView_space,listView_company;
     private String[] spaceInfo = new String[]{"帝高阳之苗裔兮，朕皇考曰伯庸。","摄提贞于孟陬兮，惟庚寅吾以降","皇览揆余初度兮，肇锡余以嘉名："};
