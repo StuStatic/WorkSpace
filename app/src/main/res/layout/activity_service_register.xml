@@ -20,27 +20,19 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="15sp"
+            android:layout_marginLeft="25sp"
             android:layout_weight="1"
             android:gravity="center_vertical"
-            android:text="企业Logo"
-            android:textColor="@color/black"
+            android:text="企业Logo:"
+            android:textColor="@color/black2"
             android:textSize="18sp" />
 
-        <EditText
-            android:id="@+id/et1"
-            style="?android:attr/textViewStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="15sp"
-            android:background="@null"
-            android:cursorVisible="false"
-            android:hint="请选择企业Logo"
-            android:paddingBottom="5dip"
-            android:paddingTop="5dip"
-            android:textColor="@color/colorBlack"
-            android:textColorHint="@color/colorGray"
-            android:textSize="16sp" />
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_gravity="center_vertical"
+            android:layout_height="30dp"
+            android:layout_marginRight="25sp"
+            android:src="@mipmap/carmer"/>
     </LinearLayout>
 
     <include layout="@layout/item_line" />
@@ -51,28 +43,31 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginLeft="15sp"
-            android:layout_weight="1"
+            android:layout_marginLeft="25sp"
+
             android:gravity="center_vertical"
-            android:text="企业名称"
-            android:textColor="@color/black"
+            android:text="企业名称:"
+            android:textColor="@color/black2"
             android:textSize="18sp" />
 
         <EditText
             android:id="@+id/et2"
+            android:layout_weight="1"
+            android:gravity="center_vertical|right"
+            android:maxLines="1"
             style="?android:attr/textViewStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="15sp"
+            android:layout_marginRight="25sp"
             android:background="@null"
             android:cursorVisible="false"
             android:hint="请输入企业名称"
             android:paddingBottom="5dip"
             android:paddingTop="5dip"
-            android:textColor="@color/colorBlack"
-            android:textColorHint="@color/colorGray"
+            android:textColor="@color/black2"
+            android:textColorHint="@color/colorLine"
             android:textSize="16sp" />
     </LinearLayout>
 
@@ -84,28 +79,29 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginLeft="15sp"
-            android:layout_weight="1"
+            android:layout_marginLeft="25sp"
             android:gravity="center_vertical"
-            android:text="经营范围"
-            android:textColor="@color/black"
+            android:text="经营范围:"
+            android:textColor="@color/black2"
             android:textSize="18sp" />
 
         <EditText
             android:id="@+id/et3"
+            android:layout_weight="1"
+            android:gravity="center_vertical|right"
             style="?android:attr/textViewStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="15sp"
+            android:layout_marginRight="25sp"
             android:background="@null"
             android:cursorVisible="false"
             android:hint="请选择经营范围"
             android:paddingBottom="5dip"
             android:paddingTop="5dip"
-            android:textColor="@color/colorBlack"
-            android:textColorHint="@color/colorGray"
+            android:textColor="@color/black2"
+            android:textColorHint="@color/colorLine"
             android:textSize="16sp" />
     </LinearLayout>
 
@@ -117,28 +113,30 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginLeft="15sp"
-            android:layout_weight="1"
+            android:layout_marginLeft="25sp"
+
             android:gravity="center_vertical"
-            android:text="联系人"
-            android:textColor="@color/black"
+            android:text="联系人:"
+            android:textColor="@color/black2"
             android:textSize="18sp" />
 
         <EditText
             android:id="@+id/et4"
+            android:layout_weight="1"
+            android:gravity="center_vertical|right"
             style="?android:attr/textViewStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="15sp"
+            android:layout_marginRight="25sp"
             android:background="@null"
             android:cursorVisible="false"
             android:hint="请输入联系人"
             android:paddingBottom="5dip"
             android:paddingTop="5dip"
-            android:textColor="@color/colorBlack"
-            android:textColorHint="@color/colorGray"
+            android:textColor="@color/black2"
+            android:textColorHint="@color/colorLine"
             android:textSize="16sp" />
     </LinearLayout>
 
@@ -150,28 +148,29 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginLeft="15sp"
-            android:layout_weight="1"
+            android:layout_marginLeft="25sp"
             android:gravity="center_vertical"
-            android:text="联系方式"
-            android:textColor="@color/black"
+            android:text="联系方式:"
+            android:textColor="@color/black2"
             android:textSize="18sp" />
 
         <EditText
             android:id="@+id/et5"
+            android:layout_weight="1"
+            android:gravity="center_vertical|right"
             style="?android:attr/textViewStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="15sp"
+            android:layout_marginRight="25sp"
             android:background="@null"
             android:cursorVisible="false"
             android:hint="请输入联系方式"
             android:paddingBottom="5dip"
             android:paddingTop="5dip"
-            android:textColor="@color/colorBlack"
-            android:textColorHint="@color/colorGray"
+            android:textColor="@color/black2"
+            android:textColorHint="@color/colorLine"
             android:textSize="16sp" />
     </LinearLayout>
 
@@ -183,28 +182,29 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginLeft="15sp"
-            android:layout_weight="1"
+            android:layout_marginLeft="25sp"
             android:gravity="center_vertical"
-            android:text="服务商类别"
-            android:textColor="@color/black"
+            android:text="服务商类别:"
+            android:textColor="@color/black2"
             android:textSize="18sp" />
 
         <EditText
             android:id="@+id/et6"
             style="?android:attr/textViewStyle"
+            android:layout_weight="1"
+            android:gravity="center_vertical|right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="15sp"
+            android:layout_marginRight="25sp"
             android:background="@null"
             android:cursorVisible="false"
             android:hint="请选择服务商类别"
             android:paddingBottom="5dip"
             android:paddingTop="5dip"
-            android:textColor="@color/colorBlack"
-            android:textColorHint="@color/colorGray"
+            android:textColor="@color/black2"
+            android:textColorHint="@color/colorLine"
             android:textSize="16sp" />
     </LinearLayout>
 
@@ -216,28 +216,29 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginLeft="15sp"
-            android:layout_weight="1"
+            android:layout_marginLeft="25sp"
             android:gravity="center_vertical"
-            android:text="服务社区"
-            android:textColor="@color/black"
+            android:text="服务社区:"
+            android:textColor="@color/black2"
             android:textSize="18sp" />
 
         <EditText
             android:id="@+id/et7"
             style="?android:attr/textViewStyle"
+            android:layout_weight="1"
+            android:gravity="center_vertical|right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="15sp"
+            android:layout_marginRight="25sp"
             android:background="@null"
             android:cursorVisible="false"
             android:hint="全部社区"
             android:paddingBottom="5dip"
             android:paddingTop="5dip"
-            android:textColor="@color/colorBlack"
-            android:textColorHint="@color/colorGray"
+            android:textColor="@color/black2"
+            android:textColorHint="@color/colorLine"
             android:textSize="16sp" />
     </LinearLayout>
 
@@ -246,11 +247,11 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginTop="50dp"
-        android:background="@color/colorWhite"
+        android:layout_marginLeft="40sp"
+        android:layout_marginRight="40sp"
+        android:layout_marginTop="40sp"
+        android:background="@color/color_bt"
         android:text="提交"
-        android:textColor="@color/black"
+        android:textColor="@color/colorWhite"
         android:textSize="16sp" />
 </LinearLayout>

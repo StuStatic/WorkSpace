@@ -6,27 +6,27 @@
     android:orientation="vertical"
     tools:context="com.ylg.workspace.workspace.fragment.ServiceFragment">
 
-    <RelativeLayout
-        android:id="@+id/layout_toobar"
-        android:layout_width="match_parent"
-        android:layout_height="50dp">
+    <!--<RelativeLayout-->
+        <!--android:id="@+id/layout_toobar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="50dp">-->
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorWhite"></android.support.v7.widget.Toolbar>
+        <!--<android.support.v7.widget.Toolbar-->
+            <!--android:id="@+id/toolBar"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@color/colorWhite"></android.support.v7.widget.Toolbar>-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="众创空间移动客户端"
-            android:textColor="@color/colorBlack"
-            android:textSize="20dp" />
-    </RelativeLayout>
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerInParent="true"-->
+            <!--android:text="众创空间移动客户端"-->
+            <!--android:textColor="@color/colorBlack"-->
+            <!--android:textSize="20dp" />-->
+    <!--</RelativeLayout>-->
 
-    <include layout="@layout/item_line" />
+    <!--<include layout="@layout/item_line" />-->
 
     <ScrollView
         android:layout_width="match_parent"
@@ -73,12 +73,12 @@
                     android:layout_marginLeft="15sp"
                     android:gravity="center_vertical"
                     android:text="申请成为平台服务商"
-                    android:textColor="@color/black"
+                    android:textColor="@color/black2"
                     android:textSize="16sp" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="15sp"
                     android:src="@mipmap/right" />
@@ -90,6 +90,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:padding="15dp"
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -100,11 +101,11 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="8dp"
-                        android:src="@mipmap/ic_launcher" />
+                        android:src="@mipmap/service_touzi" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -113,7 +114,7 @@
                         android:layout_marginBottom="6dp"
                         android:layout_marginTop="6dp"
                         android:text="投融资"
-                        android:textColor="@color/black"
+                        android:textColor="@color/black2"
                         android:textSize="16sp" />
                 </LinearLayout>
 
@@ -125,11 +126,11 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="8dp"
-                        android:src="@mipmap/ic_launcher" />
+                        android:src="@mipmap/service_renli" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -138,7 +139,7 @@
                         android:layout_marginBottom="6dp"
                         android:layout_marginTop="6dp"
                         android:text="人力资源"
-                        android:textColor="@color/black"
+                        android:textColor="@color/black2"
                         android:textSize="16sp" />
                 </LinearLayout>
 
@@ -150,11 +151,11 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="8dp"
-                        android:src="@mipmap/ic_launcher" />
+                        android:src="@mipmap/service_falv" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -163,7 +164,7 @@
                         android:layout_marginBottom="6dp"
                         android:layout_marginTop="6dp"
                         android:text="法律"
-                        android:textColor="@color/black"
+                        android:textColor="@color/black2"
                         android:textSize="16sp" />
                 </LinearLayout>
 
@@ -175,11 +176,11 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="8dp"
-                        android:src="@mipmap/ic_launcher" />
+                        android:src="@mipmap/service_it" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -188,7 +189,7 @@
                         android:layout_marginBottom="6dp"
                         android:layout_marginTop="6dp"
                         android:text="IT"
-                        android:textColor="@color/black"
+                        android:textColor="@color/black2"
                         android:textSize="16sp" />
                 </LinearLayout>
             </LinearLayout>
@@ -205,6 +206,13 @@
                 android:layout_height="50dp"
                 android:orientation="horizontal">
 
+                <ImageView
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="15sp"
+                    android:src="@mipmap/service_fangke" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -212,12 +220,12 @@
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:text="访客预约"
-                    android:textColor="@color/black"
+                    android:textColor="@color/black2"
                     android:textSize="16sp" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="15sp"
@@ -233,6 +241,13 @@
                 android:layout_height="50dp"
                 android:orientation="horizontal">
 
+                <ImageView
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="15sp"
+                    android:src="@mipmap/service_baoxiu" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -240,12 +255,12 @@
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:text="问题报修"
-                    android:textColor="@color/black"
+                    android:textColor="@color/black2"
                     android:textSize="16sp" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="15sp"
@@ -261,6 +276,13 @@
                 android:layout_height="50dp"
                 android:orientation="horizontal">
 
+                <ImageView
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="15sp"
+                    android:src="@mipmap/service_open" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -268,12 +290,12 @@
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:text="一键开门"
-                    android:textColor="@color/black"
+                    android:textColor="@color/black2"
                     android:textSize="16sp" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="15sp"
@@ -289,6 +311,13 @@
                 android:layout_height="50dp"
                 android:orientation="horizontal">
 
+                <ImageView
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="15sp"
+                    android:src="@mipmap/service_fangke" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -296,12 +325,12 @@
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:text="意见反馈"
-                    android:textColor="@color/black"
+                    android:textColor="@color/black2"
                     android:textSize="16sp" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="15sp"
@@ -327,7 +356,7 @@
                     android:layout_marginLeft="15sp"
                     android:gravity="center_vertical"
                     android:text="可操控设备"
-                    android:textColor="@color/black"
+                    android:textColor="@color/black2"
                     android:textSize="16sp" />
 
                 <ImageView

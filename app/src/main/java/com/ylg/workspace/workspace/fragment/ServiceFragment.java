@@ -18,7 +18,10 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.ylg.workspace.workspace.R;
+import com.ylg.workspace.workspace.activity.service.FeedbackActivity;
 import com.ylg.workspace.workspace.activity.service.InvestActivity;
+import com.ylg.workspace.workspace.activity.service.OrderVisitorActivity;
+import com.ylg.workspace.workspace.activity.service.QuestionActivity;
 import com.ylg.workspace.workspace.activity.service.ServiceRegisterActivity;
 import com.ylg.workspace.workspace.adapter.ViewPagerAdater_Home01;
 
@@ -101,6 +104,11 @@ public class ServiceFragment extends android.app.Fragment implements View.OnClic
         ll3.setOnClickListener(this);
         ll4.setOnClickListener(this);
         ll5.setOnClickListener(this);
+        ll6.setOnClickListener(this);
+        ll7.setOnClickListener(this);
+        ll8.setOnClickListener(this);
+        ll9.setOnClickListener(this);
+        ll10.setOnClickListener(this);
 
     }
 
@@ -263,6 +271,21 @@ public class ServiceFragment extends android.app.Fragment implements View.OnClic
             case R.id.service_ll5:
                 i.putExtra("getTitle", "IT");
                 startActivity(i);
+                break;
+            case R.id.service_ll6:
+                startActivity(new Intent(getActivity(), OrderVisitorActivity.class));
+                break;
+            case R.id.service_ll7:
+                startActivity(new Intent(getActivity(), QuestionActivity.class));
+                break;
+            case R.id.service_ll8:
+                Toast.makeText(getActivity(), "敬请期待", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.service_ll9:
+                startActivity(new Intent(getActivity(), FeedbackActivity.class));
+                break;
+            case R.id.service_ll10:
+                Toast.makeText(getActivity(), "敬请期待", Toast.LENGTH_SHORT).show();
                 break;
         }
     }

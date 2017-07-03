@@ -1,6 +1,5 @@
 package com.ylg.workspace.workspace.activity.personaldetails;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.ylg.workspace.workspace.Application.App;
