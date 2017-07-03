@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.ylg.workspace.workspace.R;
+import com.ylg.workspace.workspace.activity.personaldetails.MyInformationActivity;
 import com.ylg.workspace.workspace.activity.personaldetails.SetUpActivity;
 
 
@@ -20,6 +21,7 @@ public class MineFragment extends android.app.Fragment implements View.OnClickLi
     private RelativeLayout mineOrderMybusiness;
     private RelativeLayout mineOrderMyactivitys;
     private RelativeLayout mineOrderMyHistory;
+    private ImageView mineUserHeadportrait;
     public MineFragment() {
     }
 
@@ -34,6 +36,8 @@ public class MineFragment extends android.app.Fragment implements View.OnClickLi
     private void init(View mView) {
         iv_set = (ImageView) mView.findViewById(R.id.mine_iv_intent);
         iv_set.setOnClickListener(this);
+        mineUserHeadportrait = (ImageView) mView.findViewById(R.id.mine_user_Headportrait);
+        mineUserHeadportrait.setOnClickListener(this);
         mineOrderMyHistory = (RelativeLayout) mView.findViewById(R.id.mine_Order_MyHistory);
         mineOrderMyHistory.setOnClickListener(this);
         mineOrderMybusiness = (RelativeLayout) mView.findViewById(R.id.mine_Order_Mybusiness);
@@ -62,6 +66,12 @@ public class MineFragment extends android.app.Fragment implements View.OnClickLi
                 Log.i("dyy","我的活动");
 
                 break;
+            case R.id.mine_user_Headportrait:
+                Log.i("dyy","我的信息");
+                Intent mineuserheadportraitIntent = new Intent(getActivity(),MyInformationActivity.class);
+                startActivity(mineuserheadportraitIntent);
+                break;
         }
+
     }
 }
