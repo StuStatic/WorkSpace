@@ -30,8 +30,8 @@ import java.util.List;
 public class HomeFragment extends android.app.Fragment {
 
     private View homeLayout;
-    private ViewPager mViewPager1,mViewPager2;
-    private List<ImageView> mImageViewList1,mImageViewList2;
+    private ViewPager mViewPager1;
+    private List<ImageView> mImageViewList1;
     private int[] imagesURL1={R.mipmap.a1,R.mipmap.a2,R.mipmap.a3,R.mipmap.a4,R.mipmap.a5};//头部轮播视图图片资源地址
     private int currentPosition1=1;
     private int dotPosition1=0;
@@ -95,7 +95,7 @@ public class HomeFragment extends android.app.Fragment {
     private void initView() {
         mStrings = new ArrayList<>();
         mStrings.add("活动");
-        mStrings.add("咨询");
+        mStrings.add("资讯");
         mStrings.add("友邻");
         mStrings.add("集市");
         mStrings.add("集市");
@@ -113,7 +113,7 @@ public class HomeFragment extends android.app.Fragment {
         mStrings.add("企业介绍");
         mStrings.add("意见反馈");
         tcv = (TagCloudView) homeLayout.findViewById(R.id.tcv);
-        TagAdapter tagsAdapter = new TagAdapter(mStrings);
+        TagAdapter tagsAdapter = new TagAdapter(homeLayout.getContext(),mStrings);
         tcv.setAdapter(tagsAdapter);
 
 
