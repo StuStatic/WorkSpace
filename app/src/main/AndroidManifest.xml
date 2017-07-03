@@ -22,6 +22,8 @@
         <activity android:name=".activity.service.InvestActivity"/>
         <activity android:name=".activity.personaldetails.MyInformationActivity">
         </activity>
+        <activity android:name=".activity.personaldetails.MyBusinessActivity">
+        </activity>
     </application>
 
 </manifest>
