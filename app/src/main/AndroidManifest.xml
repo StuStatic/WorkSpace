@@ -16,10 +16,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.MainActivity" />
-        <activity android:name=".activity.personaldetails.SetUpActivity"/>
-        <activity android:name=".activity.personaldetails.MyHistoryActivity"/>
+        <activity android:name=".activity.personaldetails.SetUpActivity" />
+        <activity android:name=".activity.personaldetails.MyHistoryActivity" />
         <activity android:name=".activity.service.ServiceRegisterActivity" />
-        <activity android:name=".activity.service.InvestActivity"/>
+        <activity android:name=".activity.service.InvestActivity" />
+        <activity android:name=".activity.CircleGraph.InfoActivity"></activity>
     </application>
 
 </manifest>
