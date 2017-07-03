@@ -37,6 +37,7 @@ public class MyBusinessActivity extends App implements View.OnClickListener {
     private void initView() {
         mList = new ArrayList<>();
         iv_back = (ImageView) findViewById(R.id.iv_back);
+        iv_back.setOnClickListener(this);
         tv_title = (TextView) findViewById(R.id.tv_title);
         tv_title.setText("我的企业");
         mSwipeRefreshView = (SwipeRefreshView) findViewById(R.id.business_srv);
@@ -47,7 +48,6 @@ public class MyBusinessActivity extends App implements View.OnClickListener {
         b.setName("北京物联港科技发展有限公司");
         b.setTime("2017-07-03");
         mList.add(b);
-
 
         mBusinessAdapter = new BusinessAdapter(this,mList);
         mListView.setAdapter(mBusinessAdapter);
@@ -125,6 +125,7 @@ public class MyBusinessActivity extends App implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.iv_back:
+                Log.i("dyy","退出......");
                 finish();
                 break;
             case R.id.business_ll_add://加入企业

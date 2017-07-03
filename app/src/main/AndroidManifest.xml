@@ -20,10 +20,8 @@
         <activity android:name=".activity.personaldetails.MyHistoryActivity"/>
         <activity android:name=".activity.service.ServiceRegisterActivity"/>
         <activity android:name=".activity.service.InvestActivity"/>
-        <activity android:name=".activity.personaldetails.MyInformationActivity">
-        </activity>
-        <activity android:name=".activity.personaldetails.MyBusinessActivity">
-        </activity>
+        <activity android:name=".activity.personaldetails.MyInformationActivity"/>
+        <activity android:name=".activity.personaldetails.MyBusinessActivity"/>
     </application>
 
 </manifest>
