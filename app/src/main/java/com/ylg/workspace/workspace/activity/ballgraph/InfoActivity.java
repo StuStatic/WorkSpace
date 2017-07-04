@@ -9,8 +9,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.ylg.workspace.workspace.R;
-import com.ylg.workspace.workspace.adapter.Adapter01_InfoActivity;
-import com.ylg.workspace.workspace.adapter.Adapter02_InfoActivity;
+import com.ylg.workspace.workspace.adapter.ListViewAdapter01_InfoActivity;
+import com.ylg.workspace.workspace.adapter.ListViewAdapter02_InfoActivity;
 import com.ylg.workspace.workspace.util.SetCompanyListViewItemHeight;
 import com.ylg.workspace.workspace.util.SetSpaceListViewItemHeight;
 
@@ -22,8 +22,8 @@ public class InfoActivity extends AppCompatActivity {//
     private ListView listView_space,listView_company;
     private String[] spaceInfo = new String[]{"帝高阳之苗裔兮，朕皇考曰伯庸。","摄提贞于孟陬兮，惟庚寅吾以降","皇览揆余初度兮，肇锡余以嘉名："};
     private String[] companyInfo = new String[]{"名余曰正则兮，字余曰灵均。","纷吾既有此内美兮，又重之以修能。","扈江离与辟芷兮，纫秋兰以为佩。"};
-    private Adapter01_InfoActivity adapter_space;
-    private Adapter02_InfoActivity adapter_company;
+    private ListViewAdapter01_InfoActivity adapter_space;
+    private ListViewAdapter02_InfoActivity adapter_company;
 
     private ImageView img_back;
 
@@ -55,12 +55,12 @@ public class InfoActivity extends AppCompatActivity {//
         }
 
         //初始化adapter
-        adapter_space = new Adapter01_InfoActivity(this,datas_space);
+        adapter_space = new ListViewAdapter01_InfoActivity(this,datas_space);
         listView_space.setAdapter(adapter_space);
         //重新设置listview的item的高度
         SetSpaceListViewItemHeight.setHeight(listView_space);
         //同上
-        adapter_company = new Adapter02_InfoActivity(this,datas_company);
+        adapter_company = new ListViewAdapter02_InfoActivity(this,datas_company);
         listView_company.setAdapter(adapter_company);
         SetCompanyListViewItemHeight.setHeight(listView_company);
 

@@ -4,7 +4,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.ylg.workspace.workspace.adapter.Adapter02_InfoActivity;
+import com.ylg.workspace.workspace.adapter.ListViewAdapter02_InfoActivity;
 
 /**
  * Created by stu on 2017/7/3.
@@ -13,7 +13,7 @@ import com.ylg.workspace.workspace.adapter.Adapter02_InfoActivity;
 public class SetCompanyListViewItemHeight {//
     //手动设置item的高度（否则会与scrollview冲突，出现每个listview值显示一个item的情况）
     public static void setHeight(ListView listView) {
-        Adapter02_InfoActivity listAdapter = (Adapter02_InfoActivity) listView.getAdapter();
+        ListViewAdapter02_InfoActivity listAdapter = (ListViewAdapter02_InfoActivity) listView.getAdapter();
         if (listAdapter == null) {
             // pre-condition
             return;

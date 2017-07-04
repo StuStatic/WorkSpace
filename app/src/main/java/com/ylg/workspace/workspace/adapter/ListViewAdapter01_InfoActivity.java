@@ -16,11 +16,11 @@ import java.util.List;
  * Created by stu on 2017/7/3.
  */
 
-public class Adapter02_InfoActivity extends BaseAdapter {
+public class ListViewAdapter01_InfoActivity extends BaseAdapter{
     private List<String> datas ;
     private LayoutInflater inflater;
     //构造方法
-    public Adapter02_InfoActivity(Context context , List<String> datas){
+    public ListViewAdapter01_InfoActivity(Context context , List<String> datas){
         this.datas =datas;
         inflater = LayoutInflater.from(context);
     }
@@ -41,13 +41,13 @@ public class Adapter02_InfoActivity extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        Adapter02_InfoActivity.ViewHolder viewHolder;
+        ViewHolder viewHolder;
         if(view==null){
             view=inflater.inflate(R.layout.item_infolistview,viewGroup ,false);
-            viewHolder=new Adapter02_InfoActivity.ViewHolder(view);
+            viewHolder=new ViewHolder(view);
             view.setTag(viewHolder);
         }else{
-            viewHolder=(Adapter02_InfoActivity.ViewHolder) view.getTag();
+            viewHolder=(ViewHolder) view.getTag();
 
         }
         //设置文字
