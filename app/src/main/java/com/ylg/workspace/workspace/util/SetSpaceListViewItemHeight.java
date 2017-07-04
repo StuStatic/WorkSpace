@@ -4,7 +4,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.ylg.workspace.workspace.adapter.Adapter01_CircleGraph;
+import com.ylg.workspace.workspace.adapter.Adapter01_InfoActivity;
 
 /**
  * Created by stu on 2017/7/3.
@@ -13,7 +13,7 @@ import com.ylg.workspace.workspace.adapter.Adapter01_CircleGraph;
 public class SetSpaceListViewItemHeight {//
 
     public static void setHeight(ListView listView) {
-        Adapter01_CircleGraph listAdapter = (Adapter01_CircleGraph) listView.getAdapter();
+        Adapter01_InfoActivity listAdapter = (Adapter01_InfoActivity) listView.getAdapter();
         if (listAdapter == null) {
             // pre-condition
             return;

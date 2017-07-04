@@ -16,11 +16,11 @@ import java.util.List;
  * Created by stu on 2017/7/3.
  */
 
-public class Adapter02_CircleGraph extends BaseAdapter {
+public class Adapter02_InfoActivity extends BaseAdapter {
     private List<String> datas ;
     private LayoutInflater inflater;
     //构造方法
-    public Adapter02_CircleGraph(Context context , List<String> datas){
+    public Adapter02_InfoActivity(Context context , List<String> datas){
         this.datas =datas;
         inflater = LayoutInflater.from(context);
     }
@@ -41,13 +41,13 @@ public class Adapter02_CircleGraph extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        Adapter02_CircleGraph.ViewHolder viewHolder;
+        Adapter02_InfoActivity.ViewHolder viewHolder;
         if(view==null){
             view=inflater.inflate(R.layout.item_infolistview,viewGroup ,false);
-            viewHolder=new Adapter02_CircleGraph.ViewHolder(view);
+            viewHolder=new Adapter02_InfoActivity.ViewHolder(view);
             view.setTag(viewHolder);
         }else{
-            viewHolder=(Adapter02_CircleGraph.ViewHolder) view.getTag();
+            viewHolder=(Adapter02_InfoActivity.ViewHolder) view.getTag();
 
         }
         //设置文字

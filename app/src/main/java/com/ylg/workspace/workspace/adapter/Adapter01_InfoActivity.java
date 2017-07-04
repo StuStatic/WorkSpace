@@ -16,11 +16,11 @@ import java.util.List;
  * Created by stu on 2017/7/3.
  */
 
-public class Adapter01_CircleGraph extends BaseAdapter{
+public class Adapter01_InfoActivity extends BaseAdapter{
     private List<String> datas ;
     private LayoutInflater inflater;
     //构造方法
-    public Adapter01_CircleGraph(Context context , List<String> datas){
+    public Adapter01_InfoActivity(Context context , List<String> datas){
         this.datas =datas;
         inflater = LayoutInflater.from(context);
     }

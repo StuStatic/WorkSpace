@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,6 +9,7 @@
     android:orientation="vertical">
 
     <RelativeLayout
+        android:id="@+id/bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <android.support.v7.widget.Toolbar
@@ -24,7 +25,7 @@
             android:textColor="@color/colorBlack"
             android:textSize="20dp" />
         <ImageView
-            android:id="@+id/img_back"
+            android:id="@+id/exercise_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/arrow_left_icon"
@@ -36,39 +37,99 @@
     </RelativeLayout>
 
 
+    <!--假视图-->
+    <RelativeLayout
+        android:id="@+id/graypart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/bar">
+        <View
+            android:id="@+id/line001"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorGray"/>
+        <View
+            android:id="@+id/graypart_content"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/colorGrayLight"
+            android:layout_below="@id/line001"/>
+        <!--<ImageView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:src="@mipmap/line_vertical"-->
+            <!--android:layout_centerHorizontal="true"/>-->
+        <View
+            android:id="@+id/line002"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorGray"
+            android:layout_below="@id/graypart_content"/>
+    </RelativeLayout>
+
+
+
+
+    <ListView
+        android:id="@+id/lv_exercise"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@color/colorGray"
+        android:dividerHeight="1dp"
+        android:layout_below="@id/graypart"></ListView>
+
 
     <!--分割线-->
     <View
+        android:id="@+id/line01"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/colorGray"
-        android:layout_below="@id/toobar_exercise"/>
+        android:layout_below="@id/bar"/>
+
+
+
     <LinearLayout
+        android:id="@+id/expandablelistview"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="@color/colorGrayLight">
+        android:background="@color/colorGrayLight"
+        android:layout_below="@id/line01">
         <ExpandableListView
-            android:id="@+id/expandablelistview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:id="@+id/expandablelistview01"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:cacheColorHint="@color/colorAlpha"
             android:listSelector="@color/colorAlpha"
             android:divider="@color/colorGray"
             android:dividerHeight="1dp"></ExpandableListView>
         <!--竖分割线-->
         <!--<ImageView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="30dp"-->
-            <!--android:src="@drawable/verticalline"-->
-            <!--android:layout_gravity="center_horizontal"-->
-            <!--android:layout_marginTop="5dp"/>-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="80dp"-->
+        <!--android:src="@drawable/verticalline" />-->
+        <ExpandableListView
+            android:id="@+id/expandablelistview02"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:cacheColorHint="@color/colorAlpha"
+            android:listSelector="@color/colorAlpha"
+            android:divider="@color/colorGray"
+            android:dividerHeight="1dp"></ExpandableListView>
 
     </LinearLayout>
     <!--分割线-->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorGray"
-        android:layout_below="@id/toobar_exercise"/>
-</LinearLayout>
+    <!--<View-->
+        <!--android:id="@+id/line02"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1dp"-->
+        <!--android:background="@color/colorGray"-->
+        <!--android:layout_below="@id/expandablelistview"/>-->
+
+
+
+</RelativeLayout>

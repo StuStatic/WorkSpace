@@ -74,13 +74,14 @@ public class ExpandableListViewAdater_Exercise extends BaseExpandableListAdapter
     {
         // Layout parameters for the ExpandableListView
         AbsListView.LayoutParams layoutParams = new  AbsListView.LayoutParams(
-                ViewGroup.LayoutParams.FILL_PARENT, 64 );
+                ViewGroup.LayoutParams.FILL_PARENT, 90 );
         TextView text = new  TextView(activity);
         text.setLayoutParams(layoutParams);
         // Center the text vertically
-        text.setGravity(Gravity.CENTER_VERTICAL | Gravity.HORIZONTAL_GRAVITY_MASK);
+//        text.setGravity(Gravity.CENTER_VERTICAL | Gravity.HORIZONTAL_GRAVITY_MASK);
+        text.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL);
         // Set the text starting position
-        text.setPadding(36 , 0 , 0 , 0 );
+//        text.setPadding(36 , 0 , 0 , 0 );
         text.setText(string);
         text.setTextColor(Color.BLACK);
 //        text.setTextSize("");
