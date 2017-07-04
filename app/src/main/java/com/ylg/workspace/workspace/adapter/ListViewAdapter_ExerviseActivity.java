@@ -69,7 +69,7 @@ public class ListViewAdapter_ExerviseActivity extends BaseAdapter{
             //初始化ImageView
             img_title=(ImageView)view.findViewById(R.id.title_img);
             img_location=(ImageView)view.findViewById(R.id.location_img);
-            img_progress=(ImageView)view.findViewById(R.id.progress_img);
+//            img_progress=(ImageView)view.findViewById(R.id.progress_img);
         }
     }
 }
