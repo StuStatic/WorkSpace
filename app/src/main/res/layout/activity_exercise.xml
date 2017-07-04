@@ -119,7 +119,9 @@
             android:cacheColorHint="@color/colorAlpha"
             android:listSelector="@color/colorAlpha"
             android:divider="@color/colorGray"
-            android:dividerHeight="1dp"></ExpandableListView>
+            android:dividerHeight="1dp">
+
+        </ExpandableListView>
 
     </LinearLayout>
     <!--分割线-->

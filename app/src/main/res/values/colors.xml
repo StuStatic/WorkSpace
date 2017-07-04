@@ -20,4 +20,11 @@
     <color name="color_bg_normal">#e7e7e8</color>
     <color name="color_bt">#009688</color>
     <color name="colorAlpha">#00000000</color>
+
+    <color name="colorBackground">#FFFFFF</color>
+    <color name="colorLineChoosed">#fa8d14</color>
+    <color name="colorLineChoosedShadow">#FFFFFF</color>
+    <color name="colorLineDefault">#FFFFFF</color>
+
+
 </resources>

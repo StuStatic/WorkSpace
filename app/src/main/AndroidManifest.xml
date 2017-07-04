@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ylg.workspace.workspace">
+          package="com.ylg.workspace.workspace">
     //
     <application
         android:allowBackup="true"
@@ -10,19 +10,29 @@
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity android:name=".activity.WelcomeActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MainActivity" />
-        <activity android:name=".activity.personaldetails.SetUpActivity" />
-        <activity android:name=".activity.personaldetails.MyHistoryActivity" />
-        <activity android:name=".activity.service.ServiceRegisterActivity" />
-        <activity android:name=".activity.service.InvestActivity" />
-        <activity android:name=".activity.personaldetails.MyInformationActivity" />
-        <activity android:name=".activity.ballgraph.InfoActivity" />
-        <activity android:name=".activity.ballgraph.ExerciseActivity"></activity>
+        <activity android:name=".activity.MainActivity"/>
+        <activity android:name=".activity.personaldetails.SetUpActivity"/>
+        <activity android:name=".activity.personaldetails.MyHistoryActivity"/>
+        <activity android:name=".activity.service.ServiceRegisterActivity"/>
+        <activity android:name=".activity.service.InvestActivity"/>
+        <activity android:name=".activity.personaldetails.MyBusinessActivity"/>
+        <activity android:name=".activity.personaldetails.MyInformationActivity"/>
+        <activity android:name=".activity.ballgraph.InfoActivity"/>
+        <activity android:name=".activity.service.OrderVisitorActivity"/>
+        <activity android:name=".activity.service.FeedbackActivity"/>
+        <activity android:name=".activity.service.QuestionActivity"/>
+        <activity android:name=".activity.personaldetails.MyActivitys">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
