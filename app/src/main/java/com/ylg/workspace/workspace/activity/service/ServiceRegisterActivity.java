@@ -2,6 +2,7 @@ package com.ylg.workspace.workspace.activity.service;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,6 +14,7 @@ public class ServiceRegisterActivity extends App implements View.OnClickListener
     private ImageView iv_back;
     private TextView tv;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +23,7 @@ public class ServiceRegisterActivity extends App implements View.OnClickListener
     }
 
     private void initView() {
+
         iv_back = (ImageView) findViewById(R.id.iv_back);
         iv_back.setOnClickListener(this);
         tv = (TextView) findViewById(R.id.tv_title);

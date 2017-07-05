@@ -19,6 +19,8 @@ import com.ylg.workspace.workspace.view.HandyTextView;
 
 import java.util.LinkedList;
 
+
+
 public class App extends AppCompatActivity{
     private static LinkedList<Activity> mList = new LinkedList<>();
     @Override

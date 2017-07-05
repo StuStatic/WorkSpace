@@ -28,14 +28,13 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="25sp"
-                    android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:text="访客照片"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
+                    android:textColor="@color/black2"
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/et1"
@@ -43,13 +42,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="25sp"
+                    android:layout_weight="1"
                     android:background="@null"
                     android:cursorVisible="false"
+                    android:gravity="center_vertical|right"
                     android:hint="必填"
+                    android:maxLines="1"
                     android:paddingBottom="5dip"
                     android:paddingTop="5dip"
-                    android:textColor="@color/colorBlack"
-                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/black2"
+                    android:textColorHint="@color/colorLine"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -61,14 +63,13 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="25sp"
-                    android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:text="姓名"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
+                    android:textColor="@color/black2"
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/et2"
@@ -76,13 +77,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="25sp"
+                    android:layout_weight="1"
                     android:background="@null"
                     android:cursorVisible="false"
+                    android:gravity="center_vertical|right"
                     android:hint="必填"
+                    android:maxLines="1"
                     android:paddingBottom="5dip"
                     android:paddingTop="5dip"
-                    android:textColor="@color/colorBlack"
-                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/black2"
+                    android:textColorHint="@color/colorLine"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -94,14 +98,13 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="25sp"
-                    android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:text="手机号码"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
+                    android:textColor="@color/black2"
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/et3"
@@ -109,13 +112,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="25sp"
+                    android:layout_weight="1"
                     android:background="@null"
                     android:cursorVisible="false"
+                    android:gravity="center_vertical|right"
                     android:hint="必填"
+                    android:maxLines="1"
                     android:paddingBottom="5dip"
                     android:paddingTop="5dip"
-                    android:textColor="@color/colorBlack"
-                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/black2"
+                    android:textColorHint="@color/colorLine"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -127,14 +133,13 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="25sp"
-                    android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:text="访问社区"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
+                    android:textColor="@color/black2"
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/et4"
@@ -142,13 +147,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="25sp"
+                    android:layout_weight="1"
                     android:background="@null"
                     android:cursorVisible="false"
+                    android:gravity="center_vertical|right"
                     android:hint="必填"
+                    android:maxLines="1"
                     android:paddingBottom="5dip"
                     android:paddingTop="5dip"
-                    android:textColor="@color/colorBlack"
-                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/black2"
+                    android:textColorHint="@color/colorLine"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -166,7 +174,7 @@
                     android:layout_marginLeft="25sp"
                     android:layout_marginTop="10dp"
                     android:text="访问类型"
-                    android:textColor="@color/black"
+                    android:textColor="@color/black2"
                     android:textSize="12sp" />
 
                 <RadioGroup
@@ -182,7 +190,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="访问入驻企业"
-                        android:textColor="@color/black"
+                        android:textColor="@color/black2"
                         android:textSize="14sp" />
 
                     <RadioButton
@@ -190,7 +198,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="60dp"
                         android:text="访问个人"
-                        android:textColor="@color/black"
+                        android:textColor="@color/black2"
                         android:textSize="14sp" />
                 </RadioGroup>
 
@@ -204,28 +212,29 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="25sp"
-                    android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:text="受访对象"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
-
+                    android:textColor="@color/black2"
+                    android:textSize="16sp" />
                 <EditText
                     android:id="@+id/et5"
                     style="?android:attr/textViewStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="25sp"
+                    android:layout_weight="1"
                     android:background="@null"
                     android:cursorVisible="false"
+                    android:gravity="center_vertical|right"
                     android:hint="必填"
+                    android:maxLines="1"
                     android:paddingBottom="5dip"
                     android:paddingTop="5dip"
-                    android:textColor="@color/colorBlack"
-                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/black2"
+                    android:textColorHint="@color/colorLine"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -237,28 +246,29 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="25sp"
-                    android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:text="来访事由"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
-
+                    android:textColor="@color/black2"
+                    android:textSize="16sp" />
                 <EditText
                     android:id="@+id/et6"
                     style="?android:attr/textViewStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="25sp"
+                    android:layout_weight="1"
                     android:background="@null"
                     android:cursorVisible="false"
+                    android:gravity="center_vertical|right"
                     android:hint="必填"
+                    android:maxLines="1"
                     android:paddingBottom="5dip"
                     android:paddingTop="5dip"
-                    android:textColor="@color/colorBlack"
-                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/black2"
+                    android:textColorHint="@color/colorLine"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -270,14 +280,13 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="25sp"
-                    android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:text="到访人数"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
+                    android:textColor="@color/black2"
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/et7"
@@ -285,13 +294,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="25sp"
+                    android:layout_weight="1"
                     android:background="@null"
                     android:cursorVisible="false"
+                    android:gravity="center_vertical|right"
                     android:hint="必填"
+                    android:maxLines="1"
                     android:paddingBottom="5dip"
                     android:paddingTop="5dip"
-                    android:textColor="@color/colorBlack"
-                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/black2"
+                    android:textColorHint="@color/colorLine"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -303,14 +315,13 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="25sp"
-                    android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:text="到访日期"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
+                    android:textColor="@color/black2"
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/et8"
@@ -318,13 +329,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="25sp"
+                    android:layout_weight="1"
                     android:background="@null"
                     android:cursorVisible="false"
+                    android:gravity="center_vertical|right"
                     android:hint="必填"
+                    android:maxLines="1"
                     android:paddingBottom="5dip"
                     android:paddingTop="5dip"
-                    android:textColor="@color/colorBlack"
-                    android:textColorHint="@color/colorGray"
+                    android:textColor="@color/black2"
+                    android:textColorHint="@color/colorLine"
                     android:textSize="16sp" />
             </LinearLayout>
 
