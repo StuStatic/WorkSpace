@@ -4,10 +4,111 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground"
+    android:background="@color/background_gray"
     tools:context="com.ylg.workspace.workspace.activity.personaldetails.MyHistoryActivity">
     <include
-        android:id="@+id/include_business"
+        android:id="@+id/include_history"
         layout="@layout/include_title"
         />
+    <LinearLayout
+        android:id="@+id/Myhistory_ll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/include_history"
+        android:orientation="vertical"
+        android:layout_marginTop="2sp"
+        >
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="4"
+            android:paddingTop="10sp"
+            android:background="#FFFFFF"
+            >
+
+            <RadioButton
+                android:id="@+id/history_checkButton1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/selector_background_underline"
+                android:button="@null"
+                android:gravity="center"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:paddingBottom="10sp"
+                android:text="预约"
+                android:textColor="#333333"/>
+
+            <View
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:background="#d6d6d6"/>
+
+
+            <RadioButton
+                android:id="@+id/history_checkButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/selector_background_underline"
+                android:button="@null"
+                android:gravity="center"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:paddingBottom="10sp"
+                android:text="维修"
+                android:textColor="#333333"/>
+
+            <View
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:background="#d6d6d6"/>
+
+            <RadioButton
+                android:id="@+id/history_checkButton3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/selector_background_underline"
+                android:button="@null"
+                android:gravity="center"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:paddingBottom="10sp"
+                android:text="需求"
+                android:textColor="#333333"/>
+
+            <View
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:background="#d6d6d6"/>
+
+            <RadioButton
+                android:id="@+id/history_checkButton4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/selector_background_underline"
+                android:button="@null"
+                android:gravity="center"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:paddingBottom="10sp"
+                android:text="意见反馈"
+                android:textColor="#333333"/>
+        </RadioGroup>
+
+        <android.support.v4.view.ViewPager
+            android:layout_marginTop="2sp"
+            android:background="#FFFFFF"
+            android:id="@+id/history_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </android.support.v4.view.ViewPager>
+    </LinearLayout>
 </RelativeLayout>
