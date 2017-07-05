@@ -19,9 +19,9 @@ import android.widget.Toast;
 
 import com.ylg.workspace.workspace.R;
 import com.ylg.workspace.workspace.activity.service.FeedbackActivity;
-import com.ylg.workspace.workspace.activity.service.InvestActivity;
 import com.ylg.workspace.workspace.activity.service.OrderVisitorActivity;
 import com.ylg.workspace.workspace.activity.service.QuestionActivity;
+import com.ylg.workspace.workspace.activity.service.RequirementActivity;
 import com.ylg.workspace.workspace.activity.service.ServiceRegisterActivity;
 import com.ylg.workspace.workspace.adapter.ViewPagerAdater_Home01;
 
@@ -60,6 +60,7 @@ public class ServiceFragment extends android.app.Fragment implements View.OnClic
     private LinearLayout ll8;
     private LinearLayout ll9;
     private LinearLayout ll10;
+    private LinearLayout ll11;
 
     public ServiceFragment() {
         // Required empty public constructor
@@ -99,6 +100,7 @@ public class ServiceFragment extends android.app.Fragment implements View.OnClic
         ll8 = (LinearLayout) serviceLayout.findViewById(R.id.service_ll8);
         ll9 = (LinearLayout) serviceLayout.findViewById(R.id.service_ll9);
         ll10 = (LinearLayout) serviceLayout.findViewById(R.id.service_ll10);
+        ll11 = (LinearLayout) serviceLayout.findViewById(R.id.service_ll11);
         ll1.setOnClickListener(this);
         ll2.setOnClickListener(this);
         ll3.setOnClickListener(this);
@@ -109,6 +111,7 @@ public class ServiceFragment extends android.app.Fragment implements View.OnClic
         ll8.setOnClickListener(this);
         ll9.setOnClickListener(this);
         ll10.setOnClickListener(this);
+        ll11.setOnClickListener(this);
 
     }
 
@@ -192,21 +195,21 @@ public class ServiceFragment extends android.app.Fragment implements View.OnClic
         });
 
 
-
         //viewpager点击事件
         //viewpager点击事件
         mViewPager.setOnTouchListener(new View.OnTouchListener() {
             int flag = 0;
+
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                switch (motionEvent.getAction()){
+                switch (motionEvent.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-                        flag = 0 ;
-                        break ;
+                        flag = 0;
+                        break;
                     case MotionEvent.ACTION_MOVE:
-                        flag = 1 ;
-                        break ;
-                    case  MotionEvent.ACTION_UP :
+                        flag = 1;
+                        break;
+                    case MotionEvent.ACTION_UP:
                         if (flag == 0) {
                             int item = mViewPager.getCurrentItem();
                             if (item == 0) {
@@ -218,13 +221,13 @@ public class ServiceFragment extends android.app.Fragment implements View.OnClic
                             } else if (item == 2) {
 //                                Intent intent = new Intent(sa, NoNetWork.class);
 //                                sa.startActivity(intent);
-                            }else if (item == 3) {
+                            } else if (item == 3) {
 //                                Intent intent = new Intent(sa, NoNetWork.class);
 //                                sa.startActivity(intent);
                             }
-                            Toast.makeText(serviceLayout.getContext(), ""+item, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(serviceLayout.getContext(), "" + item, Toast.LENGTH_SHORT).show();
                         }
-                        break ;
+                        break;
 
 
                 }
@@ -251,26 +254,30 @@ public class ServiceFragment extends android.app.Fragment implements View.OnClic
 
     @Override
     public void onClick(View v) {
-        Intent i = new Intent(getActivity(), InvestActivity.class);
+       // Intent i = new Intent(getActivity(), InvestActivity.class);
         switch (v.getId()) {
             case R.id.service_ll1:
                 startActivity(new Intent(getActivity(), ServiceRegisterActivity.class));
                 break;
             case R.id.service_ll2:
-                i.putExtra("getTitle", "投融资");
-                startActivity(i);
+//                i.putExtra("getTitle", "投融资");
+//                startActivity(i);
+                startActivity(new Intent(getActivity(), RequirementActivity.class));
                 break;
             case R.id.service_ll3:
-                i.putExtra("getTitle", "人力资源");
-                startActivity(i);
+//                i.putExtra("getTitle", "人力资源");
+//                startActivity(i);
+                startActivity(new Intent(getActivity(), RequirementActivity.class));
                 break;
             case R.id.service_ll4:
-                i.putExtra("getTitle", "法律");
-                startActivity(i);
+//                i.putExtra("getTitle", "法律");
+//                startActivity(i);
+                startActivity(new Intent(getActivity(), RequirementActivity.class));
                 break;
             case R.id.service_ll5:
-                i.putExtra("getTitle", "IT");
-                startActivity(i);
+//                i.putExtra("getTitle", "IT");
+//                startActivity(i);
+                startActivity(new Intent(getActivity(), RequirementActivity.class));
                 break;
             case R.id.service_ll6:
                 startActivity(new Intent(getActivity(), OrderVisitorActivity.class));
@@ -286,6 +293,9 @@ public class ServiceFragment extends android.app.Fragment implements View.OnClic
                 break;
             case R.id.service_ll10:
                 Toast.makeText(getActivity(), "敬请期待", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.service_ll11:
+                startActivity(new Intent(getActivity(), RequirementActivity.class));
                 break;
         }
     }

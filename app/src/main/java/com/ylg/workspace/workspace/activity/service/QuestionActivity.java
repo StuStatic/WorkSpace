@@ -23,6 +23,7 @@ import com.lidong.photopicker.SelectModel;
 import com.lidong.photopicker.intent.PhotoPickerIntent;
 import com.lidong.photopicker.intent.PhotoPreviewIntent;
 import com.ylg.workspace.workspace.Application.App;
+import com.ylg.workspace.workspace.Application.Constants;
 import com.ylg.workspace.workspace.R;
 
 import org.json.JSONArray;
@@ -51,6 +52,7 @@ public class QuestionActivity extends App implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
+        isPermissionsAllGranted(Constants.permArray,Constants.QUEST_CODE_ALL);
         initView();
     }
 
@@ -84,6 +86,7 @@ public class QuestionActivity extends App implements View.OnClickListener {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
                 String imgs = (String) parent.getItemAtPosition(position);
                 Log.d("zp", "onItemClick: " + imgs);
                 if ("000000".equals(imgs)) {
