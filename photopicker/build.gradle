@@ -3,10 +3,10 @@ apply plugin: 'com.android.library'
 //apply plugin: 'com.jfrog.bintray'
 
 // This is the library version used when deploying the artifact
-//version = "1.0"
-//group = "com.foamtrace" // Maven Group ID for the artifact
-//
-//def siteUrl = 'https://github.com/foamtrace/PhotoPicker'      // Homepage URL of the library
+version = "1.0"
+group = "com.foamtrace" // Maven Group ID for the artifact
+
+def siteUrl = 'https://github.com/foamtrace/PhotoPicker'      // Homepage URL of the library
 def gitUrl = 'https://github.com/foamtrace/PhotoPicker.git'   // Git repository URL
 
 android {

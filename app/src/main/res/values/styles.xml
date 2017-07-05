@@ -1,27 +1,27 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-    <style name="MyCustomTabLayout" parent="Widget.Design.TabLayout">
-        <!--<item name="tabMaxWidth">@dimen/tab_max_width</item>-->
-        <!--<item name="tabIndicatorColor">#000000</item>-->
-        <item name="tabIndicatorHeight">0dp</item>
-        <item name="tabPaddingStart">12dp</item>
-        <item name="tabPaddingEnd">12dp</item>
-        <!--<item name="tabBackground">?attr/selectableItemBackground</item>-->
-        <item name="tabTextAppearance">@style/MyCustomTabTextAppearance</item>
-        <item name="tabSelectedTextColor">?android:textColorPrimary</item>
-    </style>
-    <style name="MyCustomTabTextAppearance" parent="TextAppearance.Design.Tab">
-        <item name="android:textSize">14sp</item>
-        <item name="android:textColor">#000000</item>
-        <item name="textAllCaps">true</item>
-    </style>
+    <!--<style name="MyCustomTabLayout" parent="Widget.Design.TabLayout">-->
+        <!--&lt;!&ndash;<item name="tabMaxWidth">@dimen/tab_max_width</item>&ndash;&gt;-->
+        <!--&lt;!&ndash;<item name="tabIndicatorColor">#000000</item>&ndash;&gt;-->
+        <!--<item name="tabIndicatorHeight">0dp</item>-->
+        <!--<item name="tabPaddingStart">12dp</item>-->
+        <!--<item name="tabPaddingEnd">12dp</item>-->
+        <!--&lt;!&ndash;<item name="tabBackground">?attr/selectableItemBackground</item>&ndash;&gt;-->
+        <!--<item name="tabTextAppearance">@style/MyCustomTabTextAppearance</item>-->
+        <!--<item name="tabSelectedTextColor">?android:textColorPrimary</item>-->
+    <!--</style>-->
+    <!--<style name="MyCustomTabTextAppearance" parent="TextAppearance.Design.Tab">-->
+        <!--<item name="android:textSize">14sp</item>-->
+        <!--<item name="android:textColor">#000000</item>-->
+        <!--<item name="textAllCaps">true</item>-->
+    <!--</style>-->
     <style name="PhotoPickerTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
