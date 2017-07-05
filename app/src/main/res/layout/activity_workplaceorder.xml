@@ -34,20 +34,20 @@
         android:layout_toLeftOf="@id/workplace_arrow"
         android:layout_marginTop="18dp"
         android:layout_marginRight="5dp"/>
-    <android.support.design.widget.TabLayout
-        android:id="@+id/workplace_tabs"
-        style="@style/MyCustomTabTextAppearance"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/workplace_line01"
-        android:background="@color/colorGrayLight"/>
+    <!--<android.support.design.widget.TabLayout-->
+        <!--android:id="@+id/workplace_tabs"-->
+        <!--style="@style/MyCustomTabTextAppearance"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@id/workplace_line01"-->
+        <!--android:background="@color/colorGrayLight"/>-->
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/workplace_viewpager"
-        android:layout_width="match_parent"
-        android:layout_height="0px"
-        android:layout_weight="1"
-        android:background="@android:color/white"
-        android:layout_below="@id/workplace_tabs"/>
+    <!--<android.support.v4.view.ViewPager-->
+        <!--android:id="@+id/workplace_viewpager"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0px"-->
+        <!--android:layout_weight="1"-->
+        <!--android:background="@android:color/white"-->
+        <!--android:layout_below="@id/workplace_tabs"/>-->
 
 </RelativeLayout>

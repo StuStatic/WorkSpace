@@ -1,7 +1,7 @@
 package com.ylg.workspace.workspace.activity.ballgraph;
 
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.FragmentPagerAdapter;
+//import android.support.design.widget.TabLayout;
+//import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,7 +18,7 @@ public class WorkplaceOrderActivity extends AppCompatActivity {
     //viewpager
     private ViewPager viewPager;
     //tablayout
-    private TabLayout tabLayout;
+//    private TabLayout tabLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,11 +32,11 @@ public class WorkplaceOrderActivity extends AppCompatActivity {
         title_tv.setText("订工位");
         //初始化adapter
         pagerAdapter = new FragmentPagerAdapter_Workplace(getSupportFragmentManager(), this);
-        viewPager = (ViewPager) findViewById(R.id.workplace_viewpager);
-        viewPager.setAdapter(pagerAdapter);
-        tabLayout = (TabLayout) findViewById(R.id.workplace_tabs);
-        tabLayout.setupWithViewPager(viewPager);
-        //设置为MODE_SCROLLABLE,tab会集中在左侧
-        tabLayout.setTabMode(TabLayout.MODE_FIXED);
+//        viewPager = (ViewPager) findViewById(R.id.workplace_viewpager);
+//        viewPager.setAdapter(pagerAdapter);
+//        tabLayout = (TabLayout) findViewById(R.id.workplace_tabs);
+//        tabLayout.setupWithViewPager(viewPager);
+//        //设置为MODE_SCROLLABLE,tab会集中在左侧
+//        tabLayout.setTabMode(TabLayout.MODE_FIXED);
     }
 }

@@ -13,6 +13,7 @@ import android.widget.RelativeLayout;
 
 import com.ylg.workspace.workspace.R;
 //import com.ylg.workspace.workspace.activity.personaldetails.MyActivity;
+import com.ylg.workspace.workspace.activity.personaldetails.MyActivity;
 import com.ylg.workspace.workspace.activity.personaldetails.MyBusinessActivity;
 import com.ylg.workspace.workspace.activity.personaldetails.MyInformationActivity;
 import com.ylg.workspace.workspace.activity.personaldetails.SetUpActivity;
@@ -67,8 +68,8 @@ public class MineFragment extends android.app.Fragment implements View.OnClickLi
                 break;
             case R.id.mine_Order_Myactivitys:
                 Log.i("dyy","我的活动");
-//                Intent myActivitysIntent = new Intent(getActivity(),MyActivity.class);
-//                startActivity(myActivitysIntent);
+                Intent myActivitysIntent = new Intent(getActivity(),MyActivity.class);
+                startActivity(myActivitysIntent);
                 break;
             case R.id.mine_user_Headportrait:
                 Log.i("dyy","我的信息");
