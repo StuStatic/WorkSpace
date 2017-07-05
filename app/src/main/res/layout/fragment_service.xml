@@ -316,7 +316,7 @@
                     android:layout_height="26dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="15sp"
-                    android:src="@mipmap/service_fangke" />
+                    android:src="@mipmap/service_yijian" />
 
                 <TextView
                     android:layout_width="match_parent"

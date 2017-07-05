@@ -10,9 +10,9 @@ import com.ylg.workspace.workspace.R;
 
 public class OrderVisitorActivity extends App implements View.OnClickListener{
 
-
     private ImageView iv_back;
     private TextView tv;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +26,7 @@ public class OrderVisitorActivity extends App implements View.OnClickListener{
         iv_back.setOnClickListener(this);
         tv = (TextView) findViewById(R.id.tv_title);
         tv.setText("访客预约");
+
     }
 
     @Override
@@ -37,4 +38,5 @@ public class OrderVisitorActivity extends App implements View.OnClickListener{
 
         }
     }
+
 }
