@@ -144,7 +144,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="35sp"
-                    android:background="@drawable/girl_icon_no"
+                    android:background="@drawable/girliconno"
                     />
 
                 <View
