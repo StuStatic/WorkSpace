@@ -105,13 +105,6 @@ public class MyBusinessActivity extends App implements View.OnClickListener {
                 }, 1200);
             }
         });
-
-
-
-
-
-
-
     }
 
 

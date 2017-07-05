@@ -21,6 +21,9 @@
     <color name="color_bt">#009688</color>
     <color name="photopicker_background">#181819</color>
     <color name="colorAlpha">#00000000</color>
+    <color name="orange">#fa8d14</color>
+    <color name="background_gray">#f3f3f3</color>
+
 
     <color name="colorBackground">#FFFFFF</color>
     <color name="colorLineChoosed">#fa8d14</color>

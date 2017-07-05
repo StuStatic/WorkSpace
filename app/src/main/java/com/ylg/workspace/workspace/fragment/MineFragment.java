@@ -15,6 +15,7 @@ import com.ylg.workspace.workspace.R;
 //import com.ylg.workspace.workspace.activity.personaldetails.MyActivity;
 import com.ylg.workspace.workspace.activity.personaldetails.MyActivity;
 import com.ylg.workspace.workspace.activity.personaldetails.MyBusinessActivity;
+import com.ylg.workspace.workspace.activity.personaldetails.MyHistoryActivity;
 import com.ylg.workspace.workspace.activity.personaldetails.MyInformationActivity;
 import com.ylg.workspace.workspace.activity.personaldetails.SetUpActivity;
 
@@ -25,6 +26,7 @@ public class MineFragment extends android.app.Fragment implements View.OnClickLi
     private RelativeLayout mineOrderMyactivitys;
     private RelativeLayout mineOrderMyHistory;
     private ImageView mineUserHeadportrait;
+
     public MineFragment() {
     }
 
@@ -59,7 +61,8 @@ public class MineFragment extends android.app.Fragment implements View.OnClickLi
                 break;
             case R.id.mine_Order_MyHistory:
                 Log.i("dyy","我的历史");
-
+                Intent MyHistoryIntent = new Intent(getActivity(), MyHistoryActivity.class);
+                startActivity(MyHistoryIntent);
                 break;
             case R.id.mine_Order_Mybusiness:
                 Log.i("dyy","我的企业");

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF">
+
+    <TextView
+        android:id="@+id/myactivity_item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15sp"
+        android:layout_marginTop="20sp"
+        android:text="单身交流会！！！"
+        android:textColor="#333333"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/myactivity_item_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/myactivity_item_name"
+        android:layout_below="@+id/myactivity_item_name"
+        android:layout_marginTop="5sp"
+        android:text="时间：07/11 15:00-07/11 17:00"
+        android:textColor="#888888"/>
+    <TextView
+        android:id="@+id/myactivity_item_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/myactivity_item_time"
+        android:layout_below="@+id/myactivity_item_time"
+        android:layout_marginTop="5sp"
+        android:text="地点：阳光100.优客工场"
+        android:textColor="#888888"
+        android:layout_marginBottom="20sp"
+        />
+        <Button
+            android:id="@+id/myactivity_item_state"
+            android:layout_width="60sp"
+            android:layout_height="25sp"
+            android:background="@drawable/myactivity_button"
+            android:layout_alignBottom="@+id/myactivity_item_address"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="15sp"
+            android:text="待使用"
+            android:textColor="@color/orange"
+            />
+
+</RelativeLayout>
