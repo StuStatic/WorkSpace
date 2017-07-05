@@ -86,6 +86,7 @@ public class MyActivity extends App implements View.OnClickListener {
             }
             @Override
             public void onPageScrollStateChanged(int state) {
+
             }
         });
     }
