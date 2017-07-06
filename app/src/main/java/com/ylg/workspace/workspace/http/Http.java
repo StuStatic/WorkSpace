@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Http {
 
-    private static final String API_URL = "http://www.yiliangang.net:8012/TV/";
+    private static final String API_URL = "http://192.168.6.219:8080/workSpace/";
     private static Retrofit retrofit;
 
     public static Retrofit getInstance(){

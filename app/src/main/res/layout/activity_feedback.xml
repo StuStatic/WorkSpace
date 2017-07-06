@@ -31,6 +31,7 @@
                 android:cursorVisible="false"
                 android:gravity="top|left"
                 android:hint="您的意见是我们前进的动力"
+                android:padding="15sp"
                 android:textColor="@color/black2"
                 android:textColorHint="@color/colorLine"
                 android:textSize="16sp" />
@@ -54,6 +55,8 @@
 
                 <EditText
                     android:id="@+id/et2"
+                    android:maxLines="1"
+                    android:inputType="phone|number"
                     style="?android:attr/textViewStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -71,6 +74,7 @@
             <include layout="@layout/item_line"></include>
 
             <Button
+                android:id="@+id/button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40sp"

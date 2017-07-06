@@ -34,5 +34,24 @@
         <item name="android:textSize">@dimen/action_text_size</item>
         <item name="android:textStyle">normal</item>
     </style>
+    <style name="IphoneDialogTheme" parent="MyDialogTheme">
+        <item name="android:windowBackground">@drawable/dialog_background</item>
+    </style>
+    <style name="MyDialogTheme" parent="android:Theme.Dialog">
 
+        <!-- Dialog的windowFrame框为无 -->
+        <item name="android:windowFrame">@null</item>
+        <!-- 是否漂现在activity上 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 是否半透明 -->
+        <item name="android:windowIsTranslucent">true</item>
+        <!-- 是否没有标题 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 屏幕背景不变暗 -->
+        <item name="android:backgroundDimEnabled">true</item>
+        <!-- 用来控制灰度的值，当为1时，界面除了我们的dialog内容是高亮显示的，dialog以外的区域是黑色的，完全看不到其他内容，系统的默认值是0.5 -->
+        <item name="android:backgroundDimAmount">0.8</item>
+        <!-- 背景 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
 </resources>

@@ -290,7 +290,7 @@ public class App extends AppCompatActivity {
         }
     }
 
-    private void showShortMsg(String msg) {
+    protected void showShortMsg(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 

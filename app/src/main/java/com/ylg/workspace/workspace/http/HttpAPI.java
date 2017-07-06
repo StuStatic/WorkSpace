@@ -1,6 +1,17 @@
 package com.ylg.workspace.workspace.http;
 
+import com.ylg.workspace.workspace.activity.service.bean.Service;
+
+import retrofit2.Call;
+import retrofit2.http.POST;
+import retrofit2.http.Query;
+
 public interface HttpAPI {
+
+    //问题反馈
+    @POST("Opinion/addOpinion")
+    Call<Service> feedBack(@Query("spaceId") String s1, @Query("userId") String s2, @Query("userName") String s3,
+                           @Query("tel") String s4, @Query("opinionContent") String s5, @Query("spared1") String s6);
 
 //    //绑定设备
 //    @FormUrlEncoded
