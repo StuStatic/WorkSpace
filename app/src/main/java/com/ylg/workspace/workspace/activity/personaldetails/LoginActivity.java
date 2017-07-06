@@ -2,6 +2,8 @@ package com.ylg.workspace.workspace.activity.personaldetails;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,7 +15,7 @@ import com.ylg.workspace.workspace.Application.App;
 import com.ylg.workspace.workspace.R;
 import com.ylg.workspace.workspace.country.CountryActivity;
 
-public class LoginActivity extends App implements View.OnClickListener{
+public class LoginActivity extends App implements View.OnClickListener {
 
     private ImageView look_password;
     private TextView logincountry;
@@ -25,6 +27,8 @@ public class LoginActivity extends App implements View.OnClickListener{
     private TextView loginforgotpassword;
     private Button loginbt;
     private Button loginregisterbt;
+    private boolean is = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,12 +54,12 @@ public class LoginActivity extends App implements View.OnClickListener{
         logincountryrl.setOnClickListener(this);
         loginregisterbt.setOnClickListener(this);
         loginforgotpassword.setOnClickListener(this);
-
+        look_password.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.login_finsh://关闭界面
                 finish();
                 break;
@@ -63,7 +67,13 @@ public class LoginActivity extends App implements View.OnClickListener{
 
                 break;
             case R.id.login_look_password://查看密码
-                showCustomToast("暂未开放");
+                if (is) {
+                    is = false;
+                    loginpassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                } else {
+                    is = true;
+                    loginpassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                }
                 break;
             case R.id.login_country_rl://国家区号的选择
                 Intent intent = new Intent();
@@ -82,9 +92,9 @@ public class LoginActivity extends App implements View.OnClickListener{
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        switch (requestCode){
+        switch (requestCode) {
             case 12:
-                if (resultCode == RESULT_OK){
+                if (resultCode == RESULT_OK) {
                     Bundle bundle = data.getExtras();
                     String countryName = bundle.getString("countryName");
                     String countryNumber = bundle.getString("countryNumber");
