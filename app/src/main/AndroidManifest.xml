@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ylg.workspace.workspace">
+          package="com.ylg.workspace.workspace">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.READ_PROFILE"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -15,33 +20,41 @@
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity android:name=".activity.WelcomeActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MainActivity" />
-        <activity android:name=".activity.personaldetails.SetUpActivity" />
-        <activity android:name=".activity.personaldetails.MyHistoryActivity" />
-        <activity android:name=".activity.personaldetails.MyInformationActivity" />
-        <activity android:name=".activity.personaldetails.MyBusinessActivity" />
-        <activity android:name=".activity.personaldetails.MyActivity" />
-        <activity android:name=".activity.service.ServiceRegisterActivity" />
-        <activity android:name=".activity.service.InvestActivity" />
-        <activity android:name=".activity.service.OrderVisitorActivity" />
-        <activity android:name=".activity.service.FeedbackActivity" />
-        <activity android:name=".activity.service.QuestionActivity" />
-        <activity android:name=".activity.ballgraph.InfoActivity" />
-        <activity android:name=".activity.ballgraph.ExerciseActivity" />
-        <activity android:name=".activity.ballgraph.WorkplaceOrderActivity" />
+        <activity android:name=".activity.MainActivity"/>
+        <activity android:name=".activity.personaldetails.SetUpActivity"/>
+        <activity android:name=".activity.personaldetails.MyHistoryActivity"/>
+        <activity android:name=".activity.personaldetails.MyInformationActivity"/>
+        <activity android:name=".activity.personaldetails.MyBusinessActivity"/>
+        <activity android:name=".activity.personaldetails.MyActivity"/>
+        <activity android:name=".activity.personaldetails.LoginActivity"/>
+
+        <activity android:name=".activity.service.ServiceRegisterActivity"/>
+        <activity android:name=".activity.service.InvestActivity"/>
+        <activity android:name=".activity.service.OrderVisitorActivity"/>
+        <activity android:name=".activity.service.FeedbackActivity"/>
+        <activity android:name=".activity.service.QuestionActivity"/>
+
+        <activity android:name=".activity.ballgraph.InfoActivity"/>
+        <activity android:name=".activity.ballgraph.ExerciseActivity"/>
+        <activity android:name=".activity.ballgraph.WorkplaceOrderActivity"/>
+
+
+        <activity android:name=".country.CountryActivity"/>
+
         <activity
             android:name="com.lidong.photopicker.PhotoPickerActivity"
             android:configChanges="orientation|screenSize"
-            android:theme="@style/PhotoPickerTheme" />
+            android:theme="@style/PhotoPickerTheme"/>
         <activity
             android:name="com.lidong.photopicker.PhotoPreviewActivity"
-            android:theme="@style/PhotoPickerTheme" />
-        <activity android:name=".activity.service.RequirementActivity"></activity>
+            android:theme="@style/PhotoPickerTheme"/>
+        <activity android:name=".activity.service.RequirementActivity"/>
+
     </application>
 
 </manifest>

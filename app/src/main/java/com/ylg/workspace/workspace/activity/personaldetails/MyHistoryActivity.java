@@ -3,6 +3,7 @@ package com.ylg.workspace.workspace.activity.personaldetails;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -16,7 +17,9 @@ import com.ylg.workspace.workspace.activity.personaldetails.fragment.DemandFragm
 import com.ylg.workspace.workspace.activity.personaldetails.fragment.FeedbackFragment;
 import com.ylg.workspace.workspace.activity.personaldetails.fragment.RepairFragment;
 import com.ylg.workspace.workspace.activity.personaldetails.fragment.makeAnAppointmentFragment;
+import com.ylg.workspace.workspace.http.MD5;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 

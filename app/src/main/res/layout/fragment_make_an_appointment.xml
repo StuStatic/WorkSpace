@@ -1,16 +1,23 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
              android:background="@color/background_gray"
              tools:context="com.ylg.workspace.workspace.activity.personaldetails.fragment.makeAnAppointmentFragment">
 
-    <TextView
+    <com.ylg.workspace.workspace.view.SwipeRefreshView
+        android:id="@+id/make_fragment_an_appointment_srv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="预约"
-        android:textColor="#000000"
-        />
+        android:background="#FFFFFF">
 
-</FrameLayout>
+        <ListView
+            android:id="@+id/make_fragment_an_appointment_lv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="#f3f3f3"
+            android:dividerHeight="10sp"
+            />
+    </com.ylg.workspace.workspace.view.SwipeRefreshView>
+
+</RelativeLayout>
