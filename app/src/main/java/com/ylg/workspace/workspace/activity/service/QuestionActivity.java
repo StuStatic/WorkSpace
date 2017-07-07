@@ -256,7 +256,7 @@ public class QuestionActivity extends App implements View.OnClickListener {
             } else {
                 holder = (ViewHolder) convertView.getTag();
             }
-
+            Log.i("zp", "getView: "+listUrls.toString());
             final String path = listUrls.get(position);
             if (path.equals("000000")) {
                 holder.image.setImageResource(R.mipmap.add);
