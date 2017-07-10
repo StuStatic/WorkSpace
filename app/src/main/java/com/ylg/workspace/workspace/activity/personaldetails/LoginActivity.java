@@ -1,9 +1,11 @@
 package com.ylg.workspace.workspace.activity.personaldetails;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +16,16 @@ import android.widget.TextView;
 import com.ylg.workspace.workspace.Application.App;
 import com.ylg.workspace.workspace.R;
 import com.ylg.workspace.workspace.country.CountryActivity;
+import com.ylg.workspace.workspace.http.Http;
+import com.ylg.workspace.workspace.http.HttpAPI;
+import com.ylg.workspace.workspace.http.MD5;
+import com.ylg.workspace.workspace.http.bean.Login;
+
+import java.security.NoSuchAlgorithmException;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginActivity extends App implements View.OnClickListener {
 
@@ -28,6 +40,7 @@ public class LoginActivity extends App implements View.OnClickListener {
     private Button loginbt;
     private Button loginregisterbt;
     private boolean is = true;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +68,7 @@ public class LoginActivity extends App implements View.OnClickListener {
         loginregisterbt.setOnClickListener(this);
         loginforgotpassword.setOnClickListener(this);
         look_password.setOnClickListener(this);
+
     }
 
     @Override
@@ -64,6 +78,18 @@ public class LoginActivity extends App implements View.OnClickListener {
                 finish();
                 break;
             case R.id.login_bt://登陆
+                String phone = loginphone.getText().toString();
+                String password = loginpassword.getText().toString();
+                Log.i("dyy", phone + password);
+                if (phone.length() == 11) {
+                    if (password.length() == 6) {
+                        login(phone, password);
+                    } else {
+                        showCustomToast("请输入正确的密码");
+                    }
+                } else {
+                    showCustomToast("请输入正确的账号");
+                }
 
                 break;
             case R.id.login_look_password://查看密码
@@ -81,7 +107,9 @@ public class LoginActivity extends App implements View.OnClickListener {
                 startActivityForResult(intent, 12);
                 break;
             case R.id.login_register_bt://注册
-
+                Intent intent1 = new Intent(this,RegisterActivity.class);
+                startActivity(intent1);
+                finish();
                 break;
             case R.id.login_forgot_password://忘记密码
 
@@ -105,6 +133,61 @@ public class LoginActivity extends App implements View.OnClickListener {
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
+
+    //登陆
+    private void login(String phone, final String password) {
+        progressDialog = new ProgressDialog(LoginActivity.this);
+        progressDialog.setCancelable(false);
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.setMessage("正在加载......");
+        progressDialog.show();
+        HttpAPI httpAPI = Http.getInstance().create(HttpAPI.class);
+        try {
+            final String md5 = MD5.getMD5(password);
+            httpAPI.login(phone, md5).enqueue(new Callback<Login>() {
+                @Override
+                public void onResponse(Call<Login> call, Response<Login> response) {
+                    Login body = response.body();
+                    Log.i("dyy",body.toString());
+                    String code = body.getCode();
+                    if (code.equals("200")) {
+                        if (body.getMsg().getPassword().equals(md5)) {
+                            App.KEY_LOGIN = 2;
+                            Bundle bundle = new Bundle();
+                            bundle.putSerializable("companyName",body.getMsg().getCompanyName());
+                            bundle.putSerializable("headPortrait",body.getMsg().getHeadPortrait());
+                            bundle.putSerializable("realName",body.getMsg().getRealName());
+                            bundle.putSerializable("sex",body.getMsg().getSex());
+                            bundle.putSerializable("username",body.getMsg().getUserName());
+                            bundle.putSerializable("spared1",body.getMsg().getSpared1());
+                            App.USER_ID = body.getMsg().getUserId();
+                            Intent i = new Intent();
+                            i.putExtras(bundle);
+                            setResult(1,i);
+                            progressDialog.dismiss();
+                            Log.i("dyy","登陆："+ body.getMsg().toString());
+                            finish();
+                        }
+                    } else if (code.equals("500")) {
+                        showCustomToast("账号/密码错误");
+                        progressDialog.dismiss();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Login> call, Throwable t) {
+                    Log.i("dyy", t.toString());
+                    progressDialog.dismiss();
+                    showCustomToast("登陆失败");
+                }
+            });
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
 
     @Override
     protected void onDestroy() {

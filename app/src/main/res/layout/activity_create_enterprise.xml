@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    tools:context="com.ylg.workspace.workspace.activity.personaldetails.CreateEnterpriseActivity">
+
+    <include
+        android:id="@+id/createEnterprise_include"
+        layout="@layout/include_title"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/createEnterprise_include"
+        android:layout_marginTop="10sp"
+        android:background="#ffffff"
+        android:orientation="vertical"
+        >
+
+        <RelativeLayout
+            android:id="@+id/createEnterprise_logo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20sp"
+                android:layout_marginLeft="15sp"
+                android:layout_marginTop="20sp"
+                android:text="企业logo"
+                android:textColor="@color/black1"
+                />
+
+            <ImageView
+                android:id="@+id/createEnterprise_login_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15sp"
+                android:src="@drawable/enterprise_logo_icon"
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/createEnterprise_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1sp"
+                android:background="@color/colorLine"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20sp"
+                android:layout_marginLeft="15sp"
+                android:layout_marginTop="20sp"
+                android:text="企业名称"
+                android:textColor="@color/black1"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="35sp"
+                android:text="请输入企业名称"
+                android:textColor="@color/black3"
+                />
+
+            <ImageView
+                android:id="@+id/createEnterprise_name_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15sp"
+                android:src="@drawable/arrow_right_icon"
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/createEnterprise_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1sp"
+                android:background="@color/colorLine"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20sp"
+                android:layout_marginLeft="15sp"
+                android:layout_marginTop="20sp"
+                android:text="企业类型"
+                android:textColor="@color/black1"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="35sp"
+                android:text="请选择"
+                android:textColor="@color/black3"
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15sp"
+                android:src="@drawable/arrow_right_icon"
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/createEnterprise_contacts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1sp"
+                android:background="@color/colorLine"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20sp"
+                android:layout_marginLeft="15sp"
+                android:layout_marginTop="20sp"
+                android:text="联系人信息"
+                android:textColor="@color/black1"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="35sp"
+                android:text="点击输入"
+                android:textColor="@color/black3"
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15sp"
+                android:src="@drawable/arrow_right_icon"
+                />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

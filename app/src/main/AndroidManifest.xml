@@ -10,7 +10,7 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
     <uses-permission android:name="android.permission.READ_PROFILE"/>
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -32,20 +32,15 @@
         <activity android:name=".activity.personaldetails.MyBusinessActivity"/>
         <activity android:name=".activity.personaldetails.MyActivity"/>
         <activity android:name=".activity.personaldetails.LoginActivity"/>
-
         <activity android:name=".activity.service.ServiceRegisterActivity"/>
         <activity android:name=".activity.service.InvestActivity"/>
         <activity android:name=".activity.service.OrderVisitorActivity"/>
         <activity android:name=".activity.service.FeedbackActivity"/>
         <activity android:name=".activity.service.QuestionActivity"/>
-
         <activity android:name=".activity.ballgraph.InfoActivity"/>
         <activity android:name=".activity.ballgraph.ExerciseActivity"/>
         <activity android:name=".activity.ballgraph.WorkplaceOrderActivity"/>
-
-
         <activity android:name=".country.CountryActivity"/>
-
         <activity
             android:name="com.lidong.photopicker.PhotoPickerActivity"
             android:configChanges="orientation|screenSize"
@@ -54,7 +49,10 @@
             android:name="com.lidong.photopicker.PhotoPreviewActivity"
             android:theme="@style/PhotoPickerTheme"/>
         <activity android:name=".activity.service.RequirementActivity"/>
-
+        <activity android:name=".activity.personaldetails.RegisterActivity">
+        </activity>
+        <activity android:name=".activity.personaldetails.CreateEnterpriseActivity">
+        </activity>
     </application>
 
 </manifest>

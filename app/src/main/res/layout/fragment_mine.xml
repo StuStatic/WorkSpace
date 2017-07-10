@@ -16,13 +16,19 @@
         android:layout_weight="5"
         android:background="@drawable/home_bg">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:circleimageview="http://schemas.android.com/apk/res-auto"
             android:id="@+id/mine_user_Headportrait"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80sp"
+            android:layout_height="80sp"
+            android:src="@drawable/my_head_icon"
+            circleimageview:civ_border_color="@android:color/white"
+            circleimageview:civ_border_overlay="false"
+            circleimageview:civ_border_width="2dp"
+            circleimageview:civ_fill_color="@android:color/holo_blue_light"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="25sp"
-            app:srcCompat="@drawable/headportrait"/>
+            android:layout_marginTop="20sp"
+            />
 
         <TextView
             android:id="@+id/mine_user_Name"
@@ -33,8 +39,20 @@
             android:layout_marginTop="5sp"
             android:text="龑～龑"
             android:textColor="#ffffff"
-            android:textSize="18sp"/>
-
+            android:textSize="18sp"
+            android:visibility="gone"
+            />
+        <TextView
+            android:id="@+id/mine_user_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mine_user_Headportrait"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10sp"
+            android:text="登陆/注册"
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+            />
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -48,15 +66,18 @@
                 android:id="@+id/mine_user_gender"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/girl_icon"
+                android:src="@drawable/girl_icon"
+                android:visibility="gone"
                 />
 
             <TextView
+                android:id="@+id/mine_user_constellation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25sp"
                 android:text="狮子座"
                 android:textSize="18sp"
+                android:visibility="gone"
                 />
         </LinearLayout>
 
@@ -70,7 +91,9 @@
             android:gravity="center"
             android:text="@string/mine_tv_autograph"
             android:textColor="#CCCCCC"
-            android:textSize="14sp"/>
+            android:textSize="14sp"
+            android:visibility="gone"
+            />
 
         <ImageView
             android:id="@+id/mine_iv_intent"

@@ -1,6 +1,9 @@
 package com.ylg.workspace.workspace.http;
 
 import com.ylg.workspace.workspace.activity.service.bean.Service;
+import com.ylg.workspace.workspace.http.bean.Login;
+import com.ylg.workspace.workspace.http.bean.Register;
+import com.ylg.workspace.workspace.http.bean.SendVerify;
 
 import retrofit2.Call;
 import retrofit2.http.POST;
@@ -13,14 +16,53 @@ public interface HttpAPI {
     Call<Service> feedBack(@Query("spaceId") String s1, @Query("userId") String s2, @Query("userName") String s3,
                            @Query("tel") String s4, @Query("opinionContent") String s5, @Query("spared1") String s6);
 
+    //登陆
+    @POST("Login/Login")
+    Call<Login> login(@Query("tel") String tel,@Query("password") String password);
+
+    //注册1（短信）
+    @POST("Login/sendVerify")
+    Call<SendVerify> sendVerify(@Query("tel") String tel);
+    //注册2
+    @POST("Login/register")
+    Call<Register> register(@Query("tel") String tel, @Query("password") String password, @Query("userType") String userType, @Query("registerTime") String registerTime, @Query("state") String state, @Query("verifyNumPro") String verifyNumPro);
+
+    //修改密码(根据短信)1
+    @POST("Login/sendVerifyPassword")
+    Call<SendVerify> sendVerifyPassword(@Query("tel") String tel);
+    //修改密码(根据短信)2
+    @POST("Login/changeNotePassword")
+    Call<Register> changeNotePassword(@Query("tel") String tel,@Query("password") String password,@Query("verifyNumPro") String verifyNumPro);
+
+    //修改密码（根据密码）
+    @POST("Login/changePassword")
+    Call<Register> changePassword(@Query("tel") String tel,@Query("password") String password,@Query("oriPassword") String oriPassword);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //    //绑定设备
 //    @FormUrlEncoded
 //    @POST("tv/tv_UserAndTv")
 //    Call<Bind> bind(@Field("userId") String s1, @Query("tvId") String s2, @Field("tvStatus") String s3, @Field("tvAddress") String s4, @Query("tvLat") String s5, @Query("tvLng") String s6);
 //
-//    //注册
-//    @POST("user/user_addUser")
-//    Call<Register> register(@Query("username") String s1, @Query("password") String s2);
+
 //
 //    //登录
 //    @GET("user/user_loginByUsernameAndPassword")
