@@ -6,6 +6,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -26,6 +27,7 @@ public class MyBusinessActivity extends App implements View.OnClickListener {
     private SwipeRefreshView mSwipeRefreshView;
     private ListView mListView;
     private BusinessAdapter mBusinessAdapter;
+    private LinearLayout mLinearLayout_NEW;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +44,8 @@ public class MyBusinessActivity extends App implements View.OnClickListener {
         tv_title.setText("我的企业");
         mSwipeRefreshView = (SwipeRefreshView) findViewById(R.id.business_srv);
         mListView = (ListView) findViewById(R.id.business_lv);
-
+        mLinearLayout_NEW = (LinearLayout) findViewById(R.id.business_ll_new);
+        mLinearLayout_NEW.setOnClickListener(this);
         //虚拟数据
         Business b = new Business();
         b.setName("北京物联港科技发展有限公司");
@@ -125,7 +128,7 @@ public class MyBusinessActivity extends App implements View.OnClickListener {
 
                 break;
             case R.id.business_ll_new://创建企业
-
+                startActivity(CreateEnterpriseActivity.class);
                 break;
         }
     }
