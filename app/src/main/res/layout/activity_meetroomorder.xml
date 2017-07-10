@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ylg.workspace.workspace.activity.ballgraph.MeetRoomOrderActivity">
+
+    <include android:id="@+id/meetroom_toolbar" layout="@layout/include_title"></include>
+
+    <View
+        android:id="@+id/meetroom_line01"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#d6d6d6"
+        android:layout_below="@id/meetroom_toolbar"/>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/meetroom_tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/meetroom_line01"
+        android:background="@color/colorGrayLight"
+        app:tabSelectedTextColor="@color/colorBlack"
+        app:tabIndicatorColor="@color/colorWhite"
+        app:tabTextColor="@color/colorGray"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/meetroom_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/meetroom_tabs"/>
+</RelativeLayout>

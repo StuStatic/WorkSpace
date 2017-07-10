@@ -2,12 +2,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ylg.workspace.workspace.fragment.TodayFragment">
+    android:background="@color/colorGreen"
+    tools:context="com.ylg.workspace.workspace.fragment.TomorrowFragment_meetroom">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:text="i am tomorrow fragment"
+        android:textColor="@color/colorBlack"
+        android:gravity="center"/>
 
 </FrameLayout>

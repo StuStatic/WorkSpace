@@ -1,7 +1,5 @@
 package com.ylg.workspace.workspace.activity.ballgraph;
 
-//import android.support.design.widget.TabLayout;
-//import android.support.v4.app.FragmentPagerAdapter;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -13,14 +11,17 @@ import android.widget.TextView;
 
 import com.ylg.workspace.workspace.R;
 import com.ylg.workspace.workspace.adapter.FragmentPagerAdapter_Workplace;
+import com.ylg.workspace.workspace.fragment.OtherDateFragment_meetroom;
 import com.ylg.workspace.workspace.fragment.OtherDateFragment_workplace;
+import com.ylg.workspace.workspace.fragment.TodayFragment_meetroom;
 import com.ylg.workspace.workspace.fragment.TodayFragment_workplace;
+import com.ylg.workspace.workspace.fragment.TomorrowFragment_meetroom;
 import com.ylg.workspace.workspace.fragment.TomorrowFragment_workplace;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class WorkplaceOrderActivity extends AppCompatActivity implements View.OnClickListener{
+public class MeetRoomOrderActivity extends AppCompatActivity implements View.OnClickListener{
     //左上角返回键
     private ImageView iv_back;
     //toolbar标题文字内容
@@ -32,15 +33,15 @@ public class WorkplaceOrderActivity extends AppCompatActivity implements View.On
     //tablayout
     private TabLayout tabLayout;
     //fragment
-    private TodayFragment_workplace todayFragment;
-    private TomorrowFragment_workplace tomorrowFragmentWorkplace;
-    private OtherDateFragment_workplace otherDateFragmentWorkplace;
+    private TodayFragment_meetroom todayFragment;
+    private TomorrowFragment_meetroom tomorrowFragmentWorkplace;
+    private OtherDateFragment_meetroom otherDateFragmentWorkplace;
     //初始化fragment集合
     private List<Fragment> fragmentList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_workplaceorder);
+        setContentView(R.layout.activity_meetroomorder);
         init();
     }
 
@@ -51,17 +52,17 @@ public class WorkplaceOrderActivity extends AppCompatActivity implements View.On
         iv_back.setOnClickListener(this);
         //初始化标题内容
         title_tv = (TextView)findViewById(R.id.tv_title);
-        title_tv.setText("订工位");
+        title_tv.setText("预定场地");
 
         //初始化viewpager
-        viewPager = (ViewPager) findViewById(R.id.workplace_viewpager);
+        viewPager = (ViewPager) findViewById(R.id.meetroom_viewpager);
         //初始化tablayout
-        tabLayout = (TabLayout) findViewById(R.id.workplace_tabs);
+        tabLayout = (TabLayout) findViewById(R.id.meetroom_tabs);
 
         //初始化fragment
-        todayFragment = new TodayFragment_workplace();
-        tomorrowFragmentWorkplace = new TomorrowFragment_workplace();
-        otherDateFragmentWorkplace = new OtherDateFragment_workplace();
+        todayFragment = new TodayFragment_meetroom();
+        tomorrowFragmentWorkplace = new TomorrowFragment_meetroom();
+        otherDateFragmentWorkplace = new OtherDateFragment_meetroom();
 
         //初始化fragment集合
         fragmentList = new ArrayList<>();
@@ -79,16 +80,11 @@ public class WorkplaceOrderActivity extends AppCompatActivity implements View.On
         tabLayout.setupWithViewPager(viewPager);
         //设置为MODE_SCROLLABLE,tab会集中在左侧
         tabLayout.setTabMode(TabLayout.MODE_FIXED);
-
-
-
-
-
     }
 
     @Override
     public void onClick(View view) {
-        //关闭当前界面
+        //close the page
         finish();
     }
 }
