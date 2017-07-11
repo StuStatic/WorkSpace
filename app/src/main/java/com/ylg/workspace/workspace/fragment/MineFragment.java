@@ -13,17 +13,14 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
 import com.ylg.workspace.workspace.Application.App;
 import com.ylg.workspace.workspace.R;
-//import com.ylg.workspace.workspace.activity.personaldetails.MyActivity;
 import com.ylg.workspace.workspace.activity.personaldetails.LoginActivity;
 import com.ylg.workspace.workspace.activity.personaldetails.MyActivity;
 import com.ylg.workspace.workspace.activity.personaldetails.MyBusinessActivity;
 import com.ylg.workspace.workspace.activity.personaldetails.MyHistoryActivity;
 import com.ylg.workspace.workspace.activity.personaldetails.MyInformationActivity;
 import com.ylg.workspace.workspace.activity.personaldetails.SetUpActivity;
-import com.ylg.workspace.workspace.http.bean.Login;
 
 
 public class MineFragment extends android.app.Fragment implements View.OnClickListener {
