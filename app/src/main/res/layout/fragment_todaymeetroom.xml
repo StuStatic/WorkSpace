@@ -1,16 +1,50 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
+    android:orientation="vertical"
     tools:context="com.ylg.workspace.workspace.fragment.TodayFragment_meetroom">
 
     <!-- TODO: Update blank fragment layout -->
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@color/colorWhite"
+        />
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="方圆大厦·优客工场"
+        android:textColor="@color/colorBlack"
+        android:layout_marginLeft="20dp"
+        android:layout_centerVertical="true"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrow_right_icon"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"/>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorGray"/>
+
+    <ListView
+        android:id="@+id/meetroom_today_lv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="i am today fragment"
-        android:textColor="@color/colorBlack"
-        android:gravity="center"/>
+        android:divider="@color/colorGray"
+        android:dividerHeight="1dp"></ListView>
 
-</FrameLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/meetroom_img_otherdate"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@mipmap/a4"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+    <!--半透明底边-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorGrayLight"
+            android:alpha="0.3"/>
+        <TextView
+            android:id="@+id/meetroom_address_otherdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textSize="15dp"
+            android:textColor="@color/colorWhite"
+
+            android:layout_marginLeft="20dp"/>
+
+        <TextView
+            android:id="@+id/meetroom_peoplenum_otherdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_below="@id/meetroom_address_otherdate"
+            android:textSize="10dp"
+            android:textColor="@color/colorWhite"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="20dp"/>
+        <TextView
+            android:id="@+id/meetroom_floor_otherdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textColor="@color/colorWhite"
+            android:textSize="10dp"
+            android:layout_toRightOf="@id/meetroom_peoplenum_otherdate"
+            android:layout_below="@id/meetroom_address_otherdate"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="8dp"/>
+        <TextView
+            android:id="@+id/meetroom_price_otherdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textSize="12dp"
+            android:textColor="@color/colorWhite"
+            android:layout_marginTop="2dp"/>
+    </RelativeLayout>
+</RelativeLayout>
