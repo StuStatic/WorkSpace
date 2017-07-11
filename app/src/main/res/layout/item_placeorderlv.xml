@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
+    <ImageView
+        android:id="@+id/placeorder_img"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:src="@mipmap/a4"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp" />
+    <TextView
+        android:id="@+id/placeorder_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="演播厅"
+        android:textSize="20dp"
+        android:textColor="@color/colorBlack"
+        android:layout_below="@id/placeorder_img"
+        android:layout_marginLeft="15dp" />
+    <TextView
+        android:id="@+id/placeorder_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10dp"
+        android:textColor="@color/black1"
+        android:layout_below="@id/placeorder_name"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="3dp"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:maxEms="14"/>
+    <View
+        android:id="@+id/placeorder_line02"
+        android:layout_width="1dp"
+        android:layout_height="10dp"
+        android:layout_toRightOf="@id/placeorder_address"
+        android:background="@color/black1"
+        android:layout_below="@id/placeorder_name"
+        android:layout_marginTop="6dp"
+        />
+    <TextView
+        android:id="@+id/placeorder_floor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3层"
+        android:textSize="10dp"
+        android:textColor="@color/black1"
+        android:layout_below="@id/placeorder_name"
+        android:layout_marginTop="3dp"
+        android:layout_toRightOf="@id/placeorder_line02"
+        android:layout_marginLeft="5dp"/>
+
+
+    <RelativeLayout
+        android:id="@+id/placeorder_content01"
+        android:layout_width="30dp"
+        android:layout_height="12dp"
+        android:layout_below="@id/placeorder_address"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginBottom="10dp">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorGrayLight" />
+        <TextView
+            android:id="@+id/placeorder_tv01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="讲座"
+            android:textColor="@color/black1"
+            android:textSize="7dp"
+            android:layout_centerInParent="true"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/placeorder_content02"
+        android:layout_width="30dp"
+        android:layout_height="12dp"
+        android:layout_below="@id/placeorder_address"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_toRightOf="@id/placeorder_content01"
+        android:layout_marginBottom="10dp">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorGrayLight" />
+        <TextView
+            android:id="@+id/placeorder_tv02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="沙龙"
+            android:textColor="@color/black1"
+            android:textSize="7dp"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/placeorder_content03"
+        android:layout_width="30dp"
+        android:layout_height="12dp"
+        android:layout_below="@id/placeorder_address"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_toRightOf="@id/placeorder_content02"
+        android:layout_marginBottom="10dp">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorGrayLight" />
+        <TextView
+            android:id="@+id/placeorder_tv03"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="party"
+            android:textColor="@color/black1"
+            android:textSize="7dp"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/placeorder_content04"
+        android:layout_width="30dp"
+        android:layout_height="12dp"
+        android:layout_below="@id/placeorder_address"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_toRightOf="@id/placeorder_content03"
+        android:layout_marginBottom="10dp">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorGrayLight" />
+        <TextView
+            android:id="@+id/placeorder_tv04"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="论坛"
+            android:textColor="@color/black1"
+            android:textSize="7dp"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/placeorder_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1200元/小时"
+        android:textColor="@color/black1"
+        android:textSize="15dp"
+        android:layout_below="@id/placeorder_img"
+
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_below="@id/placeorder_price"
+        android:layout_marginRight="15dp"
+        android:src="@drawable/order"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"/>
+
+
+
+
+</RelativeLayout>

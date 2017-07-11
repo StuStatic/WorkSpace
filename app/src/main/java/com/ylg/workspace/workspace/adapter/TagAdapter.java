@@ -15,6 +15,7 @@ import com.ylg.workspace.workspace.R;
 import com.ylg.workspace.workspace.activity.ballgraph.ExerciseActivity;
 import com.ylg.workspace.workspace.activity.ballgraph.InfoActivity;
 import com.ylg.workspace.workspace.activity.ballgraph.MeetRoomOrderActivity;
+import com.ylg.workspace.workspace.activity.ballgraph.PlaceOrderActivity;
 import com.ylg.workspace.workspace.activity.ballgraph.WorkplaceOrderActivity;
 
 import java.util.List;
@@ -72,6 +73,11 @@ public class TagAdapter  extends TagsAdapter {
                         //跳转到 “订会议室”相应界面
                         Intent i_meet = new Intent(context, MeetRoomOrderActivity.class);
                         context.startActivity(i_meet);
+                        break;
+                    case "预定场地":
+                        //跳转到 “预定场地” 相应界面
+                        Intent i_place = new Intent(context, PlaceOrderActivity.class);
+                        context.startActivity(i_place);
                         break;
                     default:
                         break;
