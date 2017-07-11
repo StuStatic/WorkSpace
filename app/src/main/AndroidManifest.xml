@@ -53,6 +53,7 @@
         </activity>
         <activity android:name=".activity.personaldetails.CreateEnterpriseActivity">
         </activity>
+        <activity android:name=".activity.ballgraph.MeetRoomOrderActivity"/>
     </application>
 
 </manifest>

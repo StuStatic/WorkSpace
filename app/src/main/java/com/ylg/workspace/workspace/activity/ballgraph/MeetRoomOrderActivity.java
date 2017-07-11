@@ -12,11 +12,8 @@ import android.widget.TextView;
 import com.ylg.workspace.workspace.R;
 import com.ylg.workspace.workspace.adapter.FragmentPagerAdapter_Workplace;
 import com.ylg.workspace.workspace.fragment.OtherDateFragment_meetroom;
-import com.ylg.workspace.workspace.fragment.OtherDateFragment_workplace;
 import com.ylg.workspace.workspace.fragment.TodayFragment_meetroom;
-import com.ylg.workspace.workspace.fragment.TodayFragment_workplace;
 import com.ylg.workspace.workspace.fragment.TomorrowFragment_meetroom;
-import com.ylg.workspace.workspace.fragment.TomorrowFragment_workplace;
 
 import java.util.ArrayList;
 import java.util.List;
