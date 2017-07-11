@@ -86,8 +86,9 @@ public class FeedbackActivity extends App implements View.OnClickListener {
 
             @Override
             public void onFailure(Call<Service> call, Throwable t) {
+                iphoneDialog.dismiss();
                 Log.e("zp", t.toString());
-                Toast.makeText(FeedbackActivity.this, t.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(FeedbackActivity.this, "请求失败", Toast.LENGTH_SHORT).show();
             }
         });
     }

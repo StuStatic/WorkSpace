@@ -101,9 +101,9 @@ public class ServiceRegisterActivity extends App implements View.OnClickListener
                         @Override
                         public void run() {
                             super.run();
-
+                            imagePaths.remove(1);
                             //FileUploadManager.registerService("1", s2, s3, s4, s5, s6, imagePaths.get(0), 0, ServiceRegisterActivity.this);
-                            FileUploadManager.uploadMany("1", s2, s3, s4, s5, s6, imagePaths, 0, ServiceRegisterActivity.this, iphoneDialog);
+                            FileUploadManager.uploadMany("1", s2, s3, s4, s5, s6,imagePaths, 0, ServiceRegisterActivity.this, iphoneDialog);
                         }
                     }.start();
                 }

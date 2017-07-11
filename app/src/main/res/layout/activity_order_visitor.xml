@@ -28,31 +28,22 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="25sp"
+                    android:layout_weight="1"
                     android:gravity="center_vertical"
-                    android:text="访客照片"
+                    android:text="访客照片:"
                     android:textColor="@color/black2"
                     android:textSize="16sp" />
 
-                <EditText
-                    android:id="@+id/et1"
-                    style="?android:attr/textViewStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <ImageView
+                    android:id="@+id/iv_photo"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
                     android:layout_marginRight="25sp"
-                    android:layout_weight="1"
-                    android:background="@null"
-                    android:cursorVisible="false"
-                    android:gravity="center_vertical|right"
-                    android:hint="必填"
-                    android:maxLines="1"
-                    android:paddingBottom="5dip"
-                    android:paddingTop="5dip"
-                    android:textColor="@color/black2"
-                    android:textColorHint="@color/colorLine"
-                    android:textSize="16sp" />
+                    android:src="@mipmap/carmer" />
             </LinearLayout>
 
             <include layout="@layout/item_line"></include>
@@ -88,6 +79,53 @@
                     android:textColor="@color/black2"
                     android:textColorHint="@color/colorLine"
                     android:textSize="16sp" />
+            </LinearLayout>
+
+            <include layout="@layout/item_line"></include>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:background="#f0f0f0"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="25sp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="性别"
+                    android:textColor="@color/black2"
+                    android:textSize="16sp" />
+
+                <RadioGroup
+                    android:id="@+id/rg1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="25sp"
+                    android:layout_marginRight="25sp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="男"
+                        android:textColor="@color/black2"
+                        android:textSize="14sp" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="女"
+                        android:textColor="@color/black2"
+                        android:textSize="14sp" />
+                </RadioGroup>
+
             </LinearLayout>
 
             <include layout="@layout/item_line"></include>
@@ -178,6 +216,7 @@
                     android:textSize="12sp" />
 
                 <RadioGroup
+                    android:id="@+id/rg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
@@ -219,6 +258,7 @@
                     android:text="受访对象"
                     android:textColor="@color/black2"
                     android:textSize="16sp" />
+
                 <EditText
                     android:id="@+id/et5"
                     style="?android:attr/textViewStyle"
@@ -253,6 +293,7 @@
                     android:text="来访事由"
                     android:textColor="@color/black2"
                     android:textSize="16sp" />
+
                 <EditText
                     android:id="@+id/et6"
                     style="?android:attr/textViewStyle"
@@ -315,36 +356,46 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="25sp"
+                    android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:text="到访日期"
                     android:textColor="@color/black2"
                     android:textSize="16sp" />
 
-                <EditText
-                    android:id="@+id/et8"
-                    style="?android:attr/textViewStyle"
+                <LinearLayout
+                    android:id="@+id/ll2"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginRight="25sp"
                     android:layout_weight="1"
-                    android:background="@null"
-                    android:cursorVisible="false"
-                    android:gravity="center_vertical|right"
-                    android:hint="必填"
-                    android:maxLines="1"
-                    android:paddingBottom="5dip"
-                    android:paddingTop="5dip"
-                    android:textColor="@color/black2"
-                    android:textColorHint="@color/colorLine"
-                    android:textSize="16sp" />
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5sp"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical|right"
+                        android:text="请选择"
+                        android:textColor="@color/black2"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@mipmap/right" />
+                </LinearLayout>
             </LinearLayout>
 
             <include layout="@layout/item_line"></include>
 
             <Button
+                android:id="@+id/button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40sp"

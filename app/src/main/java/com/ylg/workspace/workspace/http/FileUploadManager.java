@@ -44,9 +44,7 @@ public class FileUploadManager {
                                  @PartMap Map<String, RequestBody> imgs1,
                                  @Part("text\";") RequestBody imgs);
 
-        /**
-         * 注册服务商
-         */
+
         @Multipart
         @POST("FacilitatorInfo/addInfo")
         Call<Service> registerService(@Query("userId") String s1, @Query("firmName") String s2,
@@ -55,14 +53,29 @@ public class FileUploadManager {
                                       @Query("facilitatorState") int i,
                                       @Part("file\"; filename=\"file\"") RequestBody firmLogo);
 
+        /**
+         * 访客预约
+         */
+        @Multipart
+        @POST("Visitor/addVisitorOrUpdate")
+        Call<Service> orderVisitor(@Query("userId") String s1, @Query("visitorName") String s2,
+                                   @Query("visitorTel") String s3, @Query("spared1") String s4,
+                                   @Query("userName") String s5, @Query("visitInfo") String s6,
+                                   @Query("peopleNum") int s7, @Query("vtime") String s8,
+                                   @Query("sex") String s9,
+                                   @Query("accessType") int i,
+                                   @PartMap Map<String, RequestBody> visitorPicture);
+//@Query("peopleNum") String s7, @Query("visitTime") String s8,@Query("visitorTel") String s3, @Query("spared1") String s4,
+//@Query("sex") String s9,
 
         /**
-         * 简便写法
+         * 注册服务商
          *
          * @return
          */
         @Multipart
-        @POST("FacilitatorInfo/addInfo")
+        // @POST("FacilitatorInfo/addInfo")
+        @POST("Visitor/addVisitorOrUpdate")
         Call<Service> uploadImage(@Query("userId") String s1, @Query("firmName") String s2,
                                   @Query("businessScope") String s3, @Query("contacts") String s4,
                                   @Query("tel") String s5, @Query("facilitatorType") String s6,
@@ -153,14 +166,9 @@ public class FileUploadManager {
                 photos.put("file\"; filename=\"" + file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));
             }
         }
-//        if (path.size() > 0) {
-//            for (int i = 0; i < path.size(); i++) {
-//                photos1.put("Alias\";", RequestBody.create(MediaType.parse("multipart/form-data"), path.get(i)));
-//            }
-//        }
 
         Call<Service> stringCall = apiManager.uploadImage(s1, s2, s3, s4, s5, s6, i1, photos);
-
+        //Call<Service> stringCall = apiManager.orderVisitor(s1, s2, s3, s4, s5, s6, i7, s8, s9, i1, photos);
         stringCall.enqueue(new Callback<Service>() {
             @Override
             public void onResponse(Call<Service> call, Response<Service> response) {
@@ -185,5 +193,43 @@ public class FileUploadManager {
         });
     }
 
+    public static void order(String s1, String s2, String s3, String s4, String s5, String s6, int s7, String s8, String s9, ArrayList<String> paths, int i1, final Context context, final IphoneDialog id) {
+        Map<String, RequestBody> photos = new HashMap<>();
+        //Map<String, RequestBody> photos1 = new HashMap<>();
+        if (paths.size() > 0) {
+            Log.d("zp", "order: " + paths.size());
+            for (int i = 0; i < paths.size(); i++) {
+                File file = new File(paths.get(i));
+                photos.put("file\"; filename=\"" + file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));
+            }
+        }
+        HttpAPI httpAPI = Http.getInstance().create(HttpAPI.class);
+        //Call<Service> stringCall = apiManager.orderVisitor(s1, s2, s3, s4, s5, s6, i7, s8, s9, i1, photos);
+        //Call<Service> stringCall = apiManager.uploadImage(s1, s2, s3, s4, s5, s6, i1, photos);
+
+        httpAPI.orderVisitor(s1, s2, s3, s4, s5, s6, s7, s8, s9, i1, photos).enqueue(new Callback<Service>() {
+            @Override
+            public void onResponse(Call<Service> call, Response<Service> response) {
+                id.dismiss();
+
+                Service b = response.body();
+                Log.d(TAG, "onResponse: " + response.body().toString());
+                if (b.getCode().equals("200")) {
+                    Toast.makeText(context, "上传成功", Toast.LENGTH_SHORT).show();
+                    //((Activity) context).finish();
+                } else {
+                    Toast.makeText(context, "上传失败", Toast.LENGTH_SHORT).show();
+                }
+                Log.d(TAG, "onResponse() called with: " + "call = [" + call + "], response = [" + response + "]");
+            }
+
+            @Override
+            public void onFailure(Call<Service> call, Throwable t) {
+                id.dismiss();
+                Toast.makeText(context, "上传失败", Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "onFailure() called with: " + "call = [" + call + "], t = [" + t + "]");
+            }
+        });
+    }
 
 }
