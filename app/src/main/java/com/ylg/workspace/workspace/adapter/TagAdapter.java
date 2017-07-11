@@ -17,6 +17,9 @@ import com.ylg.workspace.workspace.activity.ballgraph.InfoActivity;
 import com.ylg.workspace.workspace.activity.ballgraph.MeetRoomOrderActivity;
 import com.ylg.workspace.workspace.activity.ballgraph.PlaceOrderActivity;
 import com.ylg.workspace.workspace.activity.ballgraph.WorkplaceOrderActivity;
+import com.ylg.workspace.workspace.activity.service.FeedbackActivity;
+import com.ylg.workspace.workspace.activity.service.OrderVisitorActivity;
+import com.ylg.workspace.workspace.activity.service.RequirementActivity;
 
 import java.util.List;
 
@@ -78,6 +81,21 @@ public class TagAdapter  extends TagsAdapter {
                         //跳转到 “预定场地” 相应界面
                         Intent i_place = new Intent(context, PlaceOrderActivity.class);
                         context.startActivity(i_place);
+                        break;
+                    case "访客预约":
+                        //跳转到 “访客预约（张鹏）”相应界面
+                        Intent i_visit = new Intent(context, OrderVisitorActivity.class);
+                        context.startActivity(i_visit);
+                        break;
+                    case "一键报修":
+                        //跳转到“一键报修（张鹏）”相应界面
+                        Intent i_require = new Intent(context, RequirementActivity.class);
+                        context.startActivity(i_require);
+                        break;
+                    case "意见反馈":
+                        //跳转到“意见反馈（张鹏）”相应界面
+                        Intent i_feedback = new Intent(context, FeedbackActivity.class);
+                        context.startActivity(i_feedback);
                         break;
                     default:
                         break;

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/neibor_img"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="15sp"
+        android:src="@mipmap/a4"/>
+    <TextView
+        android:id="@+id/neibor_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/neibor_img"
+        android:layout_marginLeft="15dp"
+        android:layout_alignTop="@id/neibor_img"
+        android:text="北京易联港科技发展有限公司"
+        android:textColor="@color/colorBlack"
+        android:textSize="15dp"/>
+    <TextView
+        android:id="@+id/neibor_summary01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="公司简介:"
+        android:textSize="12dp"
+        android:textColor="@color/colorBlack"
+        android:layout_below="@id/neibor_title"
+        android:layout_alignLeft="@id/neibor_title"
+        android:layout_marginTop="15dp"/>
+    <TextView
+        android:id="@+id/neibor_summary02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="软件集成方面我们啥都能干！"
+        android:textSize="12dp"
+        android:textColor="@color/colorBlack"
+        android:layout_toRightOf="@id/neibor_summary01"
+        android:layout_below="@id/neibor_title"
+        android:layout_alignTop="@id/neibor_summary01"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:maxEms="10" />
+</RelativeLayout>

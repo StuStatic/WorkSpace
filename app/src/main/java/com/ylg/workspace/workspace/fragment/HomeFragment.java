@@ -8,24 +8,30 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.moxun.tagcloudlib.view.TagCloudView;
 import com.ylg.workspace.workspace.R;
 import com.ylg.workspace.workspace.adapter.HorizontalScrollViewAdapter_Home;
+import com.ylg.workspace.workspace.adapter.NeiborAdapter_Home;
 import com.ylg.workspace.workspace.adapter.TagAdapter;
 import com.ylg.workspace.workspace.adapter.ViewPagerAdater_Home01;
+import com.ylg.workspace.workspace.util.SetHomeListViewItemHeight;
 import com.ylg.workspace.workspace.view.MyHorizontalScrollView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class HomeFragment extends android.app.Fragment {
 
@@ -40,11 +46,21 @@ public class HomeFragment extends android.app.Fragment {
     private List<ImageView> mImageViewDotList1,mImageViewDotList2;
     private TagCloudView tcv;
     private List<String> mStrings;
+
     //HorizontalScrollView
     private MyHorizontalScrollView mHorizontalScrollView;
     private HorizontalScrollViewAdapter_Home mAdapter;
     private ImageView mImg;
     private List<Integer> mDatas = new ArrayList<Integer>(Arrays.asList(R.mipmap.a4,R.mipmap.a5,R.mipmap.a4,R.mipmap.a5,R.mipmap.a4,R.mipmap.a5,R.mipmap.a4,R.mipmap.a5,R.mipmap.a4,R.mipmap.a5));
+
+    //友邻企业列表
+    private ListView listview;
+    private String[] title = {"北京物联港科技有限公司","上海宝马集团","中国石油有限公司"};
+    private String[] summary = {"我只能说技术部功能很强大，什么都能做，谁也不好使","宝马集团听说过没有？地球人都知道我们也就不再多说了","中国石油，给你更坚实的后盾"};
+    private ArrayList<Map<String,Object>> datas_neibor;
+    private NeiborAdapter_Home adapter_neibor;
+
+
     Handler handler=new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -190,6 +206,24 @@ public class HomeFragment extends android.app.Fragment {
 
 
 
+        //友邻企业内容listview
+        listview = (ListView)homeLayout.findViewById(R.id.neibor_contentlv);
+        //初始化集合
+        datas_neibor = new ArrayList<Map<String,Object>>();
+        for(int i =0; i < title.length; i++) {
+            Map<String,Object> item = new HashMap<String,Object>();
+            item.put("title", title[i]);
+            item.put("summary", summary[i]);
+            datas_neibor.add(item);
+        }
+        Log.e("datas.get(0).size():",datas_neibor.get(0).size()+"");
+        Log.e("datas.get(1).title",datas_neibor.get(1).get("title")+"");
+        //初始化适配器
+        adapter_neibor = new NeiborAdapter_Home(homeLayout.getContext(),datas_neibor);
+        //绑定适配器
+        listview.setAdapter(adapter_neibor);
+        //ScrollView中嵌套listview不手动设置高度出现只显示一行的情况
+        SetHomeListViewItemHeight.setHeight(listview);
 
     }
 
