@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.ylg.workspace.workspace.R;
 import com.ylg.workspace.workspace.adapter.ListViewAdapter_PlaceOrderActivity;
@@ -20,6 +21,8 @@ public class PlaceOrderActivity extends AppCompatActivity implements View.OnClic
     private ListViewAdapter_PlaceOrderActivity adapter;
     //返回键
     private ImageView img_back;
+    //大标题
+    private TextView title_tv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +35,9 @@ public class PlaceOrderActivity extends AppCompatActivity implements View.OnClic
         img_back = (ImageView)findViewById(R.id.iv_back);
         //绑定适配器
         img_back.setOnClickListener(this);
+        //初始化标题内容
+        title_tv = (TextView)findViewById(R.id.tv_title);
+        title_tv.setText("预定场地");
 
         //初始化listview
         listView = (ListView)findViewById(R.id.placeorder_listview);

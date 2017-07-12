@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ylg.workspace.workspace.R;
@@ -17,15 +18,17 @@ import com.ylg.workspace.workspace.util.SetSpaceListViewItemHeight;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InfoActivity extends AppCompatActivity {//
+public class InfoActivity extends AppCompatActivity implements View.OnClickListener{//
     private List<String> datas_space,datas_company;
     private ListView listView_space,listView_company;
     private String[] spaceInfo = new String[]{"帝高阳之苗裔兮，朕皇考曰伯庸。","摄提贞于孟陬兮，惟庚寅吾以降","皇览揆余初度兮，肇锡余以嘉名："};
     private String[] companyInfo = new String[]{"名余曰正则兮，字余曰灵均。","纷吾既有此内美兮，又重之以修能。","扈江离与辟芷兮，纫秋兰以为佩。"};
     private ListViewAdapter01_InfoActivity adapter_space;
     private ListViewAdapter02_InfoActivity adapter_company;
-
+    //标题返回键
     private ImageView img_back;
+    //大标题
+    private TextView title_tv;
 
 //    private ListViewAdapter adapter;
     @Override
@@ -37,7 +40,14 @@ public class InfoActivity extends AppCompatActivity {//
 
     private void init() {
         //初始化ImageView
-        img_back = (ImageView)findViewById(R.id.img_back);
+        img_back = (ImageView)findViewById(R.id.iv_back);
+        //绑定监听器v
+        img_back.setOnClickListener(this);
+        //设置标题
+        title_tv = (TextView)findViewById(R.id.tv_title);
+        title_tv.setText("资讯");
+
+
         //初始化listview
         listView_space = (ListView)findViewById(R.id.lv_spaceinfo);
         listView_company = (ListView)findViewById(R.id.lv_companyInfo);
@@ -81,18 +91,12 @@ public class InfoActivity extends AppCompatActivity {//
         });
 
 
-        //返回键的事件监听
-        img_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //关闭当前界面
-                finish();
-            }
-        });
+
     }
 
 
-
-
-
+    @Override
+    public void onClick(View view) {
+        finish();
+    }
 }

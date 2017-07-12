@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.ylg.workspace.workspace.R;
 import com.ylg.workspace.workspace.adapter.ExpandableListViewAdater_Exercise;
@@ -14,12 +15,14 @@ import com.ylg.workspace.workspace.adapter.ListViewAdapter_ExerviseActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExerciseActivity extends AppCompatActivity {
+public class ExerciseActivity extends AppCompatActivity implements View.OnClickListener{
 
     //View
     private ExpandableListView expandableListView01,expandableListView02;
     //返回键图标
-    private ImageView imageView;
+    private ImageView img_back;
+    //TextView
+    private TextView title_tv;
 
     //Model：定义的数据
     private String[] groups01 = {"全部社区"};
@@ -46,9 +49,12 @@ public class ExerciseActivity extends AppCompatActivity {
 
     private void init() {
         //初始化返回键图标
-        imageView = (ImageView)findViewById(R.id.exercise_back);
+        img_back = (ImageView)findViewById(R.id.iv_back);
         //绑定点击事件
-        startSetOnClick();
+        img_back.setOnClickListener(this);
+        //初始化标题内容
+        title_tv = (TextView)findViewById(R.id.tv_title);
+        title_tv.setText("活动列表");
 
         //初始化expandableListView
         expandableListView01 = (ExpandableListView)findViewById(R.id.expandablelistview01);
@@ -83,14 +89,11 @@ public class ExerciseActivity extends AppCompatActivity {
         }
     }
 
-    //返回按钮的点击事件
-    private void startSetOnClick() {
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //关闭界面
-                finish();
-            }
-        });
+
+
+    @Override
+    public void onClick(View view) {
+        //关闭界面
+        finish();
     }
 }
