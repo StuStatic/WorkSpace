@@ -1,6 +1,7 @@
 package com.ylg.workspace.workspace.http;
 
 import com.ylg.workspace.workspace.activity.service.bean.Service;
+import com.ylg.workspace.workspace.bean.NeiborCompany;
 import com.ylg.workspace.workspace.http.bean.Login;
 import com.ylg.workspace.workspace.http.bean.Register;
 import com.ylg.workspace.workspace.http.bean.SendVerify;
@@ -92,5 +93,8 @@ public interface HttpAPI {
     //@POST("/Service_Platform/group/update.do")
     // Call<BaseEntity> update(@Query("groupId") String groupId, @Query("groupName") String groupName, @Query("longitude") double longitude, @Query("latitude") double latitude, @Query("location") String location);
 
+    //友邻企业
+    @POST("CompanyInfo/findBySpaceId")
+    Call<NeiborCompany> neiborCompany(@Query("spaceId") Integer spaceId);
 
 }

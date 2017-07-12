@@ -49,7 +49,7 @@ public class MeetRoomOrderActivity extends AppCompatActivity implements View.OnC
         iv_back.setOnClickListener(this);
         //初始化标题内容
         title_tv = (TextView)findViewById(R.id.tv_title);
-        title_tv.setText("预定场地");
+        title_tv.setText("定会议室");
 
         //初始化viewpager
         viewPager = (ViewPager) findViewById(R.id.meetroom_viewpager);
