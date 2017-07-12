@@ -2,6 +2,7 @@ package com.ylg.workspace.workspace.activity.personaldetails;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -107,7 +108,7 @@ public class LoginActivity extends App implements View.OnClickListener {
                 startActivityForResult(intent, 12);
                 break;
             case R.id.login_register_bt://注册
-                Intent intent1 = new Intent(this,RegisterActivity.class);
+                Intent intent1 = new Intent(this, RegisterActivity.class);
                 startActivity(intent1);
                 finish();
                 break;
@@ -135,7 +136,7 @@ public class LoginActivity extends App implements View.OnClickListener {
     }
 
     //登陆
-    private void login(String phone, final String password) {
+    private void login(final String phone, final String password) {
         progressDialog = new ProgressDialog(LoginActivity.this);
         progressDialog.setCancelable(false);
         progressDialog.setCanceledOnTouchOutside(false);
@@ -148,24 +149,26 @@ public class LoginActivity extends App implements View.OnClickListener {
                 @Override
                 public void onResponse(Call<Login> call, Response<Login> response) {
                     Login body = response.body();
-                    Log.i("dyy",body.toString());
+                    if (body == null) return;
                     String code = body.getCode();
                     if (code.equals("200")) {
                         if (body.getMsg().getPassword().equals(md5)) {
                             App.KEY_LOGIN = 2;
+                            input(phone,password,body.getMsg().toString());
                             Bundle bundle = new Bundle();
-                            bundle.putSerializable("companyName",body.getMsg().getCompanyName());
-                            bundle.putSerializable("headPortrait",body.getMsg().getHeadPortrait());
-                            bundle.putSerializable("realName",body.getMsg().getRealName());
-                            bundle.putSerializable("sex",body.getMsg().getSex());
-                            bundle.putSerializable("username",body.getMsg().getUserName());
-                            bundle.putSerializable("spared1",body.getMsg().getSpared1());
+                            bundle.putSerializable("companyName", body.getMsg().getCompanyName());
+                            bundle.putSerializable("headPortrait", body.getMsg().getHeadPortrait());
+                            bundle.putSerializable("realName", body.getMsg().getRealName());
+                            bundle.putSerializable("sex", body.getMsg().getSex());
+                            bundle.putSerializable("username", body.getMsg().getUserName());
+                            bundle.putSerializable("spared1", body.getMsg().getSpared1());
                             App.USER_ID = body.getMsg().getUserId();
+                            App.COMPANY_ID = body.getMsg().getCompanyId();
                             Intent i = new Intent();
                             i.putExtras(bundle);
-                            setResult(1,i);
+                            setResult(1, i);
                             progressDialog.dismiss();
-                            Log.i("dyy","登陆："+ body.getMsg().toString());
+                            Log.i("dyy", "登陆：" + body.getMsg().toString());
                             finish();
                         }
                     } else if (code.equals("500")) {
@@ -188,6 +191,20 @@ public class LoginActivity extends App implements View.OnClickListener {
 
     }
 
+    /**
+     * 存
+     */
+    private void input(String name,String password,String body) {
+        //第一个参数是文件名，第二个参数是模式（不明白可以去补习一下SharedPreferences的知识）
+        SharedPreferences.Editor edit = getSharedPreferences("mypsd", MODE_PRIVATE).edit();
+        edit.putString("name", name);
+        edit.putString("psd", password);
+        edit.commit();
+        //第一个参数是文件名，第二个参数是模式（不明白可以去补习一下SharedPreferences的知识）
+        SharedPreferences.Editor edit2 = getSharedPreferences("mypsd2", MODE_PRIVATE).edit();
+        edit2.putString("body", body);
+        edit2.commit();
+    }
 
     @Override
     protected void onDestroy() {

@@ -1,6 +1,5 @@
 package com.ylg.workspace.workspace.http.bean;
 
-import java.io.Serializable;
 
 public class Login{
 
