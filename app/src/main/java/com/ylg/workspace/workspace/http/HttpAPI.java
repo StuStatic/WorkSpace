@@ -2,6 +2,9 @@ package com.ylg.workspace.workspace.http;
 
 import com.ylg.workspace.workspace.activity.service.bean.Service;
 import com.ylg.workspace.workspace.bean.NeiborCompany;
+import com.ylg.workspace.workspace.http.bean.FindByActivityId;
+import com.ylg.workspace.workspace.http.bean.FindByApplyTel;
+import com.ylg.workspace.workspace.http.bean.FindByUserId;
 import com.ylg.workspace.workspace.http.bean.Login;
 import com.ylg.workspace.workspace.http.bean.Register;
 import com.ylg.workspace.workspace.http.bean.SendVerify;
@@ -56,6 +59,66 @@ public interface HttpAPI {
                                @Query("sex") String s9,
                                @Query("accessType") int i,
                                @PartMap Map<String, RequestBody> visitorPicture);
+
+    //是否有此用户
+    @POST("Login/findUser")
+    Call<Register> findUser(@Query("phone") String phone);
+
+    //添加活动
+    @POST("Activity/addActivity")
+    Call<Register> addActivity(@Query("title") String title, @Query("activityDescribe") String activityDescribe,
+                               @Query("pictureSite") String pictureSite, @Query("activityType") int activityType,
+                               @Query("spaceId") int spaceId, @Query("issueUserId") int issueUserId,
+                               @Query("issueCompanyId") int issueCompanyId, @Query("issueTime") String issueTime,
+                               @Query("starTime") String starTime, @Query("endTime") String endTime,
+                               @Query("peopleNum") int peopleNum, @Query("principalName") String principalName,
+                               @Query("principalTel") String principalTel, @Query("activityState") int activityState);
+
+    //修改活动
+    @POST("Activity/addActivity")
+    Call<Register> modifyActivity(@Query("activityId") int activityId, @Query("title") String title, @Query("activityDescribe") String activityDescribe,
+                                  @Query("pictureSite") String pictureSite, @Query("activityType") int activityType,
+                                  @Query("spaceId") int spaceId, @Query("issueUserId") int issueUserId,
+                                  @Query("issueCompanyId") int issueCompanyId, @Query("issueTime") String issueTime,
+                                  @Query("starTime") String starTime, @Query("endTime") String endTime,
+                                  @Query("peopleNum") int peopleNum, @Query("principalName") String principalName,
+                                  @Query("principalTel") String principalTel, @Query("activityState") int activityState);
+
+    //取消活动
+    @POST("Activity/cancelActivity")
+    Call<Register> cancelActivity(@Query("activityId") int activityId);
+
+    //查找空间编号对应的活动信息
+    @POST("Activity/findBySpaceId")
+    Call<FindByUserId> findBySpaceId(@Query("spaceId") int spaceId);
+
+    //查找空间编号对应的活动信息
+    @POST("Activity/findByUserId")
+    Call<FindByUserId> findByUserId(@Query("issueUserId") int issueUserId);
+
+    //添加活动报名信息
+    @POST("ActivityApply/addActivityApply")
+    Call<Register> addActivityApply(@Query("applyNume") String applyNume, @Query("applyTel") String applyTel,
+                                    @Query("applyCompany") String applyCompany, @Query("activityId") int activityId,
+                                    @Query("applyTime") String applyTime, @Query("applyState") int applyState);
+
+    //修改活动报名信息
+    @POST("Activity/findByUserId")
+    Call<Register> addActivityApply2(@Query("applyId") int applyId, @Query("applyNume") String applyNume, @Query("applyTel") String applyTel,
+                                     @Query("applyCompany") String applyCompany, @Query("activityId") int activityId,
+                                     @Query("applyTime") String applyTime, @Query("applyState") int applyState);
+
+    //取消报名
+    @POST("ActivityApply/cancelActivityApply")
+    Call<Register> cancelActivityApply(@Query("applyId") int applyId);
+
+    //查找某活动的报名的人
+    @POST("ActivityApply/findByActivityId")
+    Call<FindByActivityId> findByActivityId(@Query("activityId") int activityId);
+
+    //报名人参加的活动
+    @POST("ActivityApply/findByApplyTel")
+    Call<FindByApplyTel> findByApplyTel(@Query("applyTel") String applyTel);
 
 
 //    //绑定设备

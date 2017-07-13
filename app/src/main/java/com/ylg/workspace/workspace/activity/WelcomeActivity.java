@@ -29,9 +29,9 @@ public class WelcomeActivity extends App {
 //                Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
 //                startActivity(intent);
                 output();
-                startActivity(MainActivity.class);
+//                startActivity(MainActivity.class);
                 //关闭本界面
-                finish();
+
             }
             return false;
         }
@@ -106,6 +106,9 @@ public class WelcomeActivity extends App {
         String psd1 = shared.getString("psd", "");
         if (name1 !=null && psd1 != null ){
             login(name1,psd1);
+        }else {
+            startActivity(MainActivity.class);
+            finish();
         }
     }
     /**
