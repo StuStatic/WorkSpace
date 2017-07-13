@@ -120,6 +120,24 @@ public interface HttpAPI {
     @POST("ActivityApply/findByApplyTel")
     Call<FindByApplyTel> findByApplyTel(@Query("applyTel") String applyTel);
 
+    //
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //    //绑定设备
 //    @FormUrlEncoded
