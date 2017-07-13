@@ -9,7 +9,10 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.ylg.workspace.workspace.R;
+import com.ylg.workspace.workspace.bean.NeiborCompany;
+import com.ylg.workspace.workspace.http.Http;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,16 +23,18 @@ import java.util.Map;
  */
 
 public class NeiborAdapter_Home extends BaseAdapter {
-    ArrayList<Map<String,Object>> datas;
+//    ArrayList<Map<String,Object>> datas;
+    private List<NeiborCompany.MsgEntity> datas;
     private LayoutInflater inflater;
+    private Context context;
     //构造方法
-    public NeiborAdapter_Home(Context context ,ArrayList<Map<String,Object>> datas){
+    public NeiborAdapter_Home(Context context ,List<NeiborCompany.MsgEntity> datas){
+        this.context = context;
         this.datas = datas;
         inflater = LayoutInflater.from(context);
     }
     @Override
     public int getCount() {
-        Log.e("datas.size:",datas.size()+"");
         return datas.size();
     }
 
@@ -55,11 +60,12 @@ public class NeiborAdapter_Home extends BaseAdapter {
 
         }
         //设置文字
-       viewHolder.tv_name.setText(datas.get(i).get("title").toString());
-        viewHolder.tv_summary.setText(datas.get(i).get("summary").toString());
+        viewHolder.tv_name.setText(datas.get(i).getCompanyName());
+        viewHolder.tv_summary.setText(datas.get(i).getCompanyProfile());
 
-        //图片暂时不设置
-
+        //图片设置
+        String picURL = Http.API_URL+datas.get(i).getCompanyPicture();
+        Glide.with(context).load(picURL).into(viewHolder.img);
 
         return view;
     }

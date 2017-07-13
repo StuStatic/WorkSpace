@@ -1,6 +1,7 @@
 package com.ylg.workspace.workspace.http;
 
 import com.ylg.workspace.workspace.activity.service.bean.Service;
+import com.ylg.workspace.workspace.bean.ExerciseRecommend;
 import com.ylg.workspace.workspace.bean.NeiborCompany;
 import com.ylg.workspace.workspace.http.bean.FindByActivityId;
 import com.ylg.workspace.workspace.http.bean.FindByApplyTel;
@@ -176,6 +177,10 @@ public interface HttpAPI {
 
     //友邻企业
     @POST("CompanyInfo/findBySpaceId")
-    Call<NeiborCompany> neiborCompany(@Query("spaceId") Integer spaceId);
+    Call<NeiborCompany> neiborCompany (@Query("spaceId") int spaceId);
+
+    //活动推荐
+    @POST("Activity/findByState")
+    Call<ExerciseRecommend> exerciseRecommend (@Query("activityState") int activityState);
 
 }

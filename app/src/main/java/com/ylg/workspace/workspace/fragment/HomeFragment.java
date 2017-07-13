@@ -16,14 +16,20 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.moxun.tagcloudlib.view.TagCloudView;
 import com.ylg.workspace.workspace.R;
 import com.ylg.workspace.workspace.adapter.HorizontalScrollViewAdapter_Home;
 import com.ylg.workspace.workspace.adapter.NeiborAdapter_Home;
 import com.ylg.workspace.workspace.adapter.TagAdapter;
 import com.ylg.workspace.workspace.adapter.ViewPagerAdater_Home01;
+import com.ylg.workspace.workspace.bean.ExerciseRecommend;
+import com.ylg.workspace.workspace.bean.NeiborCompany;
+import com.ylg.workspace.workspace.http.Http;
+import com.ylg.workspace.workspace.http.HttpAPI;
 import com.ylg.workspace.workspace.util.SetHomeListViewItemHeight;
 import com.ylg.workspace.workspace.view.MyHorizontalScrollView;
 
@@ -32,6 +38,10 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomeFragment extends android.app.Fragment {
 
@@ -55,10 +65,15 @@ public class HomeFragment extends android.app.Fragment {
 
     //友邻企业列表
     private ListView listview;
-    private String[] title = {"北京物联港科技有限公司","上海宝马集团","中国石油有限公司"};
-    private String[] summary = {"我只能说技术部功能很强大，什么都能做，谁也不好使","宝马集团听说过没有？地球人都知道我们也就不再多说了","中国石油，给你更坚实的后盾"};
-    private ArrayList<Map<String,Object>> datas_neibor;
+//    private String[] title = {"北京物联港科技有限公司","上海宝马集团","中国石油有限公司"};
+//    private String[] summary = {"我只能说技术部功能很强大，什么都能做，谁也不好使","宝马集团听说过没有？地球人都知道我们也就不再多说了","中国石油，给你更坚实的后盾"};
+//    private ArrayList<Map<String,Object>> datas_neibor;
+    private List<NeiborCompany.MsgEntity> datas_neibor;
     private NeiborAdapter_Home adapter_neibor;
+
+    //活动推荐
+    private TextView recommend_tv;
+    private ImageView recomment_img;
 
 
     Handler handler=new Handler(){
@@ -133,6 +148,10 @@ public class HomeFragment extends android.app.Fragment {
         tcv.setAdapter(tagsAdapter);
 
 
+        //初始化活动推荐 图片+文字
+        recommend_tv = (TextView)homeLayout.findViewById(R.id.recommend_contenttv);
+        recomment_img = (ImageView)homeLayout.findViewById(R.id.recommend_contentimg);
+
 
 
 
@@ -182,7 +201,23 @@ public class HomeFragment extends android.app.Fragment {
 
 
 
+
+
+        //友邻企业内容listview
+        listview = (ListView)homeLayout.findViewById(R.id.neibor_contentlv);
+        //开始请求数据
+        startRequestNeiborDatas();
+
+
+
+
+        //活动推荐请求数据
+        startRequestRecommendDatas();
     }
+
+
+
+
 
     //  设置轮播小圆点
     private void setDot(Context context) {
@@ -206,27 +241,71 @@ public class HomeFragment extends android.app.Fragment {
 
 
 
-        //友邻企业内容listview
-        listview = (ListView)homeLayout.findViewById(R.id.neibor_contentlv);
-        //初始化集合
-        datas_neibor = new ArrayList<Map<String,Object>>();
-        for(int i =0; i < title.length; i++) {
-            Map<String,Object> item = new HashMap<String,Object>();
-            item.put("title", title[i]);
-            item.put("summary", summary[i]);
-            datas_neibor.add(item);
-        }
-        Log.e("datas.get(0).size():",datas_neibor.get(0).size()+"");
-        Log.e("datas.get(1).title",datas_neibor.get(1).get("title")+"");
-        //初始化适配器
-        adapter_neibor = new NeiborAdapter_Home(homeLayout.getContext(),datas_neibor);
-        //绑定适配器
-        listview.setAdapter(adapter_neibor);
-        //ScrollView中嵌套listview不手动设置高度出现只显示一行的情况
-        SetHomeListViewItemHeight.setHeight(listview);
+
+
 
     }
 
+
+    //活动推荐数据请求
+    private void startRequestRecommendDatas() {
+        HttpAPI api = Http.getInstance().create(HttpAPI.class);
+        //调用接口
+        Call<ExerciseRecommend> call = api.exerciseRecommend(1);
+
+        call.enqueue(new Callback<ExerciseRecommend>() {
+            @Override
+            public void onResponse(Call<ExerciseRecommend> call, Response<ExerciseRecommend> response) {
+                if(response.body().getCode().equals("200")){
+
+                    //设置文字
+                    String text = response.body().getMsg().get(0).getActivityDescribe();//此处只展示一个数据
+                    recommend_tv.setText(text);
+                    //设置图片(先将地址按都好分开)
+                    String[] s=response.body().getMsg().get(3).getPictureSite().split(",");
+                    String img_URL = Http.API_URL+s[0];
+                    Log.e("recommen_img:",img_URL);
+                    Glide.with(getActivity()).load(img_URL).into(recomment_img);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ExerciseRecommend> call, Throwable t) {
+
+            }
+        });
+
+    }
+
+
+    //友邻企业的数据请求
+    private void startRequestNeiborDatas() {
+        HttpAPI api = Http.getInstance().create(HttpAPI.class);
+        //调用接口
+        Call<NeiborCompany> call = api.neiborCompany(55);
+
+        call.enqueue(new Callback<NeiborCompany>() {
+            @Override
+            public void onResponse(Call<NeiborCompany> call, Response<NeiborCompany> response) {
+                if(response.body().getCode().equals("200")){
+                    datas_neibor = response.body().getMsg();
+                    //初始化适配器
+                    adapter_neibor = new NeiborAdapter_Home(homeLayout.getContext(),datas_neibor);
+                    //绑定适配器
+                    listview.setAdapter(adapter_neibor);
+                    //ScrollView中嵌套listview不手动设置高度出现只显示一行的情况
+                    SetHomeListViewItemHeight.setHeight(listview);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<NeiborCompany> call, Throwable t) {
+
+            }
+        });
+
+
+    }
 
 
     private void setViewPager() {

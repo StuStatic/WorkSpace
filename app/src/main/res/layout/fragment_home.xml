@@ -134,6 +134,7 @@
                     android:textSize="18dp" />
 
                 <ImageView
+                    android:id="@+id/neibor_arrow"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:layout_centerVertical="true"
@@ -166,6 +167,7 @@
                     android:textSize="18dp" />
 
                 <ImageView
+                    android:id="@+id/recommend_arrow"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:layout_centerVertical="true"
@@ -185,9 +187,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:layout_marginLeft="15sp"
-                    android:layout_marginRight="15sp"
-                    android:background="@drawable/icon_recommend" />
-
+                    android:layout_marginRight="15sp" />
+                <!--android:text="如果你无法简洁的表达你的想法，那只说明你还不够了解它。"-->
                 <TextView
                     android:id="@+id/recommend_contenttv"
                     android:layout_width="match_parent"
@@ -195,7 +196,7 @@
                     android:layout_below="@id/recommend_contentimg"
                     android:layout_marginLeft="15sp"
                     android:layout_marginRight="15sp"
-                    android:text="如果你无法简洁的表达你的想法，那只说明你还不够了解它。"
+
                     android:textColor="@color/colorBlack"
                     android:textSize="15dp" />
             </RelativeLayout>

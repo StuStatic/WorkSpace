@@ -81,14 +81,27 @@ public class WelcomeActivity extends App {
                             finish();
                         }
                     } else if (code.equals("500")) {
+                        /**
+                         * 7.13日 stu 修改 登录失败情况下 同样能跳转界面
+                         */
                         showCustomToast("账号/密码错误");
+                        Intent i = new Intent(WelcomeActivity.this,MainActivity.class);
+                        startActivity(i);
+                        finish();
                     }
                 }
 
                 @Override
                 public void onFailure(Call<Login> call, Throwable t) {
+
                     Log.i("dyy", t.toString());
                     showCustomToast("登陆失败");
+                    /**
+                     * 7.13日 stu 修改 登录失败情况下 同样能跳转界面
+                     */
+                    Intent i = new Intent(WelcomeActivity.this,MainActivity.class);
+                    startActivity(i);
+                    finish();
                 }
             });
         } catch (NoSuchAlgorithmException e) {
@@ -108,6 +121,7 @@ public class WelcomeActivity extends App {
             login(name1,psd1);
         }else {
             startActivity(MainActivity.class);
+            Log.e("startActivity","startAcitivity");
             finish();
         }
     }
