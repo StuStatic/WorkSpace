@@ -2,6 +2,7 @@ package com.ylg.workspace.workspace.fragment;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.os.Handler;
@@ -22,6 +23,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.moxun.tagcloudlib.view.TagCloudView;
 import com.ylg.workspace.workspace.R;
+import com.ylg.workspace.workspace.activity.ballgraph.ExerciseActivity;
 import com.ylg.workspace.workspace.adapter.HorizontalScrollViewAdapter_Home;
 import com.ylg.workspace.workspace.adapter.NeiborAdapter_Home;
 import com.ylg.workspace.workspace.adapter.TagAdapter;
@@ -43,7 +45,11 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class HomeFragment extends android.app.Fragment {
+public class HomeFragment extends android.app.Fragment implements View.OnClickListener{
+
+    /**
+     * @author stu
+     */
 
     private View homeLayout;
     private ViewPager mViewPager1;
@@ -73,7 +79,8 @@ public class HomeFragment extends android.app.Fragment {
 
     //活动推荐
     private TextView recommend_tv;
-    private ImageView recomment_img;
+    private ImageView recommend_img;
+    private ImageView recommend_arrow;//箭头
 
 
     Handler handler=new Handler(){
@@ -111,7 +118,7 @@ public class HomeFragment extends android.app.Fragment {
 
 
 
-        initView();
+        initView(homeLayout.getContext());
 
         initData(homeLayout.getContext());
 
@@ -123,7 +130,7 @@ public class HomeFragment extends android.app.Fragment {
 
         return homeLayout;
     }
-    private void initView() {
+    private void initView(Context context) {
         mStrings = new ArrayList<>();
         mStrings.add("集市");
         mStrings.add("活动");
@@ -148,10 +155,17 @@ public class HomeFragment extends android.app.Fragment {
         tcv.setAdapter(tagsAdapter);
 
 
-        //初始化活动推荐 图片+文字
+        //活动推荐初始化 图片+文字
         recommend_tv = (TextView)homeLayout.findViewById(R.id.recommend_contenttv);
-        recomment_img = (ImageView)homeLayout.findViewById(R.id.recommend_contentimg);
-
+        //绑定监听
+        recommend_tv.setOnClickListener(HomeFragment.this);
+        recommend_img = (ImageView)homeLayout.findViewById(R.id.recommend_contentimg);
+        //绑定监听
+        recommend_img.setOnClickListener(HomeFragment.this);
+        //活动推荐箭头的点击事件
+        recommend_arrow = (ImageView)homeLayout.findViewById(R.id.recommend_arrow);
+        //绑定监听
+        recommend_arrow.setOnClickListener(HomeFragment.this);
 
 
 
@@ -265,7 +279,7 @@ public class HomeFragment extends android.app.Fragment {
                     String[] s=response.body().getMsg().get(3).getPictureSite().split(",");
                     String img_URL = Http.API_URL+s[0];
                     Log.e("recommen_img:",img_URL);
-                    Glide.with(getActivity()).load(img_URL).into(recomment_img);
+                    Glide.with(getActivity()).load(img_URL).into(recommend_img);
                 }
             }
 
@@ -412,6 +426,26 @@ public class HomeFragment extends android.app.Fragment {
     }
 
 
+    //视图的点击事件
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            //活动推荐(箭头)
+            case R.id.recommend_arrow :
+                Intent i_exer01 = new Intent(getActivity(), ExerciseActivity.class);
+                startActivity(i_exer01);
+                break;
+            //活动推荐（文字）
+            case R.id.recommend_tv :
+                Intent i_exer02 = new Intent(getActivity(),ExerciseActivity.class);
+                startActivity(i_exer02);
+                break;
+            //活动推荐图片点击事件
+//            case R.id.recommend_contentimg:
+//                break;
 
-
+            default:
+                break;
+        }
+    }
 }
