@@ -426,6 +426,8 @@ public class HomeFragment extends android.app.Fragment implements View.OnClickLi
     }
 
 
+
+
     //视图的点击事件
     @Override
     public void onClick(View view) {
