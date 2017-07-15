@@ -60,23 +60,32 @@
                 android:layout_height="40dp"
                 android:background="@color/colorWhite">
 
+                <!--竖线-->
+                <View
+                    android:id="@+id/workspace_arrow"
+                    android:layout_width="2dp"
+                    android:layout_height="18dp"
+                    android:background="@color/colorBlue"
+                    android:layout_marginLeft="15dp"
+                    android:layout_centerVertical="true"/>
                 <TextView
                     android:id="@+id/workspace_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/workspace_arrow"
                     android:layout_marginLeft="15sp"
                     android:text="众创空间"
                     android:textColor="@color/colorBlack"
                     android:textSize="18dp" />
 
-                <ImageView
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@id/workspace_tv"
-                    android:src="@drawable/icon_arrow01" />
+                <!--<ImageView-->
+                    <!--android:layout_width="15dp"-->
+                    <!--android:layout_height="15dp"-->
+                    <!--android:layout_centerVertical="true"-->
+                    <!--android:layout_marginLeft="10dp"-->
+                    <!--android:layout_toRightOf="@id/workspace_tv"-->
+                    <!--android:src="@drawable/icon_arrow01" />-->
             </RelativeLayout>
 
             <!--底部轮播视图-->
@@ -116,6 +125,11 @@
             </com.ylg.workspace.workspace.view.MyHorizontalScrollView>
 
 
+            <View
+
+                android:layout_width="match_parent"
+                android:layout_height="12dp"
+                android:background="@color/colorGrayLight"></View>
             <!--友邻企业文字索引-->
             <RelativeLayout
                 android:id="@+id/word04"
@@ -123,24 +137,34 @@
                 android:layout_height="40dp"
                 android:background="@color/colorWhite">
 
+                <!--竖线-->
+                <View
+                    android:id="@+id/neibor_arrow"
+                    android:layout_width="2dp"
+                    android:layout_height="18dp"
+                    android:background="@color/colorBlue"
+                    android:layout_marginLeft="15dp"
+                    android:layout_centerVertical="true"/>
+
                 <TextView
                     android:id="@+id/neibor_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/neibor_arrow"
                     android:layout_marginLeft="15sp"
                     android:text="友邻企业"
                     android:textColor="@color/colorBlack"
                     android:textSize="18dp" />
 
-                <ImageView
-                    android:id="@+id/neibor_arrow"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@id/neibor_tv"
-                    android:src="@drawable/icon_arrow01" />
+                <!--<ImageView-->
+                    <!--android:id="@+id/neibor_arrow"-->
+                    <!--android:layout_width="15dp"-->
+                    <!--android:layout_height="15dp"-->
+                    <!--android:layout_centerVertical="true"-->
+                    <!--android:layout_marginLeft="10dp"-->
+                    <!--android:layout_toRightOf="@id/neibor_tv"-->
+                    <!--android:src="@drawable/icon_arrow01" />-->
             </RelativeLayout>
 
             <ListView
@@ -149,6 +173,12 @@
                 android:layout_height="wrap_content">
             </ListView>
 
+            <View
+
+                android:layout_width="match_parent"
+                android:layout_height="12dp"
+                android:background="@color/colorGrayLight"></View>
+
             <!--活动推荐文字索引-->
             <RelativeLayout
                 android:id="@+id/word02"
@@ -156,24 +186,34 @@
                 android:layout_height="40dp"
                 android:background="@color/colorWhite">
 
+                <!--竖线-->
+                <View
+                    android:id="@+id/recommend_arrow"
+                    android:layout_width="2dp"
+                    android:layout_height="18dp"
+                    android:background="@color/colorBlue"
+                    android:layout_marginLeft="15dp"
+                    android:layout_centerVertical="true"/>
+
                 <TextView
                     android:id="@+id/recommend_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/recommend_arrow"
                     android:layout_marginLeft="15sp"
                     android:text="活动推荐"
                     android:textColor="@color/colorBlack"
                     android:textSize="18dp" />
 
-                <ImageView
-                    android:id="@+id/recommend_arrow"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@id/recommend_tv"
-                    android:src="@drawable/icon_arrow01" />
+                <!--<ImageView-->
+                    <!--android:id="@+id/recommend_arrow"-->
+                    <!--android:layout_width="15dp"-->
+                    <!--android:layout_height="15dp"-->
+                    <!--android:layout_centerVertical="true"-->
+                    <!--android:layout_marginLeft="10dp"-->
+                    <!--android:layout_toRightOf="@id/recommend_tv"-->
+                    <!--android:src="@drawable/icon_arrow01" />-->
             </RelativeLayout>
 
             <RelativeLayout
@@ -204,7 +244,7 @@
             <View
                 android:id="@+id/partgray"
                 android:layout_width="match_parent"
-                android:layout_height="20dp"
+                android:layout_height="12dp"
                 android:background="@color/colorGrayLight"></View>
             <!--最新资讯文字索引&ndash;&gt;-->
             <RelativeLayout
@@ -214,23 +254,33 @@
 
                 android:background="@color/colorWhite">
 
+                <!--竖线-->
+                <View
+                    android:id="@+id/news_arrow"
+                    android:layout_width="2dp"
+                    android:layout_height="18dp"
+                    android:background="@color/colorBlue"
+                    android:layout_marginLeft="15dp"
+                    android:layout_centerVertical="true"/>
+
                 <TextView
                     android:id="@+id/news_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/news_arrow"
                     android:layout_marginLeft="15sp"
                     android:text="最新资讯"
                     android:textColor="@color/colorBlack"
                     android:textSize="18dp" />
 
-                <ImageView
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@id/news_tv"
-                    android:src="@drawable/icon_arrow01" />
+                <!--<ImageView-->
+                    <!--android:layout_width="15dp"-->
+                    <!--android:layout_height="15dp"-->
+                    <!--android:layout_centerVertical="true"-->
+                    <!--android:layout_marginLeft="10dp"-->
+                    <!--android:layout_toRightOf="@id/news_tv"-->
+                    <!--android:src="@drawable/icon_arrow01" />-->
             </RelativeLayout>
 
             <RelativeLayout

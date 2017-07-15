@@ -24,6 +24,7 @@ import com.bumptech.glide.Glide;
 import com.moxun.tagcloudlib.view.TagCloudView;
 import com.ylg.workspace.workspace.R;
 import com.ylg.workspace.workspace.activity.ballgraph.ExerciseActivity;
+import com.ylg.workspace.workspace.activity.ballgraph.InfoActivity;
 import com.ylg.workspace.workspace.adapter.HorizontalScrollViewAdapter_Home;
 import com.ylg.workspace.workspace.adapter.NeiborAdapter_Home;
 import com.ylg.workspace.workspace.adapter.TagAdapter;
@@ -80,7 +81,10 @@ public class HomeFragment extends android.app.Fragment implements View.OnClickLi
     //活动推荐
     private TextView recommend_tv;
     private ImageView recommend_img;
-    private ImageView recommend_arrow;//箭头
+
+    private TextView news_tv;
+
+
 
 
     Handler handler=new Handler(){
@@ -156,18 +160,18 @@ public class HomeFragment extends android.app.Fragment implements View.OnClickLi
 
 
         //活动推荐初始化 图片+文字
-        recommend_tv = (TextView)homeLayout.findViewById(R.id.recommend_contenttv);
+        recommend_tv = (TextView)homeLayout.findViewById(R.id.recommend_tv);
         //绑定监听
         recommend_tv.setOnClickListener(HomeFragment.this);
         recommend_img = (ImageView)homeLayout.findViewById(R.id.recommend_contentimg);
         //绑定监听
         recommend_img.setOnClickListener(HomeFragment.this);
-        //活动推荐箭头的点击事件
-        recommend_arrow = (ImageView)homeLayout.findViewById(R.id.recommend_arrow);
-        //绑定监听
-        recommend_arrow.setOnClickListener(HomeFragment.this);
 
 
+        //最新资讯初始化
+        news_tv = (TextView)homeLayout.findViewById(R.id.news_tv);
+        //绑定监听点击事件
+        news_tv.setOnClickListener(HomeFragment.this);
 
     }
 
@@ -432,12 +436,7 @@ public class HomeFragment extends android.app.Fragment implements View.OnClickLi
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            //活动推荐(箭头)
-            case R.id.recommend_arrow :
-                Intent i_exer01 = new Intent(getActivity(), ExerciseActivity.class);
-                startActivity(i_exer01);
-                break;
-            //活动推荐（文字）
+
             case R.id.recommend_tv :
                 Intent i_exer02 = new Intent(getActivity(),ExerciseActivity.class);
                 startActivity(i_exer02);
@@ -445,6 +444,11 @@ public class HomeFragment extends android.app.Fragment implements View.OnClickLi
             //活动推荐图片点击事件
 //            case R.id.recommend_contentimg:
 //                break;
+            //最新资讯索引点击事件
+            case R.id.news_tv:
+                Intent i_info = new Intent(getActivity(), InfoActivity.class);
+                startActivity(i_info);
+                break;
 
             default:
                 break;
