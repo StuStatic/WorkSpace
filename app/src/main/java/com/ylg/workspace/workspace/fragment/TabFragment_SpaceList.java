@@ -81,12 +81,14 @@ public class TabFragment_SpaceList extends Fragment {
         for (int i = 0; i < title.length; i++) {
             datas.add(title[i]);
             //初始化lsitview
-//            listview = (ListViewForScrollView_SpaceList) view.findViewById(R.id.spacelist_lv);
-            list = (ListView)view.findViewById(R.id.spacelist_lv);
+            listview = (ListViewForScrollView_SpaceList) view.findViewById(R.id.spacelist_lv);
+//            list = (ListView)view.findViewById(R.id.spacelist_lv);
             //adapter
             adapter = new ListViewAdapter_SpaceList(view.getContext(), datas);
             //绑定adapter
-            list.setAdapter(adapter);
+            listview.setAdapter(adapter);
+           SetSpaceListListViewItemHeight.setHeight(listview);
+
 //            list.setOnTouchListener(new View.OnTouchListener() {
 //                @Override
 //                public boolean onTouch(View view, MotionEvent event) {

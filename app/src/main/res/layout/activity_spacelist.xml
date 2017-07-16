@@ -22,7 +22,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="none">
+        android:scrollbars="none"
+        android:focusableInTouchMode="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -176,14 +177,16 @@
                 android:layout_height="wrap_content"
                 app:tabGravity="center"
                 app:tabMode="scrollable"
-                app:tabSelectedTextColor="#3A5FCD"
-                app:tabTextColor="#FF000000" />
+                app:tabSelectedTextColor="@color/colorBlack"
+                app:tabTextColor="@color/colorGray"
+
+                app:tabIndicatorHeight="0dp"/>
+            <!--app:tabBackground="@drawable/tab_spacelist"-->
 
             <android.support.v4.view.ViewPager
                 android:id="@+id/spacelist_viewpager"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                />
+                android:layout_height="400dp" />
 
 
         </LinearLayout>

@@ -8,9 +8,9 @@
     <!-- TODO: Update blank fragment layout -->
 
 
-    <ListView
+    <com.ylg.workspace.workspace.view.ListViewForScrollView_SpaceList
         android:id="@+id/spacelist_lv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        ></ListView>
+        ></com.ylg.workspace.workspace.view.ListViewForScrollView_SpaceList>
 </FrameLayout>

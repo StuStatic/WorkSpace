@@ -1,5 +1,6 @@
 package com.ylg.workspace.workspace.util;
 
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
@@ -29,6 +30,7 @@ public class SetSpaceListListViewItemHeight {
 
         ViewGroup.LayoutParams params = listView.getLayoutParams();
         params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
+        Log.e("height:",params.height+"");
         listView.setLayoutParams(params);
     }
 }
