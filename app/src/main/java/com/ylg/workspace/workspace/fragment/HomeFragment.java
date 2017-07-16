@@ -26,6 +26,7 @@ import com.ylg.workspace.workspace.R;
 import com.ylg.workspace.workspace.activity.ballgraph.ExerciseActivity;
 import com.ylg.workspace.workspace.activity.ballgraph.InfoActivity;
 import com.ylg.workspace.workspace.activity.ballgraph.NeiborActivity;
+import com.ylg.workspace.workspace.activity.ballgraph.SpaceListActivity;
 import com.ylg.workspace.workspace.adapter.HorizontalScrollViewAdapter_Home;
 import com.ylg.workspace.workspace.adapter.NeiborAdapter_Home;
 import com.ylg.workspace.workspace.adapter.TagAdapter;
@@ -35,13 +36,11 @@ import com.ylg.workspace.workspace.bean.NeiborCompany;
 import com.ylg.workspace.workspace.http.Http;
 import com.ylg.workspace.workspace.http.HttpAPI;
 import com.ylg.workspace.workspace.util.SetHomeListViewItemHeight;
-import com.ylg.workspace.workspace.view.MyHorizontalScrollView;
+import com.ylg.workspace.workspace.view.MyHorizontalScrollView_Home;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -52,7 +51,7 @@ public class HomeFragment extends android.app.Fragment implements View.OnClickLi
     /**
      * @author stu
      */
-
+    private static final String className = "HomeFragment";
     private View homeLayout;
     private ViewPager mViewPager1;
     private List<ImageView> mImageViewList1;
@@ -66,7 +65,7 @@ public class HomeFragment extends android.app.Fragment implements View.OnClickLi
     private List<String> mStrings;
 
     //HorizontalScrollView
-    private MyHorizontalScrollView mHorizontalScrollView;
+    private MyHorizontalScrollView_Home mHorizontalScrollView;
     private HorizontalScrollViewAdapter_Home mAdapter;
     private ImageView mImg;
     private List<Integer> mDatas = new ArrayList<Integer>(Arrays.asList(R.mipmap.a4,R.mipmap.a5,R.mipmap.a4,R.mipmap.a5,R.mipmap.a4,R.mipmap.a5,R.mipmap.a4,R.mipmap.a5,R.mipmap.a4,R.mipmap.a5));
@@ -83,8 +82,10 @@ public class HomeFragment extends android.app.Fragment implements View.OnClickLi
     //活动推荐
     private TextView recommend_tv;
     private ImageView recommend_img;
-
     private TextView news_tv;
+
+    //众创空间
+    private TextView  workspace_tv;
 
 
 
@@ -117,7 +118,7 @@ public class HomeFragment extends android.app.Fragment implements View.OnClickLi
         mLinearLayoutDot1= (LinearLayout)homeLayout.findViewById(R.id.ll_home1_dot);
 
         //horizontalScrollView初始化
-        mHorizontalScrollView = (MyHorizontalScrollView) homeLayout.findViewById(R.id.id_hsv);
+        mHorizontalScrollView = (MyHorizontalScrollView_Home) homeLayout.findViewById(R.id.id_hsv);
         mAdapter = new HorizontalScrollViewAdapter_Home(homeLayout.getContext(), mDatas);
 
 
@@ -181,6 +182,12 @@ public class HomeFragment extends android.app.Fragment implements View.OnClickLi
         //绑定监听点击事件
         news_tv.setOnClickListener(HomeFragment.this);
 
+        //众创空间
+        workspace_tv = (TextView)homeLayout.findViewById(R.id.workspace_tv);
+        //绑定监听
+        workspace_tv.setOnClickListener(this);
+
+
     }
 
 
@@ -211,7 +218,7 @@ public class HomeFragment extends android.app.Fragment implements View.OnClickLi
 
 
         //添加HorizontalScrollView点击回调
-        mHorizontalScrollView.setOnItemClickListener(new MyHorizontalScrollView.OnItemClickListener()
+        mHorizontalScrollView.setOnItemClickListener(new MyHorizontalScrollView_Home.OnItemClickListener()
         {
 
             @Override
@@ -463,7 +470,11 @@ public class HomeFragment extends android.app.Fragment implements View.OnClickLi
 //                i_neibor.putExtra("datas",datas_neibor);
                 startActivity(i_neibor);
                 break;
-
+            //众创空间文字索引
+            case R.id.workspace_tv:
+                Intent i_space = new Intent(getActivity(), SpaceListActivity.class);
+                startActivity(i_space);
+                break;
             default:
                 break;
         }

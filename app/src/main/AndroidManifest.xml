@@ -53,7 +53,8 @@
         <activity android:name=".activity.personaldetails.CreateEnterpriseActivity" />
         <activity android:name=".activity.ballgraph.MeetRoomOrderActivity" />
         <activity android:name=".activity.ballgraph.PlaceOrderActivity" />
-        <activity android:name=".activity.ballgraph.NeiborActivity"></activity>
+        <activity android:name=".activity.ballgraph.NeiborActivity" />
+        <activity android:name=".activity.ballgraph.SpaceListActivity"></activity>
     </application>
 
 </manifest>

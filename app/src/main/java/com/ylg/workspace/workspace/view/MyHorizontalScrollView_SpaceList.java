@@ -1,7 +1,6 @@
 package com.ylg.workspace.workspace.view;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -11,16 +10,17 @@ import android.view.WindowManager;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 
-import com.ylg.workspace.workspace.adapter.HorizontalScrollViewAdapter_Home;
+import com.ylg.workspace.workspace.adapter.HSVAdapter_SpaceListActivity;
+
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by stu on 2017/6/30.
+ * Created by stu on 2017/7/16.
  */
 
-public class MyHorizontalScrollView extends HorizontalScrollView implements View.OnClickListener {
+public class MyHorizontalScrollView_SpaceList extends HorizontalScrollView implements View.OnClickListener {
     /**
      * 图片滚动时的回调接口
      *
@@ -44,11 +44,11 @@ public class MyHorizontalScrollView extends HorizontalScrollView implements View
         void onClick(View view, int pos);
     }
 
-    private CurrentImageChangeListener mListener;
+    private MyHorizontalScrollView_SpaceList.CurrentImageChangeListener mListener;
 
-    private OnItemClickListener mOnClickListener;
+    private MyHorizontalScrollView_SpaceList.OnItemClickListener mOnClickListener;
 
-    private static final String TAG = "MyHorizontalScrollView";
+    private static final String TAG = "MyHorizontalScrollView_SpaceList";
 
     /**
      * HorizontalListView中的LinearLayout
@@ -78,7 +78,7 @@ public class MyHorizontalScrollView extends HorizontalScrollView implements View
     /**
      * 数据适配器
      */
-    private HorizontalScrollViewAdapter_Home mAdapter;
+    private HSVAdapter_SpaceListActivity mAdapter;
     /**
      * 每屏幕最多显示的个数
      */
@@ -94,9 +94,10 @@ public class MyHorizontalScrollView extends HorizontalScrollView implements View
      */
     private Map<View, Integer> mViewPos = new HashMap<View, Integer>();
 
-    public MyHorizontalScrollView(Context context, AttributeSet attrs)
+    public MyHorizontalScrollView_SpaceList(Context context, AttributeSet attrs)
     {
         super(context, attrs);
+
         // 获得屏幕宽度
         WindowManager wm = (WindowManager) context
                 .getSystemService(Context.WINDOW_SERVICE);
@@ -110,6 +111,7 @@ public class MyHorizontalScrollView extends HorizontalScrollView implements View
     {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         mContainer = (LinearLayout) getChildAt(0);
+
     }
 
     /**
@@ -201,7 +203,7 @@ public class MyHorizontalScrollView extends HorizontalScrollView implements View
      *
      * @param mAdapter
      */
-    public void initDatas(HorizontalScrollViewAdapter_Home mAdapter)
+    public void initDatas(HSVAdapter_SpaceListActivity mAdapter)
     {
         this.mAdapter = mAdapter;
         mContainer = (LinearLayout) getChildAt(0);
@@ -212,20 +214,20 @@ public class MyHorizontalScrollView extends HorizontalScrollView implements View
         // 强制计算当前View的宽和高
         if (mChildWidth == 0 && mChildHeight == 0)
         {
-            int w = MeasureSpec.makeMeasureSpec(0,
-                    MeasureSpec.UNSPECIFIED);
-            int h = MeasureSpec.makeMeasureSpec(0,
-                    MeasureSpec.UNSPECIFIED);
+            int w = View.MeasureSpec.makeMeasureSpec(0,
+                    View.MeasureSpec.UNSPECIFIED);
+            int h = View.MeasureSpec.makeMeasureSpec(0,
+                    View.MeasureSpec.UNSPECIFIED);
             view.measure(w, h);
             mChildHeight = view.getMeasuredHeight();
             mChildWidth = view.getMeasuredWidth();
-            Log.e(TAG, view.getMeasuredWidth() + "," + view.getMeasuredHeight());
+//            Log.e(TAG, view.getMeasuredWidth() + "," + view.getMeasuredHeight());
             mChildHeight = view.getMeasuredHeight();
             // 计算每次加载多少个View
             mCountOneScreen = mScreenWitdh / mChildWidth+2;
 
-            Log.e(TAG, "mCountOneScreen = " + mCountOneScreen
-                    + " ,mChildWidth = " + mChildWidth);
+//            Log.e(TAG, "mCountOneScreen = " + mCountOneScreen
+//                    + " ,mChildWidth = " + mChildWidth);
 
 
         }
@@ -297,13 +299,13 @@ public class MyHorizontalScrollView extends HorizontalScrollView implements View
         }
     }
 
-    public void setOnItemClickListener(OnItemClickListener mOnClickListener)
+    public void setOnItemClickListener(MyHorizontalScrollView_SpaceList.OnItemClickListener mOnClickListener)
     {
         this.mOnClickListener = mOnClickListener;
     }
 
     public void setCurrentImageChangeListener(
-            CurrentImageChangeListener mListener)
+            MyHorizontalScrollView_SpaceList.CurrentImageChangeListener mListener)
     {
         this.mListener = mListener;
     }
