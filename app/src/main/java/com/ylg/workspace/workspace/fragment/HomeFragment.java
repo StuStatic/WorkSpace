@@ -25,6 +25,7 @@ import com.moxun.tagcloudlib.view.TagCloudView;
 import com.ylg.workspace.workspace.R;
 import com.ylg.workspace.workspace.activity.ballgraph.ExerciseActivity;
 import com.ylg.workspace.workspace.activity.ballgraph.InfoActivity;
+import com.ylg.workspace.workspace.activity.ballgraph.NeiborActivity;
 import com.ylg.workspace.workspace.adapter.HorizontalScrollViewAdapter_Home;
 import com.ylg.workspace.workspace.adapter.NeiborAdapter_Home;
 import com.ylg.workspace.workspace.adapter.TagAdapter;
@@ -77,6 +78,7 @@ public class HomeFragment extends android.app.Fragment implements View.OnClickLi
 //    private ArrayList<Map<String,Object>> datas_neibor;
     private List<NeiborCompany.MsgEntity> datas_neibor;
     private NeiborAdapter_Home adapter_neibor;
+    private TextView neibor_tv;
 
     //活动推荐
     private TextView recommend_tv;
@@ -166,6 +168,12 @@ public class HomeFragment extends android.app.Fragment implements View.OnClickLi
         recommend_img = (ImageView)homeLayout.findViewById(R.id.recommend_contentimg);
         //绑定监听
         recommend_img.setOnClickListener(HomeFragment.this);
+
+
+        //友邻企业文字初始化
+        neibor_tv = (TextView)homeLayout.findViewById(R.id.neibor_tv);
+        //绑定监听
+        neibor_tv.setOnClickListener(HomeFragment.this);
 
 
         //最新资讯初始化
@@ -436,7 +444,7 @@ public class HomeFragment extends android.app.Fragment implements View.OnClickLi
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-
+            //活动推荐文字索引点击事件
             case R.id.recommend_tv :
                 Intent i_exer02 = new Intent(getActivity(),ExerciseActivity.class);
                 startActivity(i_exer02);
@@ -448,6 +456,12 @@ public class HomeFragment extends android.app.Fragment implements View.OnClickLi
             case R.id.news_tv:
                 Intent i_info = new Intent(getActivity(), InfoActivity.class);
                 startActivity(i_info);
+                break;
+            //友邻企业文字点击事件
+            case R.id.neibor_tv:
+                Intent i_neibor = new Intent(getActivity(), NeiborActivity.class);
+//                i_neibor.putExtra("datas",datas_neibor);
+                startActivity(i_neibor);
                 break;
 
             default:

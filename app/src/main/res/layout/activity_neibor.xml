@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+
+    tools:context="com.ylg.workspace.workspace.activity.ballgraph.NeiborActivity">
+
+    <LinearLayout
+        android:id="@+id/neibor_bar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorGrayLight"
+        android:orientation="horizontal"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+        <ImageView
+            android:id="@+id/neibor_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icon_back"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"/>
+        <EditText
+            android:id="@+id/neibor_edit"
+            android:layout_width="270dp"
+            android:layout_height="wrap_content"
+            android:hint="请输入企业名称或标签"
+            android:textColorHint="@color/colorGray"
+            android:drawableLeft="@drawable/neibor_search"
+            android:layout_marginLeft="30dp"
+            android:layout_gravity="center"
+            android:background="@drawable/shape_neiboredit"
+            android:singleLine="true"
+            android:textColor="@color/colorBlack"
+            android:padding="5dp"/>
+    </LinearLayout>
+
+    <!--分割线-->
+    <View
+        android:id="@+id/neibor_line01"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorGray"
+        android:layout_below="@id/neibor_bar"/>
+
+    <View
+        android:id="@+id/neibor_fakeview"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@id/neibor_line01" />
+    <View
+        android:id="@+id/neibor_line02"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorGray"
+        android:layout_below="@id/neibor_fakeview"/>
+
+    <ListView
+        android:id="@+id/neibor_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/neibor_line02"
+        android:divider="@color/colorGray"
+        android:dividerHeight="1dp"></ListView>
+
+
+
+    <!--分割线-->
+    <!--<View-->
+        <!--android:id="@+id/neibor_line02"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1dp"-->
+        <!--android:background="@color/colorGray"-->
+        <!--android:layout_below="@id/neibor_expandablelv"/>-->
+    <LinearLayout
+        android:id="@+id/neibor_expandablelistview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/colorWhite"
+        android:layout_below="@id/neibor_line01">
+
+
+        <ExpandableListView
+            android:id="@+id/neibor_exlv01"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:cacheColorHint="@color/colorGrayLight"
+            android:listSelector="@color/colorGrayLight"></ExpandableListView>
+        <!--竖分割线-->
+        <!--<View-->
+        <!--android:layout_width="1dp"-->
+        <!--android:layout_height="45dp"-->
+        <!--android:background="@color/colorGray" />-->
+        <ExpandableListView
+            android:id="@+id/neibor_exlv02"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:cacheColorHint="@color/colorGrayLight"
+            android:listSelector="@color/colorGrayLight"
+            android:divider="@color/colorGray"
+            android:dividerHeight="1dp">
+
+        </ExpandableListView>
+
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="47dp"
+        android:background="@color/colorGray"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/neibor_bar"/>
+
+
+
+</RelativeLayout>

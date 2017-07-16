@@ -1,12 +1,13 @@
 package com.ylg.workspace.workspace.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by stu on 2017/7/12.
  */
 
-public class NeiborCompany {
+public class NeiborCompany implements Serializable{
 
     /**
      * result : 鎴愬姛
@@ -42,7 +43,7 @@ public class NeiborCompany {
         this.msg = msg;
     }
 
-    public static class MsgEntity {
+    public static class MsgEntity implements Serializable{
         /**
          * companyId : 1
          * companyName : 鏄撹仈娓�

@@ -49,10 +49,11 @@
             android:name="com.lidong.photopicker.PhotoPreviewActivity"
             android:theme="@style/PhotoPickerTheme" />
         <activity android:name=".activity.service.RequirementActivity" />
-        <activity android:name=".activity.personaldetails.RegisterActivity"></activity>
-        <activity android:name=".activity.personaldetails.CreateEnterpriseActivity"></activity>
+        <activity android:name=".activity.personaldetails.RegisterActivity" />
+        <activity android:name=".activity.personaldetails.CreateEnterpriseActivity" />
         <activity android:name=".activity.ballgraph.MeetRoomOrderActivity" />
-        <activity android:name=".activity.ballgraph.PlaceOrderActivity"></activity>
+        <activity android:name=".activity.ballgraph.PlaceOrderActivity" />
+        <activity android:name=".activity.ballgraph.NeiborActivity"></activity>
     </application>
 
 </manifest>
