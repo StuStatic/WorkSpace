@@ -66,8 +66,10 @@ public class OrderVisitorActivity extends App implements View.OnClickListener {
         iphoneDialog = new IphoneDialog(this);
         iv_back = (ImageView) findViewById(R.id.iv_back);
         iv_back.setOnClickListener(this);
+
         tv = (TextView) findViewById(R.id.tv_title);
         tv.setText("访客预约");
+        tv.setOnClickListener(this);
         iv = (ImageView) findViewById(R.id.iv_photo);
         et2 = (EditText) findViewById(R.id.et2);
         et3 = (EditText) findViewById(R.id.et3);
@@ -122,7 +124,7 @@ public class OrderVisitorActivity extends App implements View.OnClickListener {
                 }
                 break;
             case R.id.button:
-                if (imagePaths.size() > 1) {
+
                     final String s2 = et2.getText().toString().trim();
                     final String s3 = et3.getText().toString().trim();
                     final String s4 = et4.getText().toString().trim();
@@ -159,7 +161,7 @@ public class OrderVisitorActivity extends App implements View.OnClickListener {
                             imagePaths.add(1, "000000");
                         }
                     }.start();
-                }
+
                 break;
             case R.id.tv_time:
                 pvTime.show();

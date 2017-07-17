@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -25,6 +27,8 @@ import com.lidong.photopicker.intent.PhotoPreviewIntent;
 import com.ylg.workspace.workspace.Application.App;
 import com.ylg.workspace.workspace.Application.Constants;
 import com.ylg.workspace.workspace.R;
+import com.ylg.workspace.workspace.http.FileUploadManager;
+import com.ylg.workspace.workspace.view.IphoneDialog;
 
 import org.json.JSONArray;
 
@@ -47,24 +51,33 @@ public class QuestionActivity extends App implements View.OnClickListener {
     private ArrayList<String> imagePaths = new ArrayList<>();
     private GridAdapter gridAdapter;
     private ArrayList<String> infoList;
+    private Button b;
+    private EditText et1;
+    private EditText et2;
+    private IphoneDialog iphoneDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
-        isPermissionsAllGranted(Constants.permArray,Constants.QUEST_CODE_ALL);
+        isPermissionsAllGranted(Constants.permArray, Constants.QUEST_CODE_ALL);
         initView();
     }
 
     private void initView() {
+        iphoneDialog = new IphoneDialog(this);
         iv_back = (ImageView) findViewById(R.id.iv_back);
         iv_back.setOnClickListener(this);
         tv = (TextView) findViewById(R.id.tv_title);
         tv.setText("申请报修");
         tv1 = (TextView) findViewById(R.id.tv1);
         tvTime = (TextView) findViewById(R.id.tv2);
+        b = (Button) findViewById(R.id.button);
+        et1 = (EditText) findViewById(R.id.et1);
+        et2 = (EditText) findViewById(R.id.et2);
         tv1.setOnClickListener(this);
         tvTime.setOnClickListener(this);
+        b.setOnClickListener(this);
         //时间选择器
         pvTime = new TimePickerView(this, TimePickerView.Type.ALL);
         pvTime.setTime(new Date());
@@ -142,12 +155,33 @@ public class QuestionActivity extends App implements View.OnClickListener {
             case R.id.tv2:
                 pvTime.show();
                 break;
+            case R.id.button:
+                final int index = imagePaths.size();
+                final String s1 = et1.getText().toString().trim();
+                final String s2 = tv1.getText().toString().trim();
+                final String s4 = et2.getText().toString().trim();
+                final String s3 = tvTime.getText().toString()+":00";
 
+                iphoneDialog.setMessage("请稍候...");
+                iphoneDialog.show();
+
+                new Thread() {
+                    @Override
+                    public void run() {
+                        super.run();
+                        imagePaths.remove(index - 1);
+                        Log.i("zp", "bbbbbbb" + imagePaths.toString());
+                        Log.i("zp", "aaaa" + s4);
+
+                        FileUploadManager.questionFix("1", "1", s1, s2, s3, s4, imagePaths, QuestionActivity.this, iphoneDialog);
+                    }
+                }.start();
+                break;
         }
     }
 
     public static String getTime(Date date) {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm");
         return format.format(date);
     }
 
@@ -256,7 +290,7 @@ public class QuestionActivity extends App implements View.OnClickListener {
             } else {
                 holder = (ViewHolder) convertView.getTag();
             }
-            Log.i("zp", "getView: "+listUrls.toString());
+            Log.i("zp", "getView: " + listUrls.toString());
             final String path = listUrls.get(position);
             if (path.equals("000000")) {
                 holder.image.setImageResource(R.mipmap.add);

@@ -21,7 +21,7 @@ import retrofit2.http.Query;
 
 public interface HttpAPI {
 
-    //问题反馈
+    //意见反馈
     @POST("Opinion/addOpinion")
     Call<Service> feedBack(@Query("spaceId") String s1, @Query("userId") String s2, @Query("userName") String s3,
                            @Query("tel") String s4, @Query("opinionContent") String s5, @Query("spared1") String s6);
@@ -53,10 +53,11 @@ public interface HttpAPI {
     //访客预约
     @Multipart
     @POST("Visitor/addVisitorOrUpdate")
+   // @POST("MaintainInfo/addMaintainInfo")
     Call<Service> orderVisitor(@Query("userId") String s1, @Query("visitorName") String s2,
                                @Query("visitorTel") String s3, @Query("spared1") String s4,
                                @Query("userName") String s5, @Query("visitInfo") String s6,
-                               @Query("peopleNum") int s7, @Query("vtime") String s8,
+                               @Query("peopleNum") int s7, @Query("visitTime") String s8,
                                @Query("sex") String s9,
                                @Query("accessType") int i,
                                @PartMap Map<String, RequestBody> visitorPicture);
@@ -139,6 +140,14 @@ public interface HttpAPI {
 
 
 
+    //报修
+    @Multipart
+    //@POST("Visitor/addVisitorOrUpdate")
+    @POST("MaintainInfo/addMaintainInfo")
+    Call<Service> questionFix(@Query("userId") String s1, @Query("alias") String s2,
+                               @Query("type") String s3, @Query("info") String s4,
+                               @Query("orderTime") String s5, @Query("address") String s6,
+                               @PartMap Map<String, RequestBody> photo);
 
 //    //绑定设备
 //    @FormUrlEncoded

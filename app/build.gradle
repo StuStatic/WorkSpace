@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
+
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     aaptOptions {
         cruncherEnabled = false;
         useNewCruncher = false;
     }
-
     defaultConfig {
         applicationId "com.ylg.workspace.workspace"
         minSdkVersion 16
@@ -20,7 +20,9 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
         }
+
     }
 }
 
@@ -41,4 +43,16 @@ dependencies {
     compile 'com.android.support:design:26.0.0-alpha1'
     compile 'de.hdodenhof:circleimageview:2.1.0'
     testCompile 'junit:junit:4.12'
+    compile files('libs/wechat-sdk-android-with-mta-1.1.6.jar')
+    compile files('libs/weiboSDKCore.jar')
+    compile files('libs/umeng_social_tool.jar')
+    compile files('libs/umeng_social_net.jar')
+    compile files('libs/umeng_social_api.jar')
+    compile files('libs/SocialSDK_WeiXin_Full.jar')
+    compile files('libs/SocialSDK_Sina_Full.jar')
+    compile files('libs/SocialSDK_QQ_Full.jar')
+    compile files('libs/open_sdk_r5788_lite.jar')
+    compile files('libs/umeng_shareboard_widget.jar')
+    compile files('libs/umeng_social_shareview.jar')
+    compile files('libs/umeng_social_shareboard.jar')
 }

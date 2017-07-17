@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.ylg.workspace.workspace.R;
+import com.ylg.workspace.workspace.activity.HtmlActivity;
 import com.ylg.workspace.workspace.activity.service.FeedbackActivity;
 import com.ylg.workspace.workspace.activity.service.OrderVisitorActivity;
 import com.ylg.workspace.workspace.activity.service.QuestionActivity;
@@ -277,7 +278,7 @@ public class ServiceFragment extends android.app.Fragment implements View.OnClic
             case R.id.service_ll5:
 //                i.putExtra("getTitle", "IT");
 //                startActivity(i);
-                startActivity(new Intent(getActivity(), RequirementActivity.class));
+                startActivity(new Intent(getActivity(), HtmlActivity.class));
                 break;
             case R.id.service_ll6:
                 startActivity(new Intent(getActivity(), OrderVisitorActivity.class));

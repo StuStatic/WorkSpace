@@ -146,6 +146,7 @@
 
                 <EditText
                     android:id="@+id/et3"
+                    android:inputType="phone|number"
                     style="?android:attr/textViewStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -334,6 +335,7 @@
                     style="?android:attr/textViewStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:inputType="phone|number"
                     android:layout_marginRight="25sp"
                     android:layout_weight="1"
                     android:background="@null"
