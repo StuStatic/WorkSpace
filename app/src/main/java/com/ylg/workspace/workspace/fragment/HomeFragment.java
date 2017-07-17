@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.moxun.tagcloudlib.view.TagCloudView;
 import com.ylg.workspace.workspace.R;
+import com.ylg.workspace.workspace.activity.HtmlActivity;
 import com.ylg.workspace.workspace.activity.ballgraph.ExerciseActivity;
 import com.ylg.workspace.workspace.activity.ballgraph.InfoActivity;
 import com.ylg.workspace.workspace.activity.ballgraph.NeiborActivity;
@@ -33,6 +34,7 @@ import com.ylg.workspace.workspace.adapter.TagAdapter;
 import com.ylg.workspace.workspace.adapter.ViewPagerAdater_Home01;
 import com.ylg.workspace.workspace.bean.ExerciseRecommend;
 import com.ylg.workspace.workspace.bean.NeiborCompany;
+import com.ylg.workspace.workspace.bean.SlidePic;
 import com.ylg.workspace.workspace.http.Http;
 import com.ylg.workspace.workspace.http.HttpAPI;
 import com.ylg.workspace.workspace.util.SetHomeListViewItemHeight;
@@ -40,7 +42,9 @@ import com.ylg.workspace.workspace.view.MyHorizontalScrollView_Home;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -51,16 +55,21 @@ public class HomeFragment extends android.app.Fragment implements View.OnClickLi
     /**
      * @author stu
      */
+    //头部轮播图
     private static final String className = "HomeFragment";
     private View homeLayout;
     private ViewPager mViewPager1;
-    private List<ImageView> mImageViewList1;
-    private int[] imagesURL1={R.mipmap.a1,R.mipmap.a2,R.mipmap.a3,R.mipmap.a4,R.mipmap.a5};//头部轮播视图图片资源地址
+    private List<SlidePic.MsgEntity> mImageViewList1;
+    private List<Map<String, Object>> data_slideURL;
+//    private int[] imagesURL1={R.mipmap.a1,R.mipmap.a2,R.mipmap.a3,R.mipmap.a4,R.mipmap.a5};//头部轮播视图图片资源地址
     private int currentPosition1=1;
     private int dotPosition1=0;
     private int prePosition1=0;
     private LinearLayout mLinearLayoutDot1,mLinearLayoutDot2;
     private List<ImageView> mImageViewDotList1,mImageViewDotList2;
+    private String htmlURL;
+
+    //球形图
     private TagCloudView tcv;
     private List<String> mStrings;
 
@@ -112,6 +121,14 @@ public class HomeFragment extends android.app.Fragment implements View.OnClickLi
         // Inflate the layout for this fragment
         homeLayout = inflater.inflate(R.layout.fragment_home, container, false);
 
+        initView(homeLayout.getContext());
+
+        initData(homeLayout.getContext());
+
+        return homeLayout;
+    }
+    private void initView(Context context) {
+
 
         //头部轮播视图初始化
         mViewPager1= (ViewPager)homeLayout.findViewById(R.id.vp_home1);
@@ -123,21 +140,153 @@ public class HomeFragment extends android.app.Fragment implements View.OnClickLi
 
 
 
+        //活动推荐初始化 图片+文字
+        recommend_tv = (TextView)homeLayout.findViewById(R.id.recommend_tv);
+        //绑定监听
+        recommend_tv.setOnClickListener(HomeFragment.this);
+        recommend_img = (ImageView)homeLayout.findViewById(R.id.recommend_contentimg);
+        //绑定监听
+        recommend_img.setOnClickListener(HomeFragment.this);
 
 
-        initView(homeLayout.getContext());
+        //友邻企业文字初始化
+        neibor_tv = (TextView)homeLayout.findViewById(R.id.neibor_tv);
+        //绑定监听
+        neibor_tv.setOnClickListener(HomeFragment.this);
 
-        initData(homeLayout.getContext());
 
-        setDot(homeLayout.getContext());
+        //最新资讯初始化
+        news_tv = (TextView)homeLayout.findViewById(R.id.news_tv);
+        //绑定监听点击事件
+        news_tv.setOnClickListener(HomeFragment.this);
 
-        setViewPager();
 
-        autoPlay();
+        //众创空间
+        workspace_tv = (TextView)homeLayout.findViewById(R.id.workspace_tv);
+        //绑定监听
+        workspace_tv.setOnClickListener(this);
 
-        return homeLayout;
+
+        //友邻企业内容listview
+        listview = (ListView)homeLayout.findViewById(R.id.neibor_contentlv);
+
+
     }
-    private void initView(Context context) {
+
+
+
+
+    private void initData(final Context context) {
+        //请求数据(头部轮播视图)
+        startRequestSlidePicDatas(context);
+
+
+
+        //初始化球形图
+        InitBallGraph();
+
+
+
+        //添加HorizontalScrollView点击回调
+        mHorizontalScrollView.setOnItemClickListener(new MyHorizontalScrollView_Home.OnItemClickListener()
+        {
+
+            @Override
+            public void onClick(View view, int position)
+            {
+//                mImg.setImageResource(mDatas.get(position));
+//                view.setBackgroundColor(Color.parseColor("#AA024DA4"));
+                Toast.makeText(context, ""+position, Toast.LENGTH_SHORT).show();
+            }
+        });
+        //设置适配器
+        mHorizontalScrollView.initDatas(mAdapter);
+
+
+
+
+
+
+        //友邻企业开始请求数据
+        startRequestNeiborDatas();
+
+
+
+
+        //活动推荐请求数据
+        startRequestRecommendDatas();
+    }
+
+    private void startRequestSlidePicDatas(final Context context) {
+        HttpAPI api = Http.getInstance().create(HttpAPI.class);
+        //调用接口
+        Call<SlidePic> call = api.getSlidePic();
+
+        call.enqueue(new Callback<SlidePic>() {
+            @Override
+            public void onResponse(Call<SlidePic> call, Response<SlidePic> response) {
+                Log.e("response_slide:",response.body().toString());
+                if(response.body().getCode().equals("200")){
+
+                    String slideURL= Http.API_URL+response.body().getMsg().get(0).getImage();
+                    Log.e("image:",slideURL);
+                    //头部视图轮播数据初始化
+                    mImageViewList1=response.body().getMsg();
+                    //html地址
+
+                    Log.e("mImageViewList1.size",mImageViewList1.size()+"");
+                    mImageViewDotList1=new ArrayList();
+                    ImageView imageView1;
+                    data_slideURL = new ArrayList<Map<String, Object>>();
+
+                    for(int i=0;i<mImageViewList1.size()+2;i++){
+                        if(i==0){   //判断当i=0为该处的ImageView设置最后一张图片作为背景
+                            Map<String, Object> map = new HashMap<>();
+                            map.put("url",Http.API_URL+mImageViewList1.get(mImageViewList1.size()-1).getImage());
+                            Log.e("i=0_url",Http.API_URL+mImageViewList1.get(mImageViewList1.size()-1).getImage());
+                            map.put("view", new ImageView(context));
+                            data_slideURL.add(map);
+                        }else if(i==mImageViewList1.size()+1){   //判断当i=images.length+1时为该处的ImageView设置第一张图片作为背景
+                            Map<String, Object> map = new HashMap<>();
+                            map.put("url",Http.API_URL+mImageViewList1.get(0).getImage());
+                            map.put("view", new ImageView(context));
+                            data_slideURL.add(map);
+                        }else{  //其他情况则为ImageView设置images[i-1]的图片作为背景
+                            Map<String, Object> map = new HashMap<>();
+                            map.put("url",Http.API_URL+mImageViewList1.get(i-1).getImage());
+                            map.put("view", new ImageView(context));
+                            data_slideURL.add(map);
+
+                        }
+                    }
+                    //遍历data_slideURL
+//                    for(int m=0 ; m<data_slideURL.size();m++){
+//                        Log.e("遍历data",data_slideURL.get(m).get("url").toString());
+//                    }
+                    Log.e("data_slideURL.size",data_slideURL.size()+"");
+                    //设置其他
+                    setDot(context,mImageViewList1);
+                    setViewPager(context);
+                    autoPlay();
+                }else{//连接登录不成功
+                    Log.e("轮播图请求不成功",response.body().getCode());
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<SlidePic> call, Throwable t) {
+
+            }
+        });
+
+
+
+    }
+
+
+    //球形图初始化
+    private void InitBallGraph() {
         mStrings = new ArrayList<>();
         mStrings.add("集市");
         mStrings.add("活动");
@@ -162,90 +311,6 @@ public class HomeFragment extends android.app.Fragment implements View.OnClickLi
         tcv.setAdapter(tagsAdapter);
 
 
-        //活动推荐初始化 图片+文字
-        recommend_tv = (TextView)homeLayout.findViewById(R.id.recommend_tv);
-        //绑定监听
-        recommend_tv.setOnClickListener(HomeFragment.this);
-        recommend_img = (ImageView)homeLayout.findViewById(R.id.recommend_contentimg);
-        //绑定监听
-        recommend_img.setOnClickListener(HomeFragment.this);
-
-
-        //友邻企业文字初始化
-        neibor_tv = (TextView)homeLayout.findViewById(R.id.neibor_tv);
-        //绑定监听
-        neibor_tv.setOnClickListener(HomeFragment.this);
-
-
-        //最新资讯初始化
-        news_tv = (TextView)homeLayout.findViewById(R.id.news_tv);
-        //绑定监听点击事件
-        news_tv.setOnClickListener(HomeFragment.this);
-
-        //众创空间
-        workspace_tv = (TextView)homeLayout.findViewById(R.id.workspace_tv);
-        //绑定监听
-        workspace_tv.setOnClickListener(this);
-
-
-    }
-
-
-    private void initData(final Context context) {
-        //头部视图轮播数据初始化
-        mImageViewList1=new ArrayList<>();
-        mImageViewDotList1=new ArrayList();
-        ImageView imageView1;
-        for(int i=0;i<imagesURL1.length+2;i++){
-            if(i==0){   //判断当i=0为该处的ImageView设置最后一张图片作为背景
-                imageView1=new ImageView(context);
-                imageView1.setBackgroundResource(imagesURL1[imagesURL1.length-1]);
-                mImageViewList1.add(imageView1);
-            }else if(i==imagesURL1.length+1){   //判断当i=images.length+1时为该处的ImageView设置第一张图片作为背景
-                imageView1=new ImageView(context);
-                imageView1.setBackgroundResource(imagesURL1[0]);
-                mImageViewList1.add(imageView1);
-            }else{  //其他情况则为ImageView设置images[i-1]的图片作为背景
-                imageView1=new ImageView(context);
-                imageView1.setBackgroundResource(imagesURL1[i-1]);
-                mImageViewList1.add(imageView1);
-            }
-        }
-
-
-
-
-
-
-        //添加HorizontalScrollView点击回调
-        mHorizontalScrollView.setOnItemClickListener(new MyHorizontalScrollView_Home.OnItemClickListener()
-        {
-
-            @Override
-            public void onClick(View view, int position)
-            {
-//                mImg.setImageResource(mDatas.get(position));
-//                view.setBackgroundColor(Color.parseColor("#AA024DA4"));
-                Toast.makeText(context, ""+position, Toast.LENGTH_SHORT).show();
-            }
-        });
-        //设置适配器
-        mHorizontalScrollView.initDatas(mAdapter);
-
-
-
-
-
-        //友邻企业内容listview
-        listview = (ListView)homeLayout.findViewById(R.id.neibor_contentlv);
-        //开始请求数据
-        startRequestNeiborDatas();
-
-
-
-
-        //活动推荐请求数据
-        startRequestRecommendDatas();
     }
 
 
@@ -253,7 +318,7 @@ public class HomeFragment extends android.app.Fragment implements View.OnClickLi
 
 
     //  设置轮播小圆点
-    private void setDot(Context context) {
+    private void setDot(Context context,List<SlidePic.MsgEntity> mImageViewList1) {
         /**
          * 头部轮播图
          */
@@ -261,7 +326,7 @@ public class HomeFragment extends android.app.Fragment implements View.OnClickLi
         LinearLayout.LayoutParams params1=new LinearLayout.LayoutParams(15,15);
         params1.rightMargin=20;
         //  for循环创建images.length个ImageView（小圆点）
-        for(int i=0;i<imagesURL1.length;i++){
+        for(int i=0;i<mImageViewList1.size();i++){
             ImageView  imageViewDot1=new ImageView(context);
             imageViewDot1.setLayoutParams(params1);
             //  设置小圆点的背景为暗红图片
@@ -271,12 +336,6 @@ public class HomeFragment extends android.app.Fragment implements View.OnClickLi
         }
         //设置第一个小圆点图片背景为红色
         mImageViewDotList1.get(dotPosition1).setBackgroundResource(R.mipmap.red_dot);
-
-
-
-
-
-
     }
 
 
@@ -341,11 +400,11 @@ public class HomeFragment extends android.app.Fragment implements View.OnClickLi
     }
 
 
-    private void setViewPager() {
+    private void setViewPager(final Context context) {
         /**
          * 头部轮播视图
          */
-        ViewPagerAdater_Home01 adapter01=new ViewPagerAdater_Home01(mImageViewList1);
+        ViewPagerAdater_Home01 adapter01=new ViewPagerAdater_Home01(data_slideURL,context);
 
         mViewPager1.setAdapter(adapter01);
 
@@ -360,9 +419,9 @@ public class HomeFragment extends android.app.Fragment implements View.OnClickLi
             @Override
             public void onPageSelected(int position) {
                 if(position==0){    //判断当切换到第0个页面时把currentPosition设置为images.length,即倒数第二个位置，小圆点位置为length-1
-                    currentPosition1=imagesURL1.length;
-                    dotPosition1=imagesURL1.length-1;
-                }else if(position==imagesURL1.length+1){    //当切换到最后一个页面时currentPosition设置为第一个位置，小圆点位置为0
+                    currentPosition1=mImageViewList1.size();
+                    dotPosition1=mImageViewList1.size()-1;
+                }else if(position==mImageViewList1.size()+1){    //当切换到最后一个页面时currentPosition设置为第一个位置，小圆点位置为0
                     currentPosition1=1;
                     dotPosition1=0;
                 }else{
@@ -383,8 +442,6 @@ public class HomeFragment extends android.app.Fragment implements View.OnClickLi
                 }
             }
         });
-
-
         //viewpager点击事件
         mViewPager1.setOnTouchListener(new View.OnTouchListener() {
             int flag = 0;
@@ -400,20 +457,15 @@ public class HomeFragment extends android.app.Fragment implements View.OnClickLi
                     case  MotionEvent.ACTION_UP :
                         if (flag == 0) {
                             int item = mViewPager1.getCurrentItem();
-                            if (item == 0) {
-//                                Intent intent = new Intent(sa, NoNetWork.class);
-//                                sa.startActivity(intent);
-                            } else if (item == 1) {
-//                                Intent intent = new Intent(sa, NoNetWork.class);
-//                                sa.startActivity(intent);
-                            } else if (item == 2) {
-//                                Intent intent = new Intent(sa, NoNetWork.class);
-//                                sa.startActivity(intent);
-                            }else if (item == 3) {
-//                                Intent intent = new Intent(sa, NoNetWork.class);
-//                                sa.startActivity(intent);
+                            if (item == 6 || item == 1) {
+                              htmlURL = "http://"+mImageViewList1.get(0).getUrl();
+                            } else {
+                              htmlURL =  "http://"+mImageViewList1.get(item-1).getUrl();
                             }
-                            Toast.makeText(homeLayout.getContext(), ""+item, Toast.LENGTH_SHORT).show();
+                            Intent i = new Intent(context, HtmlActivity.class);
+                            i.putExtra("htmlURL",htmlURL);
+                            startActivity(i);
+//                            Toast.makeText(context, "", Toast.LENGTH_SHORT).show();
                         }
                         break ;
 

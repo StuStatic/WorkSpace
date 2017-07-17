@@ -24,6 +24,7 @@ import com.ylg.workspace.workspace.activity.service.OrderVisitorActivity;
 import com.ylg.workspace.workspace.activity.service.QuestionActivity;
 import com.ylg.workspace.workspace.activity.service.RequirementActivity;
 import com.ylg.workspace.workspace.activity.service.ServiceRegisterActivity;
+import com.ylg.workspace.workspace.adapter.ViewPagerAdapter_Service01;
 import com.ylg.workspace.workspace.adapter.ViewPagerAdater_Home01;
 
 import java.util.ArrayList;
@@ -156,7 +157,8 @@ public class ServiceFragment extends android.app.Fragment implements View.OnClic
     }
 
     private void setViewPager() {
-        ViewPagerAdater_Home01 adapter = new ViewPagerAdater_Home01(mImageViewList);
+//        ViewPagerAdater_Service01 adapter = new ViewPagerAdater_Service01(mImageViewList);
+        ViewPagerAdapter_Service01 adapter = new ViewPagerAdapter_Service01(mImageViewList);
 
         mViewPager.setAdapter(adapter);
 

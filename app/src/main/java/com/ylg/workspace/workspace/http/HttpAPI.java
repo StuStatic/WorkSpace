@@ -3,6 +3,7 @@ package com.ylg.workspace.workspace.http;
 import com.ylg.workspace.workspace.activity.service.bean.Service;
 import com.ylg.workspace.workspace.bean.ExerciseRecommend;
 import com.ylg.workspace.workspace.bean.NeiborCompany;
+import com.ylg.workspace.workspace.bean.SlidePic;
 import com.ylg.workspace.workspace.http.bean.FindByActivityId;
 import com.ylg.workspace.workspace.http.bean.FindByApplyTel;
 import com.ylg.workspace.workspace.http.bean.FindByUserId;
@@ -122,7 +123,9 @@ public interface HttpAPI {
     @POST("ActivityApply/findByApplyTel")
     Call<FindByApplyTel> findByApplyTel(@Query("applyTel") String applyTel);
 
-    //
+    //HomeFragment轮播图片请求
+    @POST("Slider/findAll")
+    Call<SlidePic> getSlidePic();
 
 
 
