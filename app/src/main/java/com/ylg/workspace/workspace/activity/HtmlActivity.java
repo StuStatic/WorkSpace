@@ -27,6 +27,7 @@ public class HtmlActivity extends App implements View.OnClickListener {
     private ShareAction mShareAction;
     private WebView wb;
     private ImageView iv;
+    private String url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +45,8 @@ public class HtmlActivity extends App implements View.OnClickListener {
         iv_back.setOnClickListener(this);
         tv = (TextView) findViewById(R.id.tv_title);
         tv.setText("访客预约");
-        tv.setOnClickListener(this);
-        String url = "http://www.yiliangang.net:8012/witbox/box.html";
+        iv.setOnClickListener(this);
+        url = getIntent().getStringExtra("htmlURL");
 
         wb.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);//设置js可以直接打开窗口，如window.open()，默认为false
         wb.getSettings().setJavaScriptEnabled(true);//是否允许执行js，默认为false。设置true时，会提醒可能造成XSS漏洞
@@ -63,7 +64,7 @@ public class HtmlActivity extends App implements View.OnClickListener {
                 return true;
             }
         });
-   }
+    }
 
     @Override
     public void onClick(View v) {
@@ -71,8 +72,8 @@ public class HtmlActivity extends App implements View.OnClickListener {
             case R.id.iv_back:
                 finish();
                 break;
-            case R.id.tv_title:
-//                showCustomToast("aaa");
+            case R.id.iv_intent:
+                showCustomToast("aaa");
 //                ShareBoardConfig config = new ShareBoardConfig();
 //                config.setMenuItemBackgroundShape(ShareBoardConfig.BG_SHAPE_NONE);
 //                mShareAction.open(config);
@@ -126,6 +127,7 @@ public class HtmlActivity extends App implements View.OnClickListener {
             Toast.makeText(HtmlActivity.this, platform + " 分享取消", Toast.LENGTH_SHORT).show();
         }
     };
+
     // 设置回退
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if ((keyCode == KeyEvent.KEYCODE_BACK) && wb.canGoBack()) {
