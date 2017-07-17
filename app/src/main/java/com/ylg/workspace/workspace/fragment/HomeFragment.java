@@ -50,6 +50,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * writen by stu on 2017/7/17
+ */
+
 public class HomeFragment extends android.app.Fragment implements View.OnClickListener{
 
     /**
@@ -61,7 +65,6 @@ public class HomeFragment extends android.app.Fragment implements View.OnClickLi
     private ViewPager mViewPager1;
     private List<SlidePic.MsgEntity> mImageViewList1;
     private List<Map<String, Object>> data_slideURL;
-//    private int[] imagesURL1={R.mipmap.a1,R.mipmap.a2,R.mipmap.a3,R.mipmap.a4,R.mipmap.a5};//头部轮播视图图片资源地址
     private int currentPosition1=1;
     private int dotPosition1=0;
     private int prePosition1=0;
@@ -81,9 +84,6 @@ public class HomeFragment extends android.app.Fragment implements View.OnClickLi
 
     //友邻企业列表
     private ListView listview;
-//    private String[] title = {"北京物联港科技有限公司","上海宝马集团","中国石油有限公司"};
-//    private String[] summary = {"我只能说技术部功能很强大，什么都能做，谁也不好使","宝马集团听说过没有？地球人都知道我们也就不再多说了","中国石油，给你更坚实的后盾"};
-//    private ArrayList<Map<String,Object>> datas_neibor;
     private List<NeiborCompany.MsgEntity> datas_neibor;
     private NeiborAdapter_Home adapter_neibor;
     private TextView neibor_tv;
@@ -127,8 +127,10 @@ public class HomeFragment extends android.app.Fragment implements View.OnClickLi
 
         return homeLayout;
     }
-    private void initView(Context context) {
 
+    private void initView(Context context) {
+        //初始化球形图
+        InitBallGraph();
 
         //头部轮播视图初始化
         mViewPager1= (ViewPager)homeLayout.findViewById(R.id.vp_home1);
@@ -138,8 +140,6 @@ public class HomeFragment extends android.app.Fragment implements View.OnClickLi
         mHorizontalScrollView = (MyHorizontalScrollView_Home) homeLayout.findViewById(R.id.id_hsv);
         mAdapter = new HorizontalScrollViewAdapter_Home(homeLayout.getContext(), mDatas);
 
-
-
         //活动推荐初始化 图片+文字
         recommend_tv = (TextView)homeLayout.findViewById(R.id.recommend_tv);
         //绑定监听
@@ -148,24 +148,20 @@ public class HomeFragment extends android.app.Fragment implements View.OnClickLi
         //绑定监听
         recommend_img.setOnClickListener(HomeFragment.this);
 
-
         //友邻企业文字初始化
         neibor_tv = (TextView)homeLayout.findViewById(R.id.neibor_tv);
         //绑定监听
         neibor_tv.setOnClickListener(HomeFragment.this);
-
 
         //最新资讯初始化
         news_tv = (TextView)homeLayout.findViewById(R.id.news_tv);
         //绑定监听点击事件
         news_tv.setOnClickListener(HomeFragment.this);
 
-
         //众创空间
         workspace_tv = (TextView)homeLayout.findViewById(R.id.workspace_tv);
         //绑定监听
         workspace_tv.setOnClickListener(this);
-
 
         //友邻企业内容listview
         listview = (ListView)homeLayout.findViewById(R.id.neibor_contentlv);
@@ -180,13 +176,19 @@ public class HomeFragment extends android.app.Fragment implements View.OnClickLi
         //请求数据(头部轮播视图)
         startRequestSlidePicDatas(context);
 
+        //请求数据（众创空间）
+        startRequestWorkSpaceDatas(context);
+
+        //开始请求数据(友邻企业)
+        startRequestNeiborDatas();
+
+        //请求数据(活动推荐)
+        startRequestRecommendDatas();
+    }
 
 
-        //初始化球形图
-        InitBallGraph();
-
-
-
+    //数据请求（众创空间）
+    private void startRequestWorkSpaceDatas(final Context context) {
         //添加HorizontalScrollView点击回调
         mHorizontalScrollView.setOnItemClickListener(new MyHorizontalScrollView_Home.OnItemClickListener()
         {
@@ -201,22 +203,8 @@ public class HomeFragment extends android.app.Fragment implements View.OnClickLi
         });
         //设置适配器
         mHorizontalScrollView.initDatas(mAdapter);
-
-
-
-
-
-
-        //友邻企业开始请求数据
-        startRequestNeiborDatas();
-
-
-
-
-        //活动推荐请求数据
-        startRequestRecommendDatas();
     }
-
+    //数据请求（顶部轮播图）
     private void startRequestSlidePicDatas(final Context context) {
         HttpAPI api = Http.getInstance().create(HttpAPI.class);
         //调用接口
@@ -279,66 +267,7 @@ public class HomeFragment extends android.app.Fragment implements View.OnClickLi
 
             }
         });
-
-
-
     }
-
-
-    //球形图初始化
-    private void InitBallGraph() {
-        mStrings = new ArrayList<>();
-        mStrings.add("集市");
-        mStrings.add("活动");
-        mStrings.add("资讯");
-        mStrings.add("友邻");
-        mStrings.add("集市");
-        mStrings.add("集市");
-        mStrings.add("集市");
-        mStrings.add("集市");
-        mStrings.add("订工位");
-        mStrings.add("开门");
-        mStrings.add("发集市");
-        mStrings.add("访客预约");
-        mStrings.add("预定场地");
-        mStrings.add("精选");
-        mStrings.add("订会议室");
-        mStrings.add("一键报修");
-        mStrings.add("企业介绍");
-        mStrings.add("意见反馈");
-        tcv = (TagCloudView) homeLayout.findViewById(R.id.tcv);
-        TagAdapter tagsAdapter = new TagAdapter(homeLayout.getContext(),mStrings);
-        tcv.setAdapter(tagsAdapter);
-
-
-    }
-
-
-
-
-
-    //  设置轮播小圆点
-    private void setDot(Context context,List<SlidePic.MsgEntity> mImageViewList1) {
-        /**
-         * 头部轮播图
-         */
-        //  设置LinearLayout的子控件的宽高，这里单位是像素。
-        LinearLayout.LayoutParams params1=new LinearLayout.LayoutParams(15,15);
-        params1.rightMargin=20;
-        //  for循环创建images.length个ImageView（小圆点）
-        for(int i=0;i<mImageViewList1.size();i++){
-            ImageView  imageViewDot1=new ImageView(context);
-            imageViewDot1.setLayoutParams(params1);
-            //  设置小圆点的背景为暗红图片
-            imageViewDot1.setBackgroundResource(R.mipmap.red_dot_night);
-            mLinearLayoutDot1.addView(imageViewDot1);
-            mImageViewDotList1.add(imageViewDot1);
-        }
-        //设置第一个小圆点图片背景为红色
-        mImageViewDotList1.get(dotPosition1).setBackgroundResource(R.mipmap.red_dot);
-    }
-
-
     //活动推荐数据请求
     private void startRequestRecommendDatas() {
         HttpAPI api = Http.getInstance().create(HttpAPI.class);
@@ -368,8 +297,6 @@ public class HomeFragment extends android.app.Fragment implements View.OnClickLi
         });
 
     }
-
-
     //友邻企业的数据请求
     private void startRequestNeiborDatas() {
         HttpAPI api = Http.getInstance().create(HttpAPI.class);
@@ -400,6 +327,53 @@ public class HomeFragment extends android.app.Fragment implements View.OnClickLi
     }
 
 
+
+    //球形图初始化
+    private void InitBallGraph() {
+        mStrings = new ArrayList<>();
+        mStrings.add("集市");
+        mStrings.add("活动");
+        mStrings.add("资讯");
+        mStrings.add("友邻");
+        mStrings.add("集市");
+        mStrings.add("集市");
+        mStrings.add("集市");
+        mStrings.add("集市");
+        mStrings.add("订工位");
+        mStrings.add("开门");
+        mStrings.add("发集市");
+        mStrings.add("访客预约");
+        mStrings.add("预定场地");
+        mStrings.add("精选");
+        mStrings.add("订会议室");
+        mStrings.add("一键报修");
+        mStrings.add("企业介绍");
+        mStrings.add("意见反馈");
+        tcv = (TagCloudView) homeLayout.findViewById(R.id.tcv);
+        TagAdapter tagsAdapter = new TagAdapter(homeLayout.getContext(),mStrings);
+        tcv.setAdapter(tagsAdapter);
+    }
+    //  设置轮播小圆点
+    private void setDot(Context context,List<SlidePic.MsgEntity> mImageViewList1) {
+        /**
+         * 头部轮播图
+         */
+        //  设置LinearLayout的子控件的宽高，这里单位是像素。
+        LinearLayout.LayoutParams params1=new LinearLayout.LayoutParams(15,15);
+        params1.rightMargin=20;
+        //  for循环创建images.length个ImageView（小圆点）
+        for(int i=0;i<mImageViewList1.size();i++){
+            ImageView  imageViewDot1=new ImageView(context);
+            imageViewDot1.setLayoutParams(params1);
+            //  设置小圆点的背景为暗红图片
+            imageViewDot1.setBackgroundResource(R.mipmap.red_dot_night);
+            mLinearLayoutDot1.addView(imageViewDot1);
+            mImageViewDotList1.add(imageViewDot1);
+        }
+        //设置第一个小圆点图片背景为红色
+        mImageViewDotList1.get(dotPosition1).setBackgroundResource(R.mipmap.red_dot);
+    }
+    //设置轮播图viewpager
     private void setViewPager(final Context context) {
         /**
          * 头部轮播视图

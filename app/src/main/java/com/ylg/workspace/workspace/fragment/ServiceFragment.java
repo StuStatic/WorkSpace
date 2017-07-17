@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -26,22 +27,33 @@ import com.ylg.workspace.workspace.activity.service.RequirementActivity;
 import com.ylg.workspace.workspace.activity.service.ServiceRegisterActivity;
 import com.ylg.workspace.workspace.adapter.ViewPagerAdapter_Service01;
 import com.ylg.workspace.workspace.adapter.ViewPagerAdater_Home01;
+import com.ylg.workspace.workspace.bean.SlidePic;
+import com.ylg.workspace.workspace.http.Http;
+import com.ylg.workspace.workspace.http.HttpAPI;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class ServiceFragment extends android.app.Fragment implements View.OnClickListener {
 
     private View serviceLayout;
     private ViewPager mViewPager;
-    private List<ImageView> mImageViewList;
-    private int[] images = {R.mipmap.a1, R.mipmap.a2, R.mipmap.a3, R.mipmap.a4, R.mipmap.a5};
+    private List<SlidePic.MsgEntity> mImageViewList1;
+    private List<Map<String, Object>> data_slideURL;
+    private String htmlURL;
+//    private int[] images = {R.mipmap.a1, R.mipmap.a2, R.mipmap.a3, R.mipmap.a4, R.mipmap.a5};
     private int currentPosition = 1;
     private int dotPosition = 0;
     private int prePosition = 0;
     private LinearLayout mLinearLayoutDot;
-    private List<ImageView> mImageViewDotList;
+    private List<ImageView> mImageViewDotList1;
     private FrameLayout frameLayout;
     Handler handler = new Handler() {
         @Override
@@ -80,12 +92,7 @@ public class ServiceFragment extends android.app.Fragment implements View.OnClic
         initView();
 
         initData(serviceLayout.getContext());
-        //设置轮播图小圆点
-        setDot(serviceLayout.getContext());
 
-        setViewPager();
-        //轮播图自动播放
-        autoPlay();
 
 
         return serviceLayout;
@@ -116,49 +123,93 @@ public class ServiceFragment extends android.app.Fragment implements View.OnClic
         ll11.setOnClickListener(this);
 
     }
+    //轮播图
+    private void initData(final Context context) {
+        HttpAPI api = Http.getInstance().create(HttpAPI.class);
+        //调用接口
+        Call<SlidePic> call = api.getSlidePic();
 
-    private void initData(Context context) {
-        mImageViewList = new ArrayList<>();
-        mImageViewDotList = new ArrayList();
-        ImageView imageView;
-        for (int i = 0; i < images.length + 2; i++) {
-            if (i == 0) {   //判断当i=0为该处的ImageView设置最后一张图片作为背景
-                imageView = new ImageView(context);
-                imageView.setBackgroundResource(images[images.length - 1]);
-                mImageViewList.add(imageView);
-            } else if (i == images.length + 1) {   //判断当i=images.length+1时为该处的ImageView设置第一张图片作为背景
-                imageView = new ImageView(context);
-                imageView.setBackgroundResource(images[0]);
-                mImageViewList.add(imageView);
-            } else {  //其他情况则为ImageView设置images[i-1]的图片作为背景
-                imageView = new ImageView(context);
-                imageView.setBackgroundResource(images[i - 1]);
-                mImageViewList.add(imageView);
+        call.enqueue(new Callback<SlidePic>() {
+            @Override
+            public void onResponse(Call<SlidePic> call, Response<SlidePic> response) {
+                Log.e("response_slide:",response.body().toString());
+                if(response.body().getCode().equals("200")){
+
+                    String slideURL= Http.API_URL+response.body().getMsg().get(0).getImage();
+                    Log.e("image:",slideURL);
+                    //头部视图轮播数据初始化
+                    mImageViewList1=response.body().getMsg();
+                    //html地址
+
+                    Log.e("mImageViewList1.size",mImageViewList1.size()+"");
+                    mImageViewDotList1=new ArrayList();
+
+                    ImageView imageView1;
+                    data_slideURL = new ArrayList<Map<String, Object>>();
+
+                    for(int i=0;i<mImageViewList1.size()+2;i++){
+                        if(i==0){   //判断当i=0为该处的ImageView设置最后一张图片作为背景
+                            Map<String, Object> map = new HashMap<>();
+                            map.put("url",Http.API_URL+mImageViewList1.get(mImageViewList1.size()-1).getImage());
+                            Log.e("i=0_url",Http.API_URL+mImageViewList1.get(mImageViewList1.size()-1).getImage());
+                            map.put("view", new ImageView(context));
+                            data_slideURL.add(map);
+                        }else if(i==mImageViewList1.size()+1){   //判断当i=images.length+1时为该处的ImageView设置第一张图片作为背景
+                            Map<String, Object> map = new HashMap<>();
+                            map.put("url",Http.API_URL+mImageViewList1.get(0).getImage());
+                            map.put("view", new ImageView(context));
+                            data_slideURL.add(map);
+                        }else{  //其他情况则为ImageView设置images[i-1]的图片作为背景
+                            Map<String, Object> map = new HashMap<>();
+                            map.put("url",Http.API_URL+mImageViewList1.get(i-1).getImage());
+                            map.put("view", new ImageView(context));
+                            data_slideURL.add(map);
+
+                        }
+                    }
+                    //遍历data_slideURL
+//                    for(int m=0 ; m<data_slideURL.size();m++){
+//                        Log.e("遍历data",data_slideURL.get(m).get("url").toString());
+//                    }
+                    Log.e("data_slideURL.size",data_slideURL.size()+"");
+                    //设置其他
+                    setDot(context,mImageViewList1);
+                    setViewPager(context);
+                    autoPlay();
+                }else{//连接登录不成功
+                    Log.e("轮播图请求不成功",response.body().getCode());
+                }
+
             }
-        }
+
+            @Override
+            public void onFailure(Call<SlidePic> call, Throwable t) {
+
+            }
+        });
     }
 
     //设置轮播图小圆点
-    private void setDot(Context context) {
+    private void setDot(Context context,List<SlidePic.MsgEntity> mImageViewList1) {
         //  设置LinearLayout的子控件的宽高，这里单位是像素。
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(15, 15);
         params.rightMargin = 20;
         //  for循环创建images.length个ImageView（小圆点）
-        for (int i = 0; i < images.length; i++) {
+        for (int i = 0; i < mImageViewList1.size(); i++) {
             ImageView imageViewDot = new ImageView(context);
             imageViewDot.setLayoutParams(params);
             //  设置小圆点的背景为暗红图片
             imageViewDot.setBackgroundResource(R.mipmap.red_dot_night);
             mLinearLayoutDot.addView(imageViewDot);
-            mImageViewDotList.add(imageViewDot);
+            mImageViewDotList1.add(imageViewDot);
         }
         //设置第一个小圆点图片背景为红色
-        mImageViewDotList.get(dotPosition).setBackgroundResource(R.mipmap.red_dot);
+        mImageViewDotList1.get(dotPosition).setBackgroundResource(R.mipmap.red_dot);
     }
 
-    private void setViewPager() {
+    private void setViewPager(final Context context) {
 //        ViewPagerAdater_Service01 adapter = new ViewPagerAdater_Service01(mImageViewList);
-        ViewPagerAdapter_Service01 adapter = new ViewPagerAdapter_Service01(mImageViewList);
+        ViewPagerAdapter_Service01 adapter = new ViewPagerAdapter_Service01(context,data_slideURL);
 
         mViewPager.setAdapter(adapter);
 
@@ -171,11 +222,11 @@ public class ServiceFragment extends android.app.Fragment implements View.OnClic
             }
 
             @Override
-            public void onPageSelected(int position) {
+            public void onPageSelected(int position ) {
                 if (position == 0) {    //判断当切换到第0个页面时把currentPosition设置为images.length,即倒数第二个位置，小圆点位置为length-1
-                    currentPosition = images.length;
-                    dotPosition = images.length - 1;
-                } else if (position == images.length + 1) {    //当切换到最后一个页面时currentPosition设置为第一个位置，小圆点位置为0
+                    currentPosition = mImageViewList1.size();
+                    dotPosition = mImageViewList1.size() - 1;
+                } else if (position == mImageViewList1.size() + 1) {    //当切换到最后一个页面时currentPosition设置为第一个位置，小圆点位置为0
                     currentPosition = 1;
                     dotPosition = 0;
                 } else {
@@ -183,8 +234,8 @@ public class ServiceFragment extends android.app.Fragment implements View.OnClic
                     dotPosition = position - 1;
                 }
                 //  把之前的小圆点设置背景为暗红，当前小圆点设置为红色
-                mImageViewDotList.get(prePosition).setBackgroundResource(R.mipmap.red_dot_night);
-                mImageViewDotList.get(dotPosition).setBackgroundResource(R.mipmap.red_dot);
+                mImageViewDotList1.get(prePosition).setBackgroundResource(R.mipmap.red_dot_night);
+                mImageViewDotList1.get(dotPosition).setBackgroundResource(R.mipmap.red_dot);
                 prePosition = dotPosition;
             }
 
@@ -215,20 +266,15 @@ public class ServiceFragment extends android.app.Fragment implements View.OnClic
                     case MotionEvent.ACTION_UP:
                         if (flag == 0) {
                             int item = mViewPager.getCurrentItem();
-                            if (item == 0) {
-//                                Intent intent = new Intent(sa, NoNetWork.class);
-//                                sa.startActivity(intent);
-                            } else if (item == 1) {
-//                                Intent intent = new Intent(sa, NoNetWork.class);
-//                                sa.startActivity(intent);
-                            } else if (item == 2) {
-//                                Intent intent = new Intent(sa, NoNetWork.class);
-//                                sa.startActivity(intent);
-                            } else if (item == 3) {
-//                                Intent intent = new Intent(sa, NoNetWork.class);
-//                                sa.startActivity(intent);
+                            if (item == 6 || item == 1) {
+                                htmlURL = "http://"+mImageViewList1.get(0).getUrl();
+                            } else {
+                                htmlURL =  "http://"+mImageViewList1.get(item-1).getUrl();
                             }
-                            Toast.makeText(serviceLayout.getContext(), "" + item, Toast.LENGTH_SHORT).show();
+                            Intent i = new Intent(context, HtmlActivity.class);
+                            i.putExtra("htmlURL",htmlURL);
+                            startActivity(i);
+//                            Toast.makeText(context, "", Toast.LENGTH_SHORT).show();
                         }
                         break;
 

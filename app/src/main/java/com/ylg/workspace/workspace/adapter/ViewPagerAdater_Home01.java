@@ -40,17 +40,13 @@ public class ViewPagerAdater_Home01 extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-//        ImageView imageView=list.get(position);
-//        container.addView(imageView);
-//        Glide.with(container.getContext()).load(list.get(position)).into();
-//        return list.get(position);
         ImageView imageView = (ImageView) data.get(position).get("view");
         Log.e("data.get(i).get(url)",data.get(position).get("url").toString());
         imageView.setScaleType(ImageView.ScaleType.FIT_XY);
         Glide.with(context)
                 .load(data.get(position).get("url").toString())
 //                .placeholder(R.mipmap.ic_launcher)
-                .error(R.mipmap.ic_launcher)
+                .error(R.mipmap.a4)
                 .diskCacheStrategy(DiskCacheStrategy.RESULT)
                 .into(imageView);
         container.removeView(imageView);
