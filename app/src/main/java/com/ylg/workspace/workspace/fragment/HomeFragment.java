@@ -89,7 +89,10 @@ public class HomeFragment extends android.app.Fragment implements View.OnClickLi
     private TextView neibor_tv;
 
     //活动推荐
+    //索引
     private TextView recommend_tv;
+    //n内容文字
+    private TextView recommend_contenttv;
     private ImageView recommend_img;
     private TextView news_tv;
 
@@ -142,6 +145,7 @@ public class HomeFragment extends android.app.Fragment implements View.OnClickLi
 
         //活动推荐初始化 图片+文字
         recommend_tv = (TextView)homeLayout.findViewById(R.id.recommend_tv);
+        recommend_contenttv = (TextView)homeLayout.findViewById(R.id.recommend_contenttv);
         //绑定监听
         recommend_tv.setOnClickListener(HomeFragment.this);
         recommend_img = (ImageView)homeLayout.findViewById(R.id.recommend_contentimg);
@@ -281,7 +285,7 @@ public class HomeFragment extends android.app.Fragment implements View.OnClickLi
 
                     //设置文字
                     String text = response.body().getMsg().get(0).getActivityDescribe();//此处只展示一个数据
-                    recommend_tv.setText(text);
+                    recommend_contenttv.setText(text);
                     //设置图片(先将地址按都好分开)
                     String[] s=response.body().getMsg().get(3).getPictureSite().split(",");
                     String img_URL = Http.API_URL+s[0];

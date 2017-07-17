@@ -69,6 +69,7 @@
         <activity android:name=".activity.ballgraph.MeetRoomOrderActivity" />
         <activity android:name=".activity.ballgraph.PlaceOrderActivity" />
         <activity android:name=".activity.HtmlActivity"/>
+        <activity android:name=".activity.ballgraph.NeiborActivity"/>
 
         //weibo
         <activity
