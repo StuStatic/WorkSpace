@@ -2,11 +2,9 @@ package com.ylg.workspace.workspace.fragment;
 
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
@@ -14,7 +12,6 @@ import android.widget.TextView;
 
 import com.ylg.workspace.workspace.R;
 import com.ylg.workspace.workspace.adapter.ListViewAdapter_SpaceList;
-import com.ylg.workspace.workspace.util.SetHomeListViewItemHeight;
 import com.ylg.workspace.workspace.util.SetSpaceListListViewItemHeight;
 import com.ylg.workspace.workspace.view.ListViewForScrollView_SpaceList;
 
@@ -25,7 +22,7 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  * writen by stu on 2017/7/16
  */
-public class TabFragment_SpaceList extends Fragment {
+public class TabFragment_SpaceListActivity extends Fragment {
     /**
      * @author stu
      */
@@ -41,12 +38,12 @@ public class TabFragment_SpaceList extends Fragment {
     private List<String> datas;
 
 
-    public TabFragment_SpaceList() {
+    public TabFragment_SpaceListActivity() {
         // Required empty public constructor
     }
 
-    public static TabFragment_SpaceList getInstance(int position) {
-        TabFragment_SpaceList tabPageFragment = new TabFragment_SpaceList();
+    public static TabFragment_SpaceListActivity getInstance(int position) {
+        TabFragment_SpaceListActivity tabPageFragment = new TabFragment_SpaceListActivity();
         Bundle bundle = new Bundle();
         bundle.putInt(PAGE_POSITION, position);
         tabPageFragment.setArguments(bundle);
@@ -88,22 +85,6 @@ public class TabFragment_SpaceList extends Fragment {
             //绑定adapter
             listview.setAdapter(adapter);
            SetSpaceListListViewItemHeight.setHeight(listview);
-
-//            list.setOnTouchListener(new View.OnTouchListener() {
-//                @Override
-//                public boolean onTouch(View view, MotionEvent event) {
-//                    switch (event.getAction()) {
-//                        case MotionEvent.ACTION_MOVE:
-//                            return true;
-//                        default:
-//                            break;
-//                    }
-//                    return true;
-//                }
-//            });
-            //setHeight
-//            SetSpaceListListViewItemHeight.setHeight(listview);
-
 
         }
 

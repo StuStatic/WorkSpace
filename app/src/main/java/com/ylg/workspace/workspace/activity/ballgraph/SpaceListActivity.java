@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,6 +14,7 @@ import com.ylg.workspace.workspace.R;
 import com.ylg.workspace.workspace.adapter.HSVAdapter_SpaceListActivity;
 import com.ylg.workspace.workspace.adapter.TabAdapter_SpaceListActivity;
 import com.ylg.workspace.workspace.view.MyHorizontalScrollView_SpaceList;
+import com.ylg.workspace.workspace.view.tag.ViewPagerForScrollView_SpaceList;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -40,7 +42,7 @@ public class SpaceListActivity extends AppCompatActivity implements View.OnClick
 
     //tablayout
     private TabLayout tb_layout;
-    private ViewPager viewPager;
+    private ViewPagerForScrollView_SpaceList viewPager;
     private TabAdapter_SpaceListActivity tabAdapter;
     private String[] titles = {"全部","上海","北京","南京","成都","天津","深圳","广州","杭州"};
     @Override
@@ -93,22 +95,28 @@ public class SpaceListActivity extends AppCompatActivity implements View.OnClick
     private void InitTab() {
         tabAdapter = new TabAdapter_SpaceListActivity(getSupportFragmentManager(), titles);
         tb_layout = (TabLayout) findViewById(R.id.spacelist_tablayout);
-        viewPager = (ViewPager) findViewById(R.id.spacelist_viewpager);
+        viewPager = (ViewPagerForScrollView_SpaceList) findViewById(R.id.spacelist_viewpager);
         viewPager.setAdapter(tabAdapter);
-        //绑定监听
-        tb_layout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
-            }
 
+        final int currentSelectedPosition = viewPager.getCurrentItem();
+        //注：scrollview+viewpager+listview解决冲突办法：1.重写listview 2.viewpager高度写死（400dp）3.重写viewpager4.viewpager添加setOnPagerChangeListener
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
             }
 
             @Override
-            public void onTabReselected(TabLayout.Tab tab) {
+            public void onPageSelected(int position) {
+                View view = viewPager.getChildAt(currentSelectedPosition);
+                int height = view.getMeasuredHeight();
+                LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) viewPager.getLayoutParams();
+                layoutParams.height = height;
+                viewPager.setLayoutParams(layoutParams);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
 
             }
         });

@@ -2,17 +2,85 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/colorWhite">
 
     <ImageView
         android:id="@+id/spacelist_itemimg"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:src="@mipmap/a4" />
     <TextView
         android:id="@+id/spacelist_itemtv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="北京方圆大厦+众创空间"
+        android:textSize="15dp"
         android:textColor="@color/colorBlack"
-        android:layout_centerInParent="true"/>
+        android:layout_below="@id/spacelist_itemimg"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"/>
+    <TextView
+        android:id="@+id/spacelist_itemlocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="北京市海淀区四季青路7号楼1单元"
+        android:textSize="12dp"
+        android:textColor="@color/colorGray"
+        android:layout_below="@id/spacelist_itemtv"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"/>
+
+    <LinearLayout
+        android:id="@+id/spacelist_star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/spacelist_itemimg"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="15dp">
+        <ImageView
+            android:id="@+id/spacelist_star01"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:src="@drawable/star_empty" />
+        <ImageView
+            android:id="@+id/spacelist_star02"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:src="@drawable/star_empty"
+            android:layout_marginLeft="2dp"/>
+        <ImageView
+            android:id="@+id/spacelist_star03"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:src="@drawable/star_empty"
+            android:layout_marginLeft="2dp"/>
+        <ImageView
+            android:id="@+id/spacelist_star04"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:src="@drawable/star_empty"
+            android:layout_marginLeft="2dp"/>
+        <ImageView
+            android:id="@+id/spacelist_star05"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:src="@drawable/star_empty"
+            android:layout_marginLeft="2dp"/>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/spacelist_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="313个工位可定"
+        android:textColor="@color/colorGray"
+        android:textSize="12dp"
+        android:layout_below="@id/spacelist_star"
+        android:layout_marginRight="15dp"
+        android:layout_alignTop="@id/spacelist_itemlocation"
+        android:layout_marginBottom="10dp"/>
 </RelativeLayout>
