@@ -75,6 +75,7 @@ public class HomeFragment extends android.app.Fragment implements View.OnClickLi
     //球形图
     private TagCloudView tcv;
     private List<String> mStrings;
+    private List<Integer> mImages;
 
     //HorizontalScrollView
     private MyHorizontalScrollView_Home mHorizontalScrollView;
@@ -353,8 +354,31 @@ public class HomeFragment extends android.app.Fragment implements View.OnClickLi
         mStrings.add("一键报修");
         mStrings.add("企业介绍");
         mStrings.add("意见反馈");
+
+
+        //图片
+        mImages = new ArrayList<>();
+        mImages.add(R.drawable.market);
+        mImages.add(R.drawable.market);
+        mImages.add(R.drawable.market);
+        mImages.add(R.drawable.market);
+        mImages.add(R.drawable.market);
+        mImages.add(R.drawable.market);
+        mImages.add(R.drawable.market);
+        mImages.add(R.drawable.market);
+        mImages.add(R.drawable.market);
+        mImages.add(R.drawable.market);
+        mImages.add(R.drawable.market);
+        mImages.add(R.drawable.market);
+        mImages.add(R.drawable.market);
+        mImages.add(R.drawable.market);
+        mImages.add(R.drawable.market);
+        mImages.add(R.drawable.market);
+        mImages.add(R.drawable.market);
+        mImages.add(R.drawable.market);
+
         tcv = (TagCloudView) homeLayout.findViewById(R.id.tcv);
-        TagAdapter tagsAdapter = new TagAdapter(homeLayout.getContext(),mStrings);
+        TagAdapter tagsAdapter = new TagAdapter(homeLayout.getContext(),mStrings,mImages);
         tcv.setAdapter(tagsAdapter);
     }
     //  设置轮播小圆点

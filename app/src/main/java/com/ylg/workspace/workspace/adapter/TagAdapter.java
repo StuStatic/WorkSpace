@@ -2,10 +2,13 @@ package com.ylg.workspace.workspace.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,13 +27,15 @@ import com.ylg.workspace.workspace.activity.service.RequirementActivity;
 import java.util.List;
 
 public class TagAdapter  extends TagsAdapter {
-
+    List<Integer> mImages;
     private List<String> mStrings;
     private Context context;
+    ViewGroup group ;
 
-    public TagAdapter(Context context ,List<String> strings) {
+    public TagAdapter(Context context ,List<String> strings ,List<Integer> mImages) {
         mStrings = strings;
         this.context = context;
+        this.mImages = mImages;
     }
 
     @Override
@@ -41,16 +46,33 @@ public class TagAdapter  extends TagsAdapter {
     @Override
     public View getView(final Context context, final int position, ViewGroup parent) {
 
-        Drawable drawable = parent.getResources().getDrawable(R.mipmap.ic_launcher);
-        drawable.setBounds(0,0,150,150);
+        Drawable drawable = parent.getResources().getDrawable(R.drawable.placeholderpic);
+        drawable.setBounds(0,0,10,10);
+
 
         TextView tv = new TextView(context);
-        ViewGroup.MarginLayoutParams marginLayoutParams = new ViewGroup.MarginLayoutParams(200, 200);
+        ViewGroup.MarginLayoutParams marginLayoutParams = new ViewGroup.MarginLayoutParams(100, 100);
         tv.setLayoutParams(marginLayoutParams);
         tv.setText(mStrings.get(position));
-        tv.setTextSize(16);
+        tv.setTextColor(Color.BLACK);
+        tv.setTextSize(10);
         tv.setGravity(Gravity.CENTER);
-//        tv.setCompoundDrawables(null,drawable,null,null);
+        tv.setBackground(drawable);
+        //设置图片
+        ImageView imageView = new ImageView(context);
+        ViewGroup.MarginLayoutParams m = new ViewGroup.MarginLayoutParams(100, 100);
+        imageView.setLayoutParams(m);
+        imageView.setImageResource(mImages.get(position));
+//
+//        parent = new LinearLayout(context);
+//        parent.removeView(tv);
+//
+//        parent.addView(tv);
+//        parent.removeView(imageView);
+//        parent.addView(imageView);
+//        View view = parent.getRootView();
+
+
 
         tv.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,6 +140,8 @@ public class TagAdapter  extends TagsAdapter {
 
     @Override
     public void onThemeColorChanged(View view, int themeColor) {
-        ((TextView)view).setTextColor(themeColor);
+       ((TextView)view).setTextColor(themeColor);
+
+
     }
 }
