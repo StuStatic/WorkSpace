@@ -16,6 +16,7 @@ import com.lidong.photopicker.SelectModel;
 import com.lidong.photopicker.intent.PhotoPickerIntent;
 import com.lidong.photopicker.intent.PhotoPreviewIntent;
 import com.ylg.workspace.workspace.Application.App;
+import com.ylg.workspace.workspace.Application.Constants;
 import com.ylg.workspace.workspace.R;
 import com.ylg.workspace.workspace.http.FileUploadManager;
 import com.ylg.workspace.workspace.view.IphoneDialog;
@@ -45,6 +46,7 @@ public class ServiceRegisterActivity extends App implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service_register);
+        isPermissionsAllGranted(Constants.permArray, Constants.QUEST_CODE_ALL);
         initView();
     }
 

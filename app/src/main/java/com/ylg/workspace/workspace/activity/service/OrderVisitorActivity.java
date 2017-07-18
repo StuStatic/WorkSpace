@@ -19,6 +19,7 @@ import com.lidong.photopicker.SelectModel;
 import com.lidong.photopicker.intent.PhotoPickerIntent;
 import com.lidong.photopicker.intent.PhotoPreviewIntent;
 import com.ylg.workspace.workspace.Application.App;
+import com.ylg.workspace.workspace.Application.Constants;
 import com.ylg.workspace.workspace.R;
 import com.ylg.workspace.workspace.http.FileUploadManager;
 import com.ylg.workspace.workspace.view.IphoneDialog;
@@ -58,6 +59,7 @@ public class OrderVisitorActivity extends App implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_visitor);
+        isPermissionsAllGranted(Constants.permArray, Constants.QUEST_CODE_ALL);
         initView();
     }
 
@@ -125,42 +127,58 @@ public class OrderVisitorActivity extends App implements View.OnClickListener {
                 break;
             case R.id.button:
 
-                    final String s2 = et2.getText().toString().trim();
-                    final String s3 = et3.getText().toString().trim();
-                    final String s4 = et4.getText().toString().trim();
-                    final String s5 = et5.getText().toString().trim();
-                    final String s6 = et6.getText().toString().trim();
-                    final String s7 = et7.getText().toString().trim();
-                    final int i7 = Integer.parseInt(s7);
-                    rb1 = (RadioButton) rg1.findViewById(rg1.getCheckedRadioButtonId());
-                    rb = (RadioButton) rg.findViewById(rg.getCheckedRadioButtonId());
-                    final int type;
-                    //性别
-                    final String s9 = (String) rb1.getText();
-                    //访问类型
-                    final String s10 = (String) rb.getText();
-                    if (s10.equals("访问个人")) {
-                        type = 1;
-                    } else {
-                        type = 0;
+                final String s2 = et2.getText().toString().trim();
+                final String s3 = et3.getText().toString().trim();
+                final String s4 = et4.getText().toString().trim();
+                final String s5 = et5.getText().toString().trim();
+                final String s6 = et6.getText().toString().trim();
+                final String s7 = et7.getText().toString().trim();
+                final int i7 = Integer.parseInt(s7);
+                rb1 = (RadioButton) rg1.findViewById(rg1.getCheckedRadioButtonId());
+                rb = (RadioButton) rg.findViewById(rg.getCheckedRadioButtonId());
+                final int type;
+                //性别
+                final String s9 = (String) rb1.getText();
+                //访问类型
+                final String s10 = (String) rb.getText();
+                if (s10.equals("访问个人")) {
+                    type = 1;
+                } else {
+                    type = 0;
+                }
+                final String time = (String) tvTime.getText();
+                Log.d("zp", s9 + " onClick: " + i7);
+                Log.d("zp", time);
+                if (imagePaths.size() < 2) {
+                    showShortMsg("请选择照片");
+                    return;
+                }
+                if (s9.equals("")) {
+                    showShortMsg("请选择性别");
+                    return;
+                }
+                if (s10.equals("")) {
+                    showShortMsg("请选择访问类型");
+                    return;
+                }
+                if (s2.equals("") || s3.equals("") || s4.equals("") || s5.equals("") || s6.equals("") || s7.equals("")) {
+                    showShortMsg("还有未填写信息");
+                    return;
+                }
+                iphoneDialog.setMessage("请稍候...");
+                iphoneDialog.show();
+                new Thread() {
+                    @Override
+                    public void run() {
+                        super.run();
+                        imagePaths.remove(1);
+                        Log.i("zp", "bbbbbbb" + imagePaths.toString());
+                        //imagePaths.clear();
+                        //FileUploadManager.registerService("1", s2, s3, s4, s5, s6, imagePaths.get(0), 0, ServiceRegisterActivity.this);
+                        FileUploadManager.order("1", s2, s3, s4, s5, s6, i7, time + ":00", s9, imagePaths, type, OrderVisitorActivity.this, iphoneDialog);
+                        imagePaths.add(1, "000000");
                     }
-                    final String time = (String) tvTime.getText();
-                    Log.d("zp", s9 + " onClick: " + i7);
-                    Log.d("zp", time);
-                    iphoneDialog.setMessage("请稍候...");
-                    iphoneDialog.show();
-                    new Thread() {
-                        @Override
-                        public void run() {
-                            super.run();
-                            imagePaths.remove(1);
-                            Log.i("zp", "bbbbbbb" + imagePaths.toString());
-                            //imagePaths.clear();
-                            //FileUploadManager.registerService("1", s2, s3, s4, s5, s6, imagePaths.get(0), 0, ServiceRegisterActivity.this);
-                            FileUploadManager.order("1", s2, s3, s4, s5, s6, i7, time + ":00", s9, imagePaths, type, OrderVisitorActivity.this, iphoneDialog);
-                            imagePaths.add(1, "000000");
-                        }
-                    }.start();
+                }.start();
 
                 break;
             case R.id.tv_time:
