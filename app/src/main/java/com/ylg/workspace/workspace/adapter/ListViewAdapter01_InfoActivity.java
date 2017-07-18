@@ -8,7 +8,11 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.ylg.workspace.workspace.R;
+import com.ylg.workspace.workspace.bean.Info;
+import com.ylg.workspace.workspace.http.Http;
 
 import java.util.List;
 
@@ -17,10 +21,10 @@ import java.util.List;
  */
 
 public class ListViewAdapter01_InfoActivity extends BaseAdapter{
-    private List<String> datas ;
+    private List<Info.MsgBean> datas ;
     private LayoutInflater inflater;
     //构造方法
-    public ListViewAdapter01_InfoActivity(Context context , List<String> datas){
+    public ListViewAdapter01_InfoActivity(Context context , List<Info.MsgBean> datas){
         this.datas =datas;
         inflater = LayoutInflater.from(context);
     }
@@ -51,9 +55,12 @@ public class ListViewAdapter01_InfoActivity extends BaseAdapter{
 
         }
         //设置文字
-        viewHolder.tv_content.setText(datas.get(i));
+        viewHolder.tv_content.setText(datas.get(i).getTitle());
         //日期和图片暂时不设置
-
+        viewHolder.tv_date.setText(datas.get(i).getIssueTime());
+        String[] s=datas.get(i).getPictureSite().split(",");
+        String img_URL = Http.API_URL+s[0];
+        Glide.with(inflater.getContext()).load(img_URL).diskCacheStrategy(DiskCacheStrategy.ALL).into(viewHolder.listview_img);
 
         return view;
     }

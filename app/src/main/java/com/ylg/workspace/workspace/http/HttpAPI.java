@@ -2,6 +2,7 @@ package com.ylg.workspace.workspace.http;
 
 import com.ylg.workspace.workspace.activity.service.bean.Service;
 import com.ylg.workspace.workspace.bean.ExerciseRecommend;
+import com.ylg.workspace.workspace.bean.Info;
 import com.ylg.workspace.workspace.bean.NeiborCompany;
 import com.ylg.workspace.workspace.bean.SlidePic;
 import com.ylg.workspace.workspace.http.bean.FindByActivityId;
@@ -127,21 +128,9 @@ public interface HttpAPI {
     @POST("Slider/findAll")
     Call<SlidePic> getSlidePic();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    //最新资讯
+    @POST("Message/findAllMessage")
+    Call<Info> getInfo();
 
     //报修
     @Multipart
@@ -149,7 +138,7 @@ public interface HttpAPI {
     @POST("MaintainInfo/addMaintainInfo")
     Call<Service> questionFix(@Query("userId") String s1, @Query("alias") String s2,
                                @Query("type") String s3, @Query("info") String s4,
-                               @Query("orderTime") String s5, @Query("address") String s6,
+                               @Query("appointmentTime") String s5, @Query("address") String s6,
                                @PartMap Map<String, RequestBody> photo);
 
 //    //绑定设备

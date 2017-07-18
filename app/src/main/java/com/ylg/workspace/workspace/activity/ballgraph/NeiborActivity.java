@@ -1,24 +1,19 @@
 package com.ylg.workspace.workspace.activity.ballgraph;
 
-import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.ylg.workspace.workspace.R;
 import com.ylg.workspace.workspace.adapter.ExpandableListViewAdater_Exercise;
 import com.ylg.workspace.workspace.adapter.ListViewAdapter01_InfoActivity;
-import com.ylg.workspace.workspace.adapter.NeiborAdapter_Home;
-import com.ylg.workspace.workspace.bean.NeiborCompany;
+import com.ylg.workspace.workspace.bean.Info;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.ylg.workspace.workspace.R.drawable.line_itemdivider;
 
 public class NeiborActivity extends AppCompatActivity implements View.OnClickListener{
     /**
@@ -40,7 +35,7 @@ public class NeiborActivity extends AppCompatActivity implements View.OnClickLis
 
     //listview
     private ListView listview;
-    private List<String> datas_neibor;
+    private List<Info.MsgBean> datas_neibor;
     private ListViewAdapter01_InfoActivity adapter;
     private String[] spaceInfo = new String[]{"帝高阳之苗裔兮，朕皇考曰伯庸。","摄提贞于孟陬兮，惟庚寅吾以降","皇览揆余初度兮，肇锡余以嘉名："};
     @Override
@@ -73,9 +68,9 @@ public class NeiborActivity extends AppCompatActivity implements View.OnClickLis
         listview = (ListView)findViewById(R.id.neibor_listview);
         datas_neibor = new ArrayList<>();
         //for循环,添加到集合list
-        for(int i=0; i<spaceInfo.length;i++){
-            datas_neibor.add(spaceInfo[i]);
-        }
+//        for(int i=0; i<spaceInfo.length;i++){
+//            datas_neibor.add(spaceInfo[i]);
+//        }
         //初始化adapter
         adapter = new ListViewAdapter01_InfoActivity(this,datas_neibor);
         //绑定适配器
