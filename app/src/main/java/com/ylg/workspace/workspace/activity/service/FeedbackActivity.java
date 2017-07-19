@@ -1,11 +1,14 @@
 package com.ylg.workspace.workspace.activity.service;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +31,7 @@ public class FeedbackActivity extends App implements View.OnClickListener {
     private EditText et2;
     private Button b;
     private IphoneDialog iphoneDialog;
+    private LinearLayout ll;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +49,9 @@ public class FeedbackActivity extends App implements View.OnClickListener {
         et1 = (EditText) findViewById(R.id.et1);
         et2 = (EditText) findViewById(R.id.et2);
         b = (Button) findViewById(R.id.button);
+        ll = (LinearLayout) findViewById(R.id.ll);
         b.setOnClickListener(this);
+        ll.setOnClickListener(this);
     }
 
     @Override
@@ -59,13 +65,20 @@ public class FeedbackActivity extends App implements View.OnClickListener {
                 String s1 = et1.getText().toString().trim();
                 String s2 = et2.getText().toString().trim();
                 if (s1.equals("") || s2.equals("")) {
-                    showCustomToast("不能为空");
+                    showCustomToast("还有未填写信息");
                     return;
                 }
-                getData("1", "1", "哈登", s2, s1, "0");
+
                 iphoneDialog.setMessage("请稍候...");
                 iphoneDialog.show();
+                getData("1", "1", "哈登", s2, s1, "0");
                 break;
+            case R.id.ll:
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:13304520452"));
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                break;
+
         }
     }
 
