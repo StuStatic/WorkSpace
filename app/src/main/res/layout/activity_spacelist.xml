@@ -175,11 +175,10 @@
                 android:id="@+id/spacelist_tablayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:tabGravity="center"
+                app:tabGravity="fill"
                 app:tabMode="scrollable"
-                app:tabSelectedTextColor="@color/colorBlack"
+                app:tabSelectedTextColor="@color/colorBlue"
                 app:tabTextColor="@color/colorGray"
-
                 app:tabIndicatorHeight="0dp"/>
             <!--app:tabBackground="@drawable/tab_spacelist"-->
 

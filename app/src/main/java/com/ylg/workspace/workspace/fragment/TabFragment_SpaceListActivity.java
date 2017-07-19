@@ -1,6 +1,7 @@
 package com.ylg.workspace.workspace.fragment;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -9,14 +10,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ylg.workspace.workspace.R;
 import com.ylg.workspace.workspace.adapter.ListViewAdapter_SpaceList;
+import com.ylg.workspace.workspace.adapter.NeiborAdapter_Home;
+import com.ylg.workspace.workspace.bean.NeiborCompany;
+import com.ylg.workspace.workspace.bean.SpaceList;
+import com.ylg.workspace.workspace.http.Http;
+import com.ylg.workspace.workspace.http.HttpAPI;
+import com.ylg.workspace.workspace.util.SetHomeListViewItemHeight;
 import com.ylg.workspace.workspace.util.SetSpaceListListViewItemHeight;
 import com.ylg.workspace.workspace.view.ListViewForScrollView_SpaceList;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -34,8 +46,7 @@ public class TabFragment_SpaceListActivity extends Fragment {
     private ListViewForScrollView_SpaceList listview;
     private ListView list;
     private ListViewAdapter_SpaceList adapter;
-    private String[] title = new String[]{"帝高阳之苗裔兮，朕皇考曰伯庸。", "摄提贞于孟陬兮，惟庚寅吾以降", "皇览揆余初度兮，肇锡余以嘉名：","名余曰正则兮，字余曰灵均。","纷吾既有此内美兮，又重之以修能。","扈江离与辟芷兮，纫秋兰以为佩。"};
-    private List<String> datas;
+    private List<SpaceList.MsgEntity> datas;
 
 
     public TabFragment_SpaceListActivity() {
@@ -57,7 +68,7 @@ public class TabFragment_SpaceListActivity extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_spacelist, container, false);
         Log.e("fragmentcreate", "create");
-        init();
+        init(view.getContext());
         return view;
     }
 
@@ -68,25 +79,44 @@ public class TabFragment_SpaceListActivity extends Fragment {
         Log.e("page:", page + "");
     }
 
-    private void init() {
+    private void init(final Context context) {
 //        tv_fragment = (TextView) view.findViewById(R.id.itemtv_spacelist);
 //        tv_fragment.setText(names[page]);
 
-        //初始化listview集合数据
-        datas = new ArrayList<>();
-        //for循环,添加到集合list
-        for (int i = 0; i < title.length; i++) {
-            datas.add(title[i]);
-            //初始化lsitview
-            listview = (ListViewForScrollView_SpaceList) view.findViewById(R.id.spacelist_lv);
-//            list = (ListView)view.findViewById(R.id.spacelist_lv);
-            //adapter
-            adapter = new ListViewAdapter_SpaceList(view.getContext(), datas);
-            //绑定adapter
-            listview.setAdapter(adapter);
-           SetSpaceListListViewItemHeight.setHeight(listview);
+        //初始化lsitview
+        listview = (ListViewForScrollView_SpaceList) view.findViewById(R.id.spacelist_lv);
 
-        }
 
+        startRequest(context);
+
+
+    }
+
+    private void startRequest(final Context context) {
+        //开始请求空间列表数据
+        HttpAPI api = Http.getInstance().create(HttpAPI.class);
+        //调用接口
+        Call<SpaceList> call = api.getSpaceListData("北京");
+        call.enqueue(new Callback<SpaceList>() {
+            @Override
+            public void onResponse(Call<SpaceList> call, Response<SpaceList> response) {
+                Log.e("code:",response.body().getCode());
+                if(response.body().getCode().equals("200")){
+                    datas = response.body().getMsg();
+                    //adapter
+                    adapter = new ListViewAdapter_SpaceList(context, datas);
+                    //绑定adapter
+                    listview.setAdapter(adapter);
+                    SetSpaceListListViewItemHeight.setHeight(listview);
+                }else{
+                    Toast.makeText(getContext(), "空间列表信息错误", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<SpaceList> call, Throwable t) {
+
+            }
+        });
     }
 }

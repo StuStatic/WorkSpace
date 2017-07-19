@@ -218,14 +218,14 @@ public class HomeFragment extends android.app.Fragment implements View.OnClickLi
         call.enqueue(new Callback<SlidePic>() {
             @Override
             public void onResponse(Call<SlidePic> call, Response<SlidePic> response) {
-                Log.e("response_slide:",response.body().toString());
+                Log.e("code_slideHome",response.body().getCode());
                 if(response.body().getCode().equals("200")){
 
                     String slideURL= Http.API_URL+response.body().getMsg().get(0).getImage();
                     Log.e("image:",slideURL);
                     //头部视图轮播数据初始化
                     mImageViewList1=response.body().getMsg();
-                    //html地址
+                    //<code></code>
 
                     Log.e("mImageViewList1.size",mImageViewList1.size()+"");
                     mImageViewDotList1=new ArrayList();

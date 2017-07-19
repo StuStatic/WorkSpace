@@ -5,6 +5,7 @@ import com.ylg.workspace.workspace.bean.ExerciseRecommend;
 import com.ylg.workspace.workspace.bean.Info;
 import com.ylg.workspace.workspace.bean.NeiborCompany;
 import com.ylg.workspace.workspace.bean.SlidePic;
+import com.ylg.workspace.workspace.bean.SpaceList;
 import com.ylg.workspace.workspace.http.bean.FindByActivityId;
 import com.ylg.workspace.workspace.http.bean.FindByApplyTel;
 import com.ylg.workspace.workspace.http.bean.FindByUserId;
@@ -125,7 +126,7 @@ public interface HttpAPI {
     Call<FindByApplyTel> findByApplyTel(@Query("applyTel") String applyTel);
 
     //HomeFragment轮播图片请求
-    @POST("Slider/findAll")
+    @POST("Slider/findByHome")
     Call<SlidePic> getSlidePic();
 
     //最新资讯
@@ -183,5 +184,9 @@ public interface HttpAPI {
     //活动推荐
     @POST("Activity/findByState")
     Call<ExerciseRecommend> exerciseRecommend (@Query("activityState") int activityState);
+
+    //空间列表
+    @POST("Space/findAllSpace")
+    Call<SpaceList> getSpaceListData (@Query("city") String city);
 
 }
