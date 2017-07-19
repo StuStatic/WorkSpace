@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
@@ -81,6 +82,57 @@ public class App extends AppCompatActivity {
         toast.setView(toastRoot);
         toast.show();
     }
+
+    /**
+     * 存
+     */
+    public void input1(String headPortrait,String realName,String sex,String username,String spared1,String industry,String site,String skill,String interest,String constellation) {
+        //第一个参数是文件名，第二个参数是模式（不明白可以去补习一下SharedPreferences的知识）
+        SharedPreferences.Editor edit2 = getSharedPreferences("mypsd2", MODE_PRIVATE).edit();
+        edit2.putString("headPortrait", headPortrait);//头像地址
+        edit2.putString("realName", realName);//用户名字
+        edit2.putString("sex", sex);//用户性别
+        edit2.putString("username", username);//用户名称
+        edit2.putString("spared1", spared1);
+        edit2.putString("industry", industry);//行业
+        edit2.putString("site", site);//收货地址
+        edit2.putString("constellation", constellation);//星座
+
+        edit2.putString("skill", skill);//技能（先不用）
+        edit2.putString("interest", interest);//兴趣（先不用）
+        edit2.commit();
+    }
+
+
+    private void out() {
+        //第一个参数是文件名，第二个参数是模式（不明白可以去补习一下SharedPreferences的知识）
+        SharedPreferences shared = getSharedPreferences("mypsd2", MODE_PRIVATE);
+        //第一个参数就是关键字，第二个参数为默认值，意思是说如果没找到值就用默认值代替
+        String headPortrait = shared.getString("headPortrait", "");//同上，若没找到就让它为空""头像地址
+        String realName = shared.getString("realName", "");//同上，若没找到就让它为空""用户名字
+        String sex = shared.getString("sex", "");//同上，若没找到就让它为空""用户性别
+        String username = shared.getString("username", "");//同上，若没找到就让它为空""用户名称
+        String spared1 = shared.getString("spared1", "");//同上，若没找到就让它为空""
+
+        String industry = shared.getString("industry", "");//同上，若没找到就让它为空""行业
+        String site = shared.getString("site", "");//同上，若没找到就让它为空""收货地址
+        String constellation = shared.getString("constellation", "");//同上，若没找到就让它为空""星座
+
+        String skill = shared.getString("skill", "");//同上，若没找到就让它为空""技能（先不用）
+        String interest = shared.getString("interest", "");//同上，若没找到就让它为空""兴趣（先不用）
+
+
+
+
+
+
+
+
+
+
+
+    }
+
 
     /**
      * Debug输出Log日志

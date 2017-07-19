@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
-import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +16,6 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.google.gson.Gson;
 import com.ylg.workspace.workspace.Application.App;
 import com.ylg.workspace.workspace.R;
 import com.ylg.workspace.workspace.activity.personaldetails.LoginActivity;
@@ -26,7 +24,6 @@ import com.ylg.workspace.workspace.activity.personaldetails.MyBusinessActivity;
 import com.ylg.workspace.workspace.activity.personaldetails.MyHistoryActivity;
 import com.ylg.workspace.workspace.activity.personaldetails.MyInformationActivity;
 import com.ylg.workspace.workspace.activity.personaldetails.SetUpActivity;
-import com.ylg.workspace.workspace.activity.personaldetails.bean.Tupian;
 import com.ylg.workspace.workspace.http.Http;
 
 
@@ -72,14 +69,16 @@ public class MineFragment extends android.app.Fragment implements View.OnClickLi
         Log.i("dyy", App.KEY_LOGIN + "");
         if (App.KEY_LOGIN == 1) {
             mineUserHeadportrait.setOnClickListener(null);
-        } else if (App.KEY_LOGIN == 2) {
-            mineUserHeadportrait.setOnClickListener(this);
-            mlogin.setVisibility(View.GONE);
-            mine_user_Name.setVisibility(View.VISIBLE);
-            mine_user_gender.setVisibility(View.VISIBLE);
-            mine_user_constellation.setVisibility(View.VISIBLE);
-            mine_user_autograph.setVisibility(View.VISIBLE);
-            out();
+        } else {
+            if (App.KEY_LOGIN == 2) {
+                mineUserHeadportrait.setOnClickListener(this);
+                mlogin.setVisibility(View.GONE);
+                mine_user_Name.setVisibility(View.VISIBLE);
+                mine_user_gender.setVisibility(View.VISIBLE);
+                mine_user_constellation.setVisibility(View.VISIBLE);
+                mine_user_autograph.setVisibility(View.VISIBLE);
+                out();
+            }
         }
     }
 
@@ -87,34 +86,24 @@ public class MineFragment extends android.app.Fragment implements View.OnClickLi
         //第一个参数是文件名，第二个参数是模式（不明白可以去补习一下SharedPreferences的知识）
         SharedPreferences shared = getActivity().getSharedPreferences("mypsd2", getActivity().MODE_PRIVATE);
         //第一个参数就是关键字，第二个参数为默认值，意思是说如果没找到值就用默认值代替
-        String companyName = shared.getString("companyName", "");//同上，若没找到就让它为空""
-        String headPortrait = shared.getString("headPortrait", "");//同上，若没找到就让它为空""
-        String realName = shared.getString("realName", "");//同上，若没找到就让它为空""
-        String sex = shared.getString("sex", "");//同上，若没找到就让它为空""
-        String username = shared.getString("username", "");//同上，若没找到就让它为空""
+        String headPortrait = shared.getString("headPortrait", "");//同上，若没找到就让它为空""头像地址
+        String sex = shared.getString("sex", "");//同上，若没找到就让它为空""用户性别
+        String username = shared.getString("username", "");//同上，若没找到就让它为空""用户名称
         String spared1 = shared.getString("spared1", "");//同上，若没找到就让它为空""
-
-        //头像的请求
-//        String substring = headPortrait.substring(1, (headPortrait.length() - 1));
-//        Log.i("dyy", "截取：" + substring);
-//        Gson gson = new Gson();
-//        Tupian tupian = gson.fromJson(substring, Tupian.class);
-//        String site = tupian.getSite();//图片地址
-//        String substring1 = site.substring(1, site.length());
-//        Log.i("dyy", "截取：" + substring1);
-//        if (site.length() != 0) {
-//            Glide.with(getActivity())
-//                    .load(Http.API_URL + substring1)
-//                    .placeholder(R.drawable.my_head_icon)
-//                    .error(R.drawable.my_head_icon)
-//                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-//                    .centerCrop()
-//                    .crossFade()
-//                    .into(mineUserHeadportrait);
-//        } else {
-//            mineUserHeadportrait.setImageResource(R.drawable.my_head_icon);
-//        }
-
+        String constellation = shared.getString("constellation", "");//同上，若没找到就让它为空""星座
+        mine_user_constellation.setText(constellation);
+        if (headPortrait.length() != 0) {
+            Glide.with(getActivity())
+                    .load(Http.API_URL + headPortrait)
+                    .placeholder(R.drawable.my_head_icon)
+                    .error(R.drawable.my_head_icon)
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .centerCrop()
+                    .crossFade()
+                    .into(mineUserHeadportrait);
+        } else {
+            mineUserHeadportrait.setImageResource(R.drawable.my_head_icon);
+        }
         mine_user_Name.setText(username);
         if (sex.equals("man")) {
             mine_user_gender.setImageResource(R.drawable.man_icon);
@@ -122,9 +111,8 @@ public class MineFragment extends android.app.Fragment implements View.OnClickLi
             mine_user_gender.setImageResource(R.drawable.girl_icon);
         }
         mine_user_autograph.setText(spared1);
-
-
     }
+
 
     @Override
     public void onClick(View v) {
@@ -195,23 +183,19 @@ public class MineFragment extends android.app.Fragment implements View.OnClickLi
                 mine_user_autograph.setVisibility(View.VISIBLE);
                 Bundle extras = data.getExtras();
                 if (extras != null) {
-                    Log.i("dyy", "登陆返回：" + extras.getString("username"));
-                    Log.i("dyy", "登陆返回：" + extras.getString("companyName"));
                     Log.i("dyy", "登陆返回：" + extras.getString("headPortrait"));
                     Log.i("dyy", "登陆返回：" + extras.getString("realName"));
                     Log.i("dyy", "登陆返回：" + extras.getString("sex"));
+                    Log.i("dyy", "登陆返回：" + extras.getString("username"));
                     Log.i("dyy", "登陆返回：" + extras.getString("spared1"));
+
+                    Log.i("dyy", "登陆返回：" + extras.getString("industry"));
+                    Log.i("dyy", "登陆返回：" + extras.getString("site"));
+                    mine_user_constellation.setText(extras.getString("constellation"));
                     String headPortrait1 = extras.getString("headPortrait").trim();
-                    String substring = headPortrait1.substring(1, (headPortrait1.length() - 1));
-                    Log.i("dyy", "截取：" + substring);
-                    Gson gson = new Gson();
-                    Tupian tupian = gson.fromJson(substring, Tupian.class);
-                    String site = tupian.getSite();//图片地址
-                    String substring1 = site.substring(1, site.length());
-                    Log.i("dyy", "截取：" + substring1);
-                    if (site.length() != 0) {
+                    if (headPortrait1.length() != 0) {
                         Glide.with(getActivity())
-                                .load(Http.API_URL + substring1)
+                                .load(Http.API_URL + headPortrait1)
                                 .placeholder(R.drawable.my_head_icon)
                                 .error(R.drawable.my_head_icon)
                                 .diskCacheStrategy(DiskCacheStrategy.ALL)

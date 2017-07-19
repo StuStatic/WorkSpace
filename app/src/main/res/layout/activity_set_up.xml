@@ -223,7 +223,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="15sp"
                     android:gravity="center_vertical"
-                    android:text="关于众创空间"
+                    android:text="关于易创客"
                     android:textColor="#666666"
                     android:textSize="18sp"
                     />

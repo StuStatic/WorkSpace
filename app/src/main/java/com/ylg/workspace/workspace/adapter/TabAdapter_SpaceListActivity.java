@@ -3,8 +3,9 @@ package com.ylg.workspace.workspace.adapter;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.widget.Toast;
 
-import com.ylg.workspace.workspace.fragment.TabFragment_SpaceList;
+import com.ylg.workspace.workspace.fragment.TabFragment_SpaceListActivity;
 
 /**
  * Created by stu on 2017/7/16.
@@ -20,7 +21,7 @@ public class TabAdapter_SpaceListActivity extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return TabFragment_SpaceList.getInstance(position);
+        return TabFragment_SpaceListActivity.getInstance(position);
     }
 
     @Override
@@ -30,6 +31,7 @@ public class TabAdapter_SpaceListActivity extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
+
         return names[position];
     }
 }
