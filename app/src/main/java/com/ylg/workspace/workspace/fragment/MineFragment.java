@@ -201,17 +201,12 @@ public class MineFragment extends android.app.Fragment implements View.OnClickLi
                     Log.i("dyy", "登陆返回：" + extras.getString("realName"));
                     Log.i("dyy", "登陆返回：" + extras.getString("sex"));
                     Log.i("dyy", "登陆返回：" + extras.getString("spared1"));
+                    Log.i("dyy", "登陆返回：" + extras.getString("headPortrait"));
                     String headPortrait1 = extras.getString("headPortrait").trim();
-                    String substring = headPortrait1.substring(1, (headPortrait1.length() - 1));
-                    Log.i("dyy", "截取：" + substring);
-                    Gson gson = new Gson();
-                    Tupian tupian = gson.fromJson(substring, Tupian.class);
-                    String site = tupian.getSite();//图片地址
-                    String substring1 = site.substring(1, site.length());
-                    Log.i("dyy", "截取：" + substring1);
-                    if (site.length() != 0) {
+
+                    if (headPortrait1.length() != 0) {
                         Glide.with(getActivity())
-                                .load(Http.API_URL + substring1)
+                                .load(Http.API_URL + headPortrait1)
                                 .placeholder(R.drawable.my_head_icon)
                                 .error(R.drawable.my_head_icon)
                                 .diskCacheStrategy(DiskCacheStrategy.ALL)
