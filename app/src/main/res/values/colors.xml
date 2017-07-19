@@ -30,6 +30,8 @@
     <color name="colorLineChoosedShadow">#FFFFFF</color>
     <color name="colorLineDefault">#FFFFFF</color>
 
+    <color name="violet">#4087ee</color>
+
 
     <color name="white">#FFFFFF</color>
     <color name="no_color">#00000000</color>

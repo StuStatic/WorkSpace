@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MyInformationActivity extends App implements View.OnClickListener{
+
     private ImageView iv_back,information_user_Headportrait,information_user_sex;
     private TextView tv_title,information_user_constellation,information_user_name,information_delivery_industry_tv,information_delivery_personalizedsignature_tv;
     private TagListView mTagListView,mTagListInterest;
@@ -83,6 +84,7 @@ public class MyInformationActivity extends App implements View.OnClickListener{
                 break;
         }
     }
+
     private void setUpDataSkill() {
         for (int i = 0; i < 2; i++) {
             Tag tag = new Tag();
@@ -92,6 +94,7 @@ public class MyInformationActivity extends App implements View.OnClickListener{
             mTagsSkill.add(tag);
         }
     }
+
     private void out(){
         //第一个参数是文件名，第二个参数是模式（不明白可以去补习一下SharedPreferences的知识）
         SharedPreferences shared = getSharedPreferences("mypsd2", MODE_PRIVATE);
@@ -129,15 +132,4 @@ public class MyInformationActivity extends App implements View.OnClickListener{
         information_delivery_personalizedsignature_tv.setText(spared1);
         information_delivery_industry_tv.setText(industry);
     }
-
-
-
-
-
-
-
-
-
-
-
 }

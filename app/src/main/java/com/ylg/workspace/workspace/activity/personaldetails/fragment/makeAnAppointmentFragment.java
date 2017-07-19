@@ -21,6 +21,7 @@ import java.util.Random;
 
 
 public class makeAnAppointmentFragment extends Fragment {
+
     private View mView;
     private ListView makefragmentanappointmentlv;
     private SwipeRefreshView makefragmentanappointmentsrv;

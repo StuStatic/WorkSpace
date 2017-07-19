@@ -1,5 +1,6 @@
 package com.ylg.workspace.workspace.http;
 
+import com.ylg.workspace.workspace.activity.personaldetails.bean.FeedBackFrag;
 import com.ylg.workspace.workspace.activity.service.bean.Service;
 import com.ylg.workspace.workspace.bean.ExerciseRecommend;
 import com.ylg.workspace.workspace.bean.Info;
@@ -24,10 +25,13 @@ import retrofit2.http.Query;
 
 public interface HttpAPI {
 
-    //意见反馈
+    //添加意见反馈
     @POST("Opinion/addOpinion")
     Call<Service> feedBack(@Query("spaceId") String s1, @Query("userId") String s2, @Query("userName") String s3,
                            @Query("tel") String s4, @Query("opinionContent") String s5, @Query("spared1") String s6);
+    //查询所有的意见反馈
+    @POST("Opinion/findByUserId")
+    Call<FeedBackFrag> OfindByUserId(@Query("userId") int userId);
 
     //登陆
     @POST("Login/Login")

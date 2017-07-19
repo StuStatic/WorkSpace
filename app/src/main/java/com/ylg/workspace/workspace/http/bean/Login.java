@@ -262,5 +262,33 @@ public class Login{
         public void setUserType(int userType) {
             this.userType = userType;
         }
+
+        @Override
+        public String toString() {
+            return "MsgBean{" +
+                    "birthDate='" + birthDate + '\'' +
+                    ", companyId=" + companyId +
+                    ", companyName='" + companyName + '\'' +
+                    ", constellation='" + constellation + '\'' +
+                    ", email='" + email + '\'' +
+                    ", headPortrait='" + headPortrait + '\'' +
+                    ", industry='" + industry + '\'' +
+                    ", interest='" + interest + '\'' +
+                    ", password='" + password + '\'' +
+                    ", realName='" + realName + '\'' +
+                    ", registerTime='" + registerTime + '\'' +
+                    ", sex='" + sex + '\'' +
+                    ", site='" + site + '\'' +
+                    ", skill='" + skill + '\'' +
+                    ", spared1='" + spared1 + '\'' +
+                    ", spared2='" + spared2 + '\'' +
+                    ", spared3='" + spared3 + '\'' +
+                    ", state=" + state +
+                    ", tel='" + tel + '\'' +
+                    ", userId=" + userId +
+                    ", userName='" + userName + '\'' +
+                    ", userType=" + userType +
+                    '}';
+        }
     }
 }
