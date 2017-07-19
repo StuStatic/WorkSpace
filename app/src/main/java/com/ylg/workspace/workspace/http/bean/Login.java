@@ -7,7 +7,7 @@ public class Login{
     /**
      * result : 鎴愬姛
      * code : 200
-     * msg : {"birthDate":"2016-04-06 13:59:35","companyId":1,"companyName":"鐗╄仈娓鎶\u20ac鍙戝睍鏈夐檺鍏徃","email":"123456789@qq.com","headPortrait":"[{\"site\":\"/static/images/1499326581890.jpeg\",\"fileName\":\"u=2978403572,2363941822&fm=26&gp=0.jpg\"}]","industry":"1","interest":"1","password":"E10ADC3949BA59ABBE56E057F20F883E","realName":"鏄撹仈娓�","registerTime":"2017-07-05 14:00:53","sex":"man","site":"1","skill":"1","spared1":"1","spared2":"1","spared3":"1","state":1,"tel":"12345678912","userId":1,"userName":"yiliangang","userType":1}
+     * msg : {"birthDate":"2016/04/06 13:59:35","companyId":1,"companyName":"鐗╄仈娓鎶\u20ac鍙戝睍鏈夐檺鍏徃","constellation":"灏勬墜","email":"123456789@qq.com","headPortrait":"/static/images/1499326581890.png","industry":"1","interest":"1","password":"E10ADC3949BA59ABBE56E057F20F883E","realName":"鏄撹仈娓�","registerTime":"2017/07/05 14:00:53","sex":"man","site":"1","skill":"1","spared1":"濡傛灉浣犳棤娉曠畝娲佺殑琛ㄨ揪浣犵殑鎯虫硶锛岄偅鍙兘璇存槑浣犺繕涓嶅浜嗚В瀹�","spared2":"","spared3":"","state":1,"tel":"12345678912","userId":1,"userName":"鏄撹仈娓�","userType":1}
      */
 
     private String result;
@@ -40,32 +40,34 @@ public class Login{
 
     public static class MsgBean {
         /**
-         * birthDate : 2016-04-06 13:59:35
+         * birthDate : 2016/04/06 13:59:35
          * companyId : 1
          * companyName : 鐗╄仈娓鎶€鍙戝睍鏈夐檺鍏徃
+         * constellation : 灏勬墜
          * email : 123456789@qq.com
-         * headPortrait : [{"site":"/static/images/1499326581890.jpeg","fileName":"u=2978403572,2363941822&fm=26&gp=0.jpg"}]
+         * headPortrait : /static/images/1499326581890.png
          * industry : 1
          * interest : 1
          * password : E10ADC3949BA59ABBE56E057F20F883E
          * realName : 鏄撹仈娓�
-         * registerTime : 2017-07-05 14:00:53
+         * registerTime : 2017/07/05 14:00:53
          * sex : man
          * site : 1
          * skill : 1
-         * spared1 : 1
-         * spared2 : 1
-         * spared3 : 1
+         * spared1 : 濡傛灉浣犳棤娉曠畝娲佺殑琛ㄨ揪浣犵殑鎯虫硶锛岄偅鍙兘璇存槑浣犺繕涓嶅浜嗚В瀹�
+         * spared2 :
+         * spared3 :
          * state : 1
          * tel : 12345678912
          * userId : 1
-         * userName : yiliangang
+         * userName : 鏄撹仈娓�
          * userType : 1
          */
 
         private String birthDate;
         private int companyId;
         private String companyName;
+        private String constellation;
         private String email;
         private String headPortrait;
         private String industry;
@@ -107,6 +109,14 @@ public class Login{
 
         public void setCompanyName(String companyName) {
             this.companyName = companyName;
+        }
+
+        public String getConstellation() {
+            return constellation;
+        }
+
+        public void setConstellation(String constellation) {
+            this.constellation = constellation;
         }
 
         public String getEmail() {
@@ -252,42 +262,5 @@ public class Login{
         public void setUserType(int userType) {
             this.userType = userType;
         }
-
-        @Override
-        public String toString() {
-            return "MsgBean{" +
-                    "birthDate='" + birthDate + '\'' +
-                    ", companyId=" + companyId +
-                    ", companyName='" + companyName + '\'' +
-                    ", email='" + email + '\'' +
-                    ", headPortrait='" + headPortrait + '\'' +
-                    ", industry='" + industry + '\'' +
-                    ", interest='" + interest + '\'' +
-                    ", password='" + password + '\'' +
-                    ", realName='" + realName + '\'' +
-                    ", registerTime='" + registerTime + '\'' +
-                    ", sex='" + sex + '\'' +
-                    ", site='" + site + '\'' +
-                    ", skill='" + skill + '\'' +
-                    ", spared1='" + spared1 + '\'' +
-                    ", spared2='" + spared2 + '\'' +
-                    ", spared3='" + spared3 + '\'' +
-                    ", state=" + state +
-                    ", tel='" + tel + '\'' +
-                    ", userId=" + userId +
-                    ", userName='" + userName + '\'' +
-                    ", userType=" + userType +
-                    '}';
-        }
-
-    }
-
-    @Override
-    public String toString() {
-        return "Login{" +
-                "result='" + result + '\'' +
-                ", code='" + code + '\'' +
-                ", msg=" + msg +
-                '}';
     }
 }

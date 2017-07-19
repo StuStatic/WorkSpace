@@ -3,6 +3,7 @@ package com.ylg.workspace.workspace.activity.personaldetails;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ylg.workspace.workspace.Application.App;
@@ -11,6 +12,7 @@ import com.ylg.workspace.workspace.R;
 public class SetUpActivity extends App implements View.OnClickListener{
     private TextView mTitle;
     private ImageView iv_back;
+    private RelativeLayout set_up_personaldata;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +26,8 @@ public class SetUpActivity extends App implements View.OnClickListener{
         mTitle.setText(R.string.set_up_title);
         iv_back = (ImageView) findViewById(R.id.iv_back);
         iv_back.setOnClickListener(this);
+        set_up_personaldata = (RelativeLayout) findViewById(R.id.set_up_personaldata);
+        set_up_personaldata.setOnClickListener(this);
     }
 
     @Override
@@ -31,6 +35,9 @@ public class SetUpActivity extends App implements View.OnClickListener{
         switch (v.getId()){
             case R.id.iv_back:
                 finish();
+                break;
+            case R.id.set_up_personaldata://个人资料
+                startActivity(MyInformationActivity.class);
                 break;
         }
     }

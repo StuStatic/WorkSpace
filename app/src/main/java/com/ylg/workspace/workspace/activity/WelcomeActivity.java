@@ -65,15 +65,20 @@ public class WelcomeActivity extends App {
                         if (body.getMsg().getPassword().equals(md5)) {
                             App.KEY_LOGIN = 2;
                             Bundle bundle = new Bundle();
-                            bundle.putSerializable("companyName", body.getMsg().getCompanyName());
-                            bundle.putSerializable("headPortrait", body.getMsg().getHeadPortrait());
-                            bundle.putSerializable("realName", body.getMsg().getRealName());
-                            bundle.putSerializable("sex", body.getMsg().getSex());
-                            bundle.putSerializable("username", body.getMsg().getUserName());
+                            bundle.putSerializable("headPortrait", body.getMsg().getHeadPortrait());//头像地址
+                            bundle.putSerializable("realName", body.getMsg().getRealName());//用户名字
+                            bundle.putSerializable("sex", body.getMsg().getSex());//用户性别
+                            bundle.putSerializable("username", body.getMsg().getUserName());//用户名称
                             bundle.putSerializable("spared1", body.getMsg().getSpared1());
+                            bundle.putSerializable("industry", body.getMsg().getIndustry());//行业
+                            bundle.putSerializable("site", body.getMsg().getIndustry());//收货地址
+                            bundle.putSerializable("constellation", body.getMsg().getConstellation());//收货地址
+
+                            bundle.putSerializable("skill", body.getMsg().getSkill());//技能（先不用）
+                            bundle.putSerializable("interest", body.getMsg().getSkill());//兴趣（先不用）
                             App.USER_ID = body.getMsg().getUserId();
                             App.COMPANY_ID = body.getMsg().getCompanyId();
-                            input1(body.getMsg().getCompanyName(),body.getMsg().getHeadPortrait(),body.getMsg().getRealName(),body.getMsg().getSex(),body.getMsg().getUserName(),body.getMsg().getSpared1());
+                            input1(body.getMsg().getHeadPortrait(),body.getMsg().getRealName(),body.getMsg().getSex(),body.getMsg().getUserName(),body.getMsg().getSpared1(),body.getMsg().getIndustry(),body.getMsg().getSite(),body.getMsg().getSkill(),body.getMsg().getInterest(),body.getMsg().getConstellation());
                             Intent i = new Intent(WelcomeActivity.this,MainActivity.class);
                             i.putExtras(bundle);
                             startActivity(i);
@@ -83,10 +88,10 @@ public class WelcomeActivity extends App {
                     } else if (code.equals("500")) {
                         /**
                          * 7.13日 stu 修改 登录失败情况下 同样能跳转界面
+                         * 7.19  DYY修改 使用框架跳转
                          */
                         showCustomToast("账号/密码错误");
-                        Intent i = new Intent(WelcomeActivity.this,MainActivity.class);
-                        startActivity(i);
+                        startActivity(MainActivity.class);
                         finish();
                     }
                 }
@@ -98,9 +103,9 @@ public class WelcomeActivity extends App {
                     showCustomToast("登陆失败");
                     /**
                      * 7.13日 stu 修改 登录失败情况下 同样能跳转界面
+                     * 7.19  DYY修改 使用框架跳转
                      */
-                    Intent i = new Intent(WelcomeActivity.this,MainActivity.class);
-                    startActivity(i);
+                    startActivity(MainActivity.class);
                     finish();
                 }
             });
@@ -117,7 +122,7 @@ public class WelcomeActivity extends App {
         //第一个参数就是关键字，第二个参数为默认值，意思是说如果没找到值就用默认值代替
         String name1 = shared.getString("name", "");//同上，若没找到就让它为空""
         String psd1 = shared.getString("psd", "");
-        if (name1 !=null && psd1 != null ){
+        if (name1.length() != 0 && psd1.length() != 0 ){
             login(name1,psd1);
         }else {
             startActivity(MainActivity.class);
@@ -125,20 +130,7 @@ public class WelcomeActivity extends App {
             finish();
         }
     }
-    /**
-     * 存
-     */
-    private void input1(String companyName,String headPortrait,String realName,String sex,String username,String spared1) {
-        //第一个参数是文件名，第二个参数是模式（不明白可以去补习一下SharedPreferences的知识）
-        SharedPreferences.Editor edit2 = getSharedPreferences("mypsd2", MODE_PRIVATE).edit();
-        edit2.putString("companyName", companyName);
-        edit2.putString("headPortrait", headPortrait);
-        edit2.putString("realName", realName);
-        edit2.putString("sex", sex);
-        edit2.putString("username", username);
-        edit2.putString("spared1", spared1);
-        edit2.commit();
-    }
+
 
 
 

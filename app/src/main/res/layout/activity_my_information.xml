@@ -54,13 +54,21 @@
                     android:background="@drawable/arrow_right_icon"
                     />
 
-                <ImageView
+                <de.hdodenhof.circleimageview.CircleImageView
+                    xmlns:circleimageview="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/information_user_Headportrait"
                     android:layout_width="53sp"
                     android:layout_height="53sp"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="35sp"
-                    android:background="@drawable/headportrait"
+                    android:src="@drawable/my_head_icon"
+                    circleimageview:civ_border_color="@android:color/white"
+                    circleimageview:civ_border_overlay="false"
+                    circleimageview:civ_border_width="2dp"
+                    circleimageview:civ_fill_color="@android:color/holo_blue_light"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20sp"
                     />
 
                 <View
@@ -97,6 +105,7 @@
                     />
 
                 <TextView
+                    android:id="@+id/information_user_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -139,12 +148,13 @@
                     android:background="@drawable/arrow_right_icon"/>
 
                 <ImageView
+                    android:id="@+id/information_user_sex"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="35sp"
-                    android:background="@drawable/girliconno"
+                    android:src="@drawable/girliconno"
                     />
 
                 <View
@@ -181,6 +191,7 @@
                     />
 
                 <TextView
+                    android:id="@+id/information_user_constellation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -359,6 +370,7 @@
                     />
 
                 <TextView
+                    android:id="@+id/information_delivery_industry_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -406,6 +418,7 @@
                     />
 
                 <TextView
+                    android:id="@+id/information_delivery_personalizedsignature_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"

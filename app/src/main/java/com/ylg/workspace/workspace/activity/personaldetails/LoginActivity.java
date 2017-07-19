@@ -154,14 +154,22 @@ public class LoginActivity extends App implements View.OnClickListener {
                     if (code.equals("200")) {
                         if (body.getMsg().getPassword().equals(md5)) {
                             App.KEY_LOGIN = 2;
-                            input(phone,password,body.getMsg().toString());
+                            input(phone,password);
                             Bundle bundle = new Bundle();
-                            bundle.putSerializable("companyName", body.getMsg().getCompanyName());
-                            bundle.putSerializable("headPortrait", body.getMsg().getHeadPortrait());
-                            bundle.putSerializable("realName", body.getMsg().getRealName());
-                            bundle.putSerializable("sex", body.getMsg().getSex());
-                            bundle.putSerializable("username", body.getMsg().getUserName());
+                            bundle.putSerializable("headPortrait", body.getMsg().getHeadPortrait());//头像地址
+                            bundle.putSerializable("realName", body.getMsg().getRealName());//用户名字
+                            bundle.putSerializable("sex", body.getMsg().getSex());//用户性别
+                            bundle.putSerializable("username", body.getMsg().getUserName());//用户名称
                             bundle.putSerializable("spared1", body.getMsg().getSpared1());
+                            bundle.putSerializable("industry", body.getMsg().getIndustry());//行业
+                            bundle.putSerializable("site", body.getMsg().getIndustry());//收货地址
+                            bundle.putSerializable("constellation", body.getMsg().getConstellation());//星座
+
+                            bundle.putSerializable("skill", body.getMsg().getSkill());//技能（先不用）
+                            bundle.putSerializable("interest", body.getMsg().getSkill());//兴趣（先不用）
+
+                            input1(body.getMsg().getHeadPortrait(),body.getMsg().getRealName(),body.getMsg().getSex(),body.getMsg().getUserName(),body.getMsg().getSpared1(),body.getMsg().getIndustry(),body.getMsg().getSite(),body.getMsg().getSkill(),body.getMsg().getInterest(),body.getMsg().getConstellation());
+
                             App.USER_ID = body.getMsg().getUserId();
                             App.COMPANY_ID = body.getMsg().getCompanyId();
                             Intent i = new Intent();
@@ -194,16 +202,12 @@ public class LoginActivity extends App implements View.OnClickListener {
     /**
      * 存
      */
-    private void input(String name,String password,String body) {
+    private void input(String name,String password) {
         //第一个参数是文件名，第二个参数是模式（不明白可以去补习一下SharedPreferences的知识）
         SharedPreferences.Editor edit = getSharedPreferences("mypsd", MODE_PRIVATE).edit();
         edit.putString("name", name);
         edit.putString("psd", password);
         edit.commit();
-        //第一个参数是文件名，第二个参数是模式（不明白可以去补习一下SharedPreferences的知识）
-        SharedPreferences.Editor edit2 = getSharedPreferences("mypsd2", MODE_PRIVATE).edit();
-        edit2.putString("body", body);
-        edit2.commit();
     }
 
     @Override
