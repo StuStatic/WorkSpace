@@ -10,33 +10,34 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="30dp">
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:background="@color/colorWhite"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="方圆大厦·优客工场"
-        android:textColor="@color/colorBlack"
-        android:layout_marginLeft="20dp"
-        android:layout_centerVertical="true"/>
+        android:layout_height="40dp">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorWhite" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:text="方圆大厦·优客工场"
+            android:textColor="@color/colorBlack" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/arrow_right_icon"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="20dp"/>
+            android:layout_marginRight="20dp"
+            android:src="@drawable/arrow_right_icon" />
     </RelativeLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/colorGray"/>
+        android:background="@color/colorGray" />
 
     <ListView
         android:id="@+id/meetroom_today_lv"
@@ -44,7 +45,6 @@
         android:layout_height="match_parent"
         android:divider="@color/colorGray"
         android:dividerHeight="1dp"></ListView>
-
 
 
 </LinearLayout>

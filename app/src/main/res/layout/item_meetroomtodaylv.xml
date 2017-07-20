@@ -1,65 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <ImageView
-        android:id="@+id/meetroom_img_today"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@mipmap/a4"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-    <!--半透明底边-->
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
+
+
+
 
     <RelativeLayout
+        android:id="@+id/item1_meetroomtoday"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_alignParentBottom="true">
-    <View
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/meetroom_img_today"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp"
+            android:src="@mipmap/a4" />
+
+        <TextView
+            android:id="@+id/meetroom_address_today"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:textColor="@color/colorBlack"
+            android:text="方圆大厦·多功能会议室"
+            android:textSize="15dp"
+            android:layout_below="@id/meetroom_img_today"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/meetroom_peoplenum_today"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12-14人"
+            android:layout_below="@id/meetroom_address_today"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/colorBlack"
+            android:textSize="10dp" />
+
+        <TextView
+            android:id="@+id/meetroom_floor_today"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="第4层"
+            android:layout_below="@id/meetroom_peoplenum_today"
+            android:layout_marginLeft="15dp"
+
+            android:layout_marginTop="5dp"
+            android:textColor="@color/colorBlack"
+            android:textSize="10dp" />
+
+        <TextView
+            android:id="@+id/meetroom_price_today"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="5dp"
+            android:text="150元/30分钟"
+            android:textColor="@color/colorGray"
+            android:textSize="12dp"
+            android:layout_below="@id/meetroom_img_today" />
+        <ImageView
+            android:id="@+id/meetroom_order_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/order"
+            android:layout_below="@id/meetroom_price_today"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/item2_meetroomtoday"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorGrayLight"
-        android:alpha="0.3"/>
-    <TextView
-        android:id="@+id/meetroom_address_today"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/item1_meetroomtoday"
+        android:background="#fffeee"
+        android:minHeight="35dp"
+        android:visibility="gone">
 
-        android:textSize="15dp"
-        android:textColor="@color/colorWhite"
-
-        android:layout_marginLeft="20dp"/>
-
-    <TextView
-        android:id="@+id/meetroom_peoplenum_today"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_below="@id/meetroom_address_today"
-        android:textSize="10dp"
-        android:textColor="@color/colorWhite"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="20dp"/>
-    <TextView
-        android:id="@+id/meetroom_floor_today"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:textColor="@color/colorWhite"
-        android:textSize="10dp"
-        android:layout_toRightOf="@id/meetroom_peoplenum_today"
-        android:layout_below="@id/meetroom_address_today"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="8dp"/>
-    <TextView
-        android:id="@+id/meetroom_price_today"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:textSize="12dp"
-        android:textColor="@color/colorWhite"
-        android:layout_marginTop="2dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="Expand"
+            android:textColor="#000000"
+            android:textSize="16sp"></TextView>
     </RelativeLayout>
 
 

@@ -22,9 +22,11 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/meetroom_line01"
         android:background="@color/colorGrayLight"
-        app:tabSelectedTextColor="@color/colorBlack"
+        app:tabSelectedTextColor="@color/colorBlue"
         app:tabIndicatorColor="@color/colorWhite"
+        app:tabIndicatorHeight="0dp"
         app:tabTextColor="@color/colorGray"
+        app:tabGravity="fill"
         />
 
     <android.support.v4.view.ViewPager
