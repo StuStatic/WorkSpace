@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,7 +28,7 @@ import com.ylg.workspace.workspace.activity.personaldetails.SetUpActivity;
 import com.ylg.workspace.workspace.http.Http;
 
 
-public class MineFragment extends android.app.Fragment implements View.OnClickListener {
+public class MineFragment extends Fragment implements View.OnClickListener {
 
     private ImageView iv_set;
     private RelativeLayout mineOrderMybusiness;

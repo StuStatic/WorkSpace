@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Http {
 
     public static final String API_URL = "http://192.168.6.219:8080/workSpace/";
-//    public static final String API_URL = "http://192.168.1.216:8080/workSpace/";
+  //  public static final String API_URL = "http://192.168.1.216:8080/workSpace/";
     private static Retrofit retrofit;
 
     public static Retrofit getInstance(){

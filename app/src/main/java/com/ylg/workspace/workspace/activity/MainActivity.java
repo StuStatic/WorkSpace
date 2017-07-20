@@ -1,9 +1,10 @@
 package com.ylg.workspace.workspace.activity;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -44,7 +45,7 @@ public class MainActivity extends App implements View.OnClickListener {
         setContentView(R.layout.activity_main);
         //初始化视图
         initView();
-        fragmentManager = getFragmentManager();
+        fragmentManager = getSupportFragmentManager();
         // 第一次启动时选中第0个tab
         setTabSelection(0);
     }

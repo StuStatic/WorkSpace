@@ -6,6 +6,7 @@ import com.ylg.workspace.workspace.bean.ExerciseRecommend;
 import com.ylg.workspace.workspace.bean.Info;
 import com.ylg.workspace.workspace.bean.NeiborCompany;
 import com.ylg.workspace.workspace.bean.SlidePic;
+import com.ylg.workspace.workspace.bean.SlideServicePic;
 import com.ylg.workspace.workspace.bean.SpaceList;
 import com.ylg.workspace.workspace.http.bean.FindByActivityId;
 import com.ylg.workspace.workspace.http.bean.FindByApplyTel;
@@ -132,6 +133,10 @@ public interface HttpAPI {
     //HomeFragment轮播图片请求
     @POST("Slider/findByHome")
     Call<SlidePic> getSlidePic();
+
+    //ServiceFragment轮播图片请求
+    @POST("Slider/findByServe")
+    Call<SlideServicePic> getSlideServicePic();
 
     //最新资讯
     @POST("Message/findAllMessage")

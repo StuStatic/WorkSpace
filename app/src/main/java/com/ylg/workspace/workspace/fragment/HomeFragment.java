@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -54,7 +55,7 @@ import retrofit2.Response;
  * writen by stu on 2017/7/17
  */
 
-public class HomeFragment extends android.app.Fragment implements View.OnClickListener{
+public class HomeFragment extends Fragment implements View.OnClickListener{
 
     /**
      * @author stu
@@ -218,14 +219,14 @@ public class HomeFragment extends android.app.Fragment implements View.OnClickLi
         call.enqueue(new Callback<SlidePic>() {
             @Override
             public void onResponse(Call<SlidePic> call, Response<SlidePic> response) {
-                Log.e("code_slideHome",response.body().getCode());
+                Log.e("response_slide:",response.body().toString());
                 if(response.body().getCode().equals("200")){
 
                     String slideURL= Http.API_URL+response.body().getMsg().get(0).getImage();
                     Log.e("image:",slideURL);
                     //头部视图轮播数据初始化
                     mImageViewList1=response.body().getMsg();
-                    //<code></code>
+                    //code
 
                     Log.e("mImageViewList1.size",mImageViewList1.size()+"");
                     mImageViewDotList1=new ArrayList();
