@@ -22,6 +22,10 @@ import com.ylg.workspace.workspace.fragment.ServiceFragment;
 import com.ylg.workspace.workspace.fragment.SocialFragment;
 
 public class MainActivity extends App implements View.OnClickListener {
+    /**
+     * @author stu
+     *
+     */
     //Fragment
     private HomeFragment homeFragment;
     private MineFragment mineFragment;
