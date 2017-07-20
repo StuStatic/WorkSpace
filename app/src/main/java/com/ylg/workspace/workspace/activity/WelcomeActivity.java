@@ -73,12 +73,12 @@ public class WelcomeActivity extends App {
                             bundle.putSerializable("industry", body.getMsg().getIndustry());//行业
                             bundle.putSerializable("site", body.getMsg().getIndustry());//收货地址
                             bundle.putSerializable("constellation", body.getMsg().getConstellation());//收货地址
+                            bundle.putSerializable("companyId", body.getMsg().getCompanyId());//企业ID
 
                             bundle.putSerializable("skill", body.getMsg().getSkill());//技能（先不用）
                             bundle.putSerializable("interest", body.getMsg().getSkill());//兴趣（先不用）
                             App.USER_ID = body.getMsg().getUserId();
-                            App.COMPANY_ID = body.getMsg().getCompanyId();
-                            input1(body.getMsg().getHeadPortrait(),body.getMsg().getRealName(),body.getMsg().getSex(),body.getMsg().getUserName(),body.getMsg().getSpared1(),body.getMsg().getIndustry(),body.getMsg().getSite(),body.getMsg().getSkill(),body.getMsg().getInterest(),body.getMsg().getConstellation());
+                            input1(body.getMsg().getHeadPortrait(),body.getMsg().getRealName(),body.getMsg().getSex(),body.getMsg().getUserName(),body.getMsg().getSpared1(),body.getMsg().getIndustry(),body.getMsg().getSite(),body.getMsg().getSkill(),body.getMsg().getInterest(),body.getMsg().getConstellation(),body.getMsg().getCompanyId());
                             Intent i = new Intent(WelcomeActivity.this,MainActivity.class);
                             i.putExtras(bundle);
                             startActivity(i);

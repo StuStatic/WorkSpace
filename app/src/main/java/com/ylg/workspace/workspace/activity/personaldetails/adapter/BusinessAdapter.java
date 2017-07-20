@@ -7,8 +7,11 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.ylg.workspace.workspace.R;
 import com.ylg.workspace.workspace.activity.personaldetails.bean.Business;
+import com.ylg.workspace.workspace.http.Http;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,9 +20,9 @@ import java.util.List;
 public class BusinessAdapter extends BaseAdapter {
 
     private Context mContext;
-    private List<Business> mList =new ArrayList<>();
+    private List<Business.MsgBean> mList =new ArrayList<>();
 
-    public BusinessAdapter(Context context, List<Business> list) {
+    public BusinessAdapter(Context context, List<Business.MsgBean> list) {
         mContext = context;
         mList = list;
     }
@@ -51,9 +54,21 @@ public class BusinessAdapter extends BaseAdapter {
         }else {
             mViewHolder = (ViewHolder) convertView.getTag();
         }
-        mViewHolder.name.setText(mList.get(position).getName());
-        mViewHolder.time.setText(mList.get(position).getTime());
-        mViewHolder.mImageView.setImageResource(R.drawable.logo_qu);
+        mViewHolder.name.setText(mList.get(position).getCompanyName());
+        mViewHolder.time.setText(mList.get(position).getSpared1());
+
+        if (mList.get(position).getCompanyPicture().length() != 0) {
+            Glide.with(mContext)
+                    .load(Http.API_URL + mList.get(position).getCompanyPicture())
+                    .placeholder(R.drawable.logo_qu)
+                    .error(R.drawable.logo_qu)
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .centerCrop()
+                    .crossFade()
+                    .into(mViewHolder.mImageView);
+        } else {
+            mViewHolder.mImageView.setImageResource(R.drawable.logo_qu);
+        }
         return convertView;
     }
     class ViewHolder{

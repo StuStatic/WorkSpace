@@ -12,8 +12,6 @@ import com.ylg.workspace.workspace.Application.App;
 import com.ylg.workspace.workspace.R;
 import com.ylg.workspace.workspace.activity.personaldetails.adapter.FragAdapter;
 import com.ylg.workspace.workspace.activity.personaldetails.fragment.AllFragment;
-import com.ylg.workspace.workspace.activity.personaldetails.fragment.CanceledFragment;
-import com.ylg.workspace.workspace.activity.personaldetails.fragment.CompletedFragment;
 import com.ylg.workspace.workspace.activity.personaldetails.fragment.PendingPaymentFragment;
 import com.ylg.workspace.workspace.activity.personaldetails.fragment.PendingUseFragment;
 
@@ -27,8 +25,6 @@ public class MyActivity extends App implements View.OnClickListener {
     private RadioButton checkButton1;
     private RadioButton checkButton2;
     private RadioButton checkButton3;
-    private RadioButton checkButton4;
-    private RadioButton checkButton5;
     private List<Fragment> mFragments = new ArrayList<>();
     private ViewPager vp;
     @Override
@@ -47,19 +43,13 @@ public class MyActivity extends App implements View.OnClickListener {
         checkButton1 = (RadioButton) findViewById(R.id.checkButton1);
         checkButton2 = (RadioButton) findViewById(R.id.checkButton2);
         checkButton3 = (RadioButton) findViewById(R.id.checkButton3);
-        checkButton4 = (RadioButton) findViewById(R.id.checkButton4);
-        checkButton5 = (RadioButton) findViewById(R.id.checkButton5);
         checkButton1.setOnClickListener(this);
         checkButton2.setOnClickListener(this);
         checkButton3.setOnClickListener(this);
-        checkButton4.setOnClickListener(this);
-        checkButton5.setOnClickListener(this);
         checkButton1.setChecked(true);
         mFragments.add( new AllFragment());
         mFragments.add(new PendingPaymentFragment());
         mFragments.add(new PendingUseFragment());
-        mFragments.add( new CompletedFragment());
-        mFragments.add(new CanceledFragment());
         FragAdapter adapter = new FragAdapter(getSupportFragmentManager(), mFragments);
         //设定适配器
         vp  = (ViewPager)findViewById(R.id.viewpager);
@@ -78,10 +68,6 @@ public class MyActivity extends App implements View.OnClickListener {
                     checkButton2.setChecked(true);
                 }else if (position == 2){
                     checkButton3.setChecked(true);
-                }else if (position == 3){
-                    checkButton4.setChecked(true);
-                }else if (position == 4){
-                    checkButton5.setChecked(true);
                 }
             }
             @Override
@@ -106,13 +92,6 @@ public class MyActivity extends App implements View.OnClickListener {
             case R.id.checkButton3:
                 vp.setCurrentItem(2);
                 break;
-            case R.id.checkButton4:
-                vp.setCurrentItem(3);
-                break;
-            case R.id.checkButton5:
-                vp.setCurrentItem(4);
-                break;
-
         }
     }
 

@@ -7,7 +7,7 @@ public class Login{
     /**
      * result : 鎴愬姛
      * code : 200
-     * msg : {"birthDate":"2016/04/06 13:59:35","companyId":1,"companyName":"鐗╄仈娓鎶\u20ac鍙戝睍鏈夐檺鍏徃","constellation":"灏勬墜","email":"123456789@qq.com","headPortrait":"/static/images/1499326581890.png","industry":"1","interest":"1","password":"E10ADC3949BA59ABBE56E057F20F883E","realName":"鏄撹仈娓�","registerTime":"2017/07/05 14:00:53","sex":"man","site":"1","skill":"1","spared1":"濡傛灉浣犳棤娉曠畝娲佺殑琛ㄨ揪浣犵殑鎯虫硶锛岄偅鍙兘璇存槑浣犺繕涓嶅浜嗚В瀹�","spared2":"","spared3":"","state":1,"tel":"12345678912","userId":1,"userName":"鏄撹仈娓�","userType":1}
+     * msg : {"birthDate":"2016/04/06 13:59:35","companyId":"2,3","companyName":"鐗╄仈娓鎶\u20ac鍙戝睍鏈夐檺鍏徃","constellation":"灏勬墜","email":"123456789@qq.com","headPortrait":"/static/images/1499326581890.png","industry":"1","interest":"1","password":"E10ADC3949BA59ABBE56E057F20F883E","realName":"鏄撹仈娓�","registerTime":"2017/07/05 14:00:53","sex":"man","site":"1","skill":"1","spaceId":0,"spared1":"濡傛灉浣犳棤娉曠畝娲佺殑琛ㄨ揪浣犵殑鎯虫硶锛岄偅鍙兘璇存槑浣犺繕涓嶅浜嗚В瀹�","spared2":"","spared3":"","state":1,"tel":"12345678912","userId":1,"userName":"鏄撹仈娓�","userType":1}
      */
 
     private String result;
@@ -41,7 +41,7 @@ public class Login{
     public static class MsgBean {
         /**
          * birthDate : 2016/04/06 13:59:35
-         * companyId : 1
+         * companyId : 2,3
          * companyName : 鐗╄仈娓鎶€鍙戝睍鏈夐檺鍏徃
          * constellation : 灏勬墜
          * email : 123456789@qq.com
@@ -54,6 +54,7 @@ public class Login{
          * sex : man
          * site : 1
          * skill : 1
+         * spaceId : 0
          * spared1 : 濡傛灉浣犳棤娉曠畝娲佺殑琛ㄨ揪浣犵殑鎯虫硶锛岄偅鍙兘璇存槑浣犺繕涓嶅浜嗚В瀹�
          * spared2 :
          * spared3 :
@@ -65,7 +66,7 @@ public class Login{
          */
 
         private String birthDate;
-        private int companyId;
+        private String companyId;
         private String companyName;
         private String constellation;
         private String email;
@@ -78,6 +79,7 @@ public class Login{
         private String sex;
         private String site;
         private String skill;
+        private int spaceId;
         private String spared1;
         private String spared2;
         private String spared3;
@@ -95,11 +97,11 @@ public class Login{
             this.birthDate = birthDate;
         }
 
-        public int getCompanyId() {
+        public String getCompanyId() {
             return companyId;
         }
 
-        public void setCompanyId(int companyId) {
+        public void setCompanyId(String companyId) {
             this.companyId = companyId;
         }
 
@@ -199,6 +201,14 @@ public class Login{
             this.skill = skill;
         }
 
+        public int getSpaceId() {
+            return spaceId;
+        }
+
+        public void setSpaceId(int spaceId) {
+            this.spaceId = spaceId;
+        }
+
         public String getSpared1() {
             return spared1;
         }
@@ -267,7 +277,7 @@ public class Login{
         public String toString() {
             return "MsgBean{" +
                     "birthDate='" + birthDate + '\'' +
-                    ", companyId=" + companyId +
+                    ", companyId='" + companyId + '\'' +
                     ", companyName='" + companyName + '\'' +
                     ", constellation='" + constellation + '\'' +
                     ", email='" + email + '\'' +
@@ -280,6 +290,7 @@ public class Login{
                     ", sex='" + sex + '\'' +
                     ", site='" + site + '\'' +
                     ", skill='" + skill + '\'' +
+                    ", spaceId=" + spaceId +
                     ", spared1='" + spared1 + '\'' +
                     ", spared2='" + spared2 + '\'' +
                     ", spared3='" + spared3 + '\'' +

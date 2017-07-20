@@ -1,6 +1,7 @@
 package com.ylg.workspace.workspace.activity.personaldetails.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -9,15 +10,19 @@ import android.widget.TextView;
 
 import com.ylg.workspace.workspace.R;
 import com.ylg.workspace.workspace.activity.personaldetails.bean.MyActivity;
+import com.ylg.workspace.workspace.activity.personaldetails.bean.NotMyActivity;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-public class MyActivitysAdapter extends BaseAdapter {
+public class MyActivitysNoAdapter extends BaseAdapter {
     private Context mContext;
-    private List<MyActivity.MsgBean> mList = new ArrayList<>();
+    private List<NotMyActivity.MsgBean> mList = new ArrayList<>();
 
-    public MyActivitysAdapter(Context context, List<MyActivity.MsgBean> list) {
+    public MyActivitysNoAdapter(Context context, List<NotMyActivity.MsgBean> list) {
         mContext = context;
         mList = list;
     }
@@ -52,12 +57,10 @@ public class MyActivitysAdapter extends BaseAdapter {
         } else {
             mViewHolder = (ViewHolder) convertView.getTag();
         }
-
-        mViewHolder.name.setText(mList.get(position).getContent().getTitle());
-        mViewHolder.time.setText("时间：" + mList.get(position).getContent().getStarTime() + " - " + mList.get(position).getContent().getEndTime());
-        mViewHolder.address.setText("地点：" + mList.get(position).getContent().getSpared1());
-        mViewHolder.state.setText(mList.get(position).getState());
-
+        mViewHolder.name.setText(mList.get(position).getTitle());
+        mViewHolder.time.setText("时间：" + mList.get(position).getStarTime() + " - " + mList.get(position).getEndTime());
+        mViewHolder.address.setText("地点：" + mList.get(position).getSpared1());
+        mViewHolder.state.setText("未开始");
         return convertView;
     }
 

@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.ylg.workspace.workspace.R;
 import com.ylg.workspace.workspace.activity.personaldetails.bean.FeedBackFrag.MsgBean;
 
@@ -58,9 +57,6 @@ public class FeedbackAdapter extends BaseAdapter {
         }else if (mFeedBackFrags.get(position).getOpinionState()==0){
             mViewHolder.state.setText("未读取");
         }
-
-
-
         return convertView;
     }
     class ViewHoder1 {

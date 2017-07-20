@@ -5,32 +5,37 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.ylg.workspace.workspace.Application.App;
 import com.ylg.workspace.workspace.R;
 import com.ylg.workspace.workspace.activity.personaldetails.adapter.MyActivitysAdapter;
-import com.ylg.workspace.workspace.activity.personaldetails.bean.Activity;
+import com.ylg.workspace.workspace.activity.personaldetails.bean.MyActivity;
+import com.ylg.workspace.workspace.http.Http;
+import com.ylg.workspace.workspace.http.HttpAPI;
 import com.ylg.workspace.workspace.view.SwipeRefreshView;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class AllFragment extends Fragment {
+
     private ListView mListView;
     private SwipeRefreshView mSRV;
     private MyActivitysAdapter mAdapter;
-    private List<Activity> mList;
-
-
+    private HttpAPI httpAPI;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -41,15 +46,10 @@ public class AllFragment extends Fragment {
     }
 
     private void initView(View mView) {
+        Http();
         mListView = (ListView) mView.findViewById(R.id.myactivity_lv);
         mSRV = (SwipeRefreshView) mView.findViewById(R.id.myactivity_srv);
-        mList = new ArrayList<>();
-        Activity mActivity1 = new Activity("单身交流会！！！","07/11 15:00-07/11 17:00","阳光100.优客工场","待使用");
-        Activity mActivity2 = new Activity("单身交流会！！！","07/11 15:00-07/11 17:00","阳光100.优客工场","待使用");
-        mList.add(mActivity1);
-        mList.add(mActivity2);
-        mAdapter = new MyActivitysAdapter(getActivity(),mList);
-        mListView.setAdapter(mAdapter);
+
         // 不能在onCreate中设置，这个表示当前是刷新状态，如果一进来就是刷新状态，SwipeRefreshLayout会屏蔽掉下拉事件
         //mSwipeRefreshView.setRefreshing(true);
         // 设置颜色属性的时候一定要注意是引用了资源文件还是直接设置16进制的颜色，因为都是int值容易搞混
@@ -71,14 +71,15 @@ public class AllFragment extends Fragment {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-//                        mBusinessAdapter.notifyDataSetChanged();
-//                        showCustomToast("刷新了一条数据");
+                        Http();
+                        if (mAdapter!=null){
+                            mAdapter.notifyDataSetChanged();
+                        }
+
                         // 加载完数据设置为不刷新状态，将下拉进度收起来
                         mSRV.setRefreshing(false);
                     }
                 }, 1200);
-
-                // System.out.println(Thread.currentThread().getName());
 
                 // 这个不能写在外边，不然会直接收起来
                 //swipeRefreshLayout.setRefreshing(false);
@@ -91,11 +92,11 @@ public class AllFragment extends Fragment {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-
                         // 添加数据
                         for (int i = 0; i < 5; i++) {
+                            Http();
                             // 这里要放在里面刷新，放在外面会导致刷新的进度条卡住
-//                            mBusinessAdapter.notifyDataSetChanged();
+                            mAdapter.notifyDataSetChanged();
                         }
                         // 加载完数据设置为不加载状态，将加载进度收起来
                         mSRV.setLoading(false);
@@ -105,7 +106,6 @@ public class AllFragment extends Fragment {
         });
 
     }
-
 
     @Override
     public void onAttach(Context context) {
@@ -117,4 +117,29 @@ public class AllFragment extends Fragment {
         super.onDetach();
     }
 
+    private void Http() {
+        httpAPI  = Http.getInstance().create(HttpAPI.class);
+        httpAPI.findByUserIdMyActivity(App.USER_ID,"0").enqueue(new Callback<MyActivity>() {
+            @Override
+            public void onResponse(Call<MyActivity> call, Response<MyActivity> response) {
+                if (response.body() != null) {
+                    MyActivity body = response.body();
+                    if (body.getCode().equals("200")) {
+                        mAdapter = new MyActivitysAdapter(getActivity(), body.getMsg());
+                        mListView.setAdapter(mAdapter);
+                    } else if (body.getCode().equals("202")) {
+                        Toast.makeText(getActivity(), "暂无数据", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Log.i("dyy", "数据有问题");
+                }
+            }
+
+
+            @Override
+            public void onFailure(Call<MyActivity> call, Throwable t) {
+                Log.i("dyy", "数据有问题" + t.toString());
+            }
+        });
+    }
 }

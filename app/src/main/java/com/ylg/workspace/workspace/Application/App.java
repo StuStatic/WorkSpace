@@ -32,11 +32,9 @@ public class App extends AppCompatActivity {
     private static LinkedList<Activity> mList = new LinkedList<>();
     public static int KEY_LOGIN = 1;
     public static int USER_ID = 0;
-    public static int COMPANY_ID = 0;
     @Override
     public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
-
     }
 
     //创建Activity时添加到集合中
@@ -86,7 +84,7 @@ public class App extends AppCompatActivity {
     /**
      * 存
      */
-    public void input1(String headPortrait,String realName,String sex,String username,String spared1,String industry,String site,String skill,String interest,String constellation) {
+    public void input1(String headPortrait,String realName,String sex,String username,String spared1,String industry,String site,String skill,String interest,String constellation,String companyId) {
         //第一个参数是文件名，第二个参数是模式（不明白可以去补习一下SharedPreferences的知识）
         SharedPreferences.Editor edit2 = getSharedPreferences("mypsd2", MODE_PRIVATE).edit();
         edit2.putString("headPortrait", headPortrait);//头像地址
@@ -97,6 +95,7 @@ public class App extends AppCompatActivity {
         edit2.putString("industry", industry);//行业
         edit2.putString("site", site);//收货地址
         edit2.putString("constellation", constellation);//星座
+        edit2.putString("companyId", companyId);//星座
 
         edit2.putString("skill", skill);//技能（先不用）
         edit2.putString("interest", interest);//兴趣（先不用）
@@ -117,20 +116,10 @@ public class App extends AppCompatActivity {
         String industry = shared.getString("industry", "");//同上，若没找到就让它为空""行业
         String site = shared.getString("site", "");//同上，若没找到就让它为空""收货地址
         String constellation = shared.getString("constellation", "");//同上，若没找到就让它为空""星座
+        String companyId = shared.getString("companyId", "");//同上，若没找到就让它为空""企业ID
 
         String skill = shared.getString("skill", "");//同上，若没找到就让它为空""技能（先不用）
         String interest = shared.getString("interest", "");//同上，若没找到就让它为空""兴趣（先不用）
-
-
-
-
-
-
-
-
-
-
-
     }
 
 

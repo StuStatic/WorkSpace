@@ -1,6 +1,9 @@
 package com.ylg.workspace.workspace.http;
 
+import com.ylg.workspace.workspace.activity.personaldetails.bean.Business;
 import com.ylg.workspace.workspace.activity.personaldetails.bean.FeedBackFrag;
+import com.ylg.workspace.workspace.activity.personaldetails.bean.MyActivity;
+import com.ylg.workspace.workspace.activity.personaldetails.bean.NotMyActivity;
 import com.ylg.workspace.workspace.activity.service.bean.Service;
 import com.ylg.workspace.workspace.bean.ExerciseRecommend;
 import com.ylg.workspace.workspace.bean.Info;
@@ -197,5 +200,25 @@ public interface HttpAPI {
     //空间列表
     @POST("Space/findAllSpace")
     Call<SpaceList> getSpaceListData (@Query("city") String city);
+
+    //查找我的企业的信息
+    @POST("CompanyInfo/findMyCompany")
+    Call<Business> findMyCompany(@Query("companyId") String companyId);
+
+    //查找我的活动的信息
+    @POST("ActivityApply/findByUserId")
+    Call<MyActivity> findByUserIdMyActivity(@Query("userId") int userId,@Query("state") String state);
+    //查找我的活动的信息
+    @POST("ActivityApply/findByUserId")
+    Call<NotMyActivity> findByUserIdMyActivity1(@Query("userId") int userId, @Query("state") String state);
+
+
+
+
+
+
+
+
+
 
 }

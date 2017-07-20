@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="5"
+            android:weightSum="3"
             android:paddingTop="10sp"
             android:background="#FFFFFF"
             >
@@ -60,7 +60,7 @@
                 android:layout_marginLeft="10sp"
                 android:layout_marginRight="10sp"
                 android:paddingBottom="10sp"
-                android:text="待支付"
+                android:text="未开始"
                 android:textColor="#333333"/>
 
             <View
@@ -80,49 +80,9 @@
                 android:layout_marginLeft="10sp"
                 android:layout_marginRight="10sp"
                 android:paddingBottom="10sp"
-                android:text="待使用"
+                android:text="已结束"
                 android:textColor="#333333"/>
 
-            <View
-                android:layout_width="1px"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="10dp"
-                android:background="#d6d6d6"/>
-
-            <RadioButton
-                android:id="@+id/checkButton4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/selector_background_underline"
-                android:button="@null"
-                android:gravity="center"
-                android:layout_marginLeft="10sp"
-                android:layout_marginRight="10sp"
-                android:paddingBottom="10sp"
-                android:text="已完成"
-                android:textColor="#333333"/>
-
-            <View
-                android:layout_width="1px"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="10dp"
-                android:background="#d6d6d6"/>
-
-            <RadioButton
-                android:id="@+id/checkButton5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/selector_background_underline"
-                android:button="@null"
-                android:gravity="center"
-                android:layout_marginLeft="10sp"
-                android:layout_marginRight="10sp"
-                android:paddingBottom="10sp"
-                android:text="已取消"
-                android:textColor="#333333"
-                />
         </RadioGroup>
 
         <android.support.v4.view.ViewPager
