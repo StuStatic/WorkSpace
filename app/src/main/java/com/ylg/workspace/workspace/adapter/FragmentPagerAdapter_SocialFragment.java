@@ -17,11 +17,9 @@ import java.util.List;
 public class FragmentPagerAdapter_SocialFragment extends FragmentPagerAdapter {
     final int PAGE_COUNT = 3;
     private String tabTitles[] = new String[]{"最近的圈子","友邻企业","空间集市"};
-    private Context context;
     private List<Fragment> fragmentList;
     public FragmentPagerAdapter_SocialFragment(FragmentManager fm,List<Fragment> fragmentList) {
         super(fm);
-        this.context = context;
         this.fragmentList = fragmentList;
     }
 

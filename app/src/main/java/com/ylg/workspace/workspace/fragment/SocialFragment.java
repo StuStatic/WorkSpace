@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.ylg.workspace.workspace.R;
 import com.ylg.workspace.workspace.adapter.FragmentPagerAdapter_SocialFragment;
+import com.ylg.workspace.workspace.view.SwipeRefreshView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +37,8 @@ public class SocialFragment extends Fragment implements View.OnClickListener {
     private SpaceMarket_SocialFragment marketFragment;
     private List<Fragment> fragmentList;
     private FragmentPagerAdapter_SocialFragment adapter;
+
+
 
     public SocialFragment() {
         // Required empty public constructor
@@ -80,8 +83,8 @@ public class SocialFragment extends Fragment implements View.OnClickListener {
         //初始化list集合
         fragmentList = new ArrayList<>();
         //将fragment加入集合
-        fragmentList.add(neiborFragment);
         fragmentList.add(circleFragment);
+        fragmentList.add(neiborFragment);
         fragmentList.add(marketFragment);
 
         //初始化adapter
