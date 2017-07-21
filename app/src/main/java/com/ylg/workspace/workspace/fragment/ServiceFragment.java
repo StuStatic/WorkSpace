@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,7 +27,6 @@ import com.ylg.workspace.workspace.activity.service.QuestionActivity;
 import com.ylg.workspace.workspace.activity.service.RequirementActivity;
 import com.ylg.workspace.workspace.activity.service.ServiceRegisterActivity;
 import com.ylg.workspace.workspace.adapter.ViewPagerAdapter_Service01;
-import com.ylg.workspace.workspace.adapter.ViewPagerAdater_Home01;
 import com.ylg.workspace.workspace.bean.SlidePic;
 import com.ylg.workspace.workspace.http.Http;
 import com.ylg.workspace.workspace.http.HttpAPI;
@@ -41,7 +41,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class ServiceFragment extends android.app.Fragment implements View.OnClickListener {
+public class ServiceFragment extends Fragment implements View.OnClickListener {
 
     private View serviceLayout;
     private ViewPager mViewPager;
