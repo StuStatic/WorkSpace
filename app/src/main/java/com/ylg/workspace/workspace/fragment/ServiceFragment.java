@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.xys.libzxing.zxing.activity.CaptureActivity;
 import com.ylg.workspace.workspace.R;
 import com.ylg.workspace.workspace.activity.HtmlActivity;
 import com.ylg.workspace.workspace.activity.service.FeedbackActivity;
@@ -336,6 +337,7 @@ public class ServiceFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.service_ll8:
                 Toast.makeText(getActivity(), "敬请期待", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getActivity(), CaptureActivity.class));
                 break;
             case R.id.service_ll9:
                 startActivity(new Intent(getActivity(), FeedbackActivity.class));

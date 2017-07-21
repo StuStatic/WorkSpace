@@ -23,7 +23,6 @@
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
 
 
-
     <application
 
         android:name=".Application.MyApplication"
@@ -54,7 +53,7 @@
         <activity android:name=".activity.ballgraph.InfoActivity" />
         <activity android:name=".activity.ballgraph.ExerciseActivity" />
         <activity android:name=".activity.ballgraph.WorkplaceOrderActivity" />
-        <activity android:name=".activity.ballgraph.SpaceListActivity"/>
+        <activity android:name=".activity.ballgraph.SpaceListActivity" />
         <activity android:name=".country.CountryActivity" />
         <activity
             android:name="com.lidong.photopicker.PhotoPickerActivity"
@@ -68,8 +67,8 @@
         <activity android:name=".activity.personaldetails.CreateEnterpriseActivity" />
         <activity android:name=".activity.ballgraph.MeetRoomOrderActivity" />
         <activity android:name=".activity.ballgraph.PlaceOrderActivity" />
-        <activity android:name=".activity.HtmlActivity"/>
-        <activity android:name=".activity.ballgraph.NeiborActivity"/>
+        <activity android:name=".activity.HtmlActivity" />
+        <activity android:name=".activity.ballgraph.NeiborActivity" />
 
         //weibo
         <activity
@@ -84,14 +83,13 @@
         <activity
             android:name="com.umeng.socialize.media.WBShareCallBackActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:exported="true"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
         <activity
-            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"
+            android:name="com.sina.weibo.sdk.share.WbShareTransActivity"
             android:launchMode="singleTask"
-            android:name="com.sina.weibo.sdk.share.WbShareTransActivity">
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -115,28 +113,31 @@
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-       //qq
+        //qq
         <activity
             android:name="com.tencent.tauth.AuthActivity"
             android:launchMode="singleTask"
-            android:noHistory="true" >
+            android:noHistory="true">
 
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data android:scheme="tencent100424468" />
             </intent-filter>
         </activity>
         <activity
             android:name="com.tencent.connect.common.AssistActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            android:configChanges="orientation|keyboardHidden|screenSize"/>
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity android:name="com.xys.libzxing.zxing.activity.CaptureActivity" />
+
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="59635798c62dca4dd60014a2" >
-        </meta-data>
+            android:value="59635798c62dca4dd60014a2"></meta-data>
     </application>
 
 
