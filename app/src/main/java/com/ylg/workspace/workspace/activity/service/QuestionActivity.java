@@ -173,7 +173,7 @@ public class QuestionActivity extends App implements View.OnClickListener {
                         Log.i("zp", "bbbbbbb" + imagePaths.toString());
                         Log.i("zp", "aaaa" + s4);
 
-                        FileUploadManager.questionFix("1", "1", s1, s2, s3, s4, imagePaths, QuestionActivity.this, iphoneDialog);
+                        FileUploadManager.questionFix(String.valueOf(App.USER_ID), "1", s1, s2, s3, s4, imagePaths, QuestionActivity.this, iphoneDialog);
                     }
                 }.start();
                 break;

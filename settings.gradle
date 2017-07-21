@@ -1,1 +1,1 @@
-include ':app', ':photopicker', ':pickerview'
+include ':app', ':photopicker', ':pickerview', ':libzxing'

@@ -171,7 +171,6 @@ public interface HttpAPI {
 //    @POST("tv/tv_UserAndTv")
 //    Call<Bind> bind(@Field("userId") String s1, @Query("tvId") String s2, @Field("tvStatus") String s3, @Field("tvAddress") String s4, @Query("tvLat") String s5, @Query("tvLng") String s6);
 //
-
 //
 //    //登录
 //    @GET("user/user_loginByUsernameAndPassword")

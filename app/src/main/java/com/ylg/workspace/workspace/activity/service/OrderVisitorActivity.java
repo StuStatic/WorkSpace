@@ -181,7 +181,7 @@ public class OrderVisitorActivity extends App implements View.OnClickListener {
                         Log.i("zp", "bbbbbbb" + imagePaths.toString());
                         //imagePaths.clear();
                         //FileUploadManager.registerService("1", s2, s3, s4, s5, s6, imagePaths.get(0), 0, ServiceRegisterActivity.this);
-                        FileUploadManager.order("1", s2, s3, s4, s5, s6, i7, time + ":00", s9, imagePaths, type, OrderVisitorActivity.this, iphoneDialog);
+                        FileUploadManager.order(String.valueOf(App.USER_ID), s2, s3, s4, s5, s6, i7, time + ":00", s9, imagePaths, type, OrderVisitorActivity.this, iphoneDialog);
                         imagePaths.add(1, "000000");
                     }
                 }.start();

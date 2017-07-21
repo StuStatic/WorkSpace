@@ -109,7 +109,7 @@ public class RequirementActivity extends App implements View.OnClickListener {
                     showShortMsg("还有未填写信息");
                     return;
                 }
-                getData("1", "1", string, split(index), split(text));
+                getData("1", String.valueOf(App.USER_ID), string, split(index), split(text));
                 break;
         }
     }

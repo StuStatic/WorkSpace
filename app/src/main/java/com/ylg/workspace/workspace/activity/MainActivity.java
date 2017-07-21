@@ -161,9 +161,6 @@ public class MainActivity extends App implements View.OnClickListener {
                 service_img.setImageResource(R.drawable.service_icon);
                 service_tv.setTextColor(Color.parseColor("#0080FF"));
 //                serviceLayout.setBackgroundColor(Color.GRAY);
-
-
-
                 if (serviceFragment == null) {
                     // 如果ServiceFragment为空，则创建一个并添加到界面上
                     serviceFragment = new ServiceFragment();

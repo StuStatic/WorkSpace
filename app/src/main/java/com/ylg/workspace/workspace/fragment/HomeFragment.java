@@ -307,7 +307,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     private void startRequestNeiborDatas() {
         HttpAPI api = Http.getInstance().create(HttpAPI.class);
         //调用接口
-        Call<NeiborCompany> call = api.neiborCompany(55);
+        Call<NeiborCompany> call = api.neiborCompany(58);
 
         call.enqueue(new Callback<NeiborCompany>() {
             @Override
