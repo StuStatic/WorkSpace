@@ -5,12 +5,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ylg.workspace.workspace.R;
-import com.ylg.workspace.workspace.activity.personaldetails.bean.Business;
-import com.ylg.workspace.workspace.activity.personaldetails.bean.FragmentMakeAn;
+import com.ylg.workspace.workspace.activity.personaldetails.bean.MakeAnAppointFrag;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,9 +17,9 @@ import java.util.List;
 public class FragmentMakeAnAppinntmentAdapter extends BaseAdapter {
 
     private Context mContext;
-    private List<FragmentMakeAn> mList =new ArrayList<>();
+    private List<MakeAnAppointFrag.MsgBean> mList =new ArrayList<>();
 
-    public FragmentMakeAnAppinntmentAdapter(Context context, List<FragmentMakeAn> list) {
+    public FragmentMakeAnAppinntmentAdapter(Context context, List<MakeAnAppointFrag.MsgBean> list) {
         mContext = context;
         mList = list;
     }
@@ -55,11 +53,11 @@ public class FragmentMakeAnAppinntmentAdapter extends BaseAdapter {
         }else {
             mViewHolder = (ViewHolder) convertView.getTag();
         }
-        mViewHolder.name.setText("受访对象："+mList.get(position).getName());
-        mViewHolder.time.setText("预约时间："+mList.get(position).getTime());
-        mViewHolder.address.setText("访问社区："+mList.get(position).getAddress());
-        mViewHolder.reason.setText("来访事由："+mList.get(position).getReason());
-        mViewHolder.type.setText(mList.get(position).getType());
+        mViewHolder.name.setText("受访对象："+mList.get(position).getUserName());
+        mViewHolder.time.setText("预约时间："+mList.get(position).getVisitTime());
+        mViewHolder.address.setText("访问社区："+mList.get(position).getSpared1());
+        mViewHolder.reason.setText("来访事由："+mList.get(position).getVisitInfo());
+//        mViewHolder.type.setText(mList.get(position).getType());
         return convertView;
     }
     class ViewHolder{

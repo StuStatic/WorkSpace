@@ -83,8 +83,6 @@ public class MyBusinessActivity extends App implements View.OnClickListener {
             }
         });
 
-
-
         // 不能在onCreate中设置，这个表示当前是刷新状态，如果一进来就是刷新状态，SwipeRefreshLayout会屏蔽掉下拉事件
         //mSwipeRefreshView.setRefreshing(true);
 
@@ -107,7 +105,9 @@ public class MyBusinessActivity extends App implements View.OnClickListener {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        mBusinessAdapter.notifyDataSetChanged();
+                        if (mBusinessAdapter !=null){
+                            mBusinessAdapter.notifyDataSetChanged();
+                        }
                         // 加载完数据设置为不刷新状态，将下拉进度收起来
                         mSwipeRefreshView.setRefreshing(false);
                     }

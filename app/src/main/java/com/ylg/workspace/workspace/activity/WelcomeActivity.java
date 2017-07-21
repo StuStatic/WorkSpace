@@ -98,7 +98,6 @@ public class WelcomeActivity extends App {
 
                 @Override
                 public void onFailure(Call<Login> call, Throwable t) {
-
                     Log.i("dyy", t.toString());
                     showCustomToast("登陆失败");
                     /**

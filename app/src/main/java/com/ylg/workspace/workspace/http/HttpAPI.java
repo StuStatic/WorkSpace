@@ -1,7 +1,9 @@
 package com.ylg.workspace.workspace.http;
 
 import com.ylg.workspace.workspace.activity.personaldetails.bean.Business;
+import com.ylg.workspace.workspace.activity.personaldetails.bean.DemandFrag;
 import com.ylg.workspace.workspace.activity.personaldetails.bean.FeedBackFrag;
+import com.ylg.workspace.workspace.activity.personaldetails.bean.MakeAnAppointFrag;
 import com.ylg.workspace.workspace.activity.personaldetails.bean.MyActivity;
 import com.ylg.workspace.workspace.activity.personaldetails.bean.NotMyActivity;
 import com.ylg.workspace.workspace.activity.service.bean.Service;
@@ -208,16 +210,18 @@ public interface HttpAPI {
     //查找我的活动的信息
     @POST("ActivityApply/findByUserId")
     Call<MyActivity> findByUserIdMyActivity(@Query("userId") int userId,@Query("state") String state);
+
     //查找我的活动的信息
     @POST("ActivityApply/findByUserId")
     Call<NotMyActivity> findByUserIdMyActivity1(@Query("userId") int userId, @Query("state") String state);
 
+    //查找我的历史的需求
+    @POST("GetFacilitator/findByUserId")
+    Call<DemandFrag> findByUserIdMyHisDemand(@Query("userId") int userId);
 
-
-
-
-
-
+    //查找我的历史的预约
+    @POST("Visitor/findVisitorByUserId")
+    Call<MakeAnAppointFrag> findVisitorByUserId(@Query("userId") int userId);
 
 
 
