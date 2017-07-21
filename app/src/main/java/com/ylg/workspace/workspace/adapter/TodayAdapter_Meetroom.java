@@ -27,7 +27,6 @@ public class TodayAdapter_Meetroom extends BaseAdapter {
     private Context context;
     private int state01,state02,state03,state04,state05,state06,state07,state08,state09,state10,state11,state12,state13,state14,state15,state16,state17,state18,state19,state20,state21,state22,state23,state24;//未选0（空白），被别人选1（灰灰），自己选2(绿)；
     private double totaltime;
-
     private int currentItem = -1; //用于记录点击的 Item 的 position，是控制 item 展开的核心
     //构造方法
     public TodayAdapter_Meetroom(Context context , List<String> datas){

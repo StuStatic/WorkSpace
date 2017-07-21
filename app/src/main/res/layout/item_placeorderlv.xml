@@ -3,171 +3,680 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite">
-    <ImageView
-        android:id="@+id/placeorder_img"
+
+    <RelativeLayout
+        android:id="@+id/item1_placeorder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/placeorder_img"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp"
+            android:src="@mipmap/a4" />
+
+        <TextView
+            android:id="@+id/placeorder_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/placeorder_img"
+            android:layout_marginLeft="15dp"
+            android:text="演播厅"
+            android:textColor="@color/colorBlack"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/placeorder_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/placeorder_name"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="3dp"
+            android:ellipsize="end"
+            android:maxEms="14"
+            android:singleLine="true"
+            android:textColor="@color/black1"
+            android:textSize="10dp" />
+
+        <View
+            android:id="@+id/placeorder_line02"
+            android:layout_width="1dp"
+            android:layout_height="10dp"
+            android:layout_below="@id/placeorder_name"
+            android:layout_marginTop="6dp"
+            android:layout_toRightOf="@id/placeorder_address"
+            android:background="@color/black1" />
+
+        <TextView
+            android:id="@+id/placeorder_floor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/placeorder_name"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="3dp"
+            android:layout_toRightOf="@id/placeorder_line02"
+            android:text="3层"
+            android:textColor="@color/black1"
+            android:textSize="10dp" />
+
+        <RelativeLayout
+            android:id="@+id/placeorder_content01"
+            android:layout_width="30dp"
+            android:layout_height="12dp"
+            android:layout_below="@id/placeorder_address"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorGrayLight" />
+
+            <TextView
+                android:id="@+id/placeorder_tv01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="讲座"
+                android:textColor="@color/black1"
+                android:textSize="7dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/placeorder_content02"
+            android:layout_width="30dp"
+            android:layout_height="12dp"
+            android:layout_below="@id/placeorder_address"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/placeorder_content01">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorGrayLight" />
+
+            <TextView
+                android:id="@+id/placeorder_tv02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="沙龙"
+                android:textColor="@color/black1"
+                android:textSize="7dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/placeorder_content03"
+            android:layout_width="30dp"
+            android:layout_height="12dp"
+            android:layout_below="@id/placeorder_address"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/placeorder_content02">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorGrayLight" />
+
+            <TextView
+                android:id="@+id/placeorder_tv03"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="party"
+                android:textColor="@color/black1"
+                android:textSize="7dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/placeorder_content04"
+            android:layout_width="30dp"
+            android:layout_height="12dp"
+            android:layout_below="@id/placeorder_address"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/placeorder_content03">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorGrayLight" />
+
+            <TextView
+                android:id="@+id/placeorder_tv04"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="论坛"
+                android:textColor="@color/black1"
+                android:textSize="7dp" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/placeorder_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/placeorder_img"
+            android:layout_marginRight="15dp"
+            android:text="1200元/小时"
+
+            android:textColor="@color/black1"
+            android:textSize="15dp" />
+
+        <ImageView
+            android:id="@+id/placeorder_order_show"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/placeorder_price"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/order" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/item2_placeorder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:src="@mipmap/a4"
-        android:layout_marginRight="15dp"
-        android:layout_marginLeft="15dp" />
-    <TextView
-        android:id="@+id/placeorder_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="演播厅"
-        android:textSize="20dp"
-        android:textColor="@color/colorBlack"
-        android:layout_below="@id/placeorder_img"
-        android:layout_marginLeft="15dp" />
-    <TextView
-        android:id="@+id/placeorder_address"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="10dp"
-        android:textColor="@color/black1"
-        android:layout_below="@id/placeorder_name"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="3dp"
-        android:singleLine="true"
-        android:ellipsize="end"
-        android:maxEms="14"/>
-    <View
-        android:id="@+id/placeorder_line02"
-        android:layout_width="1dp"
-        android:layout_height="10dp"
-        android:layout_toRightOf="@id/placeorder_address"
-        android:background="@color/black1"
-        android:layout_below="@id/placeorder_name"
-        android:layout_marginTop="6dp"
-        />
-    <TextView
-        android:id="@+id/placeorder_floor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="3层"
-        android:textSize="10dp"
-        android:textColor="@color/black1"
-        android:layout_below="@id/placeorder_name"
-        android:layout_marginTop="3dp"
-        android:layout_toRightOf="@id/placeorder_line02"
-        android:layout_marginLeft="5dp"/>
+        android:layout_below="@id/item1_placeorder"
+        android:background="#fffeee"
 
-    <RelativeLayout
-        android:id="@+id/placeorder_content01"
-        android:layout_width="30dp"
-        android:layout_height="12dp"
-        android:layout_below="@id/placeorder_address"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginBottom="10dp">
+        android:visibility="gone"
+        android:orientation="vertical">
+
         <View
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="1dp"
             android:background="@color/colorGrayLight" />
-        <TextView
-            android:id="@+id/placeorder_tv01"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="讲座"
-            android:textColor="@color/black1"
-            android:textSize="7dp"
-            android:layout_centerInParent="true"
-            />
-    </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/placeorder_content02"
-        android:layout_width="30dp"
-        android:layout_height="12dp"
-        android:layout_below="@id/placeorder_address"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="15dp"
-        android:layout_toRightOf="@id/placeorder_content01"
-        android:layout_marginBottom="10dp">
-        <View
+
+        <HorizontalScrollView
+            android:id="@+id/placeorder_hsv"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorGrayLight" />
-        <TextView
-            android:id="@+id/placeorder_tv02"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:scrollbars="none">
+            <LinearLayout
+                android:id="@+id/id_gallary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/meetroom_time1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="9时"
+                        android:textColor="@color/colorGray"/>
+                    <ImageView
+                        android:id="@+id/meetroom_time01"
+                        android:layout_width="40dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/item_emptystate"
+                        android:paddingLeft="1dp"
+                        android:paddingRight="1dp"
+                        android:layout_below="@id/meetroom_time1"
+                        />
+                    <ImageView
+                        android:id="@+id/meetroom_time02"
+                        android:layout_width="40dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/item_emptystate"
+                        android:paddingLeft="1dp"
+                        android:paddingRight="1dp"
+                        android:layout_below="@id/meetroom_time1"
+                        android:layout_toRightOf="@id/meetroom_time01"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/meetroom_time2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10时"
+                        android:textColor="@color/colorGray"/>
+                    <ImageView
+                        android:id="@+id/meetroom_time03"
+                        android:layout_width="40dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/item_emptystate"
+                        android:paddingLeft="1dp"
+                        android:paddingRight="1dp"
+                        android:layout_below="@id/meetroom_time2"
+                        />
+                    <ImageView
+                        android:id="@+id/meetroom_time04"
+                        android:layout_width="40dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/item_emptystate"
+                        android:paddingLeft="1dp"
+                        android:paddingRight="1dp"
+                        android:layout_below="@id/meetroom_time2"
+                        android:layout_toRightOf="@id/meetroom_time03"/>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/meetroom_time3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="11时"
+                        android:textColor="@color/colorGray"/>
+                    <ImageView
+                        android:id="@+id/meetroom_time05"
+                        android:layout_width="40dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/item_emptystate"
+                        android:paddingLeft="1dp"
+                        android:paddingRight="1dp"
+                        android:layout_below="@id/meetroom_time3"
+                        />
+                    <ImageView
+                        android:id="@+id/meetroom_time06"
+                        android:layout_width="40dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/item_emptystate"
+                        android:paddingLeft="1dp"
+                        android:paddingRight="1dp"
+                        android:layout_below="@id/meetroom_time3"
+                        android:layout_toRightOf="@id/meetroom_time05"/>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/meetroom_time4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="12时"
+                        android:textColor="@color/colorGray"/>
+                    <ImageView
+                        android:id="@+id/meetroom_time07"
+                        android:layout_width="40dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/item_emptystate"
+                        android:paddingLeft="1dp"
+                        android:paddingRight="1dp"
+                        android:layout_below="@id/meetroom_time4"
+                        />
+                    <ImageView
+                        android:id="@+id/meetroom_time08"
+                        android:layout_width="40dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/item_emptystate"
+                        android:paddingLeft="1dp"
+                        android:paddingRight="1dp"
+                        android:layout_below="@id/meetroom_time4"
+                        android:layout_toRightOf="@id/meetroom_time07"/>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/meetroom_time5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="13时"
+                        android:textColor="@color/colorGray"/>
+                    <ImageView
+                        android:id="@+id/meetroom_time09"
+                        android:layout_width="40dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/item_emptystate"
+                        android:paddingLeft="1dp"
+                        android:paddingRight="1dp"
+                        android:layout_below="@id/meetroom_time5"
+                        />
+                    <ImageView
+                        android:id="@+id/meetroom_time10"
+                        android:layout_width="40dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/item_emptystate"
+                        android:paddingLeft="1dp"
+                        android:paddingRight="1dp"
+                        android:layout_below="@id/meetroom_time5"
+                        android:layout_toRightOf="@id/meetroom_time09"/>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/meetroom_time6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="14时"
+                        android:textColor="@color/colorGray"/>
+                    <ImageView
+                        android:id="@+id/meetroom_time11"
+                        android:layout_width="40dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/item_emptystate"
+                        android:paddingLeft="1dp"
+                        android:paddingRight="1dp"
+                        android:layout_below="@id/meetroom_time6"
+                        />
+                    <ImageView
+                        android:id="@+id/meetroom_time12"
+                        android:layout_width="40dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/item_emptystate"
+                        android:paddingLeft="1dp"
+                        android:paddingRight="1dp"
+                        android:layout_below="@id/meetroom_time6"
+                        android:layout_toRightOf="@id/meetroom_time11"/>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/meetroom_time7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="15时"
+                        android:textColor="@color/colorGray"/>
+                    <ImageView
+                        android:id="@+id/meetroom_time13"
+                        android:layout_width="40dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/item_emptystate"
+                        android:paddingLeft="1dp"
+                        android:paddingRight="1dp"
+                        android:layout_below="@id/meetroom_time7"
+                        />
+                    <ImageView
+                        android:id="@+id/meetroom_time14"
+                        android:layout_width="40dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/item_emptystate"
+                        android:paddingLeft="1dp"
+                        android:paddingRight="1dp"
+                        android:layout_below="@id/meetroom_time7"
+                        android:layout_toRightOf="@id/meetroom_time13"/>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/meetroom_time8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="16时"
+                        android:textColor="@color/colorGray"/>
+                    <ImageView
+                        android:id="@+id/meetroom_time15"
+                        android:layout_width="40dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/item_emptystate"
+                        android:paddingLeft="1dp"
+                        android:paddingRight="1dp"
+                        android:layout_below="@id/meetroom_time8"
+                        />
+                    <ImageView
+                        android:id="@+id/meetroom_time16"
+                        android:layout_width="40dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/item_emptystate"
+                        android:paddingLeft="1dp"
+                        android:paddingRight="1dp"
+                        android:layout_below="@id/meetroom_time8"
+                        android:layout_toRightOf="@id/meetroom_time15"/>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/meetroom_time9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="17时"
+                        android:textColor="@color/colorGray"/>
+                    <ImageView
+                        android:id="@+id/meetroom_time17"
+                        android:layout_width="40dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/item_emptystate"
+                        android:paddingLeft="1dp"
+                        android:paddingRight="1dp"
+                        android:layout_below="@id/meetroom_time9"
+                        />
+                    <ImageView
+                        android:id="@+id/meetroom_time18"
+                        android:layout_width="40dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/item_emptystate"
+                        android:paddingLeft="1dp"
+                        android:paddingRight="1dp"
+                        android:layout_below="@id/meetroom_time9"
+                        android:layout_toRightOf="@id/meetroom_time17"/>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/meetroom_time010"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="18时"
+                        android:textColor="@color/colorGray"/>
+                    <ImageView
+                        android:id="@+id/meetroom_time19"
+                        android:layout_width="40dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/item_emptystate"
+                        android:paddingLeft="1dp"
+                        android:paddingRight="1dp"
+                        android:layout_below="@id/meetroom_time010"
+                        />
+                    <ImageView
+                        android:id="@+id/meetroom_time20"
+                        android:layout_width="40dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/item_emptystate"
+                        android:paddingLeft="1dp"
+                        android:paddingRight="1dp"
+                        android:layout_below="@id/meetroom_time010"
+                        android:layout_toRightOf="@id/meetroom_time19"/>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/meetroom_time011"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="19时"
+                        android:textColor="@color/colorGray"/>
+                    <ImageView
+                        android:id="@+id/meetroom_time21"
+                        android:layout_width="40dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/item_emptystate"
+                        android:paddingLeft="1dp"
+                        android:paddingRight="1dp"
+                        android:layout_below="@id/meetroom_time011"
+                        />
+                    <ImageView
+                        android:id="@+id/meetroom_time22"
+                        android:layout_width="40dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/item_emptystate"
+                        android:paddingLeft="1dp"
+                        android:paddingRight="1dp"
+                        android:layout_below="@id/meetroom_time011"
+                        android:layout_toRightOf="@id/meetroom_time21"/>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/meetroom_time012"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="20时"
+                        android:textColor="@color/colorGray"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="21时"
+                        android:textColor="@color/colorGray"
+                        android:layout_alignParentRight="true"/>
+                    <ImageView
+                        android:id="@+id/meetroom_time23"
+                        android:layout_width="40dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/item_emptystate"
+                        android:paddingLeft="1dp"
+                        android:paddingRight="1dp"
+                        android:layout_below="@id/meetroom_time012"
+                        />
+                    <ImageView
+                        android:id="@+id/meetroom_time24"
+                        android:layout_width="40dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/item_emptystate"
+                        android:paddingLeft="1dp"
+                        android:paddingRight="1dp"
+                        android:layout_below="@id/meetroom_time012"
+                        android:layout_toRightOf="@id/meetroom_time23"/>
+                </RelativeLayout>
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="沙龙"
-            android:textColor="@color/black1"
-            android:textSize="7dp"
-            android:layout_centerInParent="true" />
-    </RelativeLayout>
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="15dp">
+            <TextView
 
-    <RelativeLayout
-        android:id="@+id/placeorder_content03"
-        android:layout_width="30dp"
-        android:layout_height="12dp"
-        android:layout_below="@id/placeorder_address"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="15dp"
-        android:layout_toRightOf="@id/placeorder_content02"
-        android:layout_marginBottom="10dp">
-        <View
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="共"
+                android:textSize="15dp"
+                android:textColor="@color/colorBlack"/>
+            <TextView
+                android:id="@+id/placeorder_totaltime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="15dp"
+                android:textColor="@color/colorBlack"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="小时"
+                android:textSize="15dp"
+                android:textColor="@color/colorBlack"/>
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorGrayLight" />
+            android:layout_height="20dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+
+            android:gravity="center_horizontal">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="30dp">
+                <ImageView
+                    android:id="@+id/img01"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:background="@drawable/item_greenstate"
+                    android:layout_centerVertical="true"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="已选"
+                    android:textColor="@color/colorGray"
+                    android:layout_toRightOf="@id/img01"
+                    android:layout_centerVertical="true"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp">
+                <ImageView
+                    android:id="@+id/img02"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:background="@drawable/item_emptystate"
+                    android:layout_centerVertical="true"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="可选"
+                    android:textColor="@color/colorGray"
+                    android:layout_toRightOf="@id/img02"
+                    android:layout_centerVertical="true"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp">
+                <ImageView
+                    android:id="@+id/img03"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:background="@drawable/item_graystate"
+                    android:layout_centerVertical="true"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="已订"
+                    android:textColor="@color/colorGray"
+                    android:layout_toRightOf="@id/img03"
+                    android:layout_centerVertical="true"/>
+            </RelativeLayout>
+        </LinearLayout>
+
         <TextView
-            android:id="@+id/placeorder_tv03"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="party"
-            android:textColor="@color/black1"
-            android:textSize="7dp"
-            android:layout_centerInParent="true" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/placeorder_content04"
-        android:layout_width="30dp"
-        android:layout_height="12dp"
-        android:layout_below="@id/placeorder_address"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="15dp"
-        android:layout_toRightOf="@id/placeorder_content03"
-        android:layout_marginBottom="10dp">
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorGrayLight" />
+            android:text="您将被安排在东四多动能共享会议室"
+            android:textColor="@color/colorGray"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal"/>
         <TextView
-            android:id="@+id/placeorder_tv04"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="论坛"
-            android:textColor="@color/black1"
-            android:textSize="7dp"
-            android:layout_centerInParent="true" />
-    </RelativeLayout>
+            android:text="会议开放时间09:00-21:00"
+            android:textColor="@color/colorGray"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/sureorder"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"/>
 
-    <TextView
-        android:id="@+id/placeorder_price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="1200元/小时"
-        android:textColor="@color/black1"
-        android:textSize="15dp"
-        android:layout_below="@id/placeorder_img"
-
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="15dp" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_below="@id/placeorder_price"
-        android:layout_marginRight="15dp"
-        android:src="@drawable/order"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="10dp"/>
-
-
+    </LinearLayout>
 
 
 </RelativeLayout>

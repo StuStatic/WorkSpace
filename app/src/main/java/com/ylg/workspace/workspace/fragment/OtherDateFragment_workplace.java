@@ -90,9 +90,9 @@ public class OtherDateFragment_workplace extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         if (getUserVisibleHint()) {
-            isLoadDataCompleted = true;
+//            isLoadDataCompleted = true;
             Log.e("isLoadDataCompleted","isLoadDataCompleted");
-            loadData();
+//            loadData();
         }
     }
 

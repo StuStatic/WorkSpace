@@ -44,4 +44,11 @@
         android:divider="@color/colorGray"
         android:dividerHeight="1dp"></ListView>
 
+    <View
+        android:id="@+id/vMasker"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#e0000000"
+        android:visibility="gone" />
+
 </LinearLayout>
