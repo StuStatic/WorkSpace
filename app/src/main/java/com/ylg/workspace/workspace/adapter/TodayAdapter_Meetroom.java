@@ -1,6 +1,7 @@
 package com.ylg.workspace.workspace.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +25,8 @@ public class TodayAdapter_Meetroom extends BaseAdapter {
     private List<String> datas;
     private LayoutInflater inflater;
     private Context context;
-    private int state=0;//未选0（空白），被别人选1（灰灰），自己选2(绿)；
+    private int state01,state02,state03,state04,state05,state06,state07,state08,state09,state10,state11,state12,state13,state14,state15,state16,state17,state18,state19,state20,state21,state22,state23,state24;//未选0（空白），被别人选1（灰灰），自己选2(绿)；
+    private double totaltime;
 
     private int currentItem = -1; //用于记录点击的 Item 的 position，是控制 item 展开的核心
     //构造方法
@@ -92,7 +94,7 @@ public class TodayAdapter_Meetroom extends BaseAdapter {
                 } else {
                     currentItem = tag;
                 }
-                Toast.makeText(context, "哈哈哈哈", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, "哈哈哈哈", Toast.LENGTH_SHORT).show();
                 //通知adapter数据改变需要重新加载
                 notifyDataSetChanged(); //必须有的一步
             }
@@ -104,356 +106,427 @@ public class TodayAdapter_Meetroom extends BaseAdapter {
            viewHolder.time01.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View view) {
-                   if(state==0 && state!=1 && state!=2){//可选状态
-                       viewHolder.time01.setImageResource(R.drawable.item_greenstate);
-                       state=2;
-                   }else if(state==1 && state!=0 && state!=2){//已被预订状态
+                   if(state01==0 && state01!=1 && state01!=2){//可选状态
+                       viewHolder.time01.setImageResource(R.drawable.order_greenstate);
+                       state01=2;//更改选中状态
+                       totaltime=totaltime+0.5;
+                       Log.e("totaltime1:",totaltime+"");
+                       viewHolder.tv_totaltime.setText(totaltime+"");//动态设置总时间
+                   }else if(state01==1 && state01!=0 && state01!=2){//已被预订状态
                        Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                   }else if(state==2 && state!=0 && state!=1){//自己的选定状态
+                   }else if(state01==2 && state01!=0 && state01!=1){//自己的选定状态
                        viewHolder.time01.setImageResource(R.drawable.item_emptystate);
-                       state=0;
+                       state01=0;
+                       totaltime=totaltime-0.5;
+                       Log.e("totaltime2:",totaltime+"");
+                       viewHolder.tv_totaltime.setText(totaltime+"");
                    }
+
                }
            });
             viewHolder.time02.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(state==0 && state!=1 && state!=2){//可选状态
-                        viewHolder.time02.setImageResource(R.drawable.item_greenstate);
-                        state=2;
-                    }else if(state==1 && state!=0 && state!=2){//已被预订状态
+                    if(state02==0 && state02!=1 && state02!=2){//可选状态
+                        viewHolder.time02.setImageResource(R.drawable.order_greenstate);
+                        state02=2;
+                        totaltime=totaltime+0.5;
+                    }else if(state02==1 && state02!=0 && state02!=2){//已被预订状态
                         Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                    }else if(state==2 && state!=0 && state!=1){//自己的选定状态
+                    }else if(state02==2 && state02!=0 && state02!=1){//自己的选定状态
                         viewHolder.time02.setImageResource(R.drawable.item_emptystate);
-                        state=0;
+                        state02=0;
+                        totaltime=totaltime-0.5;
                     }
+                    viewHolder.tv_totaltime.setText(totaltime+"");
+
                 }
             });
             viewHolder.time03.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(state==0 && state!=1 && state!=2){//可选状态
-                        viewHolder.time03.setImageResource(R.drawable.item_greenstate);
-                        state=2;
-                    }else if(state==1 && state!=0 && state!=2){//已被预订状态
+                    if(state03==0 && state03!=1 && state03!=2){//可选状态
+                        viewHolder.time03.setImageResource(R.drawable.order_greenstate);
+                        state03=2;
+                        totaltime=totaltime+0.5;
+                    }else if(state03==1 && state03!=0 && state03!=2){//已被预订状态
                         Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                    }else if(state==2 && state!=0 && state!=1){//自己的选定状态
+                    }else if(state03==2 && state03!=0 && state03!=1){//自己的选定状态
                         viewHolder.time03.setImageResource(R.drawable.item_emptystate);
-                        state=0;
+                        state03=0;
+                        totaltime=totaltime-0.5;
                     }
+                    viewHolder.tv_totaltime.setText(totaltime+"");
                 }
             });
             viewHolder.time04.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(state==0 && state!=1 && state!=2){//可选状态
-                        viewHolder.time04.setImageResource(R.drawable.item_greenstate);
-                        state=2;
-                    }else if(state==1 && state!=0 && state!=2){//已被预订状态
+                    if(state04==0 && state04!=1 && state04!=2){//可选状态
+                        viewHolder.time04.setImageResource(R.drawable.order_greenstate);
+                        state04=2;
+                        totaltime=totaltime+0.5;
+                    }else if(state04==1 && state04!=0 && state04!=2){//已被预订状态
                         Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                    }else if(state==2 && state!=0 && state!=1){//自己的选定状态
+                    }else if(state04==2 && state04!=0 && state04!=1){//自己的选定状态
                         viewHolder.time04.setImageResource(R.drawable.item_emptystate);
-                        state=0;
+                        state04=0;
+                        totaltime=totaltime-0.5;
                     }
+                    viewHolder.tv_totaltime.setText(totaltime+"");
                 }
             });
             viewHolder.time05.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(state==0 && state!=1 && state!=2){//可选状态
-                        viewHolder.time05.setImageResource(R.drawable.item_greenstate);
-                        state=2;
-                    }else if(state==1 && state!=0 && state!=2){//已被预订状态
+                    if(state05==0 && state05!=1 && state05!=2){//可选状态
+                        viewHolder.time05.setImageResource(R.drawable.order_greenstate);
+                        state05=2;
+                        totaltime=totaltime+0.5;
+                    }else if(state05==1 && state05!=0 && state05!=2){//已被预订状态
                         Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                    }else if(state==2 && state!=0 && state!=1){//自己的选定状态
+                    }else if(state05==2 && state05!=0 && state05!=1){//自己的选定状态
                         viewHolder.time05.setImageResource(R.drawable.item_emptystate);
-                        state=0;
+                        state05=0;
+                        totaltime=totaltime-0.5;
                     }
+                    viewHolder.tv_totaltime.setText(totaltime+"");
                 }
             });
             viewHolder.time06.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(state==0 && state!=1 && state!=2){//可选状态
-                        viewHolder.time06.setImageResource(R.drawable.item_greenstate);
-                        state=2;
-                    }else if(state==1 && state!=0 && state!=2){//已被预订状态
+                    if(state06==0 && state06!=1 && state06!=2){//可选状态
+                        viewHolder.time06.setImageResource(R.drawable.order_greenstate);
+                        state06=2;
+                        totaltime=totaltime+0.5;
+                    }else if(state06==1 && state06!=0 && state06!=2){//已被预订状态
                         Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                    }else if(state==2 && state!=0 && state!=1){//自己的选定状态
+                    }else if(state06==2 && state06!=0 && state06!=1){//自己的选定状态
                         viewHolder.time06.setImageResource(R.drawable.item_emptystate);
-                        state=0;
+                        state06=0;
+                        totaltime=totaltime-0.5;
                     }
+                    viewHolder.tv_totaltime.setText(totaltime+"");
                 }
             });
             viewHolder.time07.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(state==0 && state!=1 && state!=2){//可选状态
-                        viewHolder.time07.setImageResource(R.drawable.item_greenstate);
-                        state=2;
-                    }else if(state==1 && state!=0 && state!=2){//已被预订状态
+                    if(state07==0 && state07!=1 && state07!=2){//可选状态
+                        viewHolder.time07.setImageResource(R.drawable.order_greenstate);
+                        state07=2;
+                        totaltime=totaltime+0.5;
+                    }else if(state07==1 && state07!=0 && state07!=2){//已被预订状态
                         Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                    }else if(state==2 && state!=0 && state!=1){//自己的选定状态
+                    }else if(state07==2 && state07!=0 && state07!=1){//自己的选定状态
                         viewHolder.time07.setImageResource(R.drawable.item_emptystate);
-                        state=0;
+                        state07=0;
+                        totaltime=totaltime-0.5;
                     }
+                    viewHolder.tv_totaltime.setText(totaltime+"");
                 }
             });
             viewHolder.time08.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(state==0 && state!=1 && state!=2){//可选状态
-                        viewHolder.time08.setImageResource(R.drawable.item_greenstate);
-                        state=2;
-                    }else if(state==1 && state!=0 && state!=2){//已被预订状态
+                    if(state08==0 && state08!=1 && state08!=2){//可选状态
+                        viewHolder.time08.setImageResource(R.drawable.order_greenstate);
+                        state08=2;
+                        totaltime=totaltime+0.5;
+                    }else if(state08==1 && state08!=0 && state08!=2){//已被预订状态
                         Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                    }else if(state==2 && state!=0 && state!=1){//自己的选定状态
+                    }else if(state08==2 && state08!=0 && state08!=1){//自己的选定状态
                         viewHolder.time08.setImageResource(R.drawable.item_emptystate);
-                        state=0;
+                        state08=0;
+                        totaltime=totaltime-0.5;
                     }
+                    viewHolder.tv_totaltime.setText(totaltime+"");
                 }
             });
             viewHolder.time09.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(state==0 && state!=1 && state!=2){//可选状态
-                        viewHolder.time09.setImageResource(R.drawable.item_greenstate);
-                        state=2;
-                    }else if(state==1 && state!=0 && state!=2){//已被预订状态
+                    if(state09==0 && state09!=1 && state09!=2){//可选状态
+                        viewHolder.time09.setImageResource(R.drawable.order_greenstate);
+                        state09=2;
+                        totaltime=totaltime+0.5;
+                    }else if(state09==1 && state09!=0 && state09!=2){//已被预订状态
                         Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                    }else if(state==2 && state!=0 && state!=1){//自己的选定状态
+                    }else if(state09==2 && state09!=0 && state09!=1){//自己的选定状态
                         viewHolder.time09.setImageResource(R.drawable.item_emptystate);
-                        state=0;
+                        state09=0;
+                        totaltime=totaltime-0.5;
                     }
+                    viewHolder.tv_totaltime.setText(totaltime+"");
                 }
             });
             viewHolder.time10.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(state==0 && state!=1 && state!=2){//可选状态
-                        viewHolder.time10.setImageResource(R.drawable.item_greenstate);
-                        state=2;
-                    }else if(state==1 && state!=0 && state!=2){//已被预订状态
+                    if(state10==0 && state10!=1 && state10!=2){//可选状态
+                        viewHolder.time10.setImageResource(R.drawable.order_greenstate);
+                        state10=2;
+                        totaltime=totaltime+0.5;
+                    }else if(state10==1 && state10!=0 && state10!=2){//已被预订状态
                         Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                    }else if(state==2 && state!=0 && state!=1){//自己的选定状态
+                    }else if(state10==2 && state10!=0 && state10!=1){//自己的选定状态
                         viewHolder.time10.setImageResource(R.drawable.item_emptystate);
-                        state=0;
+                        state10=0;
+                        totaltime=totaltime-0.5;
                     }
+                    viewHolder.tv_totaltime.setText(totaltime+"");
                 }
             });
             viewHolder.time11.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(state==0 && state!=1 && state!=2){//可选状态
-                        viewHolder.time11.setImageResource(R.drawable.item_greenstate);
-                        state=2;
-                    }else if(state==1 && state!=0 && state!=2){//已被预订状态
+                    if(state11==0 && state11!=1 && state11!=2){//可选状态
+                        viewHolder.time11.setImageResource(R.drawable.order_greenstate);
+                        state11=2;
+                        totaltime=totaltime+0.5;
+                    }else if(state11==1 && state11!=0 && state11!=2){//已被预订状态
                         Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                    }else if(state==2 && state!=0 && state!=1){//自己的选定状态
+                    }else if(state11==2 && state11!=0 && state11!=1){//自己的选定状态
                         viewHolder.time11.setImageResource(R.drawable.item_emptystate);
-                        state=0;
+                        state11=0;
+                        totaltime=totaltime-0.5;
                     }
+                    viewHolder.tv_totaltime.setText(totaltime+"");
                 }
             });
             viewHolder.time12.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(state==0 && state!=1 && state!=2){//可选状态
-                        viewHolder.time12.setImageResource(R.drawable.item_greenstate);
-                        state=2;
-                    }else if(state==1 && state!=0 && state!=2){//已被预订状态
+                    if(state12==0 && state12!=1 && state12!=2){//可选状态
+                        viewHolder.time12.setImageResource(R.drawable.order_greenstate);
+                        state12=2;
+                        totaltime=totaltime+0.5;
+                    }else if(state12==1 && state12!=0 && state12!=2){//已被预订状态
                         Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                    }else if(state==2 && state!=0 && state!=1){//自己的选定状态
+                    }else if(state12==2 && state12!=0 && state12!=1){//自己的选定状态
                         viewHolder.time12.setImageResource(R.drawable.item_emptystate);
-                        state=0;
+                        state12=0;
+                        totaltime=totaltime-0.5;
                     }
+                    viewHolder.tv_totaltime.setText(totaltime+"");
                 }
             });
             viewHolder.time13.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(state==0 && state!=1 && state!=2){//可选状态
-                        viewHolder.time13.setImageResource(R.drawable.item_greenstate);
-                        state=2;
-                    }else if(state==1 && state!=0 && state!=2){//已被预订状态
+                    if(state13==0 && state13!=1 && state13!=2){//可选状态
+                        viewHolder.time13.setImageResource(R.drawable.order_greenstate);
+                        state13=2;
+                        totaltime=totaltime+0.5;
+                    }else if(state13==1 && state13!=0 && state13!=2){//已被预订状态
                         Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                    }else if(state==2 && state!=0 && state!=1){//自己的选定状态
+                    }else if(state13==2 && state13!=0 && state13!=1){//自己的选定状态
                         viewHolder.time13.setImageResource(R.drawable.item_emptystate);
-                        state=0;
+                        state13=0;
+                        totaltime=totaltime-0.5;
                     }
+                    viewHolder.tv_totaltime.setText(totaltime+"");
                 }
             });
             viewHolder.time14.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(state==0 && state!=1 && state!=2){//可选状态
-                        viewHolder.time14.setImageResource(R.drawable.item_greenstate);
-                        state=2;
-                    }else if(state==1 && state!=0 && state!=2){//已被预订状态
+                    if(state14==0 && state14!=1 && state14!=2){//可选状态
+                        viewHolder.time14.setImageResource(R.drawable.order_greenstate);
+                        state14=2;
+                        totaltime=totaltime+0.5;
+                    }else if(state14==1 && state14!=0 && state14!=2){//已被预订状态
                         Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                    }else if(state==2 && state!=0 && state!=1){//自己的选定状态
+                    }else if(state14==2 && state14!=0 && state14!=1){//自己的选定状态
                         viewHolder.time14.setImageResource(R.drawable.item_emptystate);
-                        state=0;
+                        state14=0;
+                        totaltime=totaltime-0.5;
                     }
+                    viewHolder.tv_totaltime.setText(totaltime+"");
                 }
             });
             viewHolder.time15.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(state==0 && state!=1 && state!=2){//可选状态
-                        viewHolder.time15.setImageResource(R.drawable.item_greenstate);
-                        state=2;
-                    }else if(state==1 && state!=0 && state!=2){//已被预订状态
+                    if(state15==0 && state15!=1 && state15!=2){//可选状态
+                        viewHolder.time15.setImageResource(R.drawable.order_greenstate);
+                        state15=2;
+                        totaltime=totaltime+0.5;
+                    }else if(state15==1 && state15!=0 && state15!=2){//已被预订状态
                         Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                    }else if(state==2 && state!=0 && state!=1){//自己的选定状态
+                    }else if(state15==2 && state15!=0 && state15!=1){//自己的选定状态
                         viewHolder.time15.setImageResource(R.drawable.item_emptystate);
-                        state=0;
+                        state15=0;
+                        totaltime=totaltime-0.5;
                     }
+                    viewHolder.tv_totaltime.setText(totaltime+"");
                 }
             });
             viewHolder.time16.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(state==0 && state!=1 && state!=2){//可选状态
-                        viewHolder.time16.setImageResource(R.drawable.item_greenstate);
-                        state=2;
-                    }else if(state==1 && state!=0 && state!=2){//已被预订状态
+                    if(state16==0 && state16!=1 && state16!=2){//可选状态
+                        viewHolder.time16.setImageResource(R.drawable.order_greenstate);
+                        state16=2;
+                        totaltime=totaltime+0.5;
+                    }else if(state16==1 && state16!=0 && state16!=2){//已被预订状态
                         Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                    }else if(state==2 && state!=0 && state!=1){//自己的选定状态
+                    }else if(state16==2 && state16!=0 && state16!=1){//自己的选定状态
                         viewHolder.time16.setImageResource(R.drawable.item_emptystate);
-                        state=0;
+                        state16=0;
+                        totaltime=totaltime-0.5;
                     }
+                    viewHolder.tv_totaltime.setText(totaltime+"");
                 }
             });
             viewHolder.time17.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(state==0 && state!=1 && state!=2){//可选状态
-                        viewHolder.time17.setImageResource(R.drawable.item_greenstate);
-                        state=2;
-                    }else if(state==1 && state!=0 && state!=2){//已被预订状态
+                    if(state17==0 && state17!=1 && state17!=2){//可选状态
+                        viewHolder.time17.setImageResource(R.drawable.order_greenstate);
+                        state17=2;
+                        totaltime=totaltime+0.5;
+                    }else if(state17==1 && state17!=0 && state17!=2){//已被预订状态
                         Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                    }else if(state==2 && state!=0 && state!=1){//自己的选定状态
+                    }else if(state17==2 && state17!=0 && state17!=1){//自己的选定状态
                         viewHolder.time17.setImageResource(R.drawable.item_emptystate);
-                        state=0;
+                        state17=0;
+                        totaltime=totaltime-0.5;
                     }
+                    viewHolder.tv_totaltime.setText(totaltime+"");
                 }
             });
             viewHolder.time18.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(state==0 && state!=1 && state!=2){//可选状态
-                        viewHolder.time18.setImageResource(R.drawable.item_greenstate);
-                        state=2;
-                    }else if(state==1 && state!=0 && state!=2){//已被预订状态
+                    if(state18==0 && state18!=1 && state18!=2){//可选状态
+                        viewHolder.time18.setImageResource(R.drawable.order_greenstate);
+                        state18=2;
+                        totaltime=totaltime+0.5;
+                    }else if(state18==1 && state18!=0 && state18!=2){//已被预订状态
                         Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                    }else if(state==2 && state!=0 && state!=1){//自己的选定状态
+                    }else if(state18==2 && state18!=0 && state18!=1){//自己的选定状态
                         viewHolder.time18.setImageResource(R.drawable.item_emptystate);
-                        state=0;
+                        state18=0;
+                        totaltime=totaltime-0.5;
                     }
+                    viewHolder.tv_totaltime.setText(totaltime+"");
+
                 }
             });
             viewHolder.time19.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(state==0 && state!=1 && state!=2){//可选状态
-                        viewHolder.time19.setImageResource(R.drawable.item_greenstate);
-                        state=2;
-                    }else if(state==1 && state!=0 && state!=2){//已被预订状态
+                    if(state19==0 && state19!=1 && state19!=2){//可选状态
+                        viewHolder.time19.setImageResource(R.drawable.order_greenstate);
+                        state19=2;
+                        totaltime=totaltime+0.5;
+                    }else if(state19==1 && state19!=0 && state19!=2){//已被预订状态
                         Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                    }else if(state==2 && state!=0 && state!=1){//自己的选定状态
+                    }else if(state19==2 && state19!=0 && state19!=1){//自己的选定状态
                         viewHolder.time19.setImageResource(R.drawable.item_emptystate);
-                        state=0;
+                        state19=0;
+                        totaltime=totaltime-0.5;
                     }
+                    viewHolder.tv_totaltime.setText(totaltime+"");
                 }
             });
             viewHolder.time20.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(state==0 && state!=1 && state!=2){//可选状态
-                        viewHolder.time20.setImageResource(R.drawable.item_greenstate);
-                        state=2;
-                    }else if(state==1 && state!=0 && state!=2){//已被预订状态
+                    if(state20==0 && state20!=1 && state20!=2){//可选状态
+                        viewHolder.time20.setImageResource(R.drawable.order_greenstate);
+                        state20=2;
+                        totaltime=totaltime+0.5;
+                    }else if(state20==1 && state20!=0 && state20!=2){//已被预订状态
                         Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                    }else if(state==2 && state!=0 && state!=1){//自己的选定状态
+                    }else if(state20==2 && state20!=0 && state20!=1){//自己的选定状态
                         viewHolder.time20.setImageResource(R.drawable.item_emptystate);
-                        state=0;
+                        state20=0;
+                        totaltime=totaltime-0.5;
                     }
+                    viewHolder.tv_totaltime.setText(totaltime+"");
                 }
             });
             viewHolder.time21.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(state==0 && state!=1 && state!=2){//可选状态
-                        viewHolder.time21.setImageResource(R.drawable.item_greenstate);
-                        state=2;
-                    }else if(state==1 && state!=0 && state!=2){//已被预订状态
+                    if(state21==0 && state21!=1 && state21!=2){//可选状态
+                        viewHolder.time21.setImageResource(R.drawable.order_greenstate);
+                        state21=2;
+                        totaltime=totaltime+0.5;
+                    }else if(state21==1 && state21!=0 && state21!=2){//已被预订状态
                         Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                    }else if(state==2 && state!=0 && state!=1){//自己的选定状态
+                    }else if(state21==2 && state21!=0 && state21!=1){//自己的选定状态
                         viewHolder.time21.setImageResource(R.drawable.item_emptystate);
-                        state=0;
+                        state21=0;
+                        totaltime=totaltime-0.5;
                     }
+                    viewHolder.tv_totaltime.setText(totaltime+"");
                 }
             });
             viewHolder.time22.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(state==0 && state!=1 && state!=2){//可选状态
-                        viewHolder.time22.setImageResource(R.drawable.item_greenstate);
-                        state=2;
-                    }else if(state==1 && state!=0 && state!=2){//已被预订状态
+                    if(state22==0 && state22!=1 && state22!=2){//可选状态
+                        viewHolder.time22.setImageResource(R.drawable.order_greenstate);
+                        state22=2;
+                        totaltime=totaltime+0.5;
+                    }else if(state22==1 && state22!=0 && state22!=2){//已被预订状态
                         Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                    }else if(state==2 && state!=0 && state!=1){//自己的选定状态
+                    }else if(state22==2 && state22!=0 && state22!=1){//自己的选定状态
                         viewHolder.time22.setImageResource(R.drawable.item_emptystate);
-                        state=0;
+                        state22=0;
+                        totaltime=totaltime-0.5;
                     }
+                    viewHolder.tv_totaltime.setText(totaltime+"");
                 }
             });
             viewHolder.time23.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(state==0 && state!=1 && state!=2){//可选状态
-                        viewHolder.time23.setImageResource(R.drawable.item_greenstate);
-                        state=2;
-                    }else if(state==1 && state!=0 && state!=2){//已被预订状态
+
+                    if(state23==0 && state23!=1 && state23!=2){//可选状态
+                        viewHolder.time23.setImageResource(R.drawable.order_greenstate);
+                        state23=2;
+                        totaltime=totaltime+0.5;
+                    }else if(state23==1 && state23!=0 && state23!=2){//已被预订状态
                         Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                    }else if(state==2 && state!=0 && state!=1){//自己的选定状态
+                    }else if(state23==2 && state23!=0 && state23!=1){//自己的选定状态
                         viewHolder.time23.setImageResource(R.drawable.item_emptystate);
-                        state=0;
+                        state23=0;
+                        totaltime=totaltime-0.5;
                     }
+                    viewHolder.tv_totaltime.setText(totaltime+"");
                 }
             });
             viewHolder.time24.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(state==0 && state!=1 && state!=2){//可选状态
-                        viewHolder.time24.setImageResource(R.drawable.item_greenstate);
-                        state=2;
-                    }else if(state==1 && state!=0 && state!=2){//已被预订状态
+                    Log.e("time24_click","time24_click");
+                    if(state24==0 && state24!=1 && state24!=2){//可选状态
+                        viewHolder.time24.setImageResource(R.drawable.order_greenstate);
+                        state24=2;
+                        totaltime=totaltime+0.5;
+                    }else if(state24==1 && state24!=0 && state24!=2){//已被预订状态
                         Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                    }else if(state==2 && state!=0 && state!=1){//自己的选定状态
+                    }else if(state24==2 && state24!=0 && state24!=1){//自己的选定状态
                         viewHolder.time24.setImageResource(R.drawable.item_emptystate);
-                        state=0;
+                        state24=0;
+                        totaltime=totaltime-0.5;
                     }
+                    viewHolder.tv_totaltime.setText(totaltime+"");
                 }
             });
 
-
-
-
-
-
-
-
-
-
-
         }
+
 
         return view;
     }
     private class ViewHolder{
-        TextView tv_address,tv_peoplenum,tv_price,tv_floor;
+        TextView tv_address,tv_peoplenum,tv_price,tv_floor,tv_totaltime;
         ImageView img,img_order_show,time01,time02,time03,time04,time05,time06,time07,time08,time09,time10,time11,time12,time13,time14,time15,time16,time17,time18,time19,time20,time21,time22,time23,time24;
         RelativeLayout item1;
         LinearLayout item2;
@@ -499,6 +572,9 @@ public class TodayAdapter_Meetroom extends BaseAdapter {
             time22=(ImageView)view.findViewById(R.id.meetroom_time22);
             time23=(ImageView)view.findViewById(R.id.meetroom_time23);
             time24=(ImageView)view.findViewById(R.id.meetroom_time24);
+
+            //共计小时数
+            tv_totaltime=(TextView)view.findViewById(R.id.meetroom_totaltime);
 
 
 

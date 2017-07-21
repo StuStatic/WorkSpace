@@ -1,5 +1,6 @@
 package com.ylg.workspace.workspace.activity.ballgraph;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -23,6 +24,8 @@ public class MeetRoomOrderActivity extends AppCompatActivity implements View.OnC
     private ImageView iv_back;
     //toolbar标题文字内容
     private TextView title_tv;
+    //右上角图标
+    private ImageView add;
     //adapter
     private FragmentPagerAdapter_Workplace pagerAdapter;
     //viewpager
@@ -50,6 +53,11 @@ public class MeetRoomOrderActivity extends AppCompatActivity implements View.OnC
         //初始化标题内容
         title_tv = (TextView)findViewById(R.id.tv_title);
         title_tv.setText("定会议室");
+        //初始化右上角add按键
+        add=(ImageView)findViewById(R.id.iv_intent);
+        add.setImageResource(R.drawable.addpic);
+        //add绑定监听
+        add.setOnClickListener(this);
 
         //初始化viewpager
         viewPager = (ViewPager) findViewById(R.id.meetroom_viewpager);
@@ -81,7 +89,14 @@ public class MeetRoomOrderActivity extends AppCompatActivity implements View.OnC
 
     @Override
     public void onClick(View view) {
-        //close the page
-        finish();
+        switch (view.getId()){
+            case R.id.iv_back:
+                finish();
+                break;
+            case R.id.iv_intent:
+                //跳转到会议室列表界面
+                Intent i_list = new Intent(this,ConferenceListActivity.class);
+                startActivity(i_list);
+        }
     }
 }
