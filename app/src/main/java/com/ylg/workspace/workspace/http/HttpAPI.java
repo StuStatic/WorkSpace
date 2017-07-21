@@ -7,6 +7,7 @@ import com.ylg.workspace.workspace.activity.personaldetails.bean.MakeAnAppointFr
 import com.ylg.workspace.workspace.activity.personaldetails.bean.MyActivity;
 import com.ylg.workspace.workspace.activity.personaldetails.bean.NotMyActivity;
 import com.ylg.workspace.workspace.activity.service.bean.Service;
+import com.ylg.workspace.workspace.activity.service.bean.ServiceType;
 import com.ylg.workspace.workspace.bean.ExerciseRecommend;
 import com.ylg.workspace.workspace.bean.Info;
 import com.ylg.workspace.workspace.bean.NeiborCompany;
@@ -39,6 +40,11 @@ public interface HttpAPI {
     @POST("Opinion/findByUserId")
     Call<FeedBackFrag> OfindByUserId(@Query("userId") int userId);
 
+    //发布需求
+    @POST("GetFacilitator/addGetFacilitator")
+    Call<Service> postRequirement(@Query("spaceId") String s1, @Query("userId") String s2, @Query("describe") String s3,
+                           @Query("facilitatorType") String s4, @Query("facilitatorLabel") String s5);
+
     //登陆
     @POST("Login/Login")
     Call<Login> login(@Query("tel") String tel, @Query("password") String password);
@@ -66,7 +72,7 @@ public interface HttpAPI {
     //访客预约
     @Multipart
     @POST("Visitor/addVisitorOrUpdate")
-   // @POST("MaintainInfo/addMaintainInfo")
+    // @POST("MaintainInfo/addMaintainInfo")
     Call<Service> orderVisitor(@Query("userId") String s1, @Query("visitorName") String s2,
                                @Query("visitorTel") String s3, @Query("spared1") String s4,
                                @Query("userName") String s5, @Query("visitInfo") String s6,
@@ -147,14 +153,18 @@ public interface HttpAPI {
     @POST("Message/findAllMessage")
     Call<Info> getInfo();
 
+    //服务类型
+    @POST("FacilitatorLabel/findAll")
+    Call<ServiceType> getServiceType();
+
     //报修
     @Multipart
     //@POST("Visitor/addVisitorOrUpdate")
     @POST("MaintainInfo/addMaintainInfo")
     Call<Service> questionFix(@Query("userId") String s1, @Query("alias") String s2,
-                               @Query("type") String s3, @Query("info") String s4,
-                               @Query("appointmentTime") String s5, @Query("address") String s6,
-                               @PartMap Map<String, RequestBody> photo);
+                              @Query("type") String s3, @Query("info") String s4,
+                              @Query("appointmentTime") String s5, @Query("address") String s6,
+                              @PartMap Map<String, RequestBody> photo);
 
 //    //绑定设备
 //    @FormUrlEncoded
@@ -185,6 +195,7 @@ public interface HttpAPI {
 
     /**
      * 修改用户设备分组
+     *
      * @param groupId
      * @return
      */
@@ -193,15 +204,15 @@ public interface HttpAPI {
 
     //友邻企业
     @POST("CompanyInfo/findBySpaceId")
-    Call<NeiborCompany> neiborCompany (@Query("spaceId") int spaceId);
+    Call<NeiborCompany> neiborCompany(@Query("spaceId") int spaceId);
 
     //活动推荐
     @POST("Activity/findByState")
-    Call<ExerciseRecommend> exerciseRecommend (@Query("activityState") int activityState);
+    Call<ExerciseRecommend> exerciseRecommend(@Query("activityState") int activityState);
 
     //空间列表
     @POST("Space/findAllSpace")
-    Call<SpaceList> getSpaceListData (@Query("city") String city);
+    Call<SpaceList> getSpaceListData(@Query("city") String city);
 
     //查找我的企业的信息
     @POST("CompanyInfo/findMyCompany")

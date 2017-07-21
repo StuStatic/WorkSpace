@@ -12,102 +12,113 @@
 
     <include layout="@layout/item_line"></include>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="25sp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="描述："
-            android:textColor="@color/black2"
-            android:textSize="16sp" />
-
-        <EditText
-            android:id="@+id/et"
-            style="?android:attr/textViewStyle"
-            android:layout_width="match_parent"
-            android:layout_height="160sp"
-            android:background="@color/colorGrayLight"
-            android:cursorVisible="false"
-            android:gravity="top|left"
-            android:hint="发你所想的"
-            android:textColor="@color/black2"
-            android:textColorHint="@color/black3"
-            android:textSize="16sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40sp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="25sp"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:text="所需服务："
-            android:textColor="@color/black2"
-            android:textSize="16sp" />
+        android:layout_height="match_parent"
+        android:scrollbars="none">
 
         <LinearLayout
-            android:id="@+id/ll"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginRight="25sp"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tv1"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="5sp"
-                android:layout_weight="1"
-                android:gravity="center_vertical|right"
-                android:text="请选择"
-                android:textColor="@color/black2"
+                android:orientation="horizontal"
+                android:padding="25sp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="描述："
+                    android:textColor="@color/black2"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/et"
+                    style="?android:attr/textViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="160sp"
+                    android:background="@color/colorGrayLight"
+                    android:cursorVisible="false"
+                    android:gravity="top|left"
+                    android:hint="发你所想的"
+                    android:textColor="@color/black2"
+                    android:textColorHint="@color/black3"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="25sp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="所需服务："
+                    android:textColor="@color/black2"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:id="@+id/ll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="25sp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5sp"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical|right"
+                        android:text="请选择"
+                        android:textColor="@color/black2"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@mipmap/right" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <com.ylg.workspace.workspace.view.tag.TagListView xmlns:f="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/tlv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15sp"
+                android:layout_marginRight="15sp"
+                android:layout_marginTop="10sp"
+                android:paddingBottom="@dimen/common_margin"
+                android:paddingLeft="@dimen/common_margin"
+                android:paddingRight="@dimen/common_margin"
+                f:horizontalSpacing="@dimen/tag_horizontal_spacing"
+                f:orientation="horizontal"
+                f:verticalSpacing="@dimen/tag_vertical_spacing" />
+
+            <include layout="@layout/item_line"></include>
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40sp"
+                android:layout_marginRight="40sp"
+                android:layout_marginTop="40sp"
+                android:background="@color/color_bt"
+                android:text="提交"
+                android:textColor="@color/colorWhite"
                 android:textSize="16sp" />
-
-            <ImageView
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:src="@mipmap/right" />
         </LinearLayout>
-    </LinearLayout>
-
-    <com.ylg.workspace.workspace.view.tag.TagListView xmlns:f="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/tlv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15sp"
-        android:layout_marginRight="15sp"
-        android:layout_marginTop="10sp"
-        android:paddingBottom="@dimen/common_margin"
-        android:paddingLeft="@dimen/common_margin"
-        android:paddingRight="@dimen/common_margin"
-        f:horizontalSpacing="@dimen/tag_horizontal_spacing"
-        f:orientation="horizontal"
-        f:verticalSpacing="@dimen/tag_vertical_spacing" />
-
-    <include layout="@layout/item_line"></include>
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="40sp"
-        android:layout_marginRight="40sp"
-        android:layout_marginTop="40sp"
-        android:background="@color/color_bt"
-        android:text="提交"
-        android:textColor="@color/colorWhite"
-        android:textSize="16sp" />
-
+    </ScrollView>
 </LinearLayout>

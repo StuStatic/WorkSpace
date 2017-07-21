@@ -2,13 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ylg.workspace.workspace">
 
+
     <uses-permission android:name="android.permission.CAMERA" />
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    <uses-permission android:name="android.permission.CALL_PHONE"></uses-permission>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -20,7 +22,10 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
 
+
+
     <application
+
         android:name=".Application.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -49,7 +54,7 @@
         <activity android:name=".activity.ballgraph.InfoActivity" />
         <activity android:name=".activity.ballgraph.ExerciseActivity" />
         <activity android:name=".activity.ballgraph.WorkplaceOrderActivity" />
-        <activity android:name=".activity.ballgraph.SpaceListActivity" />
+        <activity android:name=".activity.ballgraph.SpaceListActivity"/>
         <activity android:name=".country.CountryActivity" />
         <activity
             android:name="com.lidong.photopicker.PhotoPickerActivity"
@@ -63,8 +68,9 @@
         <activity android:name=".activity.personaldetails.CreateEnterpriseActivity" />
         <activity android:name=".activity.ballgraph.MeetRoomOrderActivity" />
         <activity android:name=".activity.ballgraph.PlaceOrderActivity" />
-        <activity android:name=".activity.HtmlActivity" />
-        <activity android:name=".activity.ballgraph.NeiborActivity" />
+        <activity android:name=".activity.HtmlActivity"/>
+        <activity android:name=".activity.ballgraph.NeiborActivity"/>
+
         //weibo
         <activity
             android:name=".WBShareActivity"
@@ -72,35 +78,36 @@
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
             android:name="com.umeng.socialize.media.WBShareCallBackActivity"
             android:configChanges="keyboardHidden|orientation"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:exported="true"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
+            android:screenOrientation="portrait" >
+        </activity>
         <activity
-            android:name="com.sina.weibo.sdk.share.WbShareTransActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"
             android:launchMode="singleTask"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
+            android:name="com.sina.weibo.sdk.share.WbShareTransActivity">
             <intent-filter>
                 <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+
         </activity>
         <activity
             android:name="com.sina.weibo.sdk.component.WeiboSdkBrowser"
             android:configChanges="keyboardHidden|orientation"
             android:exported="true"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="adjustResize"></activity>
 
         <service
             android:name="com.sina.weibo.sdk.net.DownloadService"
-            android:exported="false" />
+            android:exported="false"></service>
+
         //weixin
         <activity
             android:name=".wxapi.WXEntryActivity"
@@ -108,31 +115,29 @@
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        //qq
+       //qq
         <activity
             android:name="com.tencent.tauth.AuthActivity"
             android:launchMode="singleTask"
-            android:noHistory="true">
+            android:noHistory="true" >
+
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
-
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-
                 <data android:scheme="tencent100424468" />
             </intent-filter>
         </activity>
         <activity
             android:name="com.tencent.connect.common.AssistActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="59635798c62dca4dd60014a2"></meta-data>
-
-        <activity android:name=".activity.ballgraph.ConferenceListActivity"></activity>
+            android:value="59635798c62dca4dd60014a2" >
+        </meta-data>
     </application>
+
 
 </manifest>

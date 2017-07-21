@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -29,7 +28,6 @@ import com.ylg.workspace.workspace.activity.service.ServiceRegisterActivity;
 import com.ylg.workspace.workspace.adapter.ViewPagerAdapter_Service01;
 import com.ylg.workspace.workspace.adapter.ViewPagerAdater_Home01;
 import com.ylg.workspace.workspace.bean.SlidePic;
-import com.ylg.workspace.workspace.bean.SlideServicePic;
 import com.ylg.workspace.workspace.http.Http;
 import com.ylg.workspace.workspace.http.HttpAPI;
 
@@ -43,11 +41,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class ServiceFragment extends Fragment implements View.OnClickListener {
+public class ServiceFragment extends android.app.Fragment implements View.OnClickListener {
 
     private View serviceLayout;
     private ViewPager mViewPager;
-    private List<SlideServicePic.MsgEntity> mImageViewList1;
+    private List<SlidePic.MsgEntity> mImageViewList1;
     private List<Map<String, Object>> data_slideURL;
     private String htmlURL;
 //    private int[] images = {R.mipmap.a1, R.mipmap.a2, R.mipmap.a3, R.mipmap.a4, R.mipmap.a5};
@@ -129,12 +127,12 @@ public class ServiceFragment extends Fragment implements View.OnClickListener {
     private void initData(final Context context) {
         HttpAPI api = Http.getInstance().create(HttpAPI.class);
         //调用接口
-        Call<SlideServicePic> call = api.getSlideServicePic();
+        Call<SlidePic> call = api.getSlidePic();
 
-        call.enqueue(new Callback<SlideServicePic>() {
+        call.enqueue(new Callback<SlidePic>() {
             @Override
-            public void onResponse(Call<SlideServicePic> call, Response<SlideServicePic> response) {
-                Log.e("response_serviceslide:",response.body().toString());
+            public void onResponse(Call<SlidePic> call, Response<SlidePic> response) {
+                Log.e("response_slide:",response.body().toString());
                 if(response.body().getCode().equals("200")){
 
                     String slideURL= Http.API_URL+response.body().getMsg().get(0).getImage();
@@ -181,19 +179,18 @@ public class ServiceFragment extends Fragment implements View.OnClickListener {
                 }else{//连接登录不成功
                     Log.e("轮播图请求不成功",response.body().getCode());
                 }
+
             }
 
             @Override
-            public void onFailure(Call<SlideServicePic> call, Throwable t) {
+            public void onFailure(Call<SlidePic> call, Throwable t) {
 
             }
         });
-
-
     }
 
     //设置轮播图小圆点
-    private void setDot(Context context,List<SlideServicePic.MsgEntity> mImageViewList1) {
+    private void setDot(Context context,List<SlidePic.MsgEntity> mImageViewList1) {
         //  设置LinearLayout的子控件的宽高，这里单位是像素。
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(15, 15);
         params.rightMargin = 20;

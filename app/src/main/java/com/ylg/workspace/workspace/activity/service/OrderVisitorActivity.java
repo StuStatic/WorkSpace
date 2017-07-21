@@ -54,6 +54,8 @@ public class OrderVisitorActivity extends App implements View.OnClickListener {
     TimePickerView pvTime;
     View vMasker;
     private TextView tvTime;
+    private RadioButton rb3;
+    private RadioButton rb4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,6 +88,10 @@ public class OrderVisitorActivity extends App implements View.OnClickListener {
         rb = (RadioButton) rg.findViewById(rg.getCheckedRadioButtonId());
         iv.setOnClickListener(this);
         button.setOnClickListener(this);
+        rb3 = (RadioButton) findViewById(R.id.rb1);
+        rb4 = (RadioButton) findViewById(R.id.rb2);
+        rb3.setChecked(true);
+        rb4.setChecked(true);
 
         tvTime.setOnClickListener(this);
         //时间选择器
