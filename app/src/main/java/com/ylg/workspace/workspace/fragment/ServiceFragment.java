@@ -336,7 +336,7 @@ public class ServiceFragment extends Fragment implements View.OnClickListener {
                 startActivity(new Intent(getActivity(), QuestionActivity.class));
                 break;
             case R.id.service_ll8:
-                Toast.makeText(getActivity(), "敬请期待", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "敬请期待", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getActivity(), CaptureActivity.class));
                 break;
             case R.id.service_ll9:
