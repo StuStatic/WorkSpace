@@ -92,7 +92,6 @@ public class PendingPaymentFragment extends Fragment {
                     public void run() {
                         Http();
                         if (mMyActivitysNoAdapter !=null){
-
                             mMyActivitysNoAdapter.notifyDataSetChanged();
                         }
 
@@ -112,12 +111,11 @@ public class PendingPaymentFragment extends Fragment {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        // 添加数据
-                        for (int i = 0; i < 5; i++) {
-                            Http();
-                            // 这里要放在里面刷新，放在外面会导致刷新的进度条卡住
+                        Http();
+                        if (mMyActivitysNoAdapter !=null){
                             mMyActivitysNoAdapter.notifyDataSetChanged();
                         }
+
                         // 加载完数据设置为不加载状态，将加载进度收起来
                         myactivitysrvno.setLoading(false);
                     }

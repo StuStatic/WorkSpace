@@ -291,7 +291,6 @@ public class ServiceFragment extends Fragment implements View.OnClickListener {
             @Override
             public void run() {
                 super.run();
-
                 while (true) {
                     SystemClock.sleep(5000);
                     currentPosition++;

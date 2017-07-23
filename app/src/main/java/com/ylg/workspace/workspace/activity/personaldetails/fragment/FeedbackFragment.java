@@ -83,7 +83,10 @@ public class FeedbackFragment extends Fragment {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        mFeedbackAdapter.notifyDataSetChanged();
+                        OfindByUserId();
+                        if (mFeedbackAdapter!=null){
+                            mFeedbackAdapter.notifyDataSetChanged();
+                        }
 //                        showCustomToast("刷新了一条数据");
                         // 加载完数据设置为不刷新状态，将下拉进度收起来
                         myhisoryfeedbacksrv.setRefreshing(false);
@@ -102,11 +105,9 @@ public class FeedbackFragment extends Fragment {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-
-                        // 添加数据
-                        for (int i = 0; i < 5; i++) {
-                            // 这里要放在里面刷新，放在外面会导致刷新的进度条卡住
-//                            mBusinessAdapter.notifyDataSetChanged();
+                        OfindByUserId();
+                        if (mFeedbackAdapter!=null){
+                            mFeedbackAdapter.notifyDataSetChanged();
                         }
                         // 加载完数据设置为不加载状态，将加载进度收起来
                         myhisoryfeedbacksrv.setLoading(false);
@@ -125,14 +126,16 @@ public class FeedbackFragment extends Fragment {
                     List<FeedBackFrag.MsgBean> msg = body.getMsg();
                     mFeedbackAdapter = new FeedbackAdapter(getContext(),msg);
                     myactivityfeedbacklv.setAdapter(mFeedbackAdapter);
-                }else {
+                }else if (body.getCode().equals("202")){
                     Toast.makeText(getActivity(), "没有数据", Toast.LENGTH_SHORT).show();
+                }else if (body.getCode().equals("500")){
+                    Toast.makeText(getActivity(), "请重新刷新数据", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<FeedBackFrag> call, Throwable t) {
-                Toast.makeText(getActivity(), "请重新刷新数据", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "数据错误", Toast.LENGTH_SHORT).show();
             }
         });
     }

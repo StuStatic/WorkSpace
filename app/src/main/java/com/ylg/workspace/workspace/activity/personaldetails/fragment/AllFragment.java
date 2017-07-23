@@ -135,7 +135,6 @@ public class AllFragment extends Fragment {
                 }
             }
 
-
             @Override
             public void onFailure(Call<MyActivity> call, Throwable t) {
                 Log.i("dyy", "数据有问题" + t.toString());

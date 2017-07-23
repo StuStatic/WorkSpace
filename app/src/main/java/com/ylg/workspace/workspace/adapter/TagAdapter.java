@@ -141,7 +141,5 @@ public class TagAdapter  extends TagsAdapter {
     @Override
     public void onThemeColorChanged(View view, int themeColor) {
        ((TextView)view).setTextColor(themeColor);
-
-
     }
 }

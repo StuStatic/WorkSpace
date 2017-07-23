@@ -54,35 +54,7 @@ public class MyBusinessActivity extends App implements View.OnClickListener {
         mListView = (ListView) findViewById(R.id.business_lv);
         mLinearLayout_NEW = (LinearLayout) findViewById(R.id.business_ll_new);
         mLinearLayout_NEW.setOnClickListener(this);
-
-        //第一个参数是文件名，第二个参数是模式（不明白可以去补习一下SharedPreferences的知识）
-        SharedPreferences shared = getSharedPreferences("mypsd2", MODE_PRIVATE);
-        String companyId = shared.getString("companyId", "");//同上，若没找到就让它为空""企业ID
-
-        HttpAPI httpAPI = Http.getInstance().create(HttpAPI.class);
-        httpAPI.findMyCompany(companyId).enqueue(new Callback<Business>() {
-            @Override
-            public void onResponse(Call<Business> call, Response<Business> response) {
-                Log.i("dyy",response.body().toString());
-                if (response.body().toString().length() != 0){
-                    Business body = response.body();
-                    if (body.getCode().equals("200")){
-                        List<Business.MsgBean> msg = body.getMsg();
-                        mBusinessAdapter = new BusinessAdapter(getApplication(),msg);
-                        mListView.setAdapter(mBusinessAdapter);
-                    }else if (body.getCode().equals("202")){
-                        Toast.makeText(MyBusinessActivity.this, "没有企业，请加入企业。", Toast.LENGTH_SHORT).show();
-                    }
-                }else {
-                    Log.i("dyy","我的企业数据错误");
-                }
-            }
-            @Override
-            public void onFailure(Call<Business> call, Throwable t) {
-                Log.i("dyy","我的企业:"+t.toString());
-            }
-        });
-
+        http();
         // 不能在onCreate中设置，这个表示当前是刷新状态，如果一进来就是刷新状态，SwipeRefreshLayout会屏蔽掉下拉事件
         //mSwipeRefreshView.setRefreshing(true);
 
@@ -105,6 +77,7 @@ public class MyBusinessActivity extends App implements View.OnClickListener {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        http();
                         if (mBusinessAdapter !=null){
                             mBusinessAdapter.notifyDataSetChanged();
                         }
@@ -124,10 +97,8 @@ public class MyBusinessActivity extends App implements View.OnClickListener {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-
-                        // 添加数据
-                        for (int i = 0; i < 5; i++) {
-                            // 这里要放在里面刷新，放在外面会导致刷新的进度条卡住
+                        http();
+                        if (mBusinessAdapter !=null){
                             mBusinessAdapter.notifyDataSetChanged();
                         }
                         // 加载完数据设置为不加载状态，将加载进度收起来
@@ -160,4 +131,34 @@ public class MyBusinessActivity extends App implements View.OnClickListener {
                 break;
         }
     }
+    //网络请求
+    private void http(){
+        //第一个参数是文件名，第二个参数是模式（不明白可以去补习一下SharedPreferences的知识）
+        SharedPreferences shared = getSharedPreferences("mypsd2", MODE_PRIVATE);
+        String companyId = shared.getString("companyId", "");//同上，若没找到就让它为空""企业ID
+        HttpAPI httpAPI = Http.getInstance().create(HttpAPI.class);
+        httpAPI.findMyCompany(companyId).enqueue(new Callback<Business>() {
+            @Override
+            public void onResponse(Call<Business> call, Response<Business> response) {
+                Log.i("dyy",response.body().toString());
+                if (response.body().toString().length() != 0){
+                    Business body = response.body();
+                    if (body.getCode().equals("200")){
+                        List<Business.MsgBean> msg = body.getMsg();
+                        mBusinessAdapter = new BusinessAdapter(getApplication(),msg);
+                        mListView.setAdapter(mBusinessAdapter);
+                    }else if (body.getCode().equals("202")){
+                        Toast.makeText(MyBusinessActivity.this, "没有企业，请加入企业。", Toast.LENGTH_SHORT).show();
+                    }
+                }else {
+                    Log.i("dyy","我的企业数据错误");
+                }
+            }
+            @Override
+            public void onFailure(Call<Business> call, Throwable t) {
+                Log.i("dyy","我的企业:"+t.toString());
+            }
+        });
+    }
+
 }

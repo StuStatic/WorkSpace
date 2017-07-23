@@ -342,9 +342,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         mStrings.add("资讯");
         mStrings.add("友邻");
         mStrings.add("集市");
-        mStrings.add("集市");
-        mStrings.add("集市");
-        mStrings.add("集市");
         mStrings.add("订工位");
         mStrings.add("开门");
         mStrings.add("发集市");

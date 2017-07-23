@@ -54,7 +54,8 @@
         <activity android:name=".activity.ballgraph.ExerciseActivity" />
         <activity android:name=".activity.ballgraph.WorkplaceOrderActivity" />
         <activity android:name=".activity.ballgraph.SpaceListActivity" />
-        <activity android:name=".country.CountryActivity" />
+        <activity android:name=".country.CountryActivity" />za
+        <activity android:name=".activity.ballgraph.ConferenceListActivity" />
         <activity
             android:name="com.lidong.photopicker.PhotoPickerActivity"
             android:configChanges="orientation|screenSize"
