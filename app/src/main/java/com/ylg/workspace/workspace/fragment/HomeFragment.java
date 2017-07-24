@@ -195,37 +195,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         //请求数据(活动推荐)
          startRequestRecommendDatas();
         //最新资讯
-        getInfoData();
+        startRequestInfoDatas();
     }
 
-    //最新资讯
-    private void getInfoData() {
-        HttpAPI api = Http.getInstance().create(HttpAPI.class);
-        //调用接口
-        Call<Info> call = api.getInfo();
 
-        call.enqueue(new Callback<Info>() {
-            @Override
-            public void onResponse(Call<Info> call, Response<Info> response) {
-
-                Info i = response.body();
-                if (i != null) {
-                    String s = i.getCode();
-                    if (s.equals("200")) {
-
-                        Glide.with(getContext()).load(Http.API_URL + i.getMsg().getSpace().get(0).getPictureSite()).diskCacheStrategy(DiskCacheStrategy.ALL).into(imageView);
-                        tv1.setText(i.getMsg().getSpace().get(0).getTitle());
-                        tv2.setText(i.getMsg().getSpace().get(0).getIssueTime());
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Info> call, Throwable t) {
-
-            }
-        });
-    }
 
     //数据请求（众创空间）
     private void startRequestWorkSpaceDatas(final Context context) {
@@ -349,22 +322,55 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             public void onResponse(Call<NeiborCompany> call, Response<NeiborCompany> response) {
                 if (response.body().getCode().equals("200")) {
                     datas_neibor = response.body().getMsg();
+                    Log.e("datas-neibor",response.body().toString());
                     //初始化适配器
                     adapter_neibor = new NeiborAdapter_Home(homeLayout.getContext(), datas_neibor);
                     //绑定适配器
                     listview.setAdapter(adapter_neibor);
                     //ScrollView中嵌套listview不手动设置高度出现只显示一行的情况
                     SetHomeListViewItemHeight.setHeight(listview);
+                }else{
+                    Log.e("33333333333333333333333","333333333333");
                 }
             }
 
             @Override
             public void onFailure(Call<NeiborCompany> call, Throwable t) {
-
+                Log.e("t_neibor",t.toString());
             }
         });
 
 
+    }
+
+
+    //最新资讯
+    private void startRequestInfoDatas() {
+        HttpAPI api = Http.getInstance().create(HttpAPI.class);
+        //调用接口
+        Call<Info> call = api.getInfo();
+
+        call.enqueue(new Callback<Info>() {
+            @Override
+            public void onResponse(Call<Info> call, Response<Info> response) {
+
+                Info i = response.body();
+                if (i != null) {
+                    String s = i.getCode();
+                    if (s.equals("200")) {
+
+                        Glide.with(getContext()).load(Http.API_URL + i.getMsg().getSpace().get(0).getPictureSite()).diskCacheStrategy(DiskCacheStrategy.ALL).into(imageView);
+                        tv1.setText(i.getMsg().getSpace().get(0).getTitle());
+                        tv2.setText(i.getMsg().getSpace().get(0).getIssueTime());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Info> call, Throwable t) {
+
+            }
+        });
     }
 
 

@@ -47,7 +47,7 @@ public class TagAdapter extends TagsAdapter {
         Drawable drawable = parent.getResources().getDrawable(mImages.get(position));
         drawable.setBounds(0, 0, 10, 10);
         TextView tv = new TextView(context);
-        ViewGroup.MarginLayoutParams marginLayoutParams = new ViewGroup.MarginLayoutParams(150, 150);
+        ViewGroup.MarginLayoutParams marginLayoutParams = new ViewGroup.MarginLayoutParams(100, 100);
         tv.setLayoutParams(marginLayoutParams);
         tv.setText(mStrings.get(position));
         tv.setTextColor(Color.BLACK);
