@@ -8,22 +8,23 @@ import java.util.List;
 
 public class Info {
 
+
     /**
-     * code : 200
-     * msg : [{"issueCompanyId":0,"issueSpaceId":55,"issueTime":"2017/07/13 18:11:43","messageId":14,"messageInfo":"璧典寒浜�","messageState":0,"messageType":0,"pictureSite":"/static/images/1499940703490.jpg,/static/images/1499940703491.jpg,/static/images/1499940703491.jpg,/static/images/1499940703492.jpg","spared1":"","spared2":"","spared3":"","title":"璧典寒浜�","writer":"鑷杞�"},{"issueCompanyId":0,"issueSpaceId":55,"issueTime":"2017/07/13 17:07:43","messageId":15,"messageInfo":"鐪熺儹銆傜湡浠栧鐑�","messageState":0,"messageType":0,"pictureSite":"/static/images/1499936863048.jpg,/static/images/1499936863067.jpg,/static/images/1499936863067.jpg","spared1":"","spared2":"","spared3":"","title":"澶╃儹锛岄闃蹭腑鏆�","writer":"璧典寒浜�"},{"issueCompanyId":0,"issueSpaceId":56,"issueTime":"2017/07/13 18:15:32","messageId":16,"messageInfo":"璧典寒浜ぇ灞辩偖","messageState":0,"messageType":0,"pictureSite":"/static/images/1499940932001.jpg,/static/images/1499940932001.jpg,/static/images/1499940932003.jpg","spared1":"","spared2":"","spared3":"","title":"鏍囬2","writer":"璧典寒浜北鐐�"},{"issueCompanyId":0,"issueSpaceId":57,"issueTime":"2017/07/13 18:09:20","messageId":17,"messageInfo":"闃胯惃寰�","messageState":0,"messageType":0,"pictureSite":"/static/images/1499940560701.jpg,/static/images/1499940560702.jpg,/static/images/1499940560703.jpg,/static/images/1499940560703.jpg","spared1":"","spared2":"","spared3":"","title":"闃胯惃寰�","writer":"闃胯惃寰�"},{"issueCompanyId":0,"issueSpaceId":58,"issueTime":"2017/07/13 18:15:52","messageId":18,"messageInfo":"闃胯惃寰�","messageState":0,"messageType":0,"pictureSite":"/static/images/1499940952794.jpg,/static/images/1499940952794.jpg,/static/images/1499940952796.jpg,/static/images/1499940952796.jpg","spared1":"","spared2":"","spared3":"","title":"闃胯惃寰�","writer":"闃胯惃寰�"},{"issueCompanyId":0,"issueSpaceId":57,"issueTime":"2017/07/11 18:47:58","messageId":19,"messageInfo":"asdas","messageState":0,"messageType":1,"pictureSite":"dasa","spared1":"","spared2":"","spared3":"","title":"sada ","writer":""}]
+     * msg : {"space":[{"issueCompanyId":0,"issueSpaceId":69,"issueTime":"2017/07/24 11:30:44","messageId":25,"messageInfo":"鑷粠鍥藉鎺ㄨ繘鍙屽垱娲诲姩鍚庯紝鍒濆垱浼佷笟銆佸叡浜姙鍏┖闂村強鍒涗笟瀛靛寲鍣ㄥ闆ㄥ悗鏄ョ瑡鑸繀閫熸秾鐜般\u20ac備紭瀹㈠伐鍦轰綔涓哄浗鍐呭叡浜姙鍏鍩熺殑鐙鍏斤紝涓哄垱涓氬叕鍙告彁渚涗簡鍒涗笟璧勯噾銆佸叆椹诲満鍦板強瀹屽杽鐨勫唴閮ㄩ厤濂楀姛鑳斤紝鍩硅偛浜嗕紬澶氫紭绉\u20ac鐨勫垱涓氬搧鐗屻\u20ac備匠鑳借瀵熷埌浼樺宸ュ満鍐呬骇鐢熺殑璇稿鍏变韩鎵撳嵃銆佽嚜鍔╂敮浠樻墦鍗扮瓑鏂板瀷鍔炲叕鎵撳嵃妯\u2033紡锛屼互鍙婂叆椹讳紒涓氳繀閫熸垚闀夸骇鐢熺殑澶氭牱鍔炲叕鎵撳嵃闇\u20ac姹傦紝閫夋嫨涓庝紭瀹㈠伐鍦哄紑灞曟垬鐣ュ悎浣滐紝骞朵粠浠ヤ笅鏂归潰灞曞紑锛氬弻鏂瑰叡鍚屽紑鍚\u20ac滃姪鍒涒\u20ac濊鍔紝浣宠兘涓轰紭瀹㈠伐鍦烘彁渚�60鍙板晢鍔℃墦鍗版満锛屽叆椹讳紭瀹㈠伐鍦虹殑鍒濆垱浼佷笟灏嗘湁鏈轰細浜彈浣宠兘妗岄潰鍔炲叕瑙ｅ喅鏂规甯︽潵鐨勯珮鏁堝姙鍏綋楠屻\u20ac傚苟涓旓紝浣宠兘灏嗘敮鎸佷紭瀹㈠伐鍦哄竷灞\u20ac浜戞墦鍗版湇鍔★紝涓哄叾瀹炵幇鏇存櫤鑳戒笌渚挎嵎鐨勫姙鍏幆澧冿紝婊¤冻鍏变韩鍔炲叕绌洪棿鍐呭叡浜墦鍗般\u20ac佽嚜鍔╂敮浠樻墦鍗扮瓑鍔炲叕鎵撳嵃闇\u20ac姹傘\u20ac�","messageState":0,"messageType":0,"pictureSite":"/static/images/1500867044862.jpeg","spared1":"","spared2":"","spared3":"","title":"鎼烘墜浣宠兘鍏卞姪鍙屽垱","writer":"璧典寒浜�"}],"firm":[]}
      * result : 鎴愬姛
+     * code : 200
      */
 
-    private String code;
+    private MsgBean msg;
     private String result;
-    private List<MsgBean> msg;
+    private String code;
 
-    public String getCode() {
-        return code;
+    public MsgBean getMsg() {
+        return msg;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setMsg(MsgBean msg) {
+        this.msg = msg;
     }
 
     public String getResult() {
@@ -34,147 +35,168 @@ public class Info {
         this.result = result;
     }
 
-    public List<MsgBean> getMsg() {
-        return msg;
+    public String getCode() {
+        return code;
     }
 
-    public void setMsg(List<MsgBean> msg) {
-        this.msg = msg;
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public static class MsgBean {
-        /**
-         * issueCompanyId : 0
-         * issueSpaceId : 55
-         * issueTime : 2017/07/13 18:11:43
-         * messageId : 14
-         * messageInfo : 璧典寒浜�
-         * messageState : 0
-         * messageType : 0
-         * pictureSite : /static/images/1499940703490.jpg,/static/images/1499940703491.jpg,/static/images/1499940703491.jpg,/static/images/1499940703492.jpg
-         * spared1 :
-         * spared2 :
-         * spared3 :
-         * title : 璧典寒浜�
-         * writer : 鑷杞�
-         */
+        private List<SpaceBean> space;
+        private List<?> firm;
 
-        private int issueCompanyId;
-        private int issueSpaceId;
-        private String issueTime;
-        private int messageId;
-        private String messageInfo;
-        private int messageState;
-        private int messageType;
-        private String pictureSite;
-        private String spared1;
-        private String spared2;
-        private String spared3;
-        private String title;
-        private String writer;
-
-        public int getIssueCompanyId() {
-            return issueCompanyId;
+        public List<SpaceBean> getSpace() {
+            return space;
         }
 
-        public void setIssueCompanyId(int issueCompanyId) {
-            this.issueCompanyId = issueCompanyId;
+        public void setSpace(List<SpaceBean> space) {
+            this.space = space;
         }
 
-        public int getIssueSpaceId() {
-            return issueSpaceId;
+        public List<?> getFirm() {
+            return firm;
         }
 
-        public void setIssueSpaceId(int issueSpaceId) {
-            this.issueSpaceId = issueSpaceId;
+        public void setFirm(List<?> firm) {
+            this.firm = firm;
         }
 
-        public String getIssueTime() {
-            return issueTime;
-        }
+        public static class SpaceBean {
+            /**
+             * issueCompanyId : 0
+             * issueSpaceId : 69
+             * issueTime : 2017/07/24 11:30:44
+             * messageId : 25
+             * messageInfo : 鑷粠鍥藉鎺ㄨ繘鍙屽垱娲诲姩鍚庯紝鍒濆垱浼佷笟銆佸叡浜姙鍏┖闂村強鍒涗笟瀛靛寲鍣ㄥ闆ㄥ悗鏄ョ瑡鑸繀閫熸秾鐜般€備紭瀹㈠伐鍦轰綔涓哄浗鍐呭叡浜姙鍏鍩熺殑鐙鍏斤紝涓哄垱涓氬叕鍙告彁渚涗簡鍒涗笟璧勯噾銆佸叆椹诲満鍦板強瀹屽杽鐨勫唴閮ㄩ厤濂楀姛鑳斤紝鍩硅偛浜嗕紬澶氫紭绉€鐨勫垱涓氬搧鐗屻€備匠鑳借瀵熷埌浼樺宸ュ満鍐呬骇鐢熺殑璇稿鍏变韩鎵撳嵃銆佽嚜鍔╂敮浠樻墦鍗扮瓑鏂板瀷鍔炲叕鎵撳嵃妯″紡锛屼互鍙婂叆椹讳紒涓氳繀閫熸垚闀夸骇鐢熺殑澶氭牱鍔炲叕鎵撳嵃闇€姹傦紝閫夋嫨涓庝紭瀹㈠伐鍦哄紑灞曟垬鐣ュ悎浣滐紝骞朵粠浠ヤ笅鏂归潰灞曞紑锛氬弻鏂瑰叡鍚屽紑鍚€滃姪鍒涒€濊鍔紝浣宠兘涓轰紭瀹㈠伐鍦烘彁渚�60鍙板晢鍔℃墦鍗版満锛屽叆椹讳紭瀹㈠伐鍦虹殑鍒濆垱浼佷笟灏嗘湁鏈轰細浜彈浣宠兘妗岄潰鍔炲叕瑙ｅ喅鏂规甯︽潵鐨勯珮鏁堝姙鍏綋楠屻€傚苟涓旓紝浣宠兘灏嗘敮鎸佷紭瀹㈠伐鍦哄竷灞€浜戞墦鍗版湇鍔★紝涓哄叾瀹炵幇鏇存櫤鑳戒笌渚挎嵎鐨勫姙鍏幆澧冿紝婊¤冻鍏变韩鍔炲叕绌洪棿鍐呭叡浜墦鍗般€佽嚜鍔╂敮浠樻墦鍗扮瓑鍔炲叕鎵撳嵃闇€姹傘€�
+             * messageState : 0
+             * messageType : 0
+             * pictureSite : /static/images/1500867044862.jpeg
+             * spared1 :
+             * spared2 :
+             * spared3 :
+             * title : 鎼烘墜浣宠兘鍏卞姪鍙屽垱
+             * writer : 璧典寒浜�
+             */
 
-        public void setIssueTime(String issueTime) {
-            this.issueTime = issueTime;
-        }
+            private int issueCompanyId;
+            private int issueSpaceId;
+            private String issueTime;
+            private int messageId;
+            private String messageInfo;
+            private int messageState;
+            private int messageType;
+            private String pictureSite;
+            private String spared1;
+            private String spared2;
+            private String spared3;
+            private String title;
+            private String writer;
 
-        public int getMessageId() {
-            return messageId;
-        }
+            public int getIssueCompanyId() {
+                return issueCompanyId;
+            }
 
-        public void setMessageId(int messageId) {
-            this.messageId = messageId;
-        }
+            public void setIssueCompanyId(int issueCompanyId) {
+                this.issueCompanyId = issueCompanyId;
+            }
 
-        public String getMessageInfo() {
-            return messageInfo;
-        }
+            public int getIssueSpaceId() {
+                return issueSpaceId;
+            }
 
-        public void setMessageInfo(String messageInfo) {
-            this.messageInfo = messageInfo;
-        }
+            public void setIssueSpaceId(int issueSpaceId) {
+                this.issueSpaceId = issueSpaceId;
+            }
 
-        public int getMessageState() {
-            return messageState;
-        }
+            public String getIssueTime() {
+                return issueTime;
+            }
 
-        public void setMessageState(int messageState) {
-            this.messageState = messageState;
-        }
+            public void setIssueTime(String issueTime) {
+                this.issueTime = issueTime;
+            }
 
-        public int getMessageType() {
-            return messageType;
-        }
+            public int getMessageId() {
+                return messageId;
+            }
 
-        public void setMessageType(int messageType) {
-            this.messageType = messageType;
-        }
+            public void setMessageId(int messageId) {
+                this.messageId = messageId;
+            }
 
-        public String getPictureSite() {
-            return pictureSite;
-        }
+            public String getMessageInfo() {
+                return messageInfo;
+            }
 
-        public void setPictureSite(String pictureSite) {
-            this.pictureSite = pictureSite;
-        }
+            public void setMessageInfo(String messageInfo) {
+                this.messageInfo = messageInfo;
+            }
 
-        public String getSpared1() {
-            return spared1;
-        }
+            public int getMessageState() {
+                return messageState;
+            }
 
-        public void setSpared1(String spared1) {
-            this.spared1 = spared1;
-        }
+            public void setMessageState(int messageState) {
+                this.messageState = messageState;
+            }
 
-        public String getSpared2() {
-            return spared2;
-        }
+            public int getMessageType() {
+                return messageType;
+            }
 
-        public void setSpared2(String spared2) {
-            this.spared2 = spared2;
-        }
+            public void setMessageType(int messageType) {
+                this.messageType = messageType;
+            }
 
-        public String getSpared3() {
-            return spared3;
-        }
+            public String getPictureSite() {
+                return pictureSite;
+            }
 
-        public void setSpared3(String spared3) {
-            this.spared3 = spared3;
-        }
+            public void setPictureSite(String pictureSite) {
+                this.pictureSite = pictureSite;
+            }
 
-        public String getTitle() {
-            return title;
-        }
+            public String getSpared1() {
+                return spared1;
+            }
 
-        public void setTitle(String title) {
-            this.title = title;
-        }
+            public void setSpared1(String spared1) {
+                this.spared1 = spared1;
+            }
 
-        public String getWriter() {
-            return writer;
-        }
+            public String getSpared2() {
+                return spared2;
+            }
 
-        public void setWriter(String writer) {
-            this.writer = writer;
+            public void setSpared2(String spared2) {
+                this.spared2 = spared2;
+            }
+
+            public String getSpared3() {
+                return spared3;
+            }
+
+            public void setSpared3(String spared3) {
+                this.spared3 = spared3;
+            }
+
+            public String getTitle() {
+                return title;
+            }
+
+            public void setTitle(String title) {
+                this.title = title;
+            }
+
+            public String getWriter() {
+                return writer;
+            }
+
+            public void setWriter(String writer) {
+                this.writer = writer;
+            }
         }
     }
 }

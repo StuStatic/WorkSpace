@@ -35,7 +35,7 @@ public class NeiborActivity extends AppCompatActivity implements View.OnClickLis
 
     //listview
     private ListView listview;
-    private List<Info.MsgBean> datas_neibor;
+    private List<Info.MsgBean.SpaceBean> datas_neibor;
     private ListViewAdapter01_InfoActivity adapter;
     private String[] spaceInfo = new String[]{"帝高阳之苗裔兮，朕皇考曰伯庸。","摄提贞于孟陬兮，惟庚寅吾以降","皇览揆余初度兮，肇锡余以嘉名："};
     @Override

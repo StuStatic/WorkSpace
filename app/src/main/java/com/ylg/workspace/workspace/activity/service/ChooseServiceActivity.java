@@ -131,9 +131,9 @@ public class ChooseServiceActivity extends App implements View.OnClickListener {
                         left.add(serviceType.getMsg().get(i).getLabelClassify());
                         List<String> list = new ArrayList<String>();
                         List<Integer> list1 = new ArrayList<>();
-                        for (int j = 0; j < serviceType.getMsg().get(j).getClassifySubclass().size(); j++) {
-                            list.add(serviceType.getMsg().get(j).getClassifySubclass().get(j).getClassifySubclass());
-                            list1.add(serviceType.getMsg().get(j).getClassifySubclass().get(j).getLabelId());
+                        for (int j = 0; j < serviceType.getMsg().get(i).getClassifySubclass().size(); j++) {
+                            list.add(serviceType.getMsg().get(i).getClassifySubclass().get(j).getClassifySubclass());
+                            list1.add(serviceType.getMsg().get(i).getClassifySubclass().get(j).getLabelId());
                         }
                         right.add(list);
                         index.add(list1);

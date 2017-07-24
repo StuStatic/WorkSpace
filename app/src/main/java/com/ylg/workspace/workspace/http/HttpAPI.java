@@ -150,7 +150,7 @@ public interface HttpAPI {
     Call<SlideServicePic> getSlideServicePic();
 
     //最新资讯
-    @POST("Message/findAllMessage")
+    @POST("Message/findAllMessageToApp")
     Call<Info> getInfo();
 
     //服务类型
@@ -195,7 +195,7 @@ public interface HttpAPI {
     /**
      * 修改用户设备分组
      *
-     * @param groupId
+     * @param
      * @return
      */
     //@POST("/Service_Platform/group/update.do")

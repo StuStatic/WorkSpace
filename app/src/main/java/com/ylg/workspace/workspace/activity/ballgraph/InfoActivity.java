@@ -99,12 +99,12 @@ public class InfoActivity extends AppCompatActivity implements View.OnClickListe
                 if (response.body().getCode().equals("200")) {
                     Info i = response.body();
                     //初始化adapter
-                    adapter_space = new ListViewAdapter01_InfoActivity(InfoActivity.this, i.getMsg());
+                    adapter_space = new ListViewAdapter01_InfoActivity(InfoActivity.this, i.getMsg().getSpace());
                     listView_space.setAdapter(adapter_space);
                     //重新设置listview的item的高度
                     SetSpaceListViewItemHeight.setHeight(listView_space);
                     //同上
-                    adapter_company = new ListViewAdapter01_InfoActivity(InfoActivity.this, i.getMsg());
+                    adapter_company = new ListViewAdapter01_InfoActivity(InfoActivity.this, i.getMsg().getSpace());
                     listView_company.setAdapter(adapter_company);
                     SetSpaceListViewItemHeight.setHeight(listView_company);
 
