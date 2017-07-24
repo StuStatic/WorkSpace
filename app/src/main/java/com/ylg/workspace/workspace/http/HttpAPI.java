@@ -10,10 +10,13 @@ import com.ylg.workspace.workspace.activity.service.bean.Service;
 import com.ylg.workspace.workspace.activity.service.bean.ServiceType;
 import com.ylg.workspace.workspace.bean.ExerciseRecommend;
 import com.ylg.workspace.workspace.bean.Info;
+import com.ylg.workspace.workspace.bean.MeetRoom;
 import com.ylg.workspace.workspace.bean.NeiborCompany;
+import com.ylg.workspace.workspace.bean.PlaceList;
 import com.ylg.workspace.workspace.bean.SlidePic;
 import com.ylg.workspace.workspace.bean.SlideServicePic;
 import com.ylg.workspace.workspace.bean.SpaceList;
+import com.ylg.workspace.workspace.bean.WorkPlace;
 import com.ylg.workspace.workspace.http.bean.FindByActivityId;
 import com.ylg.workspace.workspace.http.bean.FindByApplyTel;
 import com.ylg.workspace.workspace.http.bean.FindByUserId;
@@ -216,6 +219,18 @@ public interface HttpAPI {
     //查找我的企业的信息
     @POST("CompanyInfo/findMyCompany")
     Call<Business> findMyCompany(@Query("companyId") String companyId);
+
+    //预订场地列表
+    @POST("Site/ findAllSite")
+    Call<PlaceList> getPlaceList();
+
+    //订工位列表
+    @POST("Station/ findAllStation")
+    Call<WorkPlace> getWorkPlaceList();
+
+    //定会议室列表
+    @POST("Conference/findBySpaceId")
+    Call<MeetRoom> getMeetRoomList(@Query("spaceId") int spaceId);
 
     //查找我的活动的信息
     @POST("ActivityApply/findByUserId")

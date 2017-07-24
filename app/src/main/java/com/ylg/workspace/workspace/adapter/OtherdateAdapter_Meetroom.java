@@ -13,7 +13,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.ylg.workspace.workspace.R;
+import com.ylg.workspace.workspace.bean.MeetRoom;
+import com.ylg.workspace.workspace.http.Http;
 
 import java.util.List;
 
@@ -22,14 +25,14 @@ import java.util.List;
  */
 
 public class OtherdateAdapter_Meetroom extends BaseAdapter {
-    private List<String> datas;
+    private List<MeetRoom.MsgEntity> datas;
     private LayoutInflater inflater;
     private Context context;
     private int state01,state02,state03,state04,state05,state06,state07,state08,state09,state10,state11,state12,state13,state14,state15,state16,state17,state18,state19,state20,state21,state22,state23,state24;//未选0（空白），被别人选1（灰灰），自己选2(绿)；
     private double totaltime;
     private int currentItem = -1; //用于记录点击的 Item 的 position，是控制 item 展开的核心
     //构造方法
-    public OtherdateAdapter_Meetroom(Context context , List<String> datas){
+    public OtherdateAdapter_Meetroom(Context context , List<MeetRoom.MsgEntity> datas){
         this.datas = datas;
         this.context = context;
         inflater = LayoutInflater.from(context);
@@ -67,12 +70,13 @@ public class OtherdateAdapter_Meetroom extends BaseAdapter {
          * writen by stu爸爸
          */
         viewHolder.img_order_show.setTag(position);
-        //设置文字
-        viewHolder.tv_address.setText(datas.get(position));
-        viewHolder.tv_peoplenum.setText("3-5人");
-        viewHolder.tv_floor.setText("第15层");
-        viewHolder.tv_price.setText("400元/30分钟");
+        //设置文字datas.get(position).getConferenceName()
+        viewHolder.tv_address.setText(datas.get(position).getConferenceName());
+        viewHolder.tv_peoplenum.setText(datas.get(position).getConferenceDescribe());
+        viewHolder.tv_floor.setText(datas.get(position).getLocation());
+        viewHolder.tv_price.setText(datas.get(position).getConferencePrice()+"");
         //日期和图片暂时不设置
+        Glide.with(context).load(Http.API_URL+datas.get(position).getConferencePicture()).into(viewHolder.img);
 
 
         //根据 currentItem 记录的点击位置来设置"对应Item"的可见性（在list依次加载列表数据时，每加载一个时都看一下是不是需改变可见性的那一条）

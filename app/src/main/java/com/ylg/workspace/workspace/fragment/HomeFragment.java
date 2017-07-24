@@ -192,7 +192,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         startRequestNeiborDatas();
 
         //请求数据(活动推荐)
-        // startRequestRecommendDatas();
+         startRequestRecommendDatas();
         //最新资讯
         getInfoData();
     }
@@ -322,7 +322,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     String text = response.body().getMsg().get(0).getActivityDescribe();//此处只展示一个数据
                     recommend_contenttv.setText(text);
                     //设置图片(先将地址按都好分开)
-                    String[] s = response.body().getMsg().get(3).getPictureSite().split(",");
+                    String[] s = response.body().getMsg().get(0).getPictureSite().split(",");
                     String img_URL = Http.API_URL + s[0];
                     Log.e("recommen_img:", img_URL);
                     Glide.with(getActivity()).load(img_URL).into(recommend_img);

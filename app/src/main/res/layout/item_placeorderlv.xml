@@ -12,11 +12,12 @@
         <ImageView
             android:id="@+id/placeorder_img"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="200dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:layout_marginTop="10dp"
-            android:src="@mipmap/a4" />
+            android:src="@mipmap/a4"
+            android:scaleType="fitXY"/>
 
         <TextView
             android:id="@+id/placeorder_name"

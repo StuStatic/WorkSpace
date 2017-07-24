@@ -13,7 +13,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.ylg.workspace.workspace.R;
+import com.ylg.workspace.workspace.bean.PlaceList;
+import com.ylg.workspace.workspace.http.Http;
 
 import java.util.List;
 
@@ -22,14 +25,14 @@ import java.util.List;
  */
 
 public class ListViewAdapter_PlaceOrderActivity extends BaseAdapter {
-    private List<String> datas;
+    private List<PlaceList.MsgEntity> datas;
     private LayoutInflater inflater;
     private Context context;
     private int state01,state02,state03,state04,state05,state06,state07,state08,state09,state10,state11,state12,state13,state14,state15,state16,state17,state18,state19,state20,state21,state22,state23,state24;//未选0（空白），被别人选1（灰灰），自己选2(绿)；
     private double totaltime;
     private int currentItem = -1; //用于记录点击的 Item 的 position，是控制 item 展开的核心
     //构造方法
-    public ListViewAdapter_PlaceOrderActivity(Context context , List<String> datas){
+    public ListViewAdapter_PlaceOrderActivity(Context context , List<PlaceList.MsgEntity> datas){
         this.datas = datas;
         this.context = context;
         inflater = LayoutInflater.from(context);
@@ -68,12 +71,12 @@ public class ListViewAdapter_PlaceOrderActivity extends BaseAdapter {
          */
         viewHolder.img_order_show.setTag(position);
         //设置文字
-        viewHolder.tv_address.setText(datas.get(position));
-//        viewHolder.tv_peoplenum.setText("12-14人");
-//        viewHolder.tv_floor.setText("第4层");
-//        viewHolder.tv_price.setText("150元/30分钟");
+        viewHolder.tv_name.setText(datas.get(position).getSiteName());
+        viewHolder.tv_address.setText(datas.get(position).getLocation());
+        viewHolder.tv_floor.setText(datas.get(position).getPeopleNum()+"");
+        viewHolder.tv_price.setText(datas.get(position).getSitePrice()+"");
         //日期和图片暂时不设置
-
+        Glide.with(context).load(Http.API_URL+datas.get(position).getSitePicture()).into(viewHolder.img);
 
         //根据 currentItem 记录的点击位置来设置"对应Item"的可见性（在list依次加载列表数据时，每加载一个时都看一下是不是需改变可见性的那一条）
         if (currentItem == position) {
@@ -536,6 +539,7 @@ public class ListViewAdapter_PlaceOrderActivity extends BaseAdapter {
             tv_name=(TextView)view.findViewById(R.id.placeorder_name);
             tv_address=(TextView)view.findViewById(R.id.placeorder_address);
             tv_floor=(TextView)view.findViewById(R.id.placeorder_floor);
+            tv_price=(TextView)view.findViewById(R.id.placeorder_price);
             tv_content01=(TextView)view.findViewById(R.id.placeorder_tv01);
             tv_content02=(TextView)view.findViewById(R.id.placeorder_tv02);
             tv_content03=(TextView)view.findViewById(R.id.placeorder_tv03);

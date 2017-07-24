@@ -8,7 +8,10 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.ylg.workspace.workspace.R;
+import com.ylg.workspace.workspace.bean.WorkPlace;
+import com.ylg.workspace.workspace.http.Http;
 
 import java.util.List;
 
@@ -17,11 +20,13 @@ import java.util.List;
  */
 
 public class OtherdateAdapter_Workplace extends BaseAdapter {
-    private List<String> datas;
+    private List<WorkPlace.MsgEntity> datas;
     private LayoutInflater inflater;
+    private Context context;
     //构造方法
-    public OtherdateAdapter_Workplace(Context context , List<String> datas){
+    public OtherdateAdapter_Workplace(Context context ,  List<WorkPlace.MsgEntity> datas){
         this.datas = datas;
+        this.context = context;
         inflater = LayoutInflater.from(context);
     }
     @Override
@@ -51,11 +56,12 @@ public class OtherdateAdapter_Workplace extends BaseAdapter {
 
         }
         //设置文字
-        viewHolder.tv_title.setText(datas.get(i));
-        viewHolder.tv_address.setText("天津市东丽区无瑕街道88号");
-        viewHolder.tv_number.setText("58号工位可以预定");
-        viewHolder.tv_price.setText("$98/天");
+        viewHolder.tv_title.setText(datas.get(i).getSpared1());
+        viewHolder.tv_address.setText(datas.get(i).getLocation());
+        viewHolder.tv_number.setText(datas.get(i).getStationType()+"");
+        viewHolder.tv_price.setText(datas.get(i).getStationPrice()+"");
         //日期和图片暂时不设置
+        Glide.with(context).load(Http.API_URL+datas.get(i).getStationPicture()).into(viewHolder.img_title);
 
 
         return view;

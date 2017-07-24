@@ -227,7 +227,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:layout_marginLeft="15sp"
-                    android:layout_marginRight="15sp" />
+                    android:layout_marginRight="15sp"
+                    android:scaleType="fitXY"/>
                 <!--android:text="如果你无法简洁的表达你的想法，那只说明你还不够了解它。"-->
                 <TextView
                     android:id="@+id/recommend_contenttv"

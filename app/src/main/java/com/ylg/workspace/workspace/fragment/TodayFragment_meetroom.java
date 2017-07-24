@@ -3,6 +3,7 @@ package com.ylg.workspace.workspace.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,15 +15,25 @@ import android.widget.RelativeLayout;
 import com.ylg.workspace.workspace.R;
 import com.ylg.workspace.workspace.adapter.TodayAdapter_Meetroom;
 import com.ylg.workspace.workspace.adapter.TodayAdapter_Workplace;
+import com.ylg.workspace.workspace.bean.MeetRoom;
+import com.ylg.workspace.workspace.bean.SlidePic;
+import com.ylg.workspace.workspace.http.Http;
+import com.ylg.workspace.workspace.http.HttpAPI;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class TodayFragment_meetroom extends Fragment implements View.OnClickListener{
-    private List<String> datas;
+    private List<MeetRoom.MsgEntity> datas;
     private ListView listView;
     private TodayAdapter_Meetroom todayAdapter;
     private String[] address = new String[]{"东四多功能共享会议室","人民大会堂","省办公厅第一会议室"};
@@ -49,19 +60,43 @@ public class TodayFragment_meetroom extends Fragment implements View.OnClickList
 //        img_order.setOnClickListener(this);
         //初始化listview
         listView = (ListView)view.findViewById(R.id.meetroom_today_lv);
-        //初始化集合并赋值(其他字段先不加值)
-        datas = new ArrayList<>();
-        datas.add(address[0]);
-        datas.add(address[1]);
-        datas.add(address[2]);
-        //初始化adapter
-        todayAdapter = new TodayAdapter_Meetroom(view.getContext(),datas);
-        //绑定adapter
-        listView.setAdapter(todayAdapter);
+
+
+        //请求可用会议室列表
+        startRequestMeetRoomDatas();
+
         //listview的item点击事件
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+            }
+        });
+    }
+
+    //开始请求数据
+    private void startRequestMeetRoomDatas() {
+        HttpAPI api = Http.getInstance().create(HttpAPI.class);
+        //调用接口
+        Call<MeetRoom> call = api.getMeetRoomList(69);
+
+        call.enqueue(new Callback<MeetRoom>() {
+            @Override
+            public void onResponse(Call<MeetRoom> call, Response<MeetRoom> response) {
+                Log.e("MeetRoomBody",response.body().toString());
+                if(response.body().getCode().equals("200")){
+                    datas = response.body().getMsg();
+                    //初始化adapter
+                    todayAdapter = new TodayAdapter_Meetroom(view.getContext(),datas);
+                    //绑定adapter
+                    listView.setAdapter(todayAdapter);
+                }else if(response.body().getCode().equals("500")){//连接登录不成功
+                    Log.e("数据请求不成功",response.body().getCode());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MeetRoom> call, Throwable t) {
+
             }
         });
     }

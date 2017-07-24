@@ -9,11 +9,12 @@
         <ImageView
             android:id="@+id/meetroom_img_tomorrow"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="200dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:layout_marginTop="10dp"
-            android:src="@mipmap/a4" />
+            android:src="@mipmap/a4"
+            android:scaleType="fitXY"/>
 
         <TextView
             android:id="@+id/meetroom_address_tomorrow"

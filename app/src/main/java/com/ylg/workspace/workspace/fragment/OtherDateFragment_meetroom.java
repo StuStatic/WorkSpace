@@ -15,16 +15,23 @@ import com.ylg.workspace.workspace.R;
 import com.ylg.workspace.workspace.adapter.OtherdateAdapter_Meetroom;
 import com.ylg.workspace.workspace.adapter.OtherdateAdapter_Workplace;
 import com.ylg.workspace.workspace.adapter.TodayAdapter_Meetroom;
+import com.ylg.workspace.workspace.bean.MeetRoom;
+import com.ylg.workspace.workspace.http.Http;
+import com.ylg.workspace.workspace.http.HttpAPI;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 /**
  * A simple {@link Fragment} subclass.
  */
 public class OtherDateFragment_meetroom extends Fragment {
-    private List<String> datas;
+    private List<MeetRoom.MsgEntity> datas;
     private ListView listView;
     //时间选择器
     private TimePickerView pvTime;
@@ -33,7 +40,7 @@ public class OtherDateFragment_meetroom extends Fragment {
     //数据是否加载完毕
     private boolean isLoadDataCompleted;
     private OtherdateAdapter_Meetroom otherdateAdapter;
-    private String[] address = new String[]{"东莞第四街道按摩大厅","山水庄园"};
+//    private String[] address = new String[]{"东莞第四街道按摩大厅","山水庄园"};
     private View view;
 
     public OtherDateFragment_meetroom() {
@@ -55,15 +62,43 @@ public class OtherDateFragment_meetroom extends Fragment {
     private void init() {
         //初始化listview
         listView = (ListView)view.findViewById(R.id.meetroom_otherdate_lv);
-        //初始化集合并赋值(其他字段先不加值)
-        datas = new ArrayList<>();
-        datas.add(address[0]);
-        datas.add(address[1]);
+//        //初始化集合并赋值(其他字段先不加值)
+//        datas = new ArrayList<>();
+//        datas.add(address[0]);
+//        datas.add(address[1]);
         //初始化adapter
-        otherdateAdapter = new OtherdateAdapter_Meetroom(view.getContext(),datas);
-        //绑定adapter
-        listView.setAdapter(otherdateAdapter);
+
+        //获取列表内容
+        startRequestMeetRoomDatas();
+
     }
+
+    private void startRequestMeetRoomDatas() {
+        HttpAPI api = Http.getInstance().create(HttpAPI.class);
+        //调用接口
+        Call<MeetRoom> call = api.getMeetRoomList(69);
+
+        call.enqueue(new Callback<MeetRoom>() {
+            @Override
+            public void onResponse(Call<MeetRoom> call, Response<MeetRoom> response) {
+                Log.e("MeetRoomBody",response.body().toString());
+                if(response.body().getCode().equals("200")){
+                    datas = response.body().getMsg();
+                    otherdateAdapter = new OtherdateAdapter_Meetroom(view.getContext(),datas);
+                    //绑定adapter
+                    listView.setAdapter(otherdateAdapter);
+                }else if(response.body().getCode().equals("500")){//连接登录不成功
+                    Log.e("数据请求不成功",response.body().getCode());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MeetRoom> call, Throwable t) {
+
+            }
+        });
+    }
+
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
