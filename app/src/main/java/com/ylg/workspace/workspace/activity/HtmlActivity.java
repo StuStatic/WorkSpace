@@ -46,6 +46,7 @@ public class HtmlActivity extends App implements View.OnClickListener {
         tv = (TextView) findViewById(R.id.tv_title);
         tv.setText("访客预约");
         iv.setOnClickListener(this);
+
         url = getIntent().getStringExtra("htmlURL");
 
         wb.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);//设置js可以直接打开窗口，如window.open()，默认为false

@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -95,6 +96,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     //活动推荐
     //索引
     private TextView recommend_tv;
+    private RelativeLayout recommend_content,news_content;
     //n内容文字
     private TextView recommend_contenttv;
     private ImageView recommend_img;
@@ -151,6 +153,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         //活动推荐初始化 图片+文字
         recommend_tv = (TextView) homeLayout.findViewById(R.id.recommend_tv);
         recommend_contenttv = (TextView) homeLayout.findViewById(R.id.recommend_contenttv);
+        recommend_content = (RelativeLayout) homeLayout.findViewById(R.id.recommend_content);
+        recommend_content.setOnClickListener(this);
+
         //绑定监听
         recommend_tv.setOnClickListener(HomeFragment.this);
         recommend_img = (ImageView) homeLayout.findViewById(R.id.recommend_contentimg);
@@ -167,6 +172,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         tv1 = (TextView) homeLayout.findViewById(R.id.news_contenttv);
         tv2 = (TextView) homeLayout.findViewById(R.id.news_contentdate);
         imageView = (ImageView) homeLayout.findViewById(R.id.news_contentimg);
+        news_content = (RelativeLayout) homeLayout.findViewById(R.id.news_content);
+        news_content.setOnClickListener(this);
+
         //绑定监听点击事件
         news_tv.setOnClickListener(HomeFragment.this);
 
@@ -320,18 +328,18 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         call.enqueue(new Callback<NeiborCompany>() {
             @Override
             public void onResponse(Call<NeiborCompany> call, Response<NeiborCompany> response) {
-//                if (response.body().getCode().equals("200")) {
-//                    datas_neibor = response.body().getMsg();
-//                    Log.e("datas-neibor",response.body().toString());
-//                    //初始化适配器
-//                    adapter_neibor = new NeiborAdapter_Home(homeLayout.getContext(), datas_neibor);
-//                    //绑定适配器
-//                    listview.setAdapter(adapter_neibor);
-//                    //ScrollView中嵌套listview不手动设置高度出现只显示一行的情况
-//                    SetHomeListViewItemHeight.setHeight(listview);
-//                }else{
-//                    Log.e("33333333333333333333333","333333333333");
-//                }
+                if (response.body().getCode().equals("200")) {
+                    datas_neibor = response.body().getMsg();
+                    Log.e("datas-neibor",response.body().toString());
+                    //初始化适配器
+                    adapter_neibor = new NeiborAdapter_Home(homeLayout.getContext(), datas_neibor);
+                    //绑定适配器
+                    listview.setAdapter(adapter_neibor);
+                    //ScrollView中嵌套listview不手动设置高度出现只显示一行的情况
+                    SetHomeListViewItemHeight.setHeight(listview);
+                }else{
+                    Log.e("33333333333333333333333","333333333333");
+                }
             }
 
             @Override
@@ -377,16 +385,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     //球形图初始化
     private void InitBallGraph() {
         mStrings = new ArrayList<>();
-        for (int i = 0 ;i<14;i++){
+        for (int i = 0 ;i<10;i++){
         mStrings.add("");
     }
         //图片
         mImages = new ArrayList<>();
-        mImages.add(R.drawable.placeholderpic);
-        mImages.add(R.drawable.placeholderpic);
-        mImages.add(R.drawable.placeholderpic);
         mImages.add(R.drawable.fixed_position);
-        mImages.add(R.drawable.placeholderpic);
         mImages.add(R.drawable.conference_room);
         mImages.add(R.drawable.visitor_reservation);
         mImages.add(R.drawable.acitivity);
@@ -549,6 +553,16 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             case R.id.workspace_tv:
                 Intent i_space = new Intent(getActivity(), SpaceListActivity.class);
                 startActivity(i_space);
+                break;
+            case R.id.recommend_content://活动推荐（H5）
+                Intent i_recommend_content = new Intent(getActivity(), HtmlActivity.class);
+                i_recommend_content.putExtra("htmlURL","http://www.yiliangang.net:8012/makerSpace/activity.html");
+                startActivity(i_recommend_content);
+                break;
+            case R.id.news_content://最新资讯（H5）
+                Intent i_news_content = new Intent(getActivity(), HtmlActivity.class);
+                i_news_content.putExtra("htmlURL","http://www.yiliangang.net:8012/makerSpace/news1.html");
+                startActivity(i_news_content);
                 break;
             default:
                 break;
