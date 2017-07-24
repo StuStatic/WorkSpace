@@ -109,7 +109,7 @@ public class TabFragment_SpaceListActivity extends Fragment {
                     listview.setAdapter(adapter);
                     SetSpaceListListViewItemHeight.setHeight(listview);
                 }else{
-                    Toast.makeText(getContext(), "空间列表信息错误", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "暂无数据", Toast.LENGTH_SHORT).show();
                 }
             }
 
