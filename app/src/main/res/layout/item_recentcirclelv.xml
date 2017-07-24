@@ -51,14 +51,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@drawable/beijing"
+            android:src="@drawable/tianjin"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"/>
         <ImageView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@drawable/beijing"
+            android:src="@drawable/shanghai"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"/>
 

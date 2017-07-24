@@ -21,7 +21,7 @@ public class RecentCircle_SocialFragment extends Fragment {
     private View view;
     private ListView listView;
     private ListViewAdapter_RecentCircle adapter;
-    private String[] info = new String[]{"帝高阳之苗裔兮，朕皇考曰伯庸。", "摄提贞于孟陬兮，惟庚寅吾以降", "皇览揆余初度兮，肇锡余以嘉名："};
+    private String[] info = new String[]{"帝高阳之苗裔兮，朕皇考曰伯庸。"};
     private List<String> datas;
     public RecentCircle_SocialFragment() {
         // Required empty public constructor
