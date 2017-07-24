@@ -320,23 +320,23 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         call.enqueue(new Callback<NeiborCompany>() {
             @Override
             public void onResponse(Call<NeiborCompany> call, Response<NeiborCompany> response) {
-                if (response.body().getCode().equals("200")) {
-                    datas_neibor = response.body().getMsg();
-                    Log.e("datas-neibor",response.body().toString());
-                    //初始化适配器
-                    adapter_neibor = new NeiborAdapter_Home(homeLayout.getContext(), datas_neibor);
-                    //绑定适配器
-                    listview.setAdapter(adapter_neibor);
-                    //ScrollView中嵌套listview不手动设置高度出现只显示一行的情况
-                    SetHomeListViewItemHeight.setHeight(listview);
-                }else{
-                    Log.e("33333333333333333333333","333333333333");
-                }
+//                if (response.body().getCode().equals("200")) {
+//                    datas_neibor = response.body().getMsg();
+//                    Log.e("datas-neibor",response.body().toString());
+//                    //初始化适配器
+//                    adapter_neibor = new NeiborAdapter_Home(homeLayout.getContext(), datas_neibor);
+//                    //绑定适配器
+//                    listview.setAdapter(adapter_neibor);
+//                    //ScrollView中嵌套listview不手动设置高度出现只显示一行的情况
+//                    SetHomeListViewItemHeight.setHeight(listview);
+//                }else{
+//                    Log.e("33333333333333333333333","333333333333");
+//                }
             }
 
             @Override
             public void onFailure(Call<NeiborCompany> call, Throwable t) {
-                Log.e("t_neibor",t.toString());
+                Log.e("t_neibor",t.getMessage());
             }
         });
 

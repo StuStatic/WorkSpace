@@ -7,12 +7,13 @@ import java.util.List;
  * Created by stu on 2017/7/12.
  */
 
-public class NeiborCompany implements Serializable{
+public class NeiborCompany {
+
 
     /**
      * result : 鎴愬姛
+     * msg : [{"companyId":1,"companyName":"鐗╄仈娓鎶\u20ac鍙戝睍鏈夐檺鍏徃","companyPicture":"/static/images/space/20170724104233.png","companyProfile":"鐗╄仈缃�","companyState":1,"companyType":"2","contacts":"寮犻洦","mailbox":"123456789@qq.com","peopleNum":40,"spaceId":69,"spared1":"2017-7-24","spared2":"","spared3":"","tel":"18888888888"}]
      * code : 200
-     * msg : [{"companyId":1,"companyName":"鏄撹仈娓�","companyPicture":"/default/6715660.jpg","companyProfile":"鐗╄仈缃�","companyType":"1","contacts":"寮犻洦","mailbox":"123456789@qq.com","peopleNum":40,"spaceId":55,"spared1":"","spared2":"","spared3":"","tel":"12345678912"}]
      */
 
     private String result;
@@ -43,27 +44,29 @@ public class NeiborCompany implements Serializable{
         this.msg = msg;
     }
 
-    public static class MsgEntity implements Serializable{
+    public static class MsgEntity {
         /**
          * companyId : 1
-         * companyName : 鏄撹仈娓�
-         * companyPicture : /default/6715660.jpg
+         * companyName : 鐗╄仈娓鎶€鍙戝睍鏈夐檺鍏徃
+         * companyPicture : /static/images/space/20170724104233.png
          * companyProfile : 鐗╄仈缃�
-         * companyType : 1
+         * companyState : 1
+         * companyType : 2
          * contacts : 寮犻洦
          * mailbox : 123456789@qq.com
          * peopleNum : 40
-         * spaceId : 55
-         * spared1 :
+         * spaceId : 69
+         * spared1 : 2017-7-24
          * spared2 :
          * spared3 :
-         * tel : 12345678912
+         * tel : 18888888888
          */
 
         private int companyId;
         private String companyName;
         private String companyPicture;
         private String companyProfile;
+        private int companyState;
         private String companyType;
         private String contacts;
         private String mailbox;
@@ -104,6 +107,14 @@ public class NeiborCompany implements Serializable{
 
         public void setCompanyProfile(String companyProfile) {
             this.companyProfile = companyProfile;
+        }
+
+        public int getCompanyState() {
+            return companyState;
+        }
+
+        public void setCompanyState(int companyState) {
+            this.companyState = companyState;
         }
 
         public String getCompanyType() {

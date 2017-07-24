@@ -29,6 +29,7 @@ import com.ylg.workspace.workspace.activity.service.RequirementActivity;
 import com.ylg.workspace.workspace.activity.service.ServiceRegisterActivity;
 import com.ylg.workspace.workspace.adapter.ViewPagerAdapter_Service01;
 import com.ylg.workspace.workspace.bean.SlidePic;
+import com.ylg.workspace.workspace.bean.SlideServicePic;
 import com.ylg.workspace.workspace.http.Http;
 import com.ylg.workspace.workspace.http.HttpAPI;
 
@@ -46,7 +47,7 @@ public class ServiceFragment extends Fragment implements View.OnClickListener {
 
     private View serviceLayout;
     private ViewPager mViewPager;
-    private List<SlidePic.MsgEntity> mImageViewList1;
+    private List<SlideServicePic.MsgEntity> mImageViewList1;
     private List<Map<String, Object>> data_slideURL;
     private String htmlURL;
 //    private int[] images = {R.mipmap.a1, R.mipmap.a2, R.mipmap.a3, R.mipmap.a4, R.mipmap.a5};
@@ -128,12 +129,12 @@ public class ServiceFragment extends Fragment implements View.OnClickListener {
     private void initData(final Context context) {
         HttpAPI api = Http.getInstance().create(HttpAPI.class);
         //调用接口
-        Call<SlidePic> call = api.getSlidePic();
+        Call<SlideServicePic> call = api.getSlideServicePic();
 
-        call.enqueue(new Callback<SlidePic>() {
+        call.enqueue(new Callback<SlideServicePic>() {
             @Override
-            public void onResponse(Call<SlidePic> call, Response<SlidePic> response) {
-                Log.e("response_slide:",response.body().toString());
+            public void onResponse(Call<SlideServicePic> call, Response<SlideServicePic> response) {
+                Log.e("service_slide:",response.body().toString());
                 if(response.body().getCode().equals("200")){
 
                     String slideURL= Http.API_URL+response.body().getMsg().get(0).getImage();
@@ -183,15 +184,16 @@ public class ServiceFragment extends Fragment implements View.OnClickListener {
 
             }
 
+
             @Override
-            public void onFailure(Call<SlidePic> call, Throwable t) {
+            public void onFailure(Call<SlideServicePic> call, Throwable t) {
 
             }
         });
     }
 
     //设置轮播图小圆点
-    private void setDot(Context context,List<SlidePic.MsgEntity> mImageViewList1) {
+    private void setDot(Context context,List<SlideServicePic.MsgEntity> mImageViewList1) {
         //  设置LinearLayout的子控件的宽高，这里单位是像素。
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(15, 15);
         params.rightMargin = 20;
