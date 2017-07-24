@@ -4,12 +4,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/colorWhite">
-
+    <!--注：此处图片高度要写死-->
     <ImageView
         android:id="@+id/spacelist_itemimg"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/a4" />
+        android:layout_height="180dp"
+        android:src="@mipmap/a4"
+        android:scaleType="fitXY"/>
     <TextView
         android:id="@+id/spacelist_itemtv"
         android:layout_width="wrap_content"

@@ -61,7 +61,8 @@ public class ListViewAdapter_SpaceList extends BaseAdapter {
         viewHolder.tv_location.setText(datas.get(i).getSpaceSite());
         viewHolder.tv_num.setText(datas.get(i).getSpaceDescribe());
         //图片与星级
-        String img_URL=Http.API_URL+datas.get(i).getSpacePicture();
+        String[] url = datas.get(i).getSpacePicture().split(",");
+        String img_URL=Http.API_URL+url[0];
         Glide.with(context).load(img_URL).into(viewHolder.listview_img);
         String starNum=datas.get(i).getSpaceStar();
         if(starNum.equals(null) || starNum.equals("")){

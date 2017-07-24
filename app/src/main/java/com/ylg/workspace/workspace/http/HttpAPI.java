@@ -214,7 +214,7 @@ public interface HttpAPI {
 
     //空间列表
     @POST("Space/findAllSpace")
-    Call<SpaceList> getSpaceListData(@Query("city") String city);
+    Call<SpaceList> getSpaceListData();
 
     //查找我的企业的信息
     @POST("CompanyInfo/findMyCompany")

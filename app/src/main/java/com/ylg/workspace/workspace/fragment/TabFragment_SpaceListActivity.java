@@ -96,7 +96,7 @@ public class TabFragment_SpaceListActivity extends Fragment {
         //开始请求空间列表数据
         HttpAPI api = Http.getInstance().create(HttpAPI.class);
         //调用接口
-        Call<SpaceList> call = api.getSpaceListData("北京");
+        Call<SpaceList> call = api.getSpaceListData();
         call.enqueue(new Callback<SpaceList>() {
             @Override
             public void onResponse(Call<SpaceList> call, Response<SpaceList> response) {
