@@ -171,6 +171,8 @@ public class LoginActivity extends App implements View.OnClickListener {
 
                             input1(body.getMsg().getHeadPortrait(),body.getMsg().getRealName(),body.getMsg().getSex(),body.getMsg().getUserName(),body.getMsg().getSpared1(),body.getMsg().getIndustry(),body.getMsg().getSite(),body.getMsg().getSkill(),body.getMsg().getInterest(),body.getMsg().getConstellation(),body.getMsg().getCompanyId());
                             App.USER_ID = body.getMsg().getUserId();
+                            App.SPACE_ID = body.getMsg().getSpaceId();
+
                             Intent i = new Intent();
                             i.putExtras(bundle);
                             setResult(1, i);

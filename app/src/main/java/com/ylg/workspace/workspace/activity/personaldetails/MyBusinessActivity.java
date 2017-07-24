@@ -124,7 +124,7 @@ public class MyBusinessActivity extends App implements View.OnClickListener {
                 finish();
                 break;
             case R.id.business_ll_add://加入企业
-
+                Toast.makeText(this, "暂未开发，请稍后......", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.business_ll_new://创建企业
                 startActivity(CreateEnterpriseActivity.class);

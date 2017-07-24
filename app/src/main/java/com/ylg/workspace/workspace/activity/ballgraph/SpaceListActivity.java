@@ -83,7 +83,7 @@ public class SpaceListActivity extends AppCompatActivity implements View.OnClick
             {
 //                mImg.setImageResource(mDatas.get(position));
 //                view.setBackgroundColor(Color.parseColor("#AA024DA4"));
-                Toast.makeText(SpaceListActivity.this, ""+position, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(SpaceListActivity.this, ""+position, Toast.LENGTH_SHORT).show();
             }
         });
 

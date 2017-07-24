@@ -78,6 +78,7 @@ public class WelcomeActivity extends App {
                             bundle.putSerializable("skill", body.getMsg().getSkill());//技能（先不用）
                             bundle.putSerializable("interest", body.getMsg().getSkill());//兴趣（先不用）
                             App.USER_ID = body.getMsg().getUserId();
+                            App.SPACE_ID = body.getMsg().getSpaceId();
                             input1(body.getMsg().getHeadPortrait(),body.getMsg().getRealName(),body.getMsg().getSex(),body.getMsg().getUserName(),body.getMsg().getSpared1(),body.getMsg().getIndustry(),body.getMsg().getSite(),body.getMsg().getSkill(),body.getMsg().getInterest(),body.getMsg().getConstellation(),body.getMsg().getCompanyId());
                             Intent i = new Intent(WelcomeActivity.this,MainActivity.class);
                             i.putExtras(bundle);

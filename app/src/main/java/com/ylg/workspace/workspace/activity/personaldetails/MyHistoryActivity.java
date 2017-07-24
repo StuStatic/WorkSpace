@@ -23,7 +23,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyHistoryActivity extends App implements View.OnClickListener{
+public class MyHistoryActivity extends App implements View.OnClickListener {
 
     private ImageView iv_back;
     private TextView tv_title;
@@ -34,6 +34,7 @@ public class MyHistoryActivity extends App implements View.OnClickListener{
     private RadioButton historycheckButton4;
     private ViewPager historyviewpager;
     private List<Fragment> mFragments = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,16 +79,17 @@ public class MyHistoryActivity extends App implements View.OnClickListener{
 
             @Override
             public void onPageSelected(int position) {
-                if (position == 0){
+                if (position == 0) {
                     historycheckButton1.setChecked(true);
-                }else if (position == 1){
+                } else if (position == 1) {
                     historycheckButton2.setChecked(true);
-                }else if (position == 2){
+                } else if (position == 2) {
                     historycheckButton3.setChecked(true);
-                }else if (position == 3){
+                } else if (position == 3) {
                     historycheckButton4.setChecked(true);
                 }
             }
+
             @Override
             public void onPageScrollStateChanged(int state) {
 
@@ -104,12 +106,12 @@ public class MyHistoryActivity extends App implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.iv_back:
                 finish();
                 break;
             case R.id.iv_intent:
-              showCustomToast("暂未开放");
+                showCustomToast("暂未开放");
                 break;
             case R.id.history_checkButton1:
                 historyviewpager.setCurrentItem(0);

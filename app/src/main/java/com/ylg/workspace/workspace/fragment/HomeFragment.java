@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.moxun.tagcloudlib.view.TagCloudView;
+import com.ylg.workspace.workspace.Application.App;
 import com.ylg.workspace.workspace.R;
 import com.ylg.workspace.workspace.activity.HtmlActivity;
 import com.ylg.workspace.workspace.activity.ballgraph.ExerciseActivity;
@@ -341,7 +342,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private void startRequestNeiborDatas() {
         HttpAPI api = Http.getInstance().create(HttpAPI.class);
         //调用接口
-        Call<NeiborCompany> call = api.neiborCompany(58);
+        Call<NeiborCompany> call = api.neiborCompany(App.SPACE_ID);
 
         call.enqueue(new Callback<NeiborCompany>() {
             @Override
@@ -370,43 +371,25 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     //球形图初始化
     private void InitBallGraph() {
         mStrings = new ArrayList<>();
-        mStrings.add("集市");
-        mStrings.add("活动");
-        mStrings.add("资讯");
-        mStrings.add("友邻");
-        mStrings.add("集市");
-        mStrings.add("订工位");
-        mStrings.add("开门");
-        mStrings.add("发集市");
-        mStrings.add("访客预约");
-        mStrings.add("预定场地");
-        mStrings.add("精选");
-        mStrings.add("订会议室");
-        mStrings.add("一键报修");
-        mStrings.add("企业介绍");
-        mStrings.add("意见反馈");
-
-
+        for (int i = 0 ;i<14;i++){
+        mStrings.add("");
+    }
         //图片
         mImages = new ArrayList<>();
-        mImages.add(R.drawable.market);
-        mImages.add(R.drawable.market);
-        mImages.add(R.drawable.market);
-        mImages.add(R.drawable.market);
-        mImages.add(R.drawable.market);
-        mImages.add(R.drawable.market);
-        mImages.add(R.drawable.market);
-        mImages.add(R.drawable.market);
-        mImages.add(R.drawable.market);
-        mImages.add(R.drawable.market);
-        mImages.add(R.drawable.market);
-        mImages.add(R.drawable.market);
-        mImages.add(R.drawable.market);
-        mImages.add(R.drawable.market);
-        mImages.add(R.drawable.market);
-        mImages.add(R.drawable.market);
-        mImages.add(R.drawable.market);
-        mImages.add(R.drawable.market);
+        mImages.add(R.drawable.placeholderpic);
+        mImages.add(R.drawable.placeholderpic);
+        mImages.add(R.drawable.placeholderpic);
+        mImages.add(R.drawable.fixed_position);
+        mImages.add(R.drawable.placeholderpic);
+        mImages.add(R.drawable.conference_room);
+        mImages.add(R.drawable.visitor_reservation);
+        mImages.add(R.drawable.acitivity);
+        mImages.add(R.drawable.market1);
+        mImages.add(R.drawable.one_button_repair);
+        mImages.add(R.drawable.open_door);
+        mImages.add(R.drawable.feedback);
+        mImages.add(R.drawable.reservation_site);
+        mImages.add(R.drawable.consultation);
 
         tcv = (TagCloudView) homeLayout.findViewById(R.id.tcv);
         TagAdapter tagsAdapter = new TagAdapter(homeLayout.getContext(), mStrings, mImages);

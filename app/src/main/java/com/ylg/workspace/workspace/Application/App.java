@@ -32,6 +32,7 @@ public class App extends AppCompatActivity {
     private static LinkedList<Activity> mList = new LinkedList<>();
     public static int KEY_LOGIN = 1;
     public static int USER_ID = 0;
+    public static int SPACE_ID = 0;
     @Override
     public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
