@@ -44,7 +44,7 @@ public class HtmlActivity extends App implements View.OnClickListener {
         iv_back = (ImageView) findViewById(R.id.iv_back);
         iv_back.setOnClickListener(this);
         tv = (TextView) findViewById(R.id.tv_title);
-        tv.setText("访客预约");
+        tv.setText("");
         iv.setOnClickListener(this);
 
         url = getIntent().getStringExtra("htmlURL");

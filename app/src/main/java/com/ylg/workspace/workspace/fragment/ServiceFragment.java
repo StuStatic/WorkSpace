@@ -17,12 +17,12 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.xys.libzxing.zxing.activity.CaptureActivity;
 import com.ylg.workspace.workspace.R;
 import com.ylg.workspace.workspace.activity.HtmlActivity;
 import com.ylg.workspace.workspace.activity.service.FeedbackActivity;
+import com.ylg.workspace.workspace.activity.service.MyFacilityActivity;
 import com.ylg.workspace.workspace.activity.service.OrderVisitorActivity;
 import com.ylg.workspace.workspace.activity.service.QuestionActivity;
 import com.ylg.workspace.workspace.activity.service.RequirementActivity;
@@ -328,7 +328,7 @@ public class ServiceFragment extends Fragment implements View.OnClickListener {
             case R.id.service_ll5:
 //                i.putExtra("getTitle", "IT");
 //                startActivity(i);
-                startActivity(new Intent(getActivity(), HtmlActivity.class));
+                startActivity(new Intent(getActivity(), RequirementActivity.class));
                 break;
             case R.id.service_ll6:
                 startActivity(new Intent(getActivity(), OrderVisitorActivity.class));
@@ -344,7 +344,8 @@ public class ServiceFragment extends Fragment implements View.OnClickListener {
                 startActivity(new Intent(getActivity(), FeedbackActivity.class));
                 break;
             case R.id.service_ll10:
-                Toast.makeText(getActivity(), "敬请期待", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getActivity(), "敬请期待", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getActivity(), MyFacilityActivity.class));
                 break;
             case R.id.service_ll11:
                 startActivity(new Intent(getActivity(), RequirementActivity.class));

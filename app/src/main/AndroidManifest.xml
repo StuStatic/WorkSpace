@@ -2,15 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ylg.workspace.workspace">
 
-
     <uses-permission android:name="android.permission.CAMERA" />
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-
-    <uses-permission android:name="android.permission.CALL_PHONE"></uses-permission>
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -22,9 +20,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
 
-
     <application
-
         android:name=".Application.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -50,7 +46,7 @@
         <activity android:name=".activity.service.OrderVisitorActivity" />
         <activity android:name=".activity.service.FeedbackActivity" />
         <activity android:name=".activity.service.QuestionActivity" />
-        <activity android:name=".activity.service.ChooseServiceActivity"/>
+        <activity android:name=".activity.service.ChooseServiceActivity" />
         <activity android:name=".activity.ballgraph.InfoActivity" />
         <activity android:name=".activity.ballgraph.ExerciseActivity" />
         <activity android:name=".activity.ballgraph.WorkplaceOrderActivity" />
@@ -71,7 +67,6 @@
         <activity android:name=".activity.ballgraph.PlaceOrderActivity" />
         <activity android:name=".activity.HtmlActivity" />
         <activity android:name=".activity.ballgraph.NeiborActivity" />
-
         //weibo
         <activity
             android:name=".WBShareActivity"
@@ -79,6 +74,7 @@
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -87,27 +83,26 @@
             android:configChanges="keyboardHidden|orientation"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name="com.sina.weibo.sdk.share.WbShareTransActivity"
             android:launchMode="singleTask"
             android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-
         </activity>
         <activity
             android:name="com.sina.weibo.sdk.component.WeiboSdkBrowser"
             android:configChanges="keyboardHidden|orientation"
             android:exported="true"
-            android:windowSoftInputMode="adjustResize"></activity>
+            android:windowSoftInputMode="adjustResize" />
 
         <service
             android:name="com.sina.weibo.sdk.net.DownloadService"
-            android:exported="false"></service>
-
+            android:exported="false" />
         //weixin
         <activity
             android:name=".wxapi.WXEntryActivity"
@@ -120,7 +115,6 @@
             android:name="com.tencent.tauth.AuthActivity"
             android:launchMode="singleTask"
             android:noHistory="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -139,8 +133,9 @@
 
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="59635798c62dca4dd60014a2"></meta-data>
-    </application>
+            android:value="59635798c62dca4dd60014a2" />
 
+        <activity android:name=".activity.service.MyFacilityActivity"></activity>
+    </application>
 
 </manifest>
