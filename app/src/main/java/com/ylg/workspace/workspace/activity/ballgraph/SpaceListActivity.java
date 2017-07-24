@@ -4,12 +4,14 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ylg.workspace.workspace.Application.App;
 import com.ylg.workspace.workspace.R;
 import com.ylg.workspace.workspace.adapter.HSVAdapter_SpaceListActivity;
 import com.ylg.workspace.workspace.adapter.TabAdapter_SpaceListActivity;
@@ -24,7 +26,7 @@ import java.util.List;
  * @write by stu on 2017/7/16
  */
 
-public class SpaceListActivity extends AppCompatActivity implements View.OnClickListener{
+public class SpaceListActivity extends App implements View.OnClickListener{
     /**
      *
      * @author stu
@@ -48,6 +50,7 @@ public class SpaceListActivity extends AppCompatActivity implements View.OnClick
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        addActivity(this);
         setContentView(R.layout.activity_spacelist);
         init();
     }
@@ -62,8 +65,6 @@ public class SpaceListActivity extends AppCompatActivity implements View.OnClick
 
         //初始化tab
         InitTab();
-
-
 
     }
 
@@ -81,6 +82,7 @@ public class SpaceListActivity extends AppCompatActivity implements View.OnClick
             @Override
             public void onClick(View view, int position)
             {
+                Log.i("dyy",position+"");
 //                mImg.setImageResource(mDatas.get(position));
 //                view.setBackgroundColor(Color.parseColor("#AA024DA4"));
 //                Toast.makeText(SpaceListActivity.this, ""+position, Toast.LENGTH_SHORT).show();
@@ -151,5 +153,11 @@ public class SpaceListActivity extends AppCompatActivity implements View.OnClick
             default:
                 break;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        removeActivity(this);
+        super.onDestroy();
     }
 }

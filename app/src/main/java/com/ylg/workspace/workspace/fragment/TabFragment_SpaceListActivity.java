@@ -2,17 +2,20 @@ package com.ylg.workspace.workspace.fragment;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ylg.workspace.workspace.R;
+import com.ylg.workspace.workspace.activity.HtmlActivity;
 import com.ylg.workspace.workspace.adapter.ListViewAdapter_SpaceList;
 import com.ylg.workspace.workspace.adapter.NeiborAdapter_Home;
 import com.ylg.workspace.workspace.bean.NeiborCompany;
@@ -34,7 +37,7 @@ import retrofit2.Response;
  * A simple {@link Fragment} subclass.
  * writen by stu on 2017/7/16
  */
-public class TabFragment_SpaceListActivity extends Fragment {
+public class TabFragment_SpaceListActivity extends Fragment implements AdapterView.OnItemClickListener {
     /**
      * @author stu
      */
@@ -85,11 +88,9 @@ public class TabFragment_SpaceListActivity extends Fragment {
 
         //初始化lsitview
         listview = (ListViewForScrollView_SpaceList) view.findViewById(R.id.spacelist_lv);
-
+        listview.setOnItemClickListener(this);
 
         startRequest(context);
-
-
     }
 
     private void startRequest(final Context context) {
@@ -100,15 +101,15 @@ public class TabFragment_SpaceListActivity extends Fragment {
         call.enqueue(new Callback<SpaceList>() {
             @Override
             public void onResponse(Call<SpaceList> call, Response<SpaceList> response) {
-                Log.e("code:",response.body().getCode());
-                if(response.body().getCode().equals("200")){
+                Log.e("code:", response.body().getCode());
+                if (response.body().getCode().equals("200")) {
                     datas = response.body().getMsg();
                     //adapter
                     adapter = new ListViewAdapter_SpaceList(context, datas);
                     //绑定adapter
                     listview.setAdapter(adapter);
                     SetSpaceListListViewItemHeight.setHeight(listview);
-                }else{
+                } else {
                     Toast.makeText(getContext(), "暂无数据", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -118,5 +119,19 @@ public class TabFragment_SpaceListActivity extends Fragment {
 
             }
         });
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent i_news_content = new Intent(getActivity(), HtmlActivity.class);
+        if (position == 0) {
+            i_news_content.putExtra("htmlURL", "http://www.yiliangang.net:8012/makerSpace/companyInfo.html");
+        } else if (position == 1) {
+            i_news_content.putExtra("htmlURL", "http://www.yiliangang.net:8012/makerSpace/companyInfo1.html");
+        } else if (position == 2) {
+            i_news_content.putExtra("htmlURL", "http://www.yiliangang.net:8012/makerSpace/companyInfo2.html");
+        }
+        startActivity(i_news_content);
+
     }
 }

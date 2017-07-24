@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -58,7 +59,7 @@ import retrofit2.Response;
  * writen by stu on 2017/7/17
  */
 
-public class HomeFragment extends Fragment implements View.OnClickListener {
+public class HomeFragment extends Fragment implements View.OnClickListener,AdapterView.OnItemClickListener {
 
     /**
      * @author stu
@@ -185,7 +186,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         //友邻企业内容listview
         listview = (ListView) homeLayout.findViewById(R.id.neibor_contentlv);
-
+        listview.setOnItemClickListener(this);
 
     }
 
@@ -217,7 +218,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             public void onClick(View view, int position) {
 //                mImg.setImageResource(mDatas.get(position));
 //                view.setBackgroundColor(Color.parseColor("#AA024DA4"));
-                Toast.makeText(context, "" + position, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, "" + position, Toast.LENGTH_SHORT).show();
             }
         });
         //设置适配器
@@ -504,7 +505,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             }
         });
 
-
     }
 
 
@@ -514,7 +514,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             @Override
             public void run() {
                 super.run();
-
                 while (true) {
                     SystemClock.sleep(5000);
                     currentPosition1++;
@@ -567,5 +566,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             default:
                 break;
         }
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent i_news_content = new Intent(getActivity(), HtmlActivity.class);
+        i_news_content.putExtra("htmlURL","http://www.yiliangang.net:8012/makerSpace/companyInfo.html");
+        startActivity(i_news_content);
     }
 }
