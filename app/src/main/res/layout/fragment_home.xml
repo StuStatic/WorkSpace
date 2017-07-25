@@ -35,24 +35,93 @@
                     android:orientation="horizontal" />
             </RelativeLayout>
             <!--动态球星图-->
-            <FrameLayout
+            <!--<FrameLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="380dp"-->
+                <!--android:background="@drawable/home_spherical">-->
+
+                <!--<com.moxun.tagcloudlib.view.TagCloudView-->
+                    <!--android:id="@+id/tcv"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="380dp"-->
+                    <!--android:layout_centerInParent="true"-->
+                    <!--app:autoScrollMode="uniform"-->
+                    <!--app:darkColor="#ff00ff00"-->
+                    <!--app:lightColor="#ffff0000"-->
+                    <!--app:radiusPercent="0.6"-->
+                    <!--app:scrollSpeed="3" />-->
+                <!--/>-->
+            <!--</FrameLayout>-->
+
+            <!--分类图-->
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="380dp"
-                android:background="@drawable/home_spherical">
-
-                <com.moxun.tagcloudlib.view.TagCloudView
-                    android:id="@+id/tcv"
+                android:layout_height="200dp"
+                android:background="@color/colorBlue"
+                android:orientation="vertical">
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="380dp"
-                    android:layout_centerInParent="true"
-                    app:autoScrollMode="uniform"
-                    app:darkColor="#ff00ff00"
-                    app:lightColor="#ffff0000"
-                    app:radiusPercent="0.6"
-                    app:scrollSpeed="3" />
-                />
-            </FrameLayout>
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="15dp">
+                    <ImageView
+                        android:id="@+id/siteorder_home"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/siteorder_home"/>
+                    <ImageView
+                        android:id="@+id/visitor_home"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/visitor_home"/>
+                    <ImageView
+                        android:id="@+id/placeorder_home"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/placeorder_home"/>
+                    <ImageView
+                        android:id="@+id/meetroomorder_home"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/meetroomorder_home"/>
 
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/opendoor_home"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/opendoor_home"/>
+                    <ImageView
+                        android:id="@+id/neibor_home"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/neibor_home"/>
+                    <ImageView
+                        android:id="@+id/infoorder_home"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/infoorder_home"/>
+                    <ImageView
+                        android:id="@+id/exercise_home"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/exercise_home"/>
+                </LinearLayout>
+            </LinearLayout>
             <!--众创空间文字索引-->
             <RelativeLayout
                 android:id="@+id/word01"

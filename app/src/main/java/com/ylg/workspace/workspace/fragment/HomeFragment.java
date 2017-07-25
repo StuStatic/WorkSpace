@@ -26,13 +26,18 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.moxun.tagcloudlib.view.TagCloudView;
+import com.xys.libzxing.zxing.activity.CaptureActivity;
 import com.ylg.workspace.workspace.Application.App;
 import com.ylg.workspace.workspace.R;
 import com.ylg.workspace.workspace.activity.HtmlActivity;
 import com.ylg.workspace.workspace.activity.ballgraph.ExerciseActivity;
 import com.ylg.workspace.workspace.activity.ballgraph.InfoActivity;
+import com.ylg.workspace.workspace.activity.ballgraph.MeetRoomOrderActivity;
 import com.ylg.workspace.workspace.activity.ballgraph.NeiborActivity;
+import com.ylg.workspace.workspace.activity.ballgraph.PlaceOrderActivity;
 import com.ylg.workspace.workspace.activity.ballgraph.SpaceListActivity;
+import com.ylg.workspace.workspace.activity.ballgraph.WorkplaceOrderActivity;
+import com.ylg.workspace.workspace.activity.service.OrderVisitorActivity;
 import com.ylg.workspace.workspace.adapter.HorizontalScrollViewAdapter_Home;
 import com.ylg.workspace.workspace.adapter.ListViewAdapter_SpaceList;
 import com.ylg.workspace.workspace.adapter.NeiborAdapter_Home;
@@ -85,6 +90,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener,Adapt
     private TagCloudView tcv;
     private List<String> mStrings;
     private List<Integer> mImages;
+
+    //分类imageview
+    private ImageView siteorder_img,visitor_img,placeorder_img,meetroom_img,opendoor_img,neibor_img,info_img,exercise_img;
 
     //HorizontalScrollView
     private HorizontalScrollView mHorizontalScrollView;
@@ -146,7 +154,25 @@ public class HomeFragment extends Fragment implements View.OnClickListener,Adapt
 
     private void initView(Context context) {
         //初始化球形图
-        InitBallGraph();
+//        InitBallGraph();
+
+        //初始化顶部分类图
+        siteorder_img=(ImageView)homeLayout.findViewById(R.id.siteorder_home);
+        siteorder_img.setOnClickListener(this);
+        visitor_img=(ImageView)homeLayout.findViewById(R.id.visitor_home);
+        visitor_img.setOnClickListener(this);
+        placeorder_img=(ImageView)homeLayout.findViewById(R.id.placeorder_home);
+        placeorder_img.setOnClickListener(this);
+        meetroom_img=(ImageView)homeLayout.findViewById(R.id.meetroomorder_home);
+        meetroom_img.setOnClickListener(this);
+        opendoor_img=(ImageView)homeLayout.findViewById(R.id.opendoor_home);
+        opendoor_img.setOnClickListener(this);
+        neibor_img=(ImageView)homeLayout.findViewById(R.id.neibor_home);
+        neibor_img.setOnClickListener(this);
+        info_img=(ImageView)homeLayout.findViewById(R.id.infoorder_home);
+        info_img.setOnClickListener(this);
+        exercise_img=(ImageView)homeLayout.findViewById(R.id.exercise_home);
+        exercise_img.setOnClickListener(this);
 
         //头部轮播视图初始化
         mViewPager1 = (ViewPager) homeLayout.findViewById(R.id.vp_home1);
@@ -457,9 +483,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener,Adapt
         mImages.add(R.drawable.reservation_site);
         mImages.add(R.drawable.consultation);
 
-        tcv = (TagCloudView) homeLayout.findViewById(R.id.tcv);
-        TagAdapter tagsAdapter = new TagAdapter(homeLayout.getContext(), mStrings, mImages);
-        tcv.setAdapter(tagsAdapter);
+//        tcv = (TagCloudView) homeLayout.findViewById(R.id.tcv);
+//        TagAdapter tagsAdapter = new TagAdapter(homeLayout.getContext(), mStrings, mImages);
+//        tcv.setAdapter(tagsAdapter);
     }
 
     //  设置轮播小圆点
@@ -585,6 +611,38 @@ public class HomeFragment extends Fragment implements View.OnClickListener,Adapt
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            //头部分类图片点击事件
+            case R.id.siteorder_home://预订场地
+                Intent i_place = new Intent(getActivity(), PlaceOrderActivity.class);
+                startActivity(i_place);
+                break;
+            case R.id.visitor_home://访客
+                Intent i_visit = new Intent(getActivity(), OrderVisitorActivity.class);
+                startActivity(i_visit);
+                break;
+            case R.id.placeorder_home://订工位
+                Intent i_work = new Intent(getActivity(), WorkplaceOrderActivity.class);
+                startActivity(i_work);
+                break;
+            case R.id.meetroomorder_home://定会议室
+                Intent i_meet = new Intent(getActivity(), MeetRoomOrderActivity.class);
+                startActivity(i_meet);
+                break;
+            case R.id.opendoor_home://一键开门
+                Intent i_captureActivity = new Intent(getActivity(), CaptureActivity.class);
+                startActivity(i_captureActivity);
+                break;
+            case R.id.neibor_home://友邻
+                Toast.makeText(getActivity(), "友邻", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.infoorder_home://资讯
+                Intent i_info = new Intent(getActivity(), InfoActivity.class);
+                startActivity(i_info);
+                break;
+            case R.id.exercise_home://活动
+                Intent i_exer = new Intent(getActivity(), ExerciseActivity.class);
+                startActivity(i_exer);
+                break;
             //活动推荐文字索引点击事件
             case R.id.recommend_tv:
                 Intent i_exer02 = new Intent(getActivity(), ExerciseActivity.class);
@@ -595,8 +653,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener,Adapt
 //                break;
             //最新资讯索引点击事件
             case R.id.news_tv:
-                Intent i_info = new Intent(getActivity(), InfoActivity.class);
-                startActivity(i_info);
+                Intent i_news = new Intent(getActivity(), InfoActivity.class);
+                startActivity(i_news);
                 break;
             //友邻企业文字点击事件
             case R.id.neibor_tv:
