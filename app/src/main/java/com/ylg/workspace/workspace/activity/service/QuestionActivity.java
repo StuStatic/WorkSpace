@@ -161,7 +161,14 @@ public class QuestionActivity extends App implements View.OnClickListener {
                 final String s2 = tv1.getText().toString().trim();
                 final String s4 = et2.getText().toString().trim();
                 final String s3 = tvTime.getText().toString()+":00";
-
+                if (s2.equals("") || s3.equals("") || s4.equals("") || s1.equals("")) {
+                    showShortMsg("还有未填写信息");
+                    return;
+                }
+                if (imagePaths.size() < 2) {
+                    showShortMsg("还未选择照片");
+                    return;
+                }
                 iphoneDialog.setMessage("请稍候...");
                 iphoneDialog.show();
 

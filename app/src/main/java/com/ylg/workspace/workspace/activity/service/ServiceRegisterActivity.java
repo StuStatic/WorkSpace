@@ -91,24 +91,32 @@ public class ServiceRegisterActivity extends App implements View.OnClickListener
                 }
                 break;
             case R.id.button:
-                if (imagePaths.size() > 1) {
-                    final String s2 = et2.getText().toString().trim();
-                    final String s3 = et3.getText().toString().trim();
-                    final String s4 = et4.getText().toString().trim();
-                    final String s5 = et5.getText().toString().trim();
-                    final String s6 = et6.getText().toString().trim();
-                    iphoneDialog.setMessage("请稍候...");
-                    iphoneDialog.show();
-                    new Thread() {
-                        @Override
-                        public void run() {
-                            super.run();
-                            imagePaths.remove(1);
-                            //FileUploadManager.registerService("1", s2, s3, s4, s5, s6, imagePaths.get(0), 0, ServiceRegisterActivity.this);
-                            FileUploadManager.uploadMany("1", s2, s3, s4, s5, s6,imagePaths, 0, ServiceRegisterActivity.this, iphoneDialog);
-                        }
-                    }.start();
+                final String s2 = et2.getText().toString().trim();
+                final String s3 = et3.getText().toString().trim();
+                final String s4 = et4.getText().toString().trim();
+                final String s5 = et5.getText().toString().trim();
+                final String s6 = et6.getText().toString().trim();
+                if (s2.equals("") || s3.equals("") || s4.equals("") || s5.equals("") || s6.equals("")) {
+                    showShortMsg("还有未填写信息");
+                    return;
                 }
+                if (imagePaths.size() < 2) {
+                    showShortMsg("还未选择Logo");
+                    return;
+                }
+                iphoneDialog.setMessage("请稍候...");
+                iphoneDialog.show();
+                new Thread() {
+                    @Override
+                    public void run() {
+                        super.run();
+                        imagePaths.remove(1);
+                        //FileUploadManager.registerService("1", s2, s3, s4, s5, s6, imagePaths.get(0), 0, ServiceRegisterActivity.this);
+                        FileUploadManager.uploadMany("1", s2, s3, s4, s5, s6, imagePaths, 0, ServiceRegisterActivity.this, iphoneDialog);
+                        imagePaths.add(1, "000000");
+                    }
+                }.start();
+
                 break;
         }
 

@@ -130,7 +130,7 @@
                             android:paddingLeft="15dp"
                             android:paddingRight="15dp"
                             android:progressDrawable="@drawable/seek_bar_progress_bg"
-                            android:thumb="@mipmap/thumb_icon" />
+                            android:thumb="@mipmap/thumb" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -280,7 +280,7 @@
                             android:paddingLeft="15dp"
                             android:paddingRight="15dp"
                             android:progressDrawable="@drawable/seek_bar_progress_bg"
-                            android:thumb="@mipmap/thumb_icon" />
+                            android:thumb="@mipmap/thumb" />
 
                         <TextView
                             android:id="@+id/tv_snwd"
@@ -505,7 +505,7 @@
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
                     android:progressDrawable="@drawable/seek_bar_progress_bg"
-                    android:thumb="@mipmap/thumb_icon" />
+                    android:thumb="@mipmap/thumb" />
             </LinearLayout>
 
             <include layout="@layout/item_line"></include>
