@@ -15,6 +15,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -40,6 +41,7 @@ import com.ylg.workspace.workspace.bean.ExerciseRecommend;
 import com.ylg.workspace.workspace.bean.Info;
 import com.ylg.workspace.workspace.bean.NeiborCompany;
 import com.ylg.workspace.workspace.bean.SlidePic;
+import com.ylg.workspace.workspace.bean.SpaceList;
 import com.ylg.workspace.workspace.http.Http;
 import com.ylg.workspace.workspace.http.HttpAPI;
 import com.ylg.workspace.workspace.util.SetHomeListViewItemHeight;
@@ -83,10 +85,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener,Adapt
     private List<Integer> mImages;
 
     //HorizontalScrollView
-    private MyHorizontalScrollView_Home mHorizontalScrollView;
+    private HorizontalScrollView mHorizontalScrollView;
     private HorizontalScrollViewAdapter_Home mAdapter;
     private ImageView mImg;
-    private List<Integer> mDatas = new ArrayList<Integer>(Arrays.asList(R.mipmap.a4, R.mipmap.a5, R.mipmap.a4, R.mipmap.a5, R.mipmap.a4, R.mipmap.a5, R.mipmap.a4, R.mipmap.a5, R.mipmap.a4, R.mipmap.a5));
+//    private List<Integer> mDatas = new ArrayList<Integer>(Arrays.asList(R.mipmap.a4, R.mipmap.a5, R.mipmap.a4));
+    private List<SpaceList.MsgEntity> mDatas;
 
     //友邻企业列表
     private ListView listview;
@@ -148,8 +151,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener,Adapt
         mLinearLayoutDot1 = (LinearLayout) homeLayout.findViewById(R.id.ll_home1_dot);
 
         //horizontalScrollView初始化
-        mHorizontalScrollView = (MyHorizontalScrollView_Home) homeLayout.findViewById(R.id.id_hsv);
-        mAdapter = new HorizontalScrollViewAdapter_Home(homeLayout.getContext(), mDatas);
+        mHorizontalScrollView = (HorizontalScrollView) homeLayout.findViewById(R.id.id_hsv);
+
 
         //活动推荐初始化 图片+文字
         recommend_tv = (TextView) homeLayout.findViewById(R.id.recommend_tv);
@@ -211,18 +214,60 @@ public class HomeFragment extends Fragment implements View.OnClickListener,Adapt
 
     //数据请求（众创空间）
     private void startRequestWorkSpaceDatas(final Context context) {
-        //添加HorizontalScrollView点击回调
-        mHorizontalScrollView.setOnItemClickListener(new MyHorizontalScrollView_Home.OnItemClickListener() {
+        //开始请求空间列表数据
+        HttpAPI api = Http.getInstance().create(HttpAPI.class);
+        //调用接口
+        Call<SpaceList> call = api.getSpaceListData();
+        call.enqueue(new Callback<SpaceList>() {
+            @Override
+            public void onResponse(Call<SpaceList> call, Response<SpaceList> response) {
+                Log.e("code:",response.body().getCode());
+                if(response.body().getCode().equals("200")){
+                    Log.e("请求数据成功","请求数据成功");
+                    mDatas =response.body().getMsg();
+                    LinearLayout mLinearLayout=(LinearLayout)homeLayout.findViewById(R.id.id_gallary);
+                    for (int i = 0; i < mDatas.size(); i++) {// 1、使用本地图片时，使用IMGS数组；2、使用网络图片时，使用IMG_URLS数组
+                        View view = LayoutInflater.from(context).inflate(R.layout.item_horizontalscrollview, null);
+                        ImageView iv = (ImageView) view.findViewById(R.id.hsv_img);
+                        // 设置本地图片
+                        // iv.setImageResource(IMGS[i]);
+                        //设置网络图片
+                        String[] url = mDatas.get(i).getSpacePicture().split(",");
+                        String img_URL=Http.API_URL+url[0];
+                        Log.e("水平视图图片地址：",img_URL);
+                        Glide.with(context).load(img_URL).into(iv);
+                        // 为item设置id
+//                        view.setId(i);
+                        // 为item绑定数据
+                        view.setTag(i);
+                        // 为item设置点击事件
+                        view.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                int position=(Integer) view.getTag();
+                                for(int j=0;j<mDatas.size();j++){
+                                    if(j==position){
+                                        Toast.makeText(context, position+"", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            }
+                        });
+                        // 把item添加到父view中
+                        mLinearLayout.addView(view);
+
+                    }
+
+                }else{
+                    Toast.makeText(getContext(), "暂无数据", Toast.LENGTH_SHORT).show();
+                }
+            }
 
             @Override
-            public void onClick(View view, int position) {
-//                mImg.setImageResource(mDatas.get(position));
-//                view.setBackgroundColor(Color.parseColor("#AA024DA4"));
-//                Toast.makeText(context, "" + position, Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<SpaceList> call, Throwable t) {
+
             }
         });
-        //设置适配器
-        mHorizontalScrollView.initDatas(mAdapter);
+
     }
 
     //数据请求（顶部轮播图）

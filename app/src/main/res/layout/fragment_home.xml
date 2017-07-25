@@ -109,20 +109,19 @@
             <!--android:orientation="horizontal"/>-->
             <!--</RelativeLayout>-->
 
-            <com.ylg.workspace.workspace.view.MyHorizontalScrollView_Home
+            <HorizontalScrollView
                 android:id="@+id/id_hsv"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginLeft="10sp"
-                android:layout_marginRight="15sp"
+                android:layout_height="wrap_content"
+                android:fillViewport="true"
                 android:scrollbars="none">
 
                 <LinearLayout
                     android:id="@+id/id_gallary"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:orientation="horizontal"></LinearLayout>
-            </com.ylg.workspace.workspace.view.MyHorizontalScrollView_Home>
+            </HorizontalScrollView>
 
             <View
 

@@ -115,7 +115,6 @@ public class LoginActivity extends App implements View.OnClickListener {
             case R.id.login_forgot_password://忘记密码
 
                 break;
-
         }
     }
 
