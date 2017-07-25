@@ -633,7 +633,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener,Adapt
                 startActivity(i_captureActivity);
                 break;
             case R.id.neibor_home://友邻
-                Toast.makeText(getActivity(), "友邻", Toast.LENGTH_SHORT).show();
+                Intent i_neibor02 = new Intent(getActivity(), NeiborActivity.class);
+//                i_neibor.putExtra("datas",datas_neibor);
+                startActivity(i_neibor02);
                 break;
             case R.id.infoorder_home://资讯
                 Intent i_info = new Intent(getActivity(), InfoActivity.class);
