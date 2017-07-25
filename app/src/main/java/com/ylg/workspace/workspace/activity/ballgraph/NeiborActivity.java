@@ -2,18 +2,30 @@ package com.ylg.workspace.workspace.activity.ballgraph;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.ylg.workspace.workspace.Application.App;
 import com.ylg.workspace.workspace.R;
 import com.ylg.workspace.workspace.adapter.ExpandableListViewAdater_Exercise;
 import com.ylg.workspace.workspace.adapter.ListViewAdapter01_InfoActivity;
+import com.ylg.workspace.workspace.adapter.NeiborAdapter_Home;
 import com.ylg.workspace.workspace.bean.Info;
+import com.ylg.workspace.workspace.bean.NeiborCompany;
+import com.ylg.workspace.workspace.http.Http;
+import com.ylg.workspace.workspace.http.HttpAPI;
+import com.ylg.workspace.workspace.util.SetHomeListViewItemHeight;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class NeiborActivity extends AppCompatActivity implements View.OnClickListener{
     /**
@@ -35,9 +47,9 @@ public class NeiborActivity extends AppCompatActivity implements View.OnClickLis
 
     //listview
     private ListView listview;
-    private List<Info.MsgBean.SpaceBean> datas_neibor;
-    private ListViewAdapter01_InfoActivity adapter;
-    private String[] spaceInfo = new String[]{"帝高阳之苗裔兮，朕皇考曰伯庸。","摄提贞于孟陬兮，惟庚寅吾以降","皇览揆余初度兮，肇锡余以嘉名："};
+    private List<NeiborCompany.MsgEntity> datas_neibor;
+    private NeiborAdapter_Home adapter;
+        private String[] spaceInfo = new String[]{"帝高阳之苗裔兮，朕皇考曰伯庸。","摄提贞于孟陬兮，惟庚寅吾以降","皇览揆余初度兮，肇锡余以嘉名："};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,15 +78,41 @@ public class NeiborActivity extends AppCompatActivity implements View.OnClickLis
 
         //初始化listview
         listview = (ListView)findViewById(R.id.neibor_listview);
-        datas_neibor = new ArrayList<>();
-        //for循环,添加到集合list
-//        for(int i=0; i<spaceInfo.length;i++){
-//            datas_neibor.add(spaceInfo[i]);
-//        }
-        //初始化adapter
-        adapter = new ListViewAdapter01_InfoActivity(this,datas_neibor);
-        //绑定适配器
-        listview.setAdapter(adapter);
+
+        //请求数据
+        startRequestNeiborDatas();
+
+
+    }
+
+    //友邻企业的数据请求
+    private void startRequestNeiborDatas() {
+        HttpAPI api = Http.getInstance().create(HttpAPI.class);
+        //调用接口
+        Call<NeiborCompany> call = api.neiborCompany(App.SPACE_ID);
+
+        call.enqueue(new Callback<NeiborCompany>() {
+            @Override
+            public void onResponse(Call<NeiborCompany> call, Response<NeiborCompany> response) {
+                if (response.body().getCode().equals("200")) {
+                    datas_neibor = response.body().getMsg();
+                    Log.e("datas-neibor",response.body().toString());
+                    //初始化适配器
+                    adapter = new NeiborAdapter_Home(NeiborActivity.this, datas_neibor);
+                    //绑定适配器
+                    listview.setAdapter(adapter);
+                    //ScrollView中嵌套listview不手动设置高度出现只显示一行的情况
+                    SetHomeListViewItemHeight.setHeight(listview);
+                }else{
+                    Toast.makeText(NeiborActivity.this, "数据请求失败", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<NeiborCompany> call, Throwable t) {
+                Log.e("t_neibor",t.getMessage());
+            }
+        });
 
 
     }
