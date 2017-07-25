@@ -256,7 +256,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener,Adapt
                                         startActivity(i_news_content);
                                     }
                                 }
-
                             }
                         });
                         // 把item添加到父view中
