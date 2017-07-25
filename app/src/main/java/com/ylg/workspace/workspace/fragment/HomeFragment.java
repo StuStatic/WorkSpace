@@ -45,10 +45,8 @@ import com.ylg.workspace.workspace.bean.SpaceList;
 import com.ylg.workspace.workspace.http.Http;
 import com.ylg.workspace.workspace.http.HttpAPI;
 import com.ylg.workspace.workspace.util.SetHomeListViewItemHeight;
-import com.ylg.workspace.workspace.view.MyHorizontalScrollView_Home;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -88,7 +86,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener,Adapt
     private HorizontalScrollView mHorizontalScrollView;
     private HorizontalScrollViewAdapter_Home mAdapter;
     private ImageView mImg;
-//    private List<Integer> mDatas = new ArrayList<Integer>(Arrays.asList(R.mipmap.a4, R.mipmap.a5, R.mipmap.a4));
     private List<SpaceList.MsgEntity> mDatas;
 
     //友邻企业列表
@@ -248,13 +245,22 @@ public class HomeFragment extends Fragment implements View.OnClickListener,Adapt
                                 for(int j=0;j<mDatas.size();j++){
                                     if(j==position){
                                         Toast.makeText(context, position+"", Toast.LENGTH_SHORT).show();
+                                        Intent i_news_content = new Intent(getActivity(), HtmlActivity.class);
+                                        if (position==0){
+                                            i_news_content.putExtra("htmlURL","http://"+mDatas.get(j).getSpared3());
+                                        }else if (position==1){
+                                            i_news_content.putExtra("htmlURL","http://"+mDatas.get(j).getSpared3());
+                                        }else if (position==2){
+                                            i_news_content.putExtra("htmlURL","http://"+mDatas.get(j).getSpared3());
+                                        }
+                                        startActivity(i_news_content);
                                     }
                                 }
+
                             }
                         });
                         // 把item添加到父view中
                         mLinearLayout.addView(view);
-
                     }
 
                 }else{

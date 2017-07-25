@@ -120,7 +120,9 @@
                     android:id="@+id/id_gallary"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal"></LinearLayout>
+                    android:orientation="horizontal">
+
+                </LinearLayout>
             </HorizontalScrollView>
 
             <View
@@ -168,13 +170,12 @@
             <ListView
                 android:id="@+id/neibor_contentlv"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"></ListView>
+                android:layout_height="wrap_content"/>
 
             <View
-
                 android:layout_width="match_parent"
                 android:layout_height="12dp"
-                android:background="@color/colorGrayLight"></View>
+                android:background="@color/colorGrayLight"/>
 
             <!--活动推荐文字索引-->
             <RelativeLayout
