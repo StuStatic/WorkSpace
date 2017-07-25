@@ -8,6 +8,7 @@ tools:context="com.ylg.workspace.workspace.fragment.RecentCircle_SocialFragment"
 
 <!-- TODO: Update blank fragment layout -->
 <com.ylg.workspace.workspace.view.SwipeRefreshView
+    android:id="@+id/srv_rencentcircle"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <ListView

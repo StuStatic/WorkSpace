@@ -1,13 +1,18 @@
 package com.ylg.workspace.workspace.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.ylg.workspace.workspace.R;
+import com.ylg.workspace.workspace.bean.SpaceList;
+import com.ylg.workspace.workspace.http.Http;
 
 import java.util.List;
 
@@ -16,13 +21,13 @@ import java.util.List;
  */
 
 public class HorizontalScrollViewAdapter_Home {
-    private Context mContext;
+    private Context context;
     private LayoutInflater mInflater;
-    private List<Integer> mDatas;
+    private List<SpaceList.MsgEntity> mDatas;
 
-    public HorizontalScrollViewAdapter_Home(Context context, List<Integer> mDatas)
+    public HorizontalScrollViewAdapter_Home(Context context, List<SpaceList.MsgEntity> mDatas)
     {
-        this.mContext = context;
+        this.context = context;
         mInflater = LayoutInflater.from(context);
         this.mDatas = mDatas;
     }
@@ -48,25 +53,28 @@ public class HorizontalScrollViewAdapter_Home {
         if (convertView == null)
         {
             viewHolder = new ViewHolder();
-            convertView = mInflater.inflate(R.layout.item_horizontalscrollview, parent, false);
-            viewHolder.mImg = (ImageView) convertView.findViewById(R.id.hsv_img);
-//            viewHolder.mText = (TextView) convertView
-//                    .findViewById(R.id.id_index_gallery_item_text);
+            convertView = mInflater.inflate(
+                    R.layout.item_horizontalscrollview, parent, false);
+            viewHolder.mImg = (ImageView) convertView
+                    .findViewById(R.id.hsv_img);
+
 
             convertView.setTag(viewHolder);
         } else
         {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        viewHolder.mImg.setImageResource(mDatas.get(position));
-//        viewHolder.mText.setText("some info ");
-
+//        viewHolder.mImg.setImageResource(mDatas.get(position));
+        String[] url = mDatas.get(position).getSpacePicture().split(",");
+        String img_URL=Http.API_URL+url[0];
+        Log.e("水平视图图片地址：",img_URL);
+        Glide.with(context).load(img_URL).into(viewHolder.mImg);
         return convertView;
     }
 
     private class ViewHolder
     {
         ImageView mImg;
-//        TextView mText;
+        TextView mText;
     }
 }

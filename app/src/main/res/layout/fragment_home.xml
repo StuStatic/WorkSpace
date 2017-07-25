@@ -121,9 +121,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
-
                 </LinearLayout>
             </HorizontalScrollView>
+
+
 
             <View
 
@@ -227,6 +228,7 @@
                     android:layout_marginLeft="15sp"
                     android:layout_marginRight="15sp"
                     android:scaleType="fitXY"/>
+                <!--android:text="如果你无法简洁的表达你的想法，那只说明你还不够了解它。"-->
                 <TextView
                     android:id="@+id/recommend_contenttv"
                     android:layout_width="match_parent"
@@ -234,7 +236,6 @@
                     android:layout_below="@id/recommend_contentimg"
                     android:layout_marginLeft="15sp"
                     android:layout_marginRight="15sp"
-
                     android:textColor="@color/colorBlack"
                     android:textSize="15dp" />
             </RelativeLayout>

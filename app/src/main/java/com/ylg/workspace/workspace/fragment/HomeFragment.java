@@ -34,6 +34,7 @@ import com.ylg.workspace.workspace.activity.ballgraph.InfoActivity;
 import com.ylg.workspace.workspace.activity.ballgraph.NeiborActivity;
 import com.ylg.workspace.workspace.activity.ballgraph.SpaceListActivity;
 import com.ylg.workspace.workspace.adapter.HorizontalScrollViewAdapter_Home;
+import com.ylg.workspace.workspace.adapter.ListViewAdapter_SpaceList;
 import com.ylg.workspace.workspace.adapter.NeiborAdapter_Home;
 import com.ylg.workspace.workspace.adapter.TagAdapter;
 import com.ylg.workspace.workspace.adapter.ViewPagerAdater_Home01;
@@ -45,8 +46,11 @@ import com.ylg.workspace.workspace.bean.SpaceList;
 import com.ylg.workspace.workspace.http.Http;
 import com.ylg.workspace.workspace.http.HttpAPI;
 import com.ylg.workspace.workspace.util.SetHomeListViewItemHeight;
+import com.ylg.workspace.workspace.util.SetSpaceListListViewItemHeight;
+import com.ylg.workspace.workspace.view.MyHorizontalScrollView_Home;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -86,6 +90,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener,Adapt
     private HorizontalScrollView mHorizontalScrollView;
     private HorizontalScrollViewAdapter_Home mAdapter;
     private ImageView mImg;
+//    private List<Integer> mDatas = new ArrayList<Integer>(Arrays.asList(R.mipmap.a4, R.mipmap.a5, R.mipmap.a4));
     private List<SpaceList.MsgEntity> mDatas;
 
     //友邻企业列表
@@ -554,6 +559,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener,Adapt
                 return false;
             }
         });
+
 
     }
 

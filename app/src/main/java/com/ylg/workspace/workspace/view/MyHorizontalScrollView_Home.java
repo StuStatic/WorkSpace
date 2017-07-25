@@ -204,7 +204,13 @@ public class MyHorizontalScrollView_Home extends HorizontalScrollView implements
     public void initDatas(HorizontalScrollViewAdapter_Home mAdapter)
     {
         this.mAdapter = mAdapter;
+
         mContainer = (LinearLayout) getChildAt(0);
+        if(mContainer.equals(null)){
+            Log.e("1111","1111");
+        }else{
+            Log.e("2222","2222");
+        }
         // 获得适配器中第一个View
         final View view = mAdapter.getView(0, null, mContainer);
         mContainer.addView(view);
