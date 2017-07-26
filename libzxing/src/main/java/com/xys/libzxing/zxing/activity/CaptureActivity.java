@@ -21,11 +21,13 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Rect;
+import android.hardware.Camera;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -64,9 +66,10 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     // 所需的全部权限
     static final String[] PERMISSIONS = new String[]{
             Manifest.permission.CAMERA,
-            Manifest.permission.VIBRATE,
-            Manifest.permission.ACCESS_COARSE_LOCATION,
-            Manifest.permission.ACCESS_FINE_LOCATION
+            Manifest.permission.FLASHLIGHT,
+//            Manifest.permission.VIBRATE
+//            Manifest.permission.ACCESS_COARSE_LOCATION,
+//            Manifest.permission.ACCESS_FINE_LOCATION
     };
 
     private CameraManager cameraManager;
@@ -81,6 +84,9 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 
     private Rect mCropRect = null;
     private boolean isHasSurface = false;
+    private ImageView iv_sdt;
+    private Camera camera;
+    private boolean flag = true;
 
     public Handler getHandler() {
         return handler;
@@ -106,7 +112,20 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
         mPermissionsChecker = new PermissionsChecker(this);
         inactivityTimer = new InactivityTimer(this);
         beepManager = new BeepManager(this);
+        iv_sdt = (ImageView) findViewById(R.id.iv_sdt);
 
+        iv_sdt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (flag) {
+                    FlashlightManager.turnLightOn(camera);
+                    flag = false;
+                } else {
+                    FlashlightManager.turnLightOff(camera);
+                    flag = true;
+                }
+            }
+        });
         TranslateAnimation animation = new TranslateAnimation(Animation.RELATIVE_TO_PARENT, 0.0f, Animation
                 .RELATIVE_TO_PARENT, 0.0f, Animation.RELATIVE_TO_PARENT, 0.0f, Animation.RELATIVE_TO_PARENT,
                 0.9f);
@@ -150,9 +169,11 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 
         inactivityTimer.onResume();
     }
+
     private void startPermissionsActivity() {
         PermissionsActivity.startActivityForResult(this, REQUEST_CODE, PERMISSIONS);
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -161,6 +182,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
             finish();
         }
     }
+
     @Override
     protected void onPause() {
         if (handler != null) {
@@ -178,8 +200,12 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 
     @Override
     protected void onDestroy() {
-        inactivityTimer.shutdown();
         super.onDestroy();
+        inactivityTimer.shutdown();
+        if (camera != null) {
+            camera.release();
+        }
+
     }
 
     @Override
@@ -190,6 +216,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
         if (!isHasSurface) {
             isHasSurface = true;
             initCamera(holder);
+
         }
     }
 
@@ -233,6 +260,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
         }
         try {
             cameraManager.openDriver(surfaceHolder);
+            camera = cameraManager.getCamera();
             // Creating the handler starts the preview, which can also throw a
             // RuntimeException.
             if (handler == null) {
@@ -331,4 +359,6 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
         }
         return 0;
     }
+
+
 }

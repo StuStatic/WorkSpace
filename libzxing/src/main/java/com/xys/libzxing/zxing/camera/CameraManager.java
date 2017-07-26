@@ -200,4 +200,8 @@ public class CameraManager {
         }
         return null;
     }
+
+    public synchronized Camera getCamera() {
+        return camera;
+    }
 }
