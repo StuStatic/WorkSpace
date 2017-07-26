@@ -119,9 +119,11 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
             public void onClick(View v) {
                 if (flag) {
                     FlashlightManager.turnLightOn(camera);
+                    iv_sdt.setImageResource(R.drawable.sdt1);
                     flag = false;
                 } else {
                     FlashlightManager.turnLightOff(camera);
+                    iv_sdt.setImageResource(R.drawable.sdt);
                     flag = true;
                 }
             }
