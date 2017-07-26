@@ -78,7 +78,7 @@ public class RequirementActivity extends App implements View.OnClickListener {
                 text = text + result + ",";
                 int i = data.getIntExtra("index", 0);
                 index = index + i + ",";
-                showShortMsg(result);
+                //showShortMsg(result);
                 list.add(result);
                 //handler.sendEmptyMessage(0);
                 setUpDataInterest();

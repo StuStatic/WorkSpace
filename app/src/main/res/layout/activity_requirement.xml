@@ -37,11 +37,10 @@
 
                 <EditText
                     android:id="@+id/et"
-                    style="?android:attr/textViewStyle"
                     android:layout_width="match_parent"
                     android:layout_height="160sp"
                     android:background="@color/colorGrayLight"
-                    android:cursorVisible="false"
+                    android:cursorVisible="true"
                     android:gravity="top|left"
                     android:hint="发你所想的"
                     android:textColor="@color/black2"

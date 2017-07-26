@@ -112,11 +112,10 @@ public class ServiceRegisterActivity extends App implements View.OnClickListener
                         super.run();
                         imagePaths.remove(1);
                         //FileUploadManager.registerService("1", s2, s3, s4, s5, s6, imagePaths.get(0), 0, ServiceRegisterActivity.this);
-                        FileUploadManager.uploadMany("1", s2, s3, s4, s5, s6, imagePaths, 0, ServiceRegisterActivity.this, iphoneDialog);
+                        FileUploadManager.uploadMany(String.valueOf(App.USER_ID), s2, s3, s4, s5, s6, imagePaths, 0, ServiceRegisterActivity.this, iphoneDialog);
                         imagePaths.add(1, "000000");
                     }
                 }.start();
-
                 break;
         }
 

@@ -55,13 +55,13 @@
 
         <EditText
             android:id="@+id/et2"
-            style="?android:attr/textViewStyle"
+            android:singleLine="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="25sp"
             android:layout_weight="1"
             android:background="@null"
-            android:cursorVisible="false"
+            android:cursorVisible="true"
             android:gravity="center_vertical|right"
             android:hint="请输入企业名称"
             android:maxLines="1"
@@ -90,13 +90,13 @@
 
         <EditText
             android:id="@+id/et3"
-            style="?android:attr/textViewStyle"
+            android:singleLine="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="25sp"
             android:layout_weight="1"
             android:background="@null"
-            android:cursorVisible="false"
+            android:cursorVisible="true"
             android:gravity="center_vertical|right"
             android:hint="请选择经营范围"
             android:maxLines="1"
@@ -126,13 +126,13 @@
 
         <EditText
             android:id="@+id/et4"
-            style="?android:attr/textViewStyle"
+            android:singleLine="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="25sp"
             android:layout_weight="1"
             android:background="@null"
-            android:cursorVisible="false"
+            android:cursorVisible="true"
             android:gravity="center_vertical|right"
             android:hint="请输入联系人"
             android:maxLines="1"
@@ -161,13 +161,13 @@
 
         <EditText
             android:id="@+id/et5"
-            style="?android:attr/textViewStyle"
+            android:singleLine="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="25sp"
             android:layout_weight="1"
             android:background="@null"
-            android:cursorVisible="false"
+            android:cursorVisible="true"
             android:gravity="center_vertical|right"
             android:hint="请输入联系方式"
             android:maxLines="1"
@@ -193,21 +193,21 @@
             android:text="服务商类别:"
             android:textColor="@color/black2"
             android:textSize="16sp" />
-
+        <!--style="?android:attr/textViewStyle"-->
         <EditText
             android:id="@+id/et6"
-            style="?android:attr/textViewStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="25sp"
             android:layout_weight="1"
             android:background="@null"
-            android:cursorVisible="false"
+            android:cursorVisible="true"
             android:gravity="center_vertical|right"
             android:hint="请选择服务商类别"
             android:maxLines="1"
             android:paddingBottom="5dip"
             android:paddingTop="5dip"
+            android:singleLine="true"
             android:textColor="@color/black2"
             android:textColorHint="@color/colorLine"
             android:textSize="16sp" />
@@ -231,16 +231,16 @@
 
         <EditText
             android:id="@+id/et7"
-            style="?android:attr/textViewStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="25sp"
             android:layout_weight="1"
             android:background="@null"
-            android:cursorVisible="false"
+            android:cursorVisible="true"
             android:gravity="center_vertical|right"
             android:hint="全部社区"
             android:maxLines="1"
+            android:singleLine="true"
             android:paddingBottom="5dip"
             android:paddingTop="5dip"
             android:textColor="@color/black2"
