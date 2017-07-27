@@ -124,7 +124,7 @@ public class ChooseServiceActivity extends App implements View.OnClickListener {
             @Override
             public void onResponse(Call<ServiceType> call, Response<ServiceType> response) {
                 ServiceType serviceType = response.body();
-                if (serviceType.getCode().equals("200")) {
+                if (serviceType != null && serviceType.getCode().equals("200")) {
 
                     Log.d("zp", "onResponse: " + serviceType.toString());
                     for (int i = 0; i < serviceType.getMsg().size(); i++) {
