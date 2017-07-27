@@ -249,53 +249,55 @@ public class HomeFragment extends Fragment implements View.OnClickListener,Adapt
         call.enqueue(new Callback<SpaceList>() {
             @Override
             public void onResponse(Call<SpaceList> call, Response<SpaceList> response) {
-                Log.e("code:",response.body().getCode());
-                if(response.body().getCode().equals("200")){
-                    Log.e("请求数据成功","请求数据成功");
-                    mDatas =response.body().getMsg();
-                    LinearLayout mLinearLayout=(LinearLayout)homeLayout.findViewById(R.id.id_gallary);
-                    for (int i = 0; i < mDatas.size(); i++) {// 1、使用本地图片时，使用IMGS数组；2、使用网络图片时，使用IMG_URLS数组
-                        View view = LayoutInflater.from(context).inflate(R.layout.item_horizontalscrollview, null);
-                        ImageView iv = (ImageView) view.findViewById(R.id.hsv_img);
-                        // 设置本地图片
-                        // iv.setImageResource(IMGS[i]);
-                        //设置网络图片
-                        String[] url = mDatas.get(i).getSpacePicture().split(",");
-                        String img_URL=Http.API_URL+url[0];
-                        Log.e("水平视图图片地址：",img_URL);
-                        Glide.with(context).load(img_URL).into(iv);
-                        // 为item设置id
+                if(!response.equals(null) && !response.equals("")){
+                    if(response.body().getCode().equals("200")){
+                        Log.e("请求数据成功","请求数据成功");
+                        mDatas =response.body().getMsg();
+                        LinearLayout mLinearLayout=(LinearLayout)homeLayout.findViewById(R.id.id_gallary);
+                        for (int i = 0; i < mDatas.size(); i++) {// 1、使用本地图片时，使用IMGS数组；2、使用网络图片时，使用IMG_URLS数组
+                            View view = LayoutInflater.from(context).inflate(R.layout.item_horizontalscrollview, null);
+                            ImageView iv = (ImageView) view.findViewById(R.id.hsv_img);
+                            // 设置本地图片
+                            // iv.setImageResource(IMGS[i]);
+                            //设置网络图片
+                            String[] url = mDatas.get(i).getSpacePicture().split(",");
+                            String img_URL=Http.API_URL+url[0];
+                            Log.e("水平视图图片地址：",img_URL);
+                            Glide.with(context).load(img_URL).into(iv);
+                            // 为item设置id
 //                        view.setId(i);
-                        // 为item绑定数据
-                        view.setTag(i);
-                        // 为item设置点击事件
-                        view.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                int position=(Integer) view.getTag();
-                                for(int j=0;j<mDatas.size();j++){
-                                    if(j==position){
-                                        Toast.makeText(context, position+"", Toast.LENGTH_SHORT).show();
-                                        Intent i_news_content = new Intent(getActivity(), HtmlActivity.class);
-                                        if (position==0){
-                                            i_news_content.putExtra("htmlURL","http://"+mDatas.get(j).getSpared3());
-                                        }else if (position==1){
-                                            i_news_content.putExtra("htmlURL","http://"+mDatas.get(j).getSpared3());
-                                        }else if (position==2){
-                                            i_news_content.putExtra("htmlURL","http://"+mDatas.get(j).getSpared3());
+                            // 为item绑定数据
+                            view.setTag(i);
+                            // 为item设置点击事件
+                            view.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    int position=(Integer) view.getTag();
+                                    for(int j=0;j<mDatas.size();j++){
+                                        if(j==position){
+                                            Toast.makeText(context, position+"", Toast.LENGTH_SHORT).show();
+                                            Intent i_news_content = new Intent(getActivity(), HtmlActivity.class);
+                                            if (position==0){
+                                                i_news_content.putExtra("htmlURL","http://"+mDatas.get(j).getSpared3());
+                                            }else if (position==1){
+                                                i_news_content.putExtra("htmlURL","http://"+mDatas.get(j).getSpared3());
+                                            }else if (position==2){
+                                                i_news_content.putExtra("htmlURL","http://"+mDatas.get(j).getSpared3());
+                                            }
+                                            startActivity(i_news_content);
                                         }
-                                        startActivity(i_news_content);
                                     }
                                 }
-                            }
-                        });
-                        // 把item添加到父view中
-                        mLinearLayout.addView(view);
-                    }
+                            });
+                            // 把item添加到父view中
+                            mLinearLayout.addView(view);
+                        }
 
-                }else{
-                    Toast.makeText(getContext(), "暂无数据", Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(getContext(), "暂无数据", Toast.LENGTH_SHORT).show();
+                    }
                 }
+
             }
 
             @Override
@@ -315,52 +317,54 @@ public class HomeFragment extends Fragment implements View.OnClickListener,Adapt
         call.enqueue(new Callback<SlidePic>() {
             @Override
             public void onResponse(Call<SlidePic> call, Response<SlidePic> response) {
-                Log.e("response_slide:", response.body().toString());
-                if (response.body().getCode().equals("200")) {
+                if(!response.equals(null) && !response.equals("")){
+                    if (response.body().getCode().equals("200")) {
 
-                    String slideURL = Http.API_URL + response.body().getMsg().get(0).getImage();
-                    Log.e("image:", slideURL);
-                    //头部视图轮播数据初始化
-                    mImageViewList1 = response.body().getMsg();
-                    //code
+                        String slideURL = Http.API_URL + response.body().getMsg().get(0).getImage();
+                        Log.e("image:", slideURL);
+                        //头部视图轮播数据初始化
+                        mImageViewList1 = response.body().getMsg();
+                        //code
 
-                    Log.e("mImageViewList1.size", mImageViewList1.size() + "");
-                    mImageViewDotList1 = new ArrayList();
-                    ImageView imageView1;
-                    data_slideURL = new ArrayList<Map<String, Object>>();
+                        Log.e("mImageViewList1.size", mImageViewList1.size() + "");
+                        mImageViewDotList1 = new ArrayList();
+                        ImageView imageView1;
+                        data_slideURL = new ArrayList<Map<String, Object>>();
 
-                    for (int i = 0; i < mImageViewList1.size() + 2; i++) {
-                        if (i == 0) {   //判断当i=0为该处的ImageView设置最后一张图片作为背景
-                            Map<String, Object> map = new HashMap<>();
-                            map.put("url", Http.API_URL + mImageViewList1.get(mImageViewList1.size() - 1).getImage());
-                            Log.e("i=0_url", Http.API_URL + mImageViewList1.get(mImageViewList1.size() - 1).getImage());
-                            map.put("view", new ImageView(context));
-                            data_slideURL.add(map);
-                        } else if (i == mImageViewList1.size() + 1) {   //判断当i=images.length+1时为该处的ImageView设置第一张图片作为背景
-                            Map<String, Object> map = new HashMap<>();
-                            map.put("url", Http.API_URL + mImageViewList1.get(0).getImage());
-                            map.put("view", new ImageView(context));
-                            data_slideURL.add(map);
-                        } else {  //其他情况则为ImageView设置images[i-1]的图片作为背景
-                            Map<String, Object> map = new HashMap<>();
-                            map.put("url", Http.API_URL + mImageViewList1.get(i - 1).getImage());
-                            map.put("view", new ImageView(context));
-                            data_slideURL.add(map);
+                        for (int i = 0; i < mImageViewList1.size() + 2; i++) {
+                            if (i == 0) {   //判断当i=0为该处的ImageView设置最后一张图片作为背景
+                                Map<String, Object> map = new HashMap<>();
+                                map.put("url", Http.API_URL + mImageViewList1.get(mImageViewList1.size() - 1).getImage());
+                                Log.e("i=0_url", Http.API_URL + mImageViewList1.get(mImageViewList1.size() - 1).getImage());
+                                map.put("view", new ImageView(context));
+                                data_slideURL.add(map);
+                            } else if (i == mImageViewList1.size() + 1) {   //判断当i=images.length+1时为该处的ImageView设置第一张图片作为背景
+                                Map<String, Object> map = new HashMap<>();
+                                map.put("url", Http.API_URL + mImageViewList1.get(0).getImage());
+                                map.put("view", new ImageView(context));
+                                data_slideURL.add(map);
+                            } else {  //其他情况则为ImageView设置images[i-1]的图片作为背景
+                                Map<String, Object> map = new HashMap<>();
+                                map.put("url", Http.API_URL + mImageViewList1.get(i - 1).getImage());
+                                map.put("view", new ImageView(context));
+                                data_slideURL.add(map);
 
+                            }
                         }
-                    }
-                    //遍历data_slideURL
+                        //遍历data_slideURL
 //                    for(int m=0 ; m<data_slideURL.size();m++){
 //                        Log.e("遍历data",data_slideURL.get(m).get("url").toString());
 //                    }
-                    Log.e("data_slideURL.size", data_slideURL.size() + "");
-                    //设置其他
-                    setDot(context, mImageViewList1);
-                    setViewPager(context);
-                    autoPlay();
-                } else {//连接登录不成功
-                    Log.e("轮播图请求不成功", response.body().getCode());
+                        Log.e("data_slideURL.size", data_slideURL.size() + "");
+                        //设置其他
+                        setDot(context, mImageViewList1);
+                        setViewPager(context);
+                        autoPlay();
+                    } else {//连接登录不成功
+                        Log.e("轮播图请求不成功", response.body().getCode());
+                    }
                 }
+
 
             }
 
@@ -380,17 +384,20 @@ public class HomeFragment extends Fragment implements View.OnClickListener,Adapt
         call.enqueue(new Callback<ExerciseRecommend>() {
             @Override
             public void onResponse(Call<ExerciseRecommend> call, Response<ExerciseRecommend> response) {
-                if (response.body().getCode().equals("200")) {
+                if(!response.equals("") && !response.equals(null)){
+                    if (response.body().getCode().equals("200")) {
 
-                    //设置文字
-                    String text = response.body().getMsg().get(0).getActivityDescribe();//此处只展示一个数据
-                    recommend_contenttv.setText(text);
-                    //设置图片(先将地址按都好分开)
-                    String[] s = response.body().getMsg().get(0).getPictureSite().split(",");
-                    String img_URL = Http.API_URL + s[0];
-                    Log.e("recommen_img:", img_URL);
-                    Glide.with(getActivity()).load(img_URL).into(recommend_img);
+                        //设置文字
+                        String text = response.body().getMsg().get(0).getActivityDescribe();//此处只展示一个数据
+                        recommend_contenttv.setText(text);
+                        //设置图片(先将地址按都好分开)
+                        String[] s = response.body().getMsg().get(0).getPictureSite().split(",");
+                        String img_URL = Http.API_URL + s[0];
+                        Log.e("recommen_img:", img_URL);
+                        Glide.with(getActivity()).load(img_URL).into(recommend_img);
+                    }
                 }
+
             }
 
             @Override
@@ -410,18 +417,21 @@ public class HomeFragment extends Fragment implements View.OnClickListener,Adapt
         call.enqueue(new Callback<NeiborCompany>() {
             @Override
             public void onResponse(Call<NeiborCompany> call, Response<NeiborCompany> response) {
-                if (response.body().getCode().equals("200")) {
-                    datas_neibor = response.body().getMsg();
-                    Log.e("datas-neibor",response.body().toString());
-                    //初始化适配器
-                    adapter_neibor = new NeiborAdapter_Home(homeLayout.getContext(), datas_neibor);
-                    //绑定适配器
-                    listview.setAdapter(adapter_neibor);
-                    //ScrollView中嵌套listview不手动设置高度出现只显示一行的情况
-                    SetHomeListViewItemHeight.setHeight(listview);
-                }else{
-                    Log.e("33333333333333333333333","333333333333");
+                if(!response.equals("") && !response.equals(null)){
+                    if (response.body().getCode().equals("200")) {
+                        datas_neibor = response.body().getMsg();
+                        Log.e("datas-neibor",response.body().toString());
+                        //初始化适配器
+                        adapter_neibor = new NeiborAdapter_Home(homeLayout.getContext(), datas_neibor);
+                        //绑定适配器
+                        listview.setAdapter(adapter_neibor);
+                        //ScrollView中嵌套listview不手动设置高度出现只显示一行的情况
+                        SetHomeListViewItemHeight.setHeight(listview);
+                    }else{
+                        Log.e("33333333333333333333333","333333333333");
+                    }
                 }
+
             }
 
             @Override
@@ -443,17 +453,20 @@ public class HomeFragment extends Fragment implements View.OnClickListener,Adapt
         call.enqueue(new Callback<Info>() {
             @Override
             public void onResponse(Call<Info> call, Response<Info> response) {
+                if(!response.equals(null) && !response.equals("")){
+                    Info i = response.body();
+                    if (i != null) {
+                        String s = i.getCode();
+                        if (s.equals("200")) {
 
-                Info i = response.body();
-                if (i != null) {
-                    String s = i.getCode();
-                    if (s.equals("200")) {
-
-                        Glide.with(getContext()).load(Http.API_URL + i.getMsg().getSpace().get(0).getPictureSite()).diskCacheStrategy(DiskCacheStrategy.ALL).into(imageView);
-                        tv1.setText(i.getMsg().getSpace().get(0).getTitle());
-                        tv2.setText(i.getMsg().getSpace().get(0).getIssueTime());
+                            Glide.with(getContext()).load(Http.API_URL + i.getMsg().getSpace().get(0).getPictureSite()).diskCacheStrategy(DiskCacheStrategy.ALL).into(imageView);
+                            tv1.setText(i.getMsg().getSpace().get(0).getTitle());
+                            tv2.setText(i.getMsg().getSpace().get(0).getIssueTime());
+                        }
                     }
                 }
+
+
             }
 
             @Override
