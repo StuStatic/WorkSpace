@@ -121,7 +121,9 @@ public class MineFragment extends Fragment implements View.OnClickListener {
             case R.id.mine_iv_intent:
                 Log.i("dyy", "设置个人中心");
                 if (App.KEY_LOGIN == 1) {
-                    Toast.makeText(getActivity(), "请登录......", Toast.LENGTH_SHORT).show();
+                    //跳转登陆页面
+                    Intent i = new Intent(getActivity(),LoginActivity.class);
+                    startActivity(i);
                 } else if (App.KEY_LOGIN == 2) {
                     Intent i = new Intent(getActivity(), SetUpActivity.class);
                     startActivity(i);
@@ -130,7 +132,9 @@ public class MineFragment extends Fragment implements View.OnClickListener {
             case R.id.mine_Order_MyHistory:
                 Log.i("dyy", "我的历史");
                 if (App.KEY_LOGIN == 1) {
-                    Toast.makeText(getActivity(), "请登录......", Toast.LENGTH_SHORT).show();
+                    //跳转登陆页面
+                    Intent i = new Intent(getActivity(),LoginActivity.class);
+                    startActivity(i);
                 } else if (App.KEY_LOGIN == 2) {
                     Intent MyHistoryIntent = new Intent(getActivity(), MyHistoryActivity.class);
                     startActivity(MyHistoryIntent);
@@ -139,7 +143,9 @@ public class MineFragment extends Fragment implements View.OnClickListener {
             case R.id.mine_Order_Mybusiness:
                 Log.i("dyy", "我的企业");
                 if (App.KEY_LOGIN == 1) {
-                    Toast.makeText(getActivity(), "请登录......", Toast.LENGTH_SHORT).show();
+                    //跳转登陆页面
+                    Intent i = new Intent(getActivity(),LoginActivity.class);
+                    startActivity(i);
                 } else if (App.KEY_LOGIN == 2) {
                     Intent MyBusinessIntent = new Intent(getActivity(), MyBusinessActivity.class);
                     startActivity(MyBusinessIntent);
@@ -148,7 +154,9 @@ public class MineFragment extends Fragment implements View.OnClickListener {
             case R.id.mine_Order_Myactivitys:
                 Log.i("dyy", "我的活动");
                 if (App.KEY_LOGIN == 1) {
-                    Toast.makeText(getActivity(), "请登录......", Toast.LENGTH_SHORT).show();
+                    //跳转登陆页面
+                    Intent i = new Intent(getActivity(),LoginActivity.class);
+                    startActivity(i);
                 } else if (App.KEY_LOGIN == 2) {
                     Intent myActivitysIntent = new Intent(getActivity(), MyActivity.class);
                     startActivity(myActivitysIntent);
@@ -157,7 +165,9 @@ public class MineFragment extends Fragment implements View.OnClickListener {
             case R.id.mine_user_Headportrait:
                 Log.i("dyy", "我的信息");
                 if (App.KEY_LOGIN == 1) {
-                    Toast.makeText(getActivity(), "请登录......", Toast.LENGTH_SHORT).show();
+                    //跳转登陆页面
+                    Intent i = new Intent(getActivity(),LoginActivity.class);
+                    startActivity(i);
                 } else if (App.KEY_LOGIN == 2) {
                     Intent mineuserheadportraitIntent = new Intent(getActivity(), MyInformationActivity.class);
                     startActivity(mineuserheadportraitIntent);

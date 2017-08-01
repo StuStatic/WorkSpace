@@ -150,6 +150,7 @@ public class LoginActivity extends App implements View.OnClickListener {
                     Login body = response.body();
                     if (body == null) return;
                     String code = body.getCode();
+                    Log.i("dyy",code);
                     if (code.equals("200")) {
                         if (body.getMsg().getPassword().equals(md5)) {
                             App.KEY_LOGIN = 2;

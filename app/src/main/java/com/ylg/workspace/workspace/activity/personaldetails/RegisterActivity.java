@@ -105,7 +105,6 @@ public class RegisterActivity extends App implements View.OnClickListener {
                         public void onTick(long millisUntilFinished) {
                             registerverificationbutton.setText(millisUntilFinished / 1000 + "秒");
                         }
-
                         public void onFinish() {
                             registerverificationbutton.setText("发送验证码");
                             registerverificationbutton.setClickable(true);
@@ -141,12 +140,10 @@ public class RegisterActivity extends App implements View.OnClickListener {
                 }
                 break;
             case R.id.register_bt://注册
-
                 String phone = registerphone.getText().toString();
                 String password1 = registerpassword.getText().toString();
                 String password2 = registerpassword2.getText().toString();
                 String verification = registerverification.getText().toString();
-
                 if (phone.length() == 11) {
                     if (password1.length() > 0 && password1.length() >= 6 && password1.length() <= 12) {
                         if (password2.length() > 0 && password2.length() >= 6 && password2.length() <= 12 && password1.equals(password2)) {

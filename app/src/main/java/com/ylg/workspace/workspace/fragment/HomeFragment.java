@@ -126,7 +126,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener,Adapt
             super.handleMessage(msg);
             if (msg.what == 1) {
                 mViewPager1.setCurrentItem(currentPosition1, false);
-
             }
         }
     };
@@ -144,12 +143,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener,Adapt
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         homeLayout = inflater.inflate(R.layout.fragment_home, container, false);
-
         initView(homeLayout.getContext());
-
-        initData(homeLayout.getContext());
-
         return homeLayout;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        initData(homeLayout.getContext());
     }
 
     private void initView(Context context) {
@@ -180,7 +181,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener,Adapt
 
         //horizontalScrollView初始化
         mHorizontalScrollView = (HorizontalScrollView) homeLayout.findViewById(R.id.id_hsv);
-
 
         //活动推荐初始化 图片+文字
         recommend_tv = (TextView) homeLayout.findViewById(R.id.recommend_tv);

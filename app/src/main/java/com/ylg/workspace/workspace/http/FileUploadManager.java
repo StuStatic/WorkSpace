@@ -28,7 +28,7 @@ import retrofit2.http.Query;
 
 public class FileUploadManager {
 
-    private static final String ENDPOINT = "http://192.168.1.216:8080/workSpace/";
+    private static final String ENDPOINT = "http://www.yiliangang.net:8012/workSpace/";
     private static String TAG = "zp";
 
     public interface FileUploadService {

@@ -7,9 +7,6 @@ import com.umeng.socialize.PlatformConfig;
 import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.common.QueuedWork;
 
-/**
- * Created by Administrator on 2017/7/13.
- */
 
 public class MyApplication extends Application {
 
@@ -22,7 +19,7 @@ public class MyApplication extends Application {
     }
 
     {
-        PlatformConfig.setWeixin("wxa8ea2d93af90c99d", "0f4410167040301eb559643e63f68080");
+        PlatformConfig.setWeixin("wxa41b37164b2030d6", "66c32b5f5d54e22f958b770eb039718e");
         PlatformConfig.setQQZone("101415512", "c7394704798a158208a74ab60104f0ba");
         PlatformConfig.setSinaWeibo("958434094", "c8126f4af61b6287bd2ce86a54360e7f", "http://sns.whalecloud.com");
     }

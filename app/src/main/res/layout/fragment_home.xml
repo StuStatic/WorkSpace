@@ -196,10 +196,9 @@
 
 
             <View
-
                 android:layout_width="match_parent"
                 android:layout_height="12dp"
-                android:background="@color/colorGrayLight"></View>
+                android:background="@color/colorGrayLight"/>
             <!--友邻企业文字索引-->
             <RelativeLayout
                 android:id="@+id/word04"
@@ -313,7 +312,7 @@
                 android:id="@+id/partgray"
                 android:layout_width="match_parent"
                 android:layout_height="12dp"
-                android:background="@color/colorGrayLight"></View>
+                android:background="@color/colorGrayLight"/>
             <!--最新资讯文字索引&ndash;&gt;-->
             <RelativeLayout
                 android:id="@+id/word03"

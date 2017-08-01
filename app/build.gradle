@@ -13,13 +13,14 @@ android {
 
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
+    useLibrary 'org.apache.http.legacy'
     aaptOptions {
         cruncherEnabled = false;
         useNewCruncher = false;
     }
     defaultConfig {
         applicationId "com.ylg.workspace.workspace"
-        minSdkVersion 16
+        minSdkVersion 14
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
@@ -50,6 +51,9 @@ android {
         }
 
         release {
+            ndk {
+                abiFilters = ["armeabi"]
+            }
             // 不显示Log
             buildConfigField "boolean", "LOG_DEBUG", "false"
             //混淆
@@ -69,8 +73,8 @@ android {
                     def outputFile = output.outputFile
                     if (outputFile != null && outputFile.name.endsWith('.apk')) {
                         // 输出apk名称为app_v1.0_2015-xx-xx_xxxx.apk
-                        //def fileName = "app_v${defaultConfig.versionName}_${releaseTime()}.apk"
-                        def fileName = "app_v${defaultConfig.versionName}_${variant.productFlavors[0].name}.apk"
+                        def fileName = "app_v${defaultConfig.versionName}_${releaseTime()}.apk"
+//                        def fileName = "app_v${defaultConfig.versionName}_${variant.productFlavors[0].name}.apk"
                         output.outputFile = new File(outputFile.parent, fileName)
                     }
                 }
@@ -79,17 +83,22 @@ android {
     }
     //渠道Flavors，配置不同风格的app,友盟渠道统计时用到
     productFlavors {
-        "offical" {}
-        yingyongbao {}
+        uc {}
+        ppzhushou {}
         wandoujia {}
-        baidu {}
-        "91" {}
+        taobao {}
+        shengma {}
+        jiuyou {}
     }
     lintOptions {
         checkReleaseBuilds false
         abortOnError false
     }
-
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
 }
 
 
@@ -121,6 +130,7 @@ dependencies {
     compile 'com.github.bumptech.glide:okhttp-integration:1.4.0'
     compile 'com.moxun:tagcloudlib:1.0.3'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+//    compile 'com.umeng.analytics:analytics:latest.integration'//友盟统计的SDK
     compile 'com.android.support:design:26.0.0-alpha1'
     compile 'de.hdodenhof:circleimageview:2.1.0'
     testCompile 'junit:junit:4.12'
