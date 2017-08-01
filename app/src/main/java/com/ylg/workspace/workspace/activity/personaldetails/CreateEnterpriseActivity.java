@@ -1,6 +1,7 @@
 package com.ylg.workspace.workspace.activity.personaldetails;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 
 import com.ylg.workspace.workspace.Application.App;
 import com.ylg.workspace.workspace.R;
+import com.ylg.workspace.workspace.activity.ballgraph.CreatCompanyActivity;
 
 public class CreateEnterpriseActivity extends App implements View.OnClickListener {
     private ImageView iv_back;
@@ -67,7 +69,8 @@ public class CreateEnterpriseActivity extends App implements View.OnClickListene
 
                 break;
             case R.id.createEnterprise_type://企业类型
-
+                Intent i_stu = new Intent(this, CreatCompanyActivity.class);
+                startActivity(i_stu);
                 break;
             case R.id.createEnterprise_contacts://联系人
                 showDialogContacts();

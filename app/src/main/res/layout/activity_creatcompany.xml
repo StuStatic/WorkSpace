@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:orientation="vertical"
+    tools:context="com.ylg.workspace.workspace.activity.ballgraph.CreatCompanyActivity">
+
+
+    <include
+        android:id="@+id/creatcompany_toolbar"
+        layout="@layout/include_title"></include>
+
+    <View
+        android:id="@+id/creatcompany_line01"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/creatcompany_toolbar"
+        android:background="#d6d6d6" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/creatcompany_title01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="哪个领域是你们的特长？"
+                android:textColor="@color/colorBlack"
+                android:textSize="16dp"
+                android:layout_gravity="center_horizontal"/>
+
+            <TextView
+                android:id="@+id/creatcompany_title02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="3dp"
+                android:text="(可多选)"
+                android:textColor="@color/colorGray"
+                android:layout_gravity="center_horizontal"/>
+
+            <!--互联网-->
+            <TextView
+                android:id="@+id/creatcompany_internet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:text="互联网"
+                android:textColor="@color/colorGray" />
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_internet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"></android.support.v7.widget.RecyclerView>
+
+            <!--智能硬件-->
+            <TextView
+                android:id="@+id/creatcompany_hardware"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:text="智能硬件"
+                android:textColor="@color/colorGray" />
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_hardware"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"></android.support.v7.widget.RecyclerView>
+
+            <!--文与传媒-->
+            <TextView
+                android:id="@+id/creatcompany_culture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:text="文娱传媒"
+                android:textColor="@color/colorGray" />
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_culture"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"></android.support.v7.widget.RecyclerView>
+
+            <!--金融-->
+            <TextView
+                android:id="@+id/creatcompany_finance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:text="金融"
+                android:textColor="@color/colorGray" />
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_finance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"></android.support.v7.widget.RecyclerView>
+
+            <!--商务/企业服务-->
+            <TextView
+                android:id="@+id/creatcompany_business"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:text="商务/企业服务"
+                android:textColor="@color/colorGray" />
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_business"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"></android.support.v7.widget.RecyclerView>
+
+            <!--生活/个人服务-->
+            <TextView
+                android:id="@+id/creatcompany_life"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:text="生活/个人服务"
+                android:textColor="@color/colorGray" />
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_life"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"></android.support.v7.widget.RecyclerView>
+
+            <!--其他-->
+            <TextView
+                android:id="@+id/creatcompany_others"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:text="生活/个人服务"
+                android:textColor="@color/colorGray" />
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_others"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"></android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
