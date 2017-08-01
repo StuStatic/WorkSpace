@@ -95,8 +95,9 @@ public class SpaceListActivity extends App implements View.OnClickListener{
 
     //初始化tablayout和viewpager
     private void InitTab() {
-        tabAdapter = new TabAdapter_SpaceListActivity(getSupportFragmentManager(), titles);
+        tabAdapter = new TabAdapter_SpaceListActivity(getSupportFragmentManager(), titles,this);
         tb_layout = (TabLayout) findViewById(R.id.spacelist_tablayout);
+
         viewPager = (ViewPagerForScrollView_SpaceList) findViewById(R.id.spacelist_viewpager);
         viewPager.setAdapter(tabAdapter);
 

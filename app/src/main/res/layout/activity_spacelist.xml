@@ -179,7 +179,7 @@
                 app:tabMode="scrollable"
                 app:tabSelectedTextColor="@color/colorBlue"
                 app:tabTextColor="@color/colorGray"
-                app:tabIndicatorHeight="0dp"/>
+                app:tabIndicatorHeight="0dp" />
             <!--app:tabBackground="@drawable/tab_spacelist"-->
 
             <com.ylg.workspace.workspace.view.tag.ViewPagerForScrollView_SpaceList
