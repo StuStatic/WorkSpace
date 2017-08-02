@@ -104,6 +104,18 @@ public class App extends AppCompatActivity {
     }
 
 
+    /**
+     * 存
+     */
+    public void input(String name,String password) {
+        //第一个参数是文件名，第二个参数是模式（不明白可以去补习一下SharedPreferences的知识）
+        SharedPreferences.Editor edit = getSharedPreferences("mypsd", MODE_PRIVATE).edit();
+        edit.putString("name", name);
+        edit.putString("psd", password);
+        edit.commit();
+    }
+
+
     private void out() {
         //第一个参数是文件名，第二个参数是模式（不明白可以去补习一下SharedPreferences的知识）
         SharedPreferences shared = getSharedPreferences("mypsd2", MODE_PRIVATE);

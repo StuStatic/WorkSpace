@@ -76,7 +76,7 @@ public class CreateEnterpriseActivity extends App implements View.OnClickListene
                 showDialogContacts();
                 break;
             case R.id.choosePhoto://企业LOGO的确定拍照
-
+                
                 break;
             case R.id.takePhoto://相册选择
 

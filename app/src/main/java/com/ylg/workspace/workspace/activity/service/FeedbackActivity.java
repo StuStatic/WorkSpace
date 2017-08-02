@@ -74,7 +74,7 @@ public class FeedbackActivity extends App implements View.OnClickListener {
                 getData("1", String.valueOf(App.USER_ID), "哈登", s2, s1, "0");
                 break;
             case R.id.ll:
-                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:13304520452"));
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:010-68467632-805"));
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 break;

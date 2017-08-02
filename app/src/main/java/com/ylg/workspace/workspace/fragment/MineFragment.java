@@ -70,6 +70,11 @@ public class MineFragment extends Fragment implements View.OnClickListener {
         Log.i("dyy", App.KEY_LOGIN + "");
         if (App.KEY_LOGIN == 1) {
             mineUserHeadportrait.setOnClickListener(null);
+            mlogin.setVisibility(View.VISIBLE);
+            mine_user_Name.setVisibility(View.GONE);
+            mine_user_gender.setVisibility(View.GONE);
+            mine_user_constellation.setVisibility(View.GONE);
+            mine_user_autograph.setVisibility(View.GONE);
         } else {
             if (App.KEY_LOGIN == 2) {
                 mineUserHeadportrait.setOnClickListener(this);
