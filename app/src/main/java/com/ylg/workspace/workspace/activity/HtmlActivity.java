@@ -78,7 +78,7 @@ public class HtmlActivity extends App implements View.OnClickListener {
 //                ShareBoardConfig config = new ShareBoardConfig();
 //                config.setMenuItemBackgroundShape(ShareBoardConfig.BG_SHAPE_NONE);
 //                mShareAction.open(config);
-                UMWeb web = new UMWeb("http://www.baidu.com");
+                UMWeb web = new UMWeb(url);
                 web.setTitle("This is music title");//标题
                 web.setThumb(new UMImage(HtmlActivity.this, R.mipmap.ic_launcher));  //缩略图
                 web.setDescription("my description");//描述
@@ -98,7 +98,6 @@ public class HtmlActivity extends App implements View.OnClickListener {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
-
     }
 
     private UMShareListener umShareListener = new UMShareListener() {

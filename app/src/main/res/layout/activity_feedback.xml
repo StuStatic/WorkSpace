@@ -105,7 +105,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="400-8888-888"
+                    android:text="010-68467632-805"
                     android:textColor="@color/black2"
                     android:textSize="15sp" />
             </LinearLayout>

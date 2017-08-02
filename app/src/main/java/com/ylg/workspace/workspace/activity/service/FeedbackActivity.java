@@ -68,7 +68,6 @@ public class FeedbackActivity extends App implements View.OnClickListener {
                     showCustomToast("还有未填写信息");
                     return;
                 }
-
                 iphoneDialog.setMessage("请稍候...");
                 iphoneDialog.show();
                 getData("1", String.valueOf(App.USER_ID), "哈登", s2, s1, "0");
