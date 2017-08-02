@@ -64,6 +64,7 @@ public class CreatCompanyActivity extends AppCompatActivity implements View.OnCl
         //rv06绑定#生活/个人服务#
         bindrv06();
 
+        //rv07绑定#其它#
         bindrv07();
 
 
@@ -108,7 +109,7 @@ public class CreatCompanyActivity extends AppCompatActivity implements View.OnCl
         //其他
         datas_others = new ArrayList<Integer>(Arrays.asList(R.drawable.work,
                 R.drawable.ngo, R.drawable.produce, R.drawable.material, R.drawable.others));
-        words_others = new ArrayList<String>(Arrays.asList("联合办公","NGO","制造业","原材料","其它"));
+        words_others = new ArrayList<String>(Arrays.asList("联合办公","NGO","制造业","原材料","其他"));
     }
 
 
