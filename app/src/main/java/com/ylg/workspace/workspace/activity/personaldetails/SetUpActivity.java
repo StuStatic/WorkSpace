@@ -3,13 +3,22 @@ package com.ylg.workspace.workspace.activity.personaldetails;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.umeng.socialize.ShareAction;
+import com.umeng.socialize.UMShareListener;
+import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.umeng.socialize.media.UMImage;
+import com.umeng.socialize.media.UMWeb;
+import com.umeng.socialize.shareboard.ShareBoardConfig;
 import com.ylg.workspace.workspace.Application.App;
 import com.ylg.workspace.workspace.R;
+import com.ylg.workspace.workspace.activity.HtmlActivity;
 
 public class SetUpActivity extends App implements View.OnClickListener{
     private TextView mTitle;
@@ -72,7 +81,13 @@ public class SetUpActivity extends App implements View.OnClickListener{
                 showShortMsg("暂未开通");
                 break;
             case R.id.set_up_ShareAPP://分享APP
-                showShortMsg("暂未开通");
+                UMWeb web = new UMWeb("http://m.pp.cn/detail.html?appid=7626884&ch_src=pp_dev&ch=default");
+                web.setTitle("易创客APP");//标题
+                web.setThumb(new UMImage(SetUpActivity.this, R.mipmap.ic_launcher));  //缩略图
+                web.setDescription("易创客-由北京物联港科技发展有限公司根据自身优势为众创办公客户提供的一套系统");//描述
+                new ShareAction(SetUpActivity.this).withMedia(web).
+                        setDisplayList(SHARE_MEDIA.SINA, SHARE_MEDIA.QQ, SHARE_MEDIA.WEIXIN_CIRCLE, SHARE_MEDIA.WEIXIN)
+                        .setCallback(umShareListener).open();
                 break;
             case R.id.set_up_Checkthenewversion://检查更新
                 showShortMsg("暂未开通");
@@ -90,6 +105,34 @@ public class SetUpActivity extends App implements View.OnClickListener{
                 break;
         }
     }
+
+    private UMShareListener umShareListener = new UMShareListener() {
+        @Override
+        public void onStart(SHARE_MEDIA platform) {
+            //分享开始的回调
+        }
+
+        @Override
+        public void onResult(SHARE_MEDIA platform) {
+            Log.d("plat", "platform" + platform);
+            showShortMsg(platform + " 分享成功");
+        }
+
+        @Override
+        public void onError(SHARE_MEDIA platform, Throwable t) {
+            showShortMsg(platform + " 分享失败");
+            if (t != null) {
+                Log.d("throw", "throw:" + t.getMessage());
+            }
+        }
+
+        @Override
+        public void onCancel(SHARE_MEDIA platform) {
+            showShortMsg(platform + " 分享取消");
+        }
+    };
+
+
 
     @Override
     protected void onDestroy() {

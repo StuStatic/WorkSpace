@@ -3,6 +3,7 @@ package com.ylg.workspace.workspace.activity.personaldetails;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,12 +15,23 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.lidong.photopicker.PhotoPickerActivity;
+import com.lidong.photopicker.PhotoPreviewActivity;
+import com.lidong.photopicker.SelectModel;
+import com.lidong.photopicker.intent.PhotoPickerIntent;
+import com.lidong.photopicker.intent.PhotoPreviewIntent;
 import com.ylg.workspace.workspace.Application.App;
 import com.ylg.workspace.workspace.R;
 import com.ylg.workspace.workspace.activity.ballgraph.CreatCompanyActivity;
+import com.ylg.workspace.workspace.activity.service.OrderVisitorActivity;
+
+import org.json.JSONArray;
+
+import java.util.ArrayList;
 
 public class CreateEnterpriseActivity extends App implements View.OnClickListener {
-    private ImageView iv_back;
+    private ImageView iv_back,createEnterprise_login_iv;
     private TextView tv_title;
     private RelativeLayout mName;
     private RelativeLayout mLogo;
@@ -31,6 +43,9 @@ public class CreateEnterpriseActivity extends App implements View.OnClickListene
     private TextView takePhoto, fins;
     private Button dialog_yes,dialog_no;
     private EditText dialog_name,dialog_phone,dialog_contacts;
+    private ArrayList<String> imagePaths = new ArrayList<>();
+    private static final int REQUEST_CAMERA_CODE = 10;
+    private static final int REQUEST_PREVIEW_CODE = 20;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +57,10 @@ public class CreateEnterpriseActivity extends App implements View.OnClickListene
     }
 
     private void initView() {
+        imagePaths.add("000000");
         iv_back = (ImageView) findViewById(R.id.iv_back);
         iv_back.setOnClickListener(this);
+        createEnterprise_login_iv = (ImageView) findViewById(R.id.createEnterprise_login_iv);
         tv_title = (TextView) findViewById(R.id.tv_title);
         tv_title.setText("创建企业");
         mLogo = (RelativeLayout) findViewById(R.id.createEnterprise_logo);
@@ -76,10 +93,20 @@ public class CreateEnterpriseActivity extends App implements View.OnClickListene
                 showDialogContacts();
                 break;
             case R.id.choosePhoto://企业LOGO的确定拍照
-                
-                break;
             case R.id.takePhoto://相册选择
-
+//                if (imagePaths.size() > 1) {
+//                    PhotoPreviewIntent intent = new PhotoPreviewIntent(CreateEnterpriseActivity.this);
+//                    intent.setCurrentItem(0);
+//                    intent.setPhotoPaths(imagePaths);
+//                    startActivityForResult(intent, REQUEST_PREVIEW_CODE);
+//                } else {
+                    PhotoPickerIntent intent = new PhotoPickerIntent(CreateEnterpriseActivity.this);
+                    intent.setSelectModel(SelectModel.MULTI);
+                    intent.setShowCarema(true); // 是否显示拍照
+                    intent.setMaxTotal(1); // 最多选择照片数量
+                    intent.setSelectedPaths(imagePaths); // 已选中的照片地址， 用于回显选中状态
+                    startActivityForResult(intent, REQUEST_CAMERA_CODE);
+//                }
                 break;
             case R.id.fins://取消
             case R.id.dialog_bt_no:
@@ -140,6 +167,58 @@ public class CreateEnterpriseActivity extends App implements View.OnClickListene
         dialogWindow.setAttributes(lp);
         dialog.show();//显示对话框
     }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK) {
+            switch (requestCode) {
+                // 选择照片
+                case REQUEST_CAMERA_CODE:
+                    ArrayList<String> list = data.getStringArrayListExtra(PhotoPickerActivity.EXTRA_RESULT);
+                    Log.d("dyy", "list: " + "list = [" + list.size());
+                    loadAdpater(list);
+                    break;
+                // 预览
+                case REQUEST_PREVIEW_CODE:
+                    ArrayList<String> ListExtra = data.getStringArrayListExtra(PhotoPreviewActivity.EXTRA_RESULT);
+                    Log.d("dyy", "ListExtra: " + "ListExtra = [" + ListExtra.size());
+                    loadAdpater(ListExtra);
+                    break;
+            }
+        }
+    }
+    private void loadAdpater(ArrayList<String> paths) {
+        if (imagePaths != null && imagePaths.size() > 0) {
+            imagePaths.clear();
+        }
+        if (paths.contains("000000")) {
+            paths.remove("000000");
+        }
+        paths.add("000000");
+        imagePaths.addAll(paths);
+        Log.i("zp", "aaaaaa" + imagePaths.toString());
+        if (imagePaths.size() > 1) {
+            Glide.with(CreateEnterpriseActivity.this)
+                    .load(imagePaths.get(0))
+                    .placeholder(R.mipmap.default_error)
+                    .error(R.mipmap.default_error)
+                    .centerCrop()
+                    .crossFade()
+                    .into(createEnterprise_login_iv);
+        } else {
+            createEnterprise_login_iv.setImageResource(R.mipmap.carmer);
+        }
+        dialog.dismiss();
+        try {
+            JSONArray obj = new JSONArray(imagePaths);
+            Log.e("dyy", obj.toString());
+            Log.e("dyy", imagePaths.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();

@@ -81,9 +81,9 @@ public class HtmlActivity extends App implements View.OnClickListener {
 //                config.setMenuItemBackgroundShape(ShareBoardConfig.BG_SHAPE_NONE);
 //                mShareAction.open(config);
                 UMWeb web = new UMWeb(url);
-                web.setTitle("This is music title");//标题
+                web.setTitle(titel);//标题
                 web.setThumb(new UMImage(HtmlActivity.this, R.mipmap.ic_launcher));  //缩略图
-                web.setDescription("my description");//描述
+                web.setDescription("");//描述
 //                new ShareAction(HtmlActivity.this).withText("hello")
 //                        .setDisplayList(SHARE_MEDIA.SINA,SHARE_MEDIA.QQ,SHARE_MEDIA.WEIXIN_CIRCLE,SHARE_MEDIA.WEIXIN)
 //                        .setCallback(umShareListener).open();

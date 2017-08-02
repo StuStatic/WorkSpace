@@ -136,7 +136,7 @@
             android:value="59635798c62dca4dd60014a2" />
 
         <activity android:name=".activity.service.MyFacilityActivity" />
-        <activity android:name=".activity.ballgraph.CreatCompanyActivity"></activity>
+        <activity android:name=".activity.ballgraph.CreatCompanyActivity"/>
     </application>
 
 </manifest>
