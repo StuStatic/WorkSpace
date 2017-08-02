@@ -39,9 +39,7 @@ import com.ylg.workspace.workspace.activity.ballgraph.SpaceListActivity;
 import com.ylg.workspace.workspace.activity.ballgraph.WorkplaceOrderActivity;
 import com.ylg.workspace.workspace.activity.service.OrderVisitorActivity;
 import com.ylg.workspace.workspace.adapter.HorizontalScrollViewAdapter_Home;
-import com.ylg.workspace.workspace.adapter.ListViewAdapter_SpaceList;
 import com.ylg.workspace.workspace.adapter.NeiborAdapter_Home;
-import com.ylg.workspace.workspace.adapter.TagAdapter;
 import com.ylg.workspace.workspace.adapter.ViewPagerAdater_Home01;
 import com.ylg.workspace.workspace.bean.ExerciseRecommend;
 import com.ylg.workspace.workspace.bean.Info;
@@ -51,11 +49,8 @@ import com.ylg.workspace.workspace.bean.SpaceList;
 import com.ylg.workspace.workspace.http.Http;
 import com.ylg.workspace.workspace.http.HttpAPI;
 import com.ylg.workspace.workspace.util.SetHomeListViewItemHeight;
-import com.ylg.workspace.workspace.util.SetSpaceListListViewItemHeight;
-import com.ylg.workspace.workspace.view.MyHorizontalScrollView_Home;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -68,7 +63,7 @@ import retrofit2.Response;
  * writen by stu on 2017/7/17
  */
 
-public class HomeFragment extends Fragment implements View.OnClickListener,AdapterView.OnItemClickListener {
+public class HomeFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemClickListener {
 
     /**
      * @author stu
@@ -92,13 +87,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener,Adapt
     private List<Integer> mImages;
 
     //分类imageview
-    private ImageView siteorder_img,visitor_img,placeorder_img,meetroom_img,opendoor_img,neibor_img,info_img,exercise_img;
+    private ImageView siteorder_img, visitor_img, placeorder_img, meetroom_img, opendoor_img, neibor_img, info_img, exercise_img;
 
     //HorizontalScrollView
     private HorizontalScrollView mHorizontalScrollView;
     private HorizontalScrollViewAdapter_Home mAdapter;
     private ImageView mImg;
-//    private List<Integer> mDatas = new ArrayList<Integer>(Arrays.asList(R.mipmap.a4, R.mipmap.a5, R.mipmap.a4));
+    //    private List<Integer> mDatas = new ArrayList<Integer>(Arrays.asList(R.mipmap.a4, R.mipmap.a5, R.mipmap.a4));
     private List<SpaceList.MsgEntity> mDatas;
 
     //友邻企业列表
@@ -110,7 +105,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener,Adapt
     //活动推荐
     //索引
     private TextView recommend_tv;
-    private RelativeLayout recommend_content,news_content;
+    private RelativeLayout recommend_content, news_content;
     //n内容文字
     private TextView recommend_contenttv;
     private ImageView recommend_img;
@@ -132,6 +127,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener,Adapt
     private TextView tv1;
     private TextView tv2;
     private ImageView imageView;
+    private String title;
 
 
     public HomeFragment() {
@@ -158,21 +154,21 @@ public class HomeFragment extends Fragment implements View.OnClickListener,Adapt
 //        InitBallGraph();
 
         //初始化顶部分类图
-        siteorder_img=(ImageView)homeLayout.findViewById(R.id.siteorder_home);
+        siteorder_img = (ImageView) homeLayout.findViewById(R.id.siteorder_home);
         siteorder_img.setOnClickListener(this);
-        visitor_img=(ImageView)homeLayout.findViewById(R.id.visitor_home);
+        visitor_img = (ImageView) homeLayout.findViewById(R.id.visitor_home);
         visitor_img.setOnClickListener(this);
-        placeorder_img=(ImageView)homeLayout.findViewById(R.id.placeorder_home);
+        placeorder_img = (ImageView) homeLayout.findViewById(R.id.placeorder_home);
         placeorder_img.setOnClickListener(this);
-        meetroom_img=(ImageView)homeLayout.findViewById(R.id.meetroomorder_home);
+        meetroom_img = (ImageView) homeLayout.findViewById(R.id.meetroomorder_home);
         meetroom_img.setOnClickListener(this);
-        opendoor_img=(ImageView)homeLayout.findViewById(R.id.opendoor_home);
+        opendoor_img = (ImageView) homeLayout.findViewById(R.id.opendoor_home);
         opendoor_img.setOnClickListener(this);
-        neibor_img=(ImageView)homeLayout.findViewById(R.id.neibor_home);
+        neibor_img = (ImageView) homeLayout.findViewById(R.id.neibor_home);
         neibor_img.setOnClickListener(this);
-        info_img=(ImageView)homeLayout.findViewById(R.id.infoorder_home);
+        info_img = (ImageView) homeLayout.findViewById(R.id.infoorder_home);
         info_img.setOnClickListener(this);
-        exercise_img=(ImageView)homeLayout.findViewById(R.id.exercise_home);
+        exercise_img = (ImageView) homeLayout.findViewById(R.id.exercise_home);
         exercise_img.setOnClickListener(this);
 
         //头部轮播视图初始化
@@ -236,11 +232,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener,Adapt
         startRequestNeiborDatas();
 
         //请求数据(活动推荐)
-         startRequestRecommendDatas();
+        startRequestRecommendDatas();
         //最新资讯
         startRequestInfoDatas();
     }
-
 
 
     //数据请求（众创空间）
@@ -252,11 +247,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener,Adapt
         call.enqueue(new Callback<SpaceList>() {
             @Override
             public void onResponse(Call<SpaceList> call, Response<SpaceList> response) {
-                if(!response.equals(null) && !response.equals("")){
-                    if(response.body().getCode().equals("200")){
-                        Log.e("请求数据成功","请求数据成功");
-                        mDatas =response.body().getMsg();
-                        LinearLayout mLinearLayout=(LinearLayout)homeLayout.findViewById(R.id.id_gallary);
+                if (!response.equals(null) && !response.equals("")) {
+                    if (response.body().getCode().equals("200")) {
+                        Log.e("请求数据成功", "请求数据成功");
+                        mDatas = response.body().getMsg();
+                        LinearLayout mLinearLayout = (LinearLayout) homeLayout.findViewById(R.id.id_gallary);
                         for (int i = 0; i < mDatas.size(); i++) {// 1、使用本地图片时，使用IMGS数组；2、使用网络图片时，使用IMG_URLS数组
                             View view = LayoutInflater.from(context).inflate(R.layout.item_horizontalscrollview, null);
                             ImageView iv = (ImageView) view.findViewById(R.id.hsv_img);
@@ -264,8 +259,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener,Adapt
                             // iv.setImageResource(IMGS[i]);
                             //设置网络图片
                             String[] url = mDatas.get(i).getSpacePicture().split(",");
-                            String img_URL=Http.API_URL+url[0];
-                            Log.e("水平视图图片地址：",img_URL);
+                            String img_URL = Http.API_URL + url[0];
+                            Log.e("水平视图图片地址：", img_URL);
                             Glide.with(context).load(img_URL).into(iv);
                             // 为item设置id
 //                        view.setId(i);
@@ -275,28 +270,23 @@ public class HomeFragment extends Fragment implements View.OnClickListener,Adapt
                             view.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-                                    int position=(Integer) view.getTag();
-                                    for(int j=0;j<mDatas.size();j++){
-                                        if(j==position){
-                                            Toast.makeText(context, position+"", Toast.LENGTH_SHORT).show();
-                                            Intent i_news_content = new Intent(getActivity(), HtmlActivity.class);
-                                            if (position==0){
-                                                i_news_content.putExtra("htmlURL","http://"+mDatas.get(j).getSpared3());
-                                            }else if (position==1){
-                                                i_news_content.putExtra("htmlURL","http://"+mDatas.get(j).getSpared3());
-                                            }else if (position==2){
-                                                i_news_content.putExtra("htmlURL","http://"+mDatas.get(j).getSpared3());
-                                            }
-                                            startActivity(i_news_content);
-                                        }
-                                    }
+                                    int position = (Integer) view.getTag();
+
+                                    //  Toast.makeText(context, position + "", Toast.LENGTH_SHORT).show();
+                                    Intent i_news_content = new Intent(getActivity(), HtmlActivity.class);
+                                    i_news_content.putExtra("htmlURL", "http://" + mDatas.get(position).getSpared3());
+
+                                    i_news_content.putExtra("htmlTitle", mDatas.get(position).getSpaceName());
+                                    startActivity(i_news_content);
+
+
                                 }
                             });
                             // 把item添加到父view中
                             mLinearLayout.addView(view);
                         }
 
-                    }else{
+                    } else {
                         Toast.makeText(getContext(), "暂无数据", Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -320,7 +310,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener,Adapt
         call.enqueue(new Callback<SlidePic>() {
             @Override
             public void onResponse(Call<SlidePic> call, Response<SlidePic> response) {
-                if(!response.equals(null) && !response.equals("")){
+                if (!response.equals(null) && !response.equals("")) {
                     if (response.body().getCode().equals("200")) {
 
                         String slideURL = Http.API_URL + response.body().getMsg().get(0).getImage();
@@ -387,7 +377,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener,Adapt
         call.enqueue(new Callback<ExerciseRecommend>() {
             @Override
             public void onResponse(Call<ExerciseRecommend> call, Response<ExerciseRecommend> response) {
-                if(!response.equals("") && !response.equals(null)){
+                if (!response.equals("") && !response.equals(null)) {
                     if (response.body().getCode().equals("200")) {
 
                         //设置文字
@@ -420,18 +410,18 @@ public class HomeFragment extends Fragment implements View.OnClickListener,Adapt
         call.enqueue(new Callback<NeiborCompany>() {
             @Override
             public void onResponse(Call<NeiborCompany> call, Response<NeiborCompany> response) {
-                if(!response.equals("") && !response.equals(null)){
+                if (!response.equals("") && !response.equals(null)) {
                     if (response.body().getCode().equals("200")) {
                         datas_neibor = response.body().getMsg();
-                        Log.e("datas-neibor",response.body().toString());
+                        Log.e("datas-neibor", response.body().toString());
                         //初始化适配器
                         adapter_neibor = new NeiborAdapter_Home(homeLayout.getContext(), datas_neibor);
                         //绑定适配器
                         listview.setAdapter(adapter_neibor);
                         //ScrollView中嵌套listview不手动设置高度出现只显示一行的情况
                         SetHomeListViewItemHeight.setHeight(listview);
-                    }else{
-                        Log.e("33333333333333333333333","333333333333");
+                    } else {
+                        Log.e("33333333333333333333333", "333333333333");
                     }
                 }
 
@@ -439,7 +429,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener,Adapt
 
             @Override
             public void onFailure(Call<NeiborCompany> call, Throwable t) {
-                Log.e("t_neibor",t.getMessage());
+                Log.e("t_neibor", t.getMessage());
             }
         });
 
@@ -456,7 +446,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener,Adapt
         call.enqueue(new Callback<Info>() {
             @Override
             public void onResponse(Call<Info> call, Response<Info> response) {
-                if(!response.equals(null) && !response.equals("")){
+                if (!response.equals(null) && !response.equals("")) {
                     Info i = response.body();
                     if (i != null) {
                         String s = i.getCode();
@@ -483,9 +473,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener,Adapt
     //球形图初始化
     private void InitBallGraph() {
         mStrings = new ArrayList<>();
-        for (int i = 0 ;i<10;i++){
-        mStrings.add("");
-    }
+        for (int i = 0; i < 10; i++) {
+            mStrings.add("");
+        }
         //图片
         mImages = new ArrayList<>();
         mImages.add(R.drawable.fixed_position);
@@ -583,14 +573,19 @@ public class HomeFragment extends Fragment implements View.OnClickListener,Adapt
                         break;
                     case MotionEvent.ACTION_UP:
                         if (flag == 0) {
+
                             int item = mViewPager1.getCurrentItem();
                             if (item == 6 || item == 1) {
                                 htmlURL = "http://" + mImageViewList1.get(0).getUrl();
+                                title = mImageViewList1.get(0).getHeadline();
                             } else {
                                 htmlURL = "http://" + mImageViewList1.get(item - 1).getUrl();
+                                title = mImageViewList1.get(item - 1).getHeadline();
+
                             }
                             Intent i = new Intent(context, HtmlActivity.class);
                             i.putExtra("htmlURL", htmlURL);
+                            i.putExtra("htmlTitle", title);
                             startActivity(i);
 //                            Toast.makeText(context, "", Toast.LENGTH_SHORT).show();
                         }
@@ -687,12 +682,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener,Adapt
                 break;
             case R.id.recommend_content://活动推荐（H5）
                 Intent i_recommend_content = new Intent(getActivity(), HtmlActivity.class);
-                i_recommend_content.putExtra("htmlURL","http://www.yiliangang.net:8012/makerSpace/activity.html");
+                i_recommend_content.putExtra("htmlURL", "http://www.yiliangang.net:8012/makerSpace/activity.html");
                 startActivity(i_recommend_content);
                 break;
             case R.id.news_content://最新资讯（H5）
                 Intent i_news_content = new Intent(getActivity(), HtmlActivity.class);
-                i_news_content.putExtra("htmlURL","http://www.yiliangang.net:8012/makerSpace/news1.html");
+                i_news_content.putExtra("htmlURL", "http://www.yiliangang.net:8012/makerSpace/news1.html");
                 startActivity(i_news_content);
                 break;
             default:
@@ -703,7 +698,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener,Adapt
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent i_news_content = new Intent(getActivity(), HtmlActivity.class);
-        i_news_content.putExtra("htmlURL","http://www.yiliangang.net:8012/makerSpace/companyInfo.html");
+        i_news_content.putExtra("htmlURL", "http://www.yiliangang.net:8012/makerSpace/companyInfo.html");
         startActivity(i_news_content);
     }
 }

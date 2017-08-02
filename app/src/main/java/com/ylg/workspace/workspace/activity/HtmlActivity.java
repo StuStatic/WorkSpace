@@ -28,6 +28,7 @@ public class HtmlActivity extends App implements View.OnClickListener {
     private WebView wb;
     private ImageView iv;
     private String url;
+    private String titel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +45,12 @@ public class HtmlActivity extends App implements View.OnClickListener {
         iv_back = (ImageView) findViewById(R.id.iv_back);
         iv_back.setOnClickListener(this);
         tv = (TextView) findViewById(R.id.tv_title);
-        tv.setText("");
+
         iv.setOnClickListener(this);
 
         url = getIntent().getStringExtra("htmlURL");
-
+        titel = getIntent().getStringExtra("htmlTitle");
+        tv.setText(titel);
         wb.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);//设置js可以直接打开窗口，如window.open()，默认为false
         wb.getSettings().setJavaScriptEnabled(true);//是否允许执行js，默认为false。设置true时，会提醒可能造成XSS漏洞
         wb.getSettings().setSupportZoom(false);//是否可以缩放，默认true
