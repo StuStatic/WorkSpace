@@ -219,12 +219,15 @@ public class HomeFragment extends Fragment implements View.OnClickListener,Adapt
         listview = (ListView) homeLayout.findViewById(R.id.neibor_contentlv);
         listview.setOnItemClickListener(this);
 
+
+        //请求数据(头部轮播视图)
+        startRequestSlidePicDatas(context);
+
     }
 
 
     private void initData(final Context context) {
-        //请求数据(头部轮播视图)
-        startRequestSlidePicDatas(context);
+
 
         //请求数据（众创空间）
         startRequestWorkSpaceDatas(context);
