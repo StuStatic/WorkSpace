@@ -29,7 +29,6 @@ public class MyFacilityActivity extends App implements View.OnClickListener {
     private LinearLayout ll_parent;
     private TextMoveLayout tv_wendu;
     private SeekBar seekBar2;
-
     private static double wenduNum = 21.0;
     private boolean flag = true;
     private TextPaint mPaint;
@@ -101,14 +100,14 @@ public class MyFacilityActivity extends App implements View.OnClickListener {
         });
         screenWidth = getWindowManager().getDefaultDisplay().getWidth();
         setMoveTextView();
-        getChildenLayoutParams();
+        getChildrenLayoutParams();
         setSeekBarValues();
     }
 
     /**
      * 获取子view的marginLayoutParams
      */
-    private void getChildenLayoutParams() {
+    private void getChildrenLayoutParams() {
         View childAt = ll_parent.getChildAt(0);
         ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) childAt.getLayoutParams();
         mLeftMargin = marginLayoutParams.leftMargin;
@@ -141,7 +140,7 @@ public class MyFacilityActivity extends App implements View.OnClickListener {
         //mTvMax.setText("500");
         seekBar2.setEnabled(true);
         seekBar2.setMax(9);
-        seekBar2.setProgress(3);
+        seekBar2.setProgress(0);
     }
 
     /**

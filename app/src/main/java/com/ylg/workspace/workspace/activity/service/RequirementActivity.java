@@ -105,6 +105,10 @@ public class RequirementActivity extends App implements View.OnClickListener {
                 break;
             case R.id.button:
                 String string = et.getText().toString().trim();
+                if (App.KEY_LOGIN == 1){
+                    showShortMsg("您还未登录...");
+                    return;
+                }
                 if (string.equals("") || mTags.size() < 1) {
                     showShortMsg("还有未填写信息");
                     return;

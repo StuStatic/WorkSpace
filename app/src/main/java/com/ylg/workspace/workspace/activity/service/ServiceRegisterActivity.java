@@ -96,6 +96,10 @@ public class ServiceRegisterActivity extends App implements View.OnClickListener
                 final String s4 = et4.getText().toString().trim();
                 final String s5 = et5.getText().toString().trim();
                 final String s6 = et6.getText().toString().trim();
+                if (App.KEY_LOGIN == 1){
+                    showShortMsg("您还未登录...");
+                    return;
+                }
                 if (s2.equals("") || s3.equals("") || s4.equals("") || s5.equals("") || s6.equals("")) {
                     showShortMsg("还有未填写信息");
                     return;

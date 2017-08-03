@@ -161,6 +161,10 @@ public class QuestionActivity extends App implements View.OnClickListener {
                 final String s2 = tv1.getText().toString().trim();
                 final String s4 = et2.getText().toString().trim();
                 final String s3 = tvTime.getText().toString()+":00";
+                if (App.KEY_LOGIN == 1){
+                    showShortMsg("您还未登录...");
+                    return;
+                }
                 if (s2.equals("") || s3.equals("") || s4.equals("") || s1.equals("")) {
                     showShortMsg("还有未填写信息");
                     return;

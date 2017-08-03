@@ -154,6 +154,10 @@ public class OrderVisitorActivity extends App implements View.OnClickListener {
                 final String time = (String) tvTime.getText();
                 Log.d("zp", s9 + " onClick: " + i7);
                 Log.d("zp", time);
+                if (App.KEY_LOGIN == 1){
+                    showShortMsg("您还未登录...");
+                    return;
+                }
                 if (imagePaths.size() < 2) {
                     showShortMsg("请选择照片");
                     return;

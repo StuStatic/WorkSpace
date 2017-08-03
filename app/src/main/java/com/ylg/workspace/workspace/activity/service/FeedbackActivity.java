@@ -64,8 +64,12 @@ public class FeedbackActivity extends App implements View.OnClickListener {
 
                 String s1 = et1.getText().toString().trim();
                 String s2 = et2.getText().toString().trim();
+                if (App.KEY_LOGIN == 1){
+                    showShortMsg("您还未登录...");
+                    return;
+                }
                 if (s1.equals("") || s2.equals("")) {
-                    showCustomToast("还有未填写信息");
+                    showShortMsg("还有未填写信息");
                     return;
                 }
                 iphoneDialog.setMessage("请稍候...");

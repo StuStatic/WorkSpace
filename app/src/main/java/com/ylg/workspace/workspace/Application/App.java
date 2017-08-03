@@ -33,6 +33,7 @@ public class App extends AppCompatActivity {
     public static int KEY_LOGIN = 1;
     public static int USER_ID = 0;
     public static int SPACE_ID = 0;
+
     @Override
     public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
@@ -85,7 +86,7 @@ public class App extends AppCompatActivity {
     /**
      * 存
      */
-    public void input1(String headPortrait,String realName,String sex,String username,String spared1,String industry,String site,String skill,String interest,String constellation,String companyId) {
+    public void input1(String headPortrait, String realName, String sex, String username, String spared1, String industry, String site, String skill, String interest, String constellation, String companyId) {
         //第一个参数是文件名，第二个参数是模式（不明白可以去补习一下SharedPreferences的知识）
         SharedPreferences.Editor edit2 = getSharedPreferences("mypsd2", MODE_PRIVATE).edit();
         edit2.putString("headPortrait", headPortrait);//头像地址
@@ -107,7 +108,7 @@ public class App extends AppCompatActivity {
     /**
      * 存
      */
-    public void input(String name,String password) {
+    public void input(String name, String password) {
         //第一个参数是文件名，第二个参数是模式（不明白可以去补习一下SharedPreferences的知识）
         SharedPreferences.Editor edit = getSharedPreferences("mypsd", MODE_PRIVATE).edit();
         edit.putString("name", name);
@@ -376,5 +377,4 @@ public class App extends AppCompatActivity {
                     }
                 }).create().show();
     }
-
 }
