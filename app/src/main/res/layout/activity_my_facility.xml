@@ -90,8 +90,9 @@
                             android:orientation="horizontal">
 
                             <TextView
+                                android:id="@+id/kt_tv_di"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_weight="1"
                                 android:gravity="center"
                                 android:text="低"
@@ -99,8 +100,9 @@
                                 android:textSize="22sp" />
 
                             <TextView
+                                android:id="@+id/kt_tv_zhong"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_weight="1"
                                 android:gravity="center"
                                 android:text="中"
@@ -108,8 +110,9 @@
                                 android:textSize="22sp" />
 
                             <TextView
+                                android:id="@+id/kt_tv_gao"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_weight="1"
                                 android:gravity="center"
                                 android:text="高"
@@ -142,15 +145,16 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/kt_tv_auto"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_height="40dp"
                             android:gravity="center"
                             android:text="自动"
                             android:textColor="@color/black3"
                             android:textSize="22sp" />
 
                         <ImageView
+                            android:id="@+id/kt_iv_auto"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -174,6 +178,7 @@
                         android:orientation="horizontal">
 
                         <LinearLayout
+                            android:id="@+id/kt_ll_zhileng"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -188,6 +193,7 @@
                                 android:src="@mipmap/zhileng1" />
 
                             <TextView
+                                android:id="@+id/kt_tv_zhileng"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -200,6 +206,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/kt_ll_tongfeng"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -214,6 +221,7 @@
                                 android:src="@mipmap/tongfeng1" />
 
                             <TextView
+                                android:id="@+id/kt_tv_tongfeng"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -226,6 +234,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/kt_ll_zhire"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -240,6 +249,7 @@
                                 android:src="@mipmap/zhire1" />
 
                             <TextView
+                                android:id="@+id/kt_tv_zhire"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -258,7 +268,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
                         android:layout_marginRight="15dp"
-                        android:layout_marginTop="8dp"
                         android:orientation="vertical">
 
                         <com.ylg.workspace.workspace.view.TextMoveLayout
@@ -345,6 +354,7 @@
                 android:visibility="gone">
 
                 <LinearLayout
+                    android:id="@+id/ll_cl_off"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -360,6 +370,7 @@
                         android:src="@mipmap/cl_off1" />
 
                     <TextView
+                        android:id="@+id/tv_cl_off"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -372,6 +383,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/ll_cl_pause"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -380,13 +392,14 @@
                     android:padding="10dp">
 
                     <ImageView
-                        android:id="@+id/iv_"
+                        android:id="@+id/iv_cl_pause"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
                         android:src="@mipmap/cl_pause1" />
 
                     <TextView
+                        android:id="@+id/tv_cl_pause"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -399,6 +412,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/ll_cl_on"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -414,6 +428,7 @@
                         android:src="@mipmap/cl_on1" />
 
                     <TextView
+                        android:id="@+id/tv_cl_on"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
