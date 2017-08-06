@@ -64,8 +64,8 @@
 
             <ImageView
                 android:id="@+id/mine_user_gender"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:src="@drawable/girl_icon"
                 android:visibility="gone"
                 />
@@ -93,7 +93,7 @@
             android:textColor="#CCCCCC"
             android:textSize="14sp"
             android:visibility="gone"
-            />
+            android:layout_centerHorizontal="true"/>
 
         <ImageView
             android:id="@+id/mine_iv_intent"
