@@ -481,7 +481,7 @@
             </RelativeLayout>
 
             <LinearLayout
-                android:id="@+id/ll_light"
+                android:id="@+id/ll_light1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
@@ -501,7 +501,7 @@
                     android:textSize="16sp" />
 
                 <com.ylg.workspace.workspace.view.TextMoveLayout
-                    android:id="@+id/tvLiangdu"
+                    android:id="@+id/tvLiangdu1"
                     android:layout_width="fill_parent"
                     android:layout_height="40dp"
                     android:layout_marginLeft="30dp"
@@ -557,6 +557,49 @@
 
 
             </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_light2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@mipmap/background2"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="20dp"
+                    android:text="亮度调节"
+                    android:textColor="@color/black3"
+                    android:textSize="16sp" />
+
+                <com.ylg.workspace.workspace.view.TextMoveLayout
+                    android:id="@+id/tvLiangdu2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp" />
+
+                <SeekBar
+                    android:id="@+id/seekBar4"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:focusable="true"
+                    android:maxHeight="6dp"
+                    android:minHeight="6dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:progressDrawable="@drawable/seek_bar_progress_bg"
+                    android:thumb="@mipmap/thumb" />
+            </LinearLayout>
 
             <include layout="@layout/item_line"></include>
 

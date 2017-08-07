@@ -23,9 +23,11 @@ public class MyFacilityActivity extends App implements View.OnClickListener {
     private SlideButton sbt1;
     private SlideButton sbt2;
     private SlideButton sbt3;
+    private SlideButton sbt4;
     private LinearLayout ll_kongtiao;
     private LinearLayout ll_chuanglian;
-    private LinearLayout ll_light;
+    private LinearLayout ll_light1;
+    private LinearLayout ll_light2;
     private LinearLayout ll_parent;
     private TextMoveLayout tv_wendu;
     private SeekBar seekBar2;
@@ -140,12 +142,14 @@ public class MyFacilityActivity extends App implements View.OnClickListener {
         sbt1 = (SlideButton) findViewById(R.id.sbt1);
         sbt2 = (SlideButton) findViewById(R.id.sbt2);
         sbt3 = (SlideButton) findViewById(R.id.sbt3);
+        sbt4 = (SlideButton) findViewById(R.id.sbt4);
         tv_wendu = (TextMoveLayout) findViewById(R.id.tvWendu);
         seekBar2 = (SeekBar) findViewById(R.id.seekBar2);
         seekBar1 = (SeekBar) findViewById(R.id.seekBar1);
         ll_kongtiao = (LinearLayout) findViewById(R.id.ll_kongtiao);
         ll_chuanglian = (LinearLayout) findViewById(R.id.ll_chuanglian);
-        ll_light = (LinearLayout) findViewById(R.id.ll_light);
+        ll_light1 = (LinearLayout) findViewById(R.id.ll_light1);
+        ll_light2 = (LinearLayout) findViewById(R.id.ll_light2);
         ll_parent = (LinearLayout) findViewById(R.id.ll_parent);
         kt_tv_di = (TextView) findViewById(R.id.kt_tv_di);
         kt_tv_zhong = (TextView) findViewById(R.id.kt_tv_zhong);
@@ -202,9 +206,19 @@ public class MyFacilityActivity extends App implements View.OnClickListener {
             @Override
             public void onClicked(boolean isChecked) {
                 if (isChecked) {
-                    ll_light.setVisibility(View.VISIBLE);
+                    ll_light1.setVisibility(View.VISIBLE);
                 } else {
-                    ll_light.setVisibility(View.GONE);
+                    ll_light1.setVisibility(View.GONE);
+                }
+            }
+        });
+        sbt4.setOnSlideButtonClickListener(new SlideButton.OnSlideButtonClickListener() {
+            @Override
+            public void onClicked(boolean isChecked) {
+                if (isChecked) {
+                    ll_light2.setVisibility(View.VISIBLE);
+                } else {
+                    ll_light2.setVisibility(View.GONE);
                 }
             }
         });
