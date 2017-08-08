@@ -33,6 +33,20 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+
+
+            <!--通过H5跳转到APP的URL地址配置-->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="yichuangke"
+                      android:host="workspace.ylg.com"
+                      android:pathPrefix="/test/"
+                    />
+            </intent-filter>
+
         </activity>
         <activity android:name=".activity.MainActivity" />
         <activity android:name=".activity.personaldetails.SetUpActivity" />

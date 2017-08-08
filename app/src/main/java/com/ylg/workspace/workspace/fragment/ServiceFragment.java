@@ -79,9 +79,8 @@ public class ServiceFragment extends Fragment implements View.OnClickListener {
     private LinearLayout ll11;
 
     public ServiceFragment() {
-        // Required empty public constructor
-    }
 
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -92,11 +91,7 @@ public class ServiceFragment extends Fragment implements View.OnClickListener {
         mViewPager = (ViewPager) serviceLayout.findViewById(R.id.vp_service1);
         mLinearLayoutDot = (LinearLayout) serviceLayout.findViewById(R.id.ll_service1_dot);
         initView();
-
         initData(serviceLayout.getContext());
-
-
-
         return serviceLayout;
     }
 
@@ -181,9 +176,7 @@ public class ServiceFragment extends Fragment implements View.OnClickListener {
                 }else{//连接登录不成功
                     Log.e("轮播图请求不成功",response.body().getCode());
                 }
-
             }
-
 
             @Override
             public void onFailure(Call<SlideServicePic> call, Throwable t) {
