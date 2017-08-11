@@ -1,20 +1,35 @@
 package com.ylg.workspace.workspace.activity.service;
 
 import android.graphics.Rect;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.text.TextPaint;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
+import com.google.gson.reflect.TypeToken;
 import com.ylg.workspace.workspace.Application.App;
 import com.ylg.workspace.workspace.R;
+import com.ylg.workspace.workspace.bean.FacilityOperate;
 import com.ylg.workspace.workspace.util.DensityUtil;
 import com.ylg.workspace.workspace.view.SlideButton;
 import com.ylg.workspace.workspace.view.TextMoveLayout;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import de.tavendo.autobahn.WebSocketConnection;
+import de.tavendo.autobahn.WebSocketConnectionHandler;
+import de.tavendo.autobahn.WebSocketException;
 
 public class MyFacilityActivity extends App implements View.OnClickListener {
 
@@ -62,6 +77,13 @@ public class MyFacilityActivity extends App implements View.OnClickListener {
     private TextView tv_cl_off;
     private TextView tv_cl_pause;
     private TextView tv_cl_on;
+    private WebSocketConnection connection1 = new WebSocketConnection();
+    private WebSocketConnection connection2 = new WebSocketConnection();
+    private WebSocketConnection connection3 = new WebSocketConnection();
+    private WebSocketConnection connection4 = new WebSocketConnection();
+    private TextView tv_snwd;
+    //区别制冷制热
+    private boolean flag1 = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,11 +94,15 @@ public class MyFacilityActivity extends App implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+        HashMap<String, Object> data = new HashMap<>();
         switch (v.getId()) {
             case R.id.iv_back:
                 finish();
                 break;
             case R.id.kt_ll_zhileng:
+                data.put("status", 1);
+                sendAction(connection4, "海林温控器1.测试", "setStatus", data);
+                flag1 = false;
                 kt_iv_zhileng.setImageResource(R.mipmap.zhileng2);
                 kt_iv_zhire.setImageResource(R.mipmap.zhire1);
                 kt_iv_tongfeng.setImageResource(R.mipmap.tongfeng1);
@@ -85,6 +111,9 @@ public class MyFacilityActivity extends App implements View.OnClickListener {
                 kt_tv_tongfeng.setTextColor(0xff888888);
                 break;
             case R.id.kt_ll_zhire:
+                data.put("status", 2);
+                sendAction(connection4, "海林温控器1.测试", "setStatus", data);
+                flag1 = true;
                 kt_iv_zhileng.setImageResource(R.mipmap.zhileng1);
                 kt_iv_zhire.setImageResource(R.mipmap.zhire2);
                 kt_iv_tongfeng.setImageResource(R.mipmap.tongfeng1);
@@ -93,6 +122,8 @@ public class MyFacilityActivity extends App implements View.OnClickListener {
                 kt_tv_tongfeng.setTextColor(0xff888888);
                 break;
             case R.id.kt_ll_tongfeng:
+                data.put("status", 5);
+                sendAction(connection4, "海林温控器1.测试", "setStatus", data);
                 kt_iv_zhileng.setImageResource(R.mipmap.zhileng1);
                 kt_iv_zhire.setImageResource(R.mipmap.zhire1);
                 kt_iv_tongfeng.setImageResource(R.mipmap.tongfeng2);
@@ -101,6 +132,7 @@ public class MyFacilityActivity extends App implements View.OnClickListener {
                 kt_tv_tongfeng.setTextColor(0xff52d666);
                 break;
             case R.id.kt_iv_auto:
+
                 kt_iv_auto.setImageResource(R.mipmap.auto2);
                 kt_tv_auto.setTextColor(0xff52d666);
                 kt_tv_di.setTextColor(0xff888888);
@@ -108,6 +140,8 @@ public class MyFacilityActivity extends App implements View.OnClickListener {
                 kt_tv_gao.setTextColor(0xff888888);
                 break;
             case R.id.ll_cl_off:
+                data.put("value", "OFF");
+                sendAction(connection1, "curtain20170717-001.测试", "switch", data);
                 iv_cl_off.setImageResource(R.mipmap.cl_off2);
                 iv_cl_pause.setImageResource(R.mipmap.cl_pause1);
                 iv_cl_on.setImageResource(R.mipmap.cl_on1);
@@ -116,6 +150,8 @@ public class MyFacilityActivity extends App implements View.OnClickListener {
                 tv_cl_on.setTextColor(0xff888888);
                 break;
             case R.id.ll_cl_pause:
+                data.put("value", "STOP");
+                sendAction(connection1, "curtain20170717-001.测试", "switch", data);
                 iv_cl_off.setImageResource(R.mipmap.cl_off1);
                 iv_cl_pause.setImageResource(R.mipmap.cl_pause2);
                 iv_cl_on.setImageResource(R.mipmap.cl_on1);
@@ -124,6 +160,8 @@ public class MyFacilityActivity extends App implements View.OnClickListener {
                 tv_cl_on.setTextColor(0xff888888);
                 break;
             case R.id.ll_cl_on:
+                data.put("value", "ON");
+                sendAction(connection1, "curtain20170717-001.测试", "switch", data);
                 iv_cl_off.setImageResource(R.mipmap.cl_off1);
                 iv_cl_pause.setImageResource(R.mipmap.cl_pause1);
                 iv_cl_on.setImageResource(R.mipmap.cl_on2);
@@ -144,6 +182,7 @@ public class MyFacilityActivity extends App implements View.OnClickListener {
         sbt3 = (SlideButton) findViewById(R.id.sbt3);
         sbt4 = (SlideButton) findViewById(R.id.sbt4);
         tv_wendu = (TextMoveLayout) findViewById(R.id.tvWendu);
+        tv_snwd = (TextView) findViewById(R.id.tv_snwd);
         seekBar2 = (SeekBar) findViewById(R.id.seekBar2);
         seekBar1 = (SeekBar) findViewById(R.id.seekBar1);
         ll_kongtiao = (LinearLayout) findViewById(R.id.ll_kongtiao);
@@ -181,17 +220,27 @@ public class MyFacilityActivity extends App implements View.OnClickListener {
         kt_ll_zhire.setOnClickListener(this);
         kt_ll_zhileng.setOnClickListener(this);
         kt_ll_tongfeng.setOnClickListener(this);
-
+        getSocketConnect(connection1, "101.201.30.234:8080", 1);
+        getSocketConnect(connection4, "101.201.30.234:8080", 4);
+        //空调
         sbt1.setOnSlideButtonClickListener(new SlideButton.OnSlideButtonClickListener() {
             @Override
             public void onClicked(boolean isChecked) {
+                HashMap<String, Object> data = new HashMap<>();
                 if (isChecked) {
                     ll_kongtiao.setVisibility(View.VISIBLE);
+                    data.put("status_onoff", 1);
+                    sendAction(connection4, "海林温控器1.测试", "setStatusOnOff", data);
+
                 } else {
                     ll_kongtiao.setVisibility(View.GONE);
+                    data.put("status_onoff", 0);
+                    sendAction(connection4, "海林温控器1.测试", "setStatusOnOff", data);
+
                 }
             }
         });
+        //窗帘
         sbt2.setOnSlideButtonClickListener(new SlideButton.OnSlideButtonClickListener() {
             @Override
             public void onClicked(boolean isChecked) {
@@ -289,15 +338,15 @@ public class MyFacilityActivity extends App implements View.OnClickListener {
         // 停止拖动时候
         public void onStopTrackingTouch(SeekBar seekBar) {
             double d = seekBar.getProgress() + wenduNum;
-//            HashMap<String, Object> hs = new HashMap<>();
-//            if (flag) {
-//                hs.put("temp_heat", "c" + d);
-//                sendAction(connection4, "海林温控器1.测试", "setTempHeat", hs);
-//            } else {
-//                hs.put("temp_cool", "c" + d);
-//                sendAction(connection4, "海林温控器1.测试", "setTempCool", hs);
-//            }
-//        }
+            HashMap<String, Object> hs = new HashMap<>();
+            if (flag1) {
+                hs.put("temp_heat", "c" + d);
+                sendAction(connection4, "海林温控器1.测试", "setTempHeat", hs);
+            } else {
+                hs.put("temp_cool", "c" + d);
+                sendAction(connection4, "海林温控器1.测试", "setTempCool", hs);
+            }
+
         }
     }
 
@@ -309,8 +358,11 @@ public class MyFacilityActivity extends App implements View.OnClickListener {
 
         // 触发操作，拖动
         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+            HashMap<String, Object> data = new HashMap<>();
             switch (progress) {
                 case 0:
+                    data.put("fan_mod", 3);
+                    sendAction(connection4, "海林温控器1.测试", "setFanMod", data);
                     kt_tv_di.setTextColor(0xff52d666);
                     kt_tv_zhong.setTextColor(0xff888888);
                     kt_tv_gao.setTextColor(0xff888888);
@@ -318,6 +370,8 @@ public class MyFacilityActivity extends App implements View.OnClickListener {
                     kt_iv_auto.setImageResource(R.mipmap.auto1);
                     break;
                 case 1:
+                    data.put("fan_mod", 4);
+                    sendAction(connection4, "海林温控器1.测试", "setFanMod", data);
                     kt_tv_di.setTextColor(0xff888888);
                     kt_tv_zhong.setTextColor(0xff52d666);
                     kt_tv_gao.setTextColor(0xff888888);
@@ -325,6 +379,8 @@ public class MyFacilityActivity extends App implements View.OnClickListener {
                     kt_iv_auto.setImageResource(R.mipmap.auto1);
                     break;
                 case 2:
+                    data.put("fan_mod", 5);
+                    sendAction(connection4, "海林温控器1.测试", "setFanMod", data);
                     kt_tv_di.setTextColor(0xff888888);
                     kt_tv_zhong.setTextColor(0xff888888);
                     kt_tv_gao.setTextColor(0xff52d666);
@@ -369,4 +425,167 @@ public class MyFacilityActivity extends App implements View.OnClickListener {
         moveText.layout(xFloat, 20, screenWidth, 80);
         moveText.setText(seekBar2.getProgress() + 21 + "℃");
     }
+
+    private void sendAction(WebSocketConnection connection, String thingId, String serviceId, HashMap<String, Object> param) {
+        FacilityOperate.Other operate = new FacilityOperate.Other();
+        // Log.i("dyy", device.thingId);
+        operate.thingId = thingId;
+        operate.serviceId = serviceId;
+        operate.param = param;
+        String s = new Gson().toJson(operate);
+        if (connection.isConnected()) {
+            connection.sendRawTextMessage(s.getBytes());
+            //Logger.i("发送内容".concat(s));
+        } else {
+            //Toast.makeText(WaterDispenserActivity.this, "未连接到设备,请返回重试", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+    private void getSocketConnect(final WebSocketConnection connection, String ip, final int i) {
+        ip = "ws://".concat(ip).concat("/IotHarborWebsocket");
+        ip = ip.replace("8080", "8999");
+        final String wsuri = ip;
+
+        try {
+            connection.connect(wsuri, new WebSocketConnectionHandler() {
+
+                @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+                @Override
+                public void onOpen() {
+                    if (MyFacilityActivity.this.isDestroyed() || MyFacilityActivity.this.isFinishing()) {
+                        return;
+                    }
+                    //Logger.d("Status: Connected to " + wsuri);
+                    switch (i) {
+                        case 1:
+                            Toast.makeText(MyFacilityActivity.this, "已连接窗帘", Toast.LENGTH_SHORT).show();
+                            break;
+                        case 4:
+                            Toast.makeText(MyFacilityActivity.this, "已连接空调", Toast.LENGTH_SHORT).show();
+                            subscribe();
+                            break;
+                        case 3:
+                            Toast.makeText(MyFacilityActivity.this, "已连接三键", Toast.LENGTH_SHORT).show();
+                            break;
+                    }
+
+                }
+
+                //@RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+                @Override
+                public void onTextMessage(String payload) {
+                    Log.i("zp", "payload:|==" + payload + "==|");
+                    /**
+                     *判断设备是否离线
+                     */
+                    if (payload.contains("thing not online")) {
+//                        Log.i("dyy", device.thingId);
+                        showShortMsg("设备已离线");
+//                        try {
+//                            Thread.sleep(3000);
+//                        } catch (InterruptedException e) {
+//                            e.printStackTrace();
+//                        }
+//                        finish();
+                        return;
+                    }
+                    if (payload.equals("subscribe success") || payload.equals("already subscribe")) {
+                        showShortMsg("订阅成功");
+                        Log.i("zp", "订阅成功");
+                        return;
+                    }
+                    if (i == 4) {
+                        try {
+                            Map<String, Object> map = new Gson().fromJson(payload, new TypeToken<Map<String, Object>>() {
+                            }.getType());
+                            if (map != null && map.size() > 0) {
+                                String s = (String) map.get("dis_temp");
+                                if (!s.equals("")) {
+                                    String wd = s.substring(1, s.length());
+                                    tv_snwd.setText("室内温度：" + wd + "℃");
+                                }
+                            }
+                        } catch (JsonSyntaxException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                    if (i == 3) {
+                        try {
+                            Map<String, Object> map = new Gson().fromJson(payload, new TypeToken<Map<String, Object>>() {
+                            }.getType());
+                            if (map != null && map.size() > 0) {
+                                Object data = map.get("data");
+                                if (data instanceof Map) {
+                                    Map<String, String> data1 = (Map<String, String>) data;
+                                    for (int i = 1; i < i + 1; i++) {
+                                        if (data1.get(String.valueOf(i)) == "ON") {
+                                            // setSwitchStatus(i, true);
+                                        }
+                                        if (data1.get(String.valueOf(i)) == "OFF") {
+                                            // setSwitchStatus(i, false);
+                                        }
+                                    }
+                                }
+                            }
+                        } catch (JsonSyntaxException e) {
+                            e.printStackTrace();
+                        }
+                    } else if (i == 2) {
+                        try {
+                            Map<String, Object> map = new Gson().fromJson(payload, new TypeToken<Map<String, Object>>() {
+                            }.getType());
+                            if (map != null && map.size() > 0) {
+                                Object data = map.get("data");
+                                if (data instanceof Map) {
+                                    Map<String, String> data1 = (Map<String, String>) data;
+                                    for (int i = 1; i < i + 1; i++) {
+                                        if (data1.get(String.valueOf(i)) == "ON") {
+                                            //setSwitchStatus1(i, true);
+                                        }
+                                        if (data1.get(String.valueOf(i)) == "OFF") {
+                                            //setSwitchStatus1(i, false);
+                                        }
+                                    }
+                                }
+                            }
+                        } catch (JsonSyntaxException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+
+                @Override
+                public void onClose(int code, String reason) {
+                    //Logger.d("Connection lost.");
+                }
+
+            });
+        } catch (WebSocketException e) {
+            // Logger.d(e.toString());
+        }
+    }
+
+    private void unSubscribe() {
+        HashMap<String, Object> param = new HashMap<>();
+        param.put("subscribe", "off");
+        sendAction(connection4, "海林温控器1.测试", "trapData", param);
+    }
+
+    private void subscribe() {
+        HashMap<String, Object> param = new HashMap<>();
+        param.put("subscribe", "on");
+        sendAction(connection4, "海林温控器1.测试", "trapData", param);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        unSubscribe();
+        connection1.disconnect();
+        connection4.disconnect();
+    }
+
 }
