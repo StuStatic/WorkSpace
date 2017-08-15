@@ -76,7 +76,6 @@ public class HtmlActivity extends App implements View.OnClickListener {
                 finish();
                 break;
             case R.id.iv_intent:
-                showCustomToast("aaa");
 //                ShareBoardConfig config = new ShareBoardConfig();
 //                config.setMenuItemBackgroundShape(ShareBoardConfig.BG_SHAPE_NONE);
 //                mShareAction.open(config);
