@@ -489,7 +489,8 @@
                 android:layout_marginRight="15dp"
                 android:background="@mipmap/background2"
                 android:orientation="vertical"
-                android:visibility="gone">
+                android:visibility="gone"
+                >
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -500,18 +501,11 @@
                     android:textColor="@color/black3"
                     android:textSize="16sp" />
 
-                <com.ylg.workspace.workspace.view.TextMoveLayout
-                    android:id="@+id/tvLiangdu1"
-                    android:layout_width="fill_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp" />
-
                 <SeekBar
                     android:id="@+id/seekBar3"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginLeft="40dp"
                     android:layout_marginRight="40dp"
                     android:focusable="true"
@@ -577,13 +571,6 @@
                     android:text="亮度调节"
                     android:textColor="@color/black3"
                     android:textSize="16sp" />
-
-                <com.ylg.workspace.workspace.view.TextMoveLayout
-                    android:id="@+id/tvLiangdu2"
-                    android:layout_width="fill_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp" />
 
                 <SeekBar
                     android:id="@+id/seekBar4"

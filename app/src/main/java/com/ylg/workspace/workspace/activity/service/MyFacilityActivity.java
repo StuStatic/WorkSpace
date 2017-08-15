@@ -47,6 +47,8 @@ public class MyFacilityActivity extends App implements View.OnClickListener {
     private TextMoveLayout tv_wendu;
     private SeekBar seekBar2;
     private SeekBar seekBar1;
+    private SeekBar seekBar3;
+    private SeekBar seekBar4;
     private static double wenduNum = 21.0;
     private boolean flag = true;
     private TextPaint mPaint;
@@ -185,6 +187,8 @@ public class MyFacilityActivity extends App implements View.OnClickListener {
         tv_snwd = (TextView) findViewById(R.id.tv_snwd);
         seekBar2 = (SeekBar) findViewById(R.id.seekBar2);
         seekBar1 = (SeekBar) findViewById(R.id.seekBar1);
+        seekBar3 = (SeekBar) findViewById(R.id.seekBar3);
+        seekBar4 = (SeekBar) findViewById(R.id.seekBar4);
         ll_kongtiao = (LinearLayout) findViewById(R.id.ll_kongtiao);
         ll_chuanglian = (LinearLayout) findViewById(R.id.ll_chuanglian);
         ll_light1 = (LinearLayout) findViewById(R.id.ll_light1);
@@ -222,6 +226,12 @@ public class MyFacilityActivity extends App implements View.OnClickListener {
         kt_ll_tongfeng.setOnClickListener(this);
         getSocketConnect(connection1, "101.201.30.234:8080", 1);
         getSocketConnect(connection4, "101.201.30.234:8080", 4);
+        getSocketConnect(connection2, "101.201.30.234:8080", 2);
+        getSocketConnect(connection3, "101.201.30.234:8080", 3);
+        seekBar1.setOnSeekBarChangeListener(new OnSeekBarChangeListener1());
+        seekBar2.setOnSeekBarChangeListener(new OnSeekBarChangeListener2());
+        seekBar3.setOnSeekBarChangeListener(new OnSeekBarChangeListener3());
+        seekBar4.setOnSeekBarChangeListener(new OnSeekBarChangeListener4());
         //空调
         sbt1.setOnSlideButtonClickListener(new SlideButton.OnSlideButtonClickListener() {
             @Override
@@ -254,9 +264,14 @@ public class MyFacilityActivity extends App implements View.OnClickListener {
         sbt3.setOnSlideButtonClickListener(new SlideButton.OnSlideButtonClickListener() {
             @Override
             public void onClicked(boolean isChecked) {
+                HashMap<String, Object> param = new HashMap<>();
                 if (isChecked) {
+                    param.put("value","ON");
+                    sendAction1(connection2,"智能灯20161101-001.w3c-test","switch",param);
                     ll_light1.setVisibility(View.VISIBLE);
                 } else {
+                    param.put("value","OFF");
+                    sendAction1(connection2,"智能灯20161101-001.w3c-test","switch",param);
                     ll_light1.setVisibility(View.GONE);
                 }
             }
@@ -264,9 +279,14 @@ public class MyFacilityActivity extends App implements View.OnClickListener {
         sbt4.setOnSlideButtonClickListener(new SlideButton.OnSlideButtonClickListener() {
             @Override
             public void onClicked(boolean isChecked) {
+                HashMap<String, Object> param = new HashMap<>();
                 if (isChecked) {
                     ll_light2.setVisibility(View.VISIBLE);
+                    param.put("value","ON");
+                    sendAction1(connection3,"智能灯20161101-002.w3c-test","switch",param);
                 } else {
+                    param.put("value","OFF");
+                    sendAction1(connection3,"智能灯20161101-002.w3c-test","switch",param);
                     ll_light2.setVisibility(View.GONE);
                 }
             }
@@ -284,7 +304,7 @@ public class MyFacilityActivity extends App implements View.OnClickListener {
         View childAt = ll_parent.getChildAt(0);
         ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) childAt.getLayoutParams();
         mLeftMargin = marginLayoutParams.leftMargin;
-        seekBar2.setOnSeekBarChangeListener(new OnSeekBarChangeListenerImp());
+        seekBar2.setOnSeekBarChangeListener(new OnSeekBarChangeListener2());
         seekBar1.setOnSeekBarChangeListener(new OnSeekBarChangeListener1());
     }
 
@@ -323,7 +343,7 @@ public class MyFacilityActivity extends App implements View.OnClickListener {
     /**
      * seekbar2滑动监听
      */
-    private class OnSeekBarChangeListenerImp implements
+    private class OnSeekBarChangeListener2 implements
             SeekBar.OnSeekBarChangeListener {
 
         // 触发操作，拖动
@@ -346,6 +366,52 @@ public class MyFacilityActivity extends App implements View.OnClickListener {
                 hs.put("temp_cool", "c" + d);
                 sendAction(connection4, "海林温控器1.测试", "setTempCool", hs);
             }
+
+        }
+    }
+
+    /**
+     * seekbar3滑动监听
+     */
+    private class OnSeekBarChangeListener3 implements
+            SeekBar.OnSeekBarChangeListener {
+
+        // 触发操作，拖动
+        public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+            HashMap<String, Object> other = new HashMap<>();
+            other.put("value", progress);
+            sendAction(connection2,"智能灯20161101-001.w3c-test","lightness", other);
+        }
+
+        // 开始拖动时候触发的操作
+        public void onStartTrackingTouch(SeekBar seekBar) {
+        }
+
+        // 停止拖动时候
+        public void onStopTrackingTouch(SeekBar seekBar) {
+
+        }
+    }
+
+    /**
+     * seekbar4滑动监听
+     */
+    private class OnSeekBarChangeListener4 implements
+            SeekBar.OnSeekBarChangeListener {
+
+        // 触发操作，拖动
+        public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+            HashMap<String, Object> other = new HashMap<>();
+            other.put("value", progress);
+            sendAction(connection2,"智能灯20161101-002.w3c-test","lightness", other);
+        }
+
+        // 开始拖动时候触发的操作
+        public void onStartTrackingTouch(SeekBar seekBar) {
+        }
+
+        // 停止拖动时候
+        public void onStopTrackingTouch(SeekBar seekBar) {
 
         }
     }
@@ -411,6 +477,7 @@ public class MyFacilityActivity extends App implements View.OnClickListener {
 
     }
 
+
     /**
      * seekbar滑动过程中改变moveTextView的位置
      */
@@ -441,6 +508,21 @@ public class MyFacilityActivity extends App implements View.OnClickListener {
         }
     }
 
+    private void sendAction1(WebSocketConnection connection, String thingId, String serviceId, HashMap<String, Object> param) {
+        FacilityOperate.Other operate = new FacilityOperate.Other();
+        // Log.i("dyy", device.thingId);
+        operate.thingId = thingId;
+        operate.serviceId = serviceId;
+        operate.param = param;
+        operate.seq = "易联港1号灯|易联港一号灯";
+        String s = new Gson().toJson(operate);
+        if (connection.isConnected()) {
+            connection.sendRawTextMessage(s.getBytes());
+            //Logger.i("发送内容".concat(s));
+        } else {
+            //Toast.makeText(WaterDispenserActivity.this, "未连接到设备,请返回重试", Toast.LENGTH_SHORT).show();
+        }
+    }
 
     private void getSocketConnect(final WebSocketConnection connection, String ip, final int i) {
         ip = "ws://".concat(ip).concat("/IotHarborWebsocket");
@@ -465,8 +547,11 @@ public class MyFacilityActivity extends App implements View.OnClickListener {
                             Toast.makeText(MyFacilityActivity.this, "已连接空调", Toast.LENGTH_SHORT).show();
                             subscribe();
                             break;
+                        case 2:
+                            Toast.makeText(MyFacilityActivity.this, "已连接一号灯", Toast.LENGTH_SHORT).show();
+                            break;
                         case 3:
-                            Toast.makeText(MyFacilityActivity.this, "已连接三键", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MyFacilityActivity.this, "已连接二号灯", Toast.LENGTH_SHORT).show();
                             break;
                     }
 
