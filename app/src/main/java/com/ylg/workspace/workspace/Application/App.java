@@ -33,7 +33,7 @@ public class App extends AppCompatActivity {
     public static int KEY_LOGIN = 1;
     public static int USER_ID = 0;
     public static int SPACE_ID = 0;
-
+    public static String App_ID = "wxa41b37164b2030d6";
     @Override
     public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);

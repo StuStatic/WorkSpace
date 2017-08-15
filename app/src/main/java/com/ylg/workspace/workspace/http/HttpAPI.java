@@ -23,6 +23,7 @@ import com.ylg.workspace.workspace.http.bean.FindByUserId;
 import com.ylg.workspace.workspace.http.bean.Login;
 import com.ylg.workspace.workspace.http.bean.Register;
 import com.ylg.workspace.workspace.http.bean.SendVerify;
+import com.ylg.workspace.workspace.http.bean.WeiXinPay;
 
 import java.util.Map;
 
@@ -247,6 +248,10 @@ public interface HttpAPI {
     //查找我的历史的预约
     @POST("Visitor/findVisitorByUserId")
     Call<MakeAnAppointFrag> findVisitorByUserId(@Query("userId") int userId);
+
+    //微信支付
+    @POST("placeAnOrder")
+    Call<WeiXinPay> WeiXinPay(@Query("facilitator") String facilitator, @Query("carrieroperator") String carrieroperator, @Query("body") String body, @Query("total_fee") String total_fee, @Query("spbill_create_ip") String spbill_create_ip, @Query("trade_type") String trade_type);
 
 
 

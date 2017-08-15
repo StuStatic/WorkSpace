@@ -26,6 +26,10 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.moxun.tagcloudlib.view.TagCloudView;
+import com.tencent.mm.opensdk.constants.Build;
+import com.tencent.mm.opensdk.modelpay.PayReq;
+import com.tencent.mm.opensdk.openapi.IWXAPI;
+import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 import com.xys.libzxing.zxing.activity.CaptureActivity;
 import com.ylg.workspace.workspace.Application.App;
 import com.ylg.workspace.workspace.R;
@@ -48,6 +52,7 @@ import com.ylg.workspace.workspace.bean.SlidePic;
 import com.ylg.workspace.workspace.bean.SpaceList;
 import com.ylg.workspace.workspace.http.Http;
 import com.ylg.workspace.workspace.http.HttpAPI;
+import com.ylg.workspace.workspace.http.bean.WeiXinPay;
 import com.ylg.workspace.workspace.util.SetHomeListViewItemHeight;
 
 import java.util.ArrayList;
@@ -64,7 +69,7 @@ import retrofit2.Response;
  */
 
 public class HomeFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemClickListener {
-
+    private IWXAPI api1;
     /**
      * @author stu
      */
@@ -150,6 +155,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Adap
     }
 
     private void initView(Context context) {
+
+        api1 = WXAPIFactory.createWXAPI(getActivity(), App.App_ID);
+
+
         //初始化球形图
 //        InitBallGraph();
 
@@ -645,8 +654,50 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Adap
                 break;
             case R.id.neibor_home://友邻
                 Intent i_neibor02 = new Intent(getActivity(), NeiborActivity.class);
-//                i_neibor.putExtra("datas",datas_neibor);
-                startActivity(i_neibor02);
+////                i_neibor.putExtra("datas",datas_neibor);
+//                startActivity(i_neibor02);
+
+                boolean isPaySupported = api1.getWXAppSupportAPI() >= Build.PAY_SUPPORTED_SDK_INT;
+                Log.i("dyy","是否可以支付："+isPaySupported);
+                if (isPaySupported){
+                    Toast.makeText(getActivity(), "订单获取中......", Toast.LENGTH_SHORT).show();
+                    HttpAPI api = Http.getInstance1().create(HttpAPI.class);
+                    Call<WeiXinPay> weiXinPayCall = api.WeiXinPay("0000", "0000", "APP", "1", "172.30.40.1", "APP");
+                    weiXinPayCall.enqueue(new Callback<WeiXinPay>() {
+                        @Override
+                        public void onResponse(Call<WeiXinPay> call, Response<WeiXinPay> response) {
+                            WeiXinPay body = response.body();
+                            if (body == null) return;
+                            Log.i("dyy",body.getCode());
+                            if (body.getCode().equals("200")) {
+                                api1.registerApp(App.App_ID);
+                                PayReq req = new PayReq();
+                                req.appId = body.getMsg().getAppid();
+                                req.partnerId = body.getMsg().getMch_id();
+                                req.nonceStr = body.getMsg().getNonce_str();
+                                req.prepayId = body.getMsg().getPrepay_id();
+                                req.timeStamp = body.getMsg().getTimeStamp();
+                                req.packageValue = body.getMsg().getPackageX();
+                                req.sign = body.getMsg().getSign();
+                                Log.i("dyy",body.getMsg().getAppid()+"\n"+body.getMsg().getMch_id()+"\n"+body.getMsg().getNonce_str()+"\n"+body.getMsg().getPrepay_id()+"\n"+body.getMsg().getTimeStamp()+"\n"+body.getMsg().getPackageX()+"\n"+body.getMsg().getSign());
+//                                req.extData = "app data"; // optional
+                                Toast.makeText(getActivity(), "正常调起支付", Toast.LENGTH_SHORT).show();
+                                // 在支付之前，如果应用没有注册到微信，应该先调用IWXMsg.registerApp将应用注册到微信
+                                api1.sendReq(req);
+                            } else {
+                                Toast.makeText(getActivity(), "业务结果错误", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<WeiXinPay> call, Throwable t) {
+                            Toast.makeText(getActivity(), "异常：" + t.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }else {
+                    Toast.makeText(getActivity(), "请查看你的微信是否是最新版本", Toast.LENGTH_SHORT).show();
+                }
+
                 break;
             case R.id.infoorder_home://资讯
                 Intent i_info = new Intent(getActivity(), InfoActivity.class);

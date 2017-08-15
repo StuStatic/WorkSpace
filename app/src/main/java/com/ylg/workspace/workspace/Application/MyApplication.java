@@ -2,6 +2,8 @@ package com.ylg.workspace.workspace.Application;
 
 import android.app.Application;
 
+import com.tencent.mm.opensdk.openapi.IWXAPI;
+import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 import com.umeng.socialize.Config;
 import com.umeng.socialize.PlatformConfig;
 import com.umeng.socialize.UMShareAPI;
@@ -9,13 +11,14 @@ import com.umeng.socialize.common.QueuedWork;
 
 
 public class MyApplication extends Application {
-
+    private IWXAPI api;
     @Override
     public void onCreate() {
         super.onCreate();
         Config.DEBUG = true;
         QueuedWork.isUseThreadPool = false;
         UMShareAPI.get(this);
+        api = WXAPIFactory.createWXAPI(this, App.App_ID);
     }
 
     {
