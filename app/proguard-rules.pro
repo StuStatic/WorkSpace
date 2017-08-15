@@ -174,3 +174,7 @@
 -keep class com.ylg.workspace.workspace.bean.**{*;}
 -keep class com.ylg.workspace.workspace.http.bean.**{*;}
 
+#微信支付
+-keep class com.tencent.mm.opensdk.** {
+   *;
+}

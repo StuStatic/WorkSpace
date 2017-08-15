@@ -69,7 +69,7 @@ import retrofit2.Response;
  */
 
 public class HomeFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemClickListener {
-    private IWXAPI api1;
+
     /**
      * @author stu
      */
@@ -119,6 +119,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Adap
     //众创空间
     private TextView workspace_tv;
 
+    //微信支付
+    private IWXAPI  api1;
 
     Handler handler = new Handler() {
         @Override
