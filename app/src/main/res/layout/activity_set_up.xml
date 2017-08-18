@@ -7,6 +7,7 @@
     android:background="#f3f3f3"
     android:orientation="vertical"
     tools:context="com.ylg.workspace.workspace.activity.personaldetails.SetUpActivity">
+
     <include
         android:id="@+id/set_title"
         layout="@layout/include_title"/>
@@ -18,6 +19,7 @@
         android:layout_below="@id/set_title"
         android:background="#d6d6d6"
         />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -31,12 +33,11 @@
             >
 
 
-
             <RelativeLayout
+                android:id="@+id/set_up_personaldata"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:background="#FFFFFF"
-                android:id="@+id/set_up_personaldata"
                 >
 
                 <TextView
@@ -55,7 +56,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="15sp"
-                    android:src="@mipmap/intent"
+                    android:src="@drawable/arrow_right_icon"
                     />
 
                 <View
@@ -67,10 +68,10 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/set_up_Notificationsettings"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:background="#FFFFFF"
-                android:id="@+id/set_up_Notificationsettings"
                 >
 
                 <TextView
@@ -89,7 +90,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="15sp"
-                    android:src="@mipmap/intent"
+                    android:src="@drawable/arrow_right_icon"
                     />
 
                 <View
@@ -101,10 +102,10 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/set_up_Modifypassword"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:background="#FFFFFF"
-                android:id="@+id/set_up_Modifypassword"
                 >
 
                 <TextView
@@ -123,7 +124,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="15sp"
-                    android:src="@mipmap/intent"
+                    android:src="@drawable/arrow_right_icon"
                     />
 
                 <View
@@ -135,10 +136,10 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/set_up_Setgesturepassword"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:background="#FFFFFF"
-                android:id="@+id/set_up_Setgesturepassword"
                 >
 
                 <TextView
@@ -157,7 +158,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="15sp"
-                    android:src="@mipmap/intent"
+                    android:src="@drawable/arrow_right_icon"
                     />
 
                 <View
@@ -169,11 +170,11 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/set_up_Contactus"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:background="#FFFFFF"
                 android:layout_marginTop="18sp"
-                android:id="@+id/set_up_Contactus"
+                android:background="#FFFFFF"
                 >
 
                 <TextView
@@ -185,22 +186,24 @@
                     android:textColor="#666666"
                     android:textSize="18sp"
                     />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:text="010-68467632-805"
-                    android:textColor="#CCCCCC"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="50sp"
+                    android:text="010-68467632-805"
+                    android:textColor="#CCCCCC"
                     />
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="15sp"
-                    android:src="@mipmap/intent"
+                    android:src="@drawable/arrow_right_icon"
                     />
 
                 <View
@@ -212,11 +215,10 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/set_up_Aboutthecreationspace"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:background="#FFFFFF"
-                android:id="@+id/set_up_Aboutthecreationspace"
-                >
+                android:background="#FFFFFF">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -234,7 +236,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="15sp"
-                    android:src="@mipmap/intent"
+                    android:src="@drawable/arrow_right_icon"
                     />
 
                 <View
@@ -246,10 +248,10 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/set_up_ShareAPP"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:background="#FFFFFF"
-                android:id="@+id/set_up_ShareAPP"
                 >
 
                 <TextView
@@ -268,7 +270,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="15sp"
-                    android:src="@mipmap/intent"
+                    android:src="@drawable/arrow_right_icon"
                     />
 
                 <View
@@ -280,10 +282,10 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/set_up_Checkthenewversion"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:background="#FFFFFF"
-                android:id="@+id/set_up_Checkthenewversion"
                 >
 
                 <TextView
@@ -302,7 +304,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="15sp"
-                    android:src="@mipmap/intent"
+                    android:src="@drawable/arrow_right_icon"
                     />
 
                 <View
@@ -318,8 +320,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="10sp"
-                android:background="#FFFFFF"
-                >
+                android:background="#FFFFFF">
 
                 <TextView
                     android:layout_width="match_parent"

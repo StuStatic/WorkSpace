@@ -75,8 +75,7 @@ public class MineFragment extends Fragment implements View.OnClickListener {
             mine_user_gender.setVisibility(View.GONE);
             mine_user_constellation.setVisibility(View.GONE);
             mine_user_autograph.setVisibility(View.GONE);
-        } else {
-            if (App.KEY_LOGIN == 2) {
+        } else if (App.KEY_LOGIN == 2){
                 mineUserHeadportrait.setOnClickListener(this);
                 mlogin.setVisibility(View.GONE);
                 mine_user_Name.setVisibility(View.VISIBLE);
@@ -84,7 +83,6 @@ public class MineFragment extends Fragment implements View.OnClickListener {
                 mine_user_constellation.setVisibility(View.VISIBLE);
                 mine_user_autograph.setVisibility(View.VISIBLE);
                 out();
-            }
         }
     }
 
@@ -214,7 +212,8 @@ public class MineFragment extends Fragment implements View.OnClickListener {
                                 .load(Http.API_URL + headPortrait1)
                                 .placeholder(R.drawable.my_head_icon)
                                 .error(R.drawable.my_head_icon)
-                                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                                .skipMemoryCache(true)
+                                .diskCacheStrategy(DiskCacheStrategy.NONE)
                                 .centerCrop()
                                 .crossFade()
                                 .into(mineUserHeadportrait);

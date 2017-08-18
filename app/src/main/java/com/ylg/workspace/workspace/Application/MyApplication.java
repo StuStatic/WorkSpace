@@ -11,7 +11,9 @@ import com.umeng.socialize.common.QueuedWork;
 
 
 public class MyApplication extends Application {
+
     private IWXAPI api;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -20,7 +22,6 @@ public class MyApplication extends Application {
         UMShareAPI.get(this);
         api = WXAPIFactory.createWXAPI(this, App.App_ID);
     }
-
     {
         PlatformConfig.setWeixin("wxa41b37164b2030d6", "04e9bd9923b67ea9bf687ad1c8d91051");
         PlatformConfig.setQQZone("101415512", "c7394704798a158208a74ab60104f0ba");

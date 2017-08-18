@@ -264,9 +264,9 @@ public class MainActivity extends App implements View.OnClickListener {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            if ((System.currentTimeMillis() - exitTime) > 1000) {
-                exitTime = System.currentTimeMillis();
-            } else {
+//            if ((System.currentTimeMillis() - exitTime) > 1000) {
+//                exitTime = System.currentTimeMillis();
+//            } else {
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle("提示");
                 builder.setMessage("确定要退出吗？");
@@ -284,7 +284,7 @@ public class MainActivity extends App implements View.OnClickListener {
                     }
                 });
                 builder.show();
-            }
+//            }
             return true;
         }
         return super.onKeyDown(keyCode, event);
