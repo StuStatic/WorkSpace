@@ -1,17 +1,18 @@
 package com.ylg.workspace.workspace.http;
 
 import java.util.concurrent.TimeUnit;
+
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Http {
 
-    public static final String API_URL = "http://www.yiliangang.net:8012/workSpace/";
-//    public static final String API_URL = "http://192.168.1.216:8080/workSpace/";
+   public static final String API_URL = "http://219.143.170.98:10011/workSpace/";
+   //public static final String API_URL = "http://192.168.38.149:8080/workSpace/";
     private static Retrofit retrofit;
 
-    public static Retrofit getInstance(){
+    public static Retrofit getInstance() {
         if (retrofit != null) {
             return retrofit;
         } else {
@@ -31,12 +32,11 @@ public class Http {
     }
 
 
-
-    public static final String API_URL1 = "http://219.143.170.98:10011/payment/Payment/";
-    //    public static final String API_URL = "http://192.168.1.216:8080/workSpace/";
+    //public static final String API_URL1 = "http://219.143.170.98:10011/payment/Payment/";
+    public static final String API_URL1 = "http://192.168.1.216:8080/workSpace/";
     private static Retrofit retrofit1;
 
-    public static Retrofit getInstance1(){
+    public static Retrofit getInstance1() {
         if (retrofit1 != null) {
             return retrofit1;
         } else {
@@ -54,30 +54,5 @@ public class Http {
         }
 
     }
-
-
-//    private void getData() {
-//
-//        HttpAPI httpAPI = Http.getInstance().create(HttpAPI.class);
-//        httpAPI.textPic().enqueue(new Callback<BackPicture>() {
-//            @Override
-//            public void onResponse(Call<BackPicture> call, Response<BackPicture> response) {
-//                BackPicture bp = response.body();
-//                Log.e("zp", bp.toString());
-//                if (bp != null) {
-//                    list.clear();
-//                    list.addAll(bp.getBack());
-//                    //Toast.makeText(TextBackGround.this, bp.getMsg(), Toast.LENGTH_SHORT).show();
-//                    gv.setAdapter(new BGTextAdapter(list, TextBackGround.this));
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<BackPicture> call, Throwable t) {
-//                Log.e("zp", t.toString());
-//                Toast.makeText(TextBackGround.this, t.toString(), Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//    }
 
 }

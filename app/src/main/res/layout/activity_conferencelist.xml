@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
+    android:orientation="vertical"
     tools:context="com.ylg.workspace.workspace.activity.ballgraph.ConferenceListActivity">
+    <include layout="@layout/include_title"></include>
+
+    <include layout="@layout/item_line"></include>
     <ListView
         android:id="@+id/conferencelist_lv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:divider="@color/colorGray"
-        android:dividerHeight="1dp"></ListView>
-</android.support.constraint.ConstraintLayout>
+        android:divider="@color/background_gray"
+        tools:layout_editor_absoluteY="8dp"
+        tools:layout_editor_absoluteX="8dp"></ListView>
+</LinearLayout>

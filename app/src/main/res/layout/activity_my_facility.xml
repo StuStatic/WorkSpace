@@ -664,6 +664,80 @@
 
             <include layout="@layout/item_line"></include>
 
+            <include layout="@layout/item_line1"></include>
+
+            <include layout="@layout/item_line"></include>
+
+            <RelativeLayout
+                android:id="@+id/rl_dianbiao"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/iv_dianbiao"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="25dp"
+                    android:src="@mipmap/dianbiao" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_toRightOf="@id/iv_dianbiao"
+                    android:text="电表"
+                    android:textColor="@color/black2"
+                    android:textSize="18sp" />
+
+
+                <com.ylg.workspace.workspace.view.SlideButton
+                    android:id="@+id/sbt7"
+                    android:layout_width="50dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="25dp" />
+
+
+            </RelativeLayout>
+
+            <include layout="@layout/item_line"></include>
+
+            <RelativeLayout
+                android:id="@+id/rl_shuibiao"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/iv_shuibiao"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="25dp"
+                    android:src="@mipmap/dianbiao" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_toRightOf="@id/iv_shuibiao"
+                    android:text="水表"
+                    android:textColor="@color/black2"
+                    android:textSize="18sp" />
+
+
+                <com.ylg.workspace.workspace.view.SlideButton
+                    android:id="@+id/sbt8"
+                    android:layout_width="50dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="25dp" />
+
+
+            </RelativeLayout>
+
+            <include layout="@layout/item_line"></include>
+
         </LinearLayout>
     </ScrollView>
 

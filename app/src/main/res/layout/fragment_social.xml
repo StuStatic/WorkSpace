@@ -28,7 +28,7 @@
             app:tabGravity="center"
             app:tabIndicatorHeight="0dp"
             app:tabSelectedTextColor="@color/colorBlue"
-            app:tabTextColor="@color/colorBlack"
+            app:tabTextColor="@color/black2"
             ></android.support.design.widget.TabLayout>
         <View
             android:id="@+id/socialfragment_line02"

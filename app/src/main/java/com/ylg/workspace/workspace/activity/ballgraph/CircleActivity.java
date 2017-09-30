@@ -1,11 +1,8 @@
-package com.ylg.workspace.workspace.activity.service;
+package com.ylg.workspace.workspace.activity.ballgraph;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +14,6 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bigkoo.pickerview.TimePickerView;
 import com.bumptech.glide.Glide;
 import com.lidong.photopicker.PhotoPickerActivity;
 import com.lidong.photopicker.PhotoPreviewActivity;
@@ -32,19 +28,14 @@ import com.ylg.workspace.workspace.view.IphoneDialog;
 
 import org.json.JSONArray;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
-public class QuestionActivity extends App implements View.OnClickListener {
+public class CircleActivity extends App implements View.OnClickListener {
 
     private ImageView iv_back;
     private TextView tv;
-    private TextView tv1;
-    private TextView tvTime;
-    private String[] strs = new String[]{"维修", "清洁", "其他"};
-    TimePickerView pvTime;
-    View vMasker;
+    private EditText et;
+    private IphoneDialog iphoneDialog;
     private GridView gridView;
     private static final int REQUEST_CAMERA_CODE = 10;
     private static final int REQUEST_PREVIEW_CODE = 20;
@@ -52,14 +43,11 @@ public class QuestionActivity extends App implements View.OnClickListener {
     private GridAdapter gridAdapter;
     private ArrayList<String> infoList;
     private Button b;
-    private EditText et1;
-    private EditText et2;
-    private IphoneDialog iphoneDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_question);
+        setContentView(R.layout.activity_circle);
         isPermissionsAllGranted(Constants.permArray, Constants.QUEST_CODE_ALL);
         initView();
     }
@@ -69,28 +57,10 @@ public class QuestionActivity extends App implements View.OnClickListener {
         iv_back = (ImageView) findViewById(R.id.iv_back);
         iv_back.setOnClickListener(this);
         tv = (TextView) findViewById(R.id.tv_title);
-        tv.setText("申请报修");
-        tv1 = (TextView) findViewById(R.id.tv1);
-        tvTime = (TextView) findViewById(R.id.tv2);
+        tv.setText("发朋友圈");
+        et = (EditText) findViewById(R.id.et);
         b = (Button) findViewById(R.id.button);
-        et1 = (EditText) findViewById(R.id.et1);
-        et2 = (EditText) findViewById(R.id.et2);
-        tv1.setOnClickListener(this);
-        tvTime.setOnClickListener(this);
         b.setOnClickListener(this);
-        //时间选择器
-        pvTime = new TimePickerView(this, TimePickerView.Type.ALL);
-        pvTime.setTime(new Date());
-        pvTime.setCyclic(false);
-        pvTime.setCancelable(true);
-        //时间选择后回调
-        pvTime.setOnTimeSelectListener(new TimePickerView.OnTimeSelectListener() {
-
-            @Override
-            public void onTimeSelect(Date date) {
-                tvTime.setText(getTime(date));
-            }
-        });
         gridView = (GridView) findViewById(R.id.gv);
         infoList = new ArrayList<String>();
         int cols = getResources().getDisplayMetrics().widthPixels / getResources().getDisplayMetrics().densityDpi;
@@ -103,14 +73,14 @@ public class QuestionActivity extends App implements View.OnClickListener {
                 String imgs = (String) parent.getItemAtPosition(position);
                 Log.d("zp", "onItemClick: " + imgs);
                 if ("000000".equals(imgs)) {
-                    PhotoPickerIntent intent = new PhotoPickerIntent(QuestionActivity.this);
+                    PhotoPickerIntent intent = new PhotoPickerIntent(CircleActivity.this);
                     intent.setSelectModel(SelectModel.MULTI);
                     intent.setShowCarema(true); // 是否显示拍照
                     intent.setMaxTotal(9); // 最多选择照片数量
                     intent.setSelectedPaths(imagePaths); // 已选中的照片地址， 用于回显选中状态
                     startActivityForResult(intent, REQUEST_CAMERA_CODE);
                 } else {
-                    PhotoPreviewIntent intent = new PhotoPreviewIntent(QuestionActivity.this);
+                    PhotoPreviewIntent intent = new PhotoPreviewIntent(CircleActivity.this);
                     intent.setCurrentItem(position);
                     intent.setPhotoPaths(imagePaths);
                     startActivityForResult(intent, REQUEST_PREVIEW_CODE);
@@ -129,46 +99,18 @@ public class QuestionActivity extends App implements View.OnClickListener {
             case R.id.iv_back:
                 finish();
                 break;
-            case R.id.tv1:
-                final AlertDialog.Builder dialog = new AlertDialog.Builder(this);
-
-                dialog.setItems(strs, new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        switch (i) {
-                            case 0:
-                                tv1.setText(strs[0]);
-                                break;
-                            case 1:
-                                tv1.setText(strs[1]);
-                                break;
-                            case 2:
-                                tv1.setText(strs[2]);
-                                break;
-                        }
-
-                    }
-                });
-                dialog.create().show();
-                break;
-            case R.id.tv2:
-                pvTime.show();
-                break;
             case R.id.button:
                 final int index = imagePaths.size();
-                final String s1 = et1.getText().toString().trim();
-                final String s2 = tv1.getText().toString().trim();
-                final String s4 = et2.getText().toString().trim();
-                final String s3 = tvTime.getText().toString()+":00";
-//                if (App.KEY_LOGIN == 1){
-//                    showShortMsg("您还未登录...");
-//                    return;
-//                }
-//                if (s2.equals("") || s3.equals("") || s4.equals("") || s1.equals("")) {
-//                    showShortMsg("还有未填写信息");
-//                    return;
-//                }
+                final String s = et.getText().toString().trim();
+
+                if (App.KEY_LOGIN == 1) {
+                    showShortMsg("您还未登录...");
+                    return;
+                }
+                if (s.equals("")) {
+                    showShortMsg("还有未填写信息");
+                    return;
+                }
                 if (imagePaths.size() < 2) {
                     showShortMsg("还未选择照片");
                     return;
@@ -182,32 +124,12 @@ public class QuestionActivity extends App implements View.OnClickListener {
                         super.run();
                         imagePaths.remove(index - 1);
                         Log.i("zp", "bbbbbbb" + imagePaths.toString());
-                        Log.i("zp", "aaaa" + s4);
-
-                        //FileUploadManager.questionFix(String.valueOf(App.USER_ID), "1", s1, s2, s3, s4, imagePaths, QuestionActivity.this, iphoneDialog);
-                        FileUploadManager.addShare(1, s4, imagePaths, QuestionActivity.this, iphoneDialog);
+                        Log.i("zp", "aaaa" + s);
+                        FileUploadManager.addShare(Integer.parseInt(String.valueOf(App.USER_ID)), s, imagePaths, CircleActivity.this, iphoneDialog);
                     }
                 }.start();
                 break;
         }
-    }
-
-    public static String getTime(Date date) {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm");
-        return format.format(date);
-    }
-
-
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-
-            if (pvTime.isShowing()) {
-                pvTime.dismiss();
-                return true;
-            }
-        }
-        return super.onKeyDown(keyCode, event);
     }
 
     @Override
@@ -274,7 +196,7 @@ public class QuestionActivity extends App implements View.OnClickListener {
             if (listUrls.size() == 10) {
                 listUrls.remove(listUrls.size() - 1);
             }
-            inflater = LayoutInflater.from(QuestionActivity.this);
+            inflater = LayoutInflater.from(CircleActivity.this);
         }
 
         public int getCount() {
@@ -307,7 +229,7 @@ public class QuestionActivity extends App implements View.OnClickListener {
             if (path.equals("000000")) {
                 holder.image.setImageResource(R.mipmap.add);
             } else {
-                Glide.with(QuestionActivity.this)
+                Glide.with(CircleActivity.this)
                         .load(path)
                         .placeholder(R.mipmap.default_error)
                         .error(R.mipmap.default_error)

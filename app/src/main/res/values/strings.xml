@@ -18,12 +18,9 @@
         completions."
     </string>
 
-
-
     <string name="app_tip">提示</string>
     <string name="pay_result_callback_msg" formatted="false">微信支付结果：%s</string>
-
-
-
+    <item type="id" name="tag">
+    </item>
 
 </resources>

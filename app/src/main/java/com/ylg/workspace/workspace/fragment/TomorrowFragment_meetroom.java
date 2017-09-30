@@ -10,13 +10,11 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.ylg.workspace.workspace.R;
-import com.ylg.workspace.workspace.adapter.TodayAdapter_Meetroom;
 import com.ylg.workspace.workspace.adapter.TomorrowAdapter_Meetroom;
 import com.ylg.workspace.workspace.bean.MeetRoom;
 import com.ylg.workspace.workspace.http.Http;
 import com.ylg.workspace.workspace.http.HttpAPI;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -27,7 +25,7 @@ import retrofit2.Response;
  * A simple {@link Fragment} subclass.
  */
 public class TomorrowFragment_meetroom extends Fragment {
-    private List<MeetRoom.MsgEntity> datas;
+    private List<MeetRoom.MsgBean> datas;
     private ListView listView;
     private TomorrowAdapter_Meetroom tomorrowAdapter;
 //    private String[] address = new String[]{"多功能会议室"};

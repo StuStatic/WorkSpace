@@ -2,7 +2,6 @@ package com.ylg.workspace.workspace.activity.personaldetails;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -83,7 +82,7 @@ public class LoginActivity extends App implements View.OnClickListener {
                 String password = loginpassword.getText().toString();
                 Log.i("dyy", phone + password);
                 if (phone.length() == 11) {
-                    if (password.length() == 6) {
+                    if (password.length() >= 6 && password.length() <= 16) {
                         login(phone, password);
                     } else {
                         showCustomToast("请输入正确的密码");
@@ -150,11 +149,11 @@ public class LoginActivity extends App implements View.OnClickListener {
                     Login body = response.body();
                     if (body == null) return;
                     String code = body.getCode();
-                    Log.i("dyy",code);
+                    Log.i("dyy", code);
                     if (code.equals("200")) {
                         if (body.getMsg().getPassword().equals(md5)) {
                             App.KEY_LOGIN = 2;
-                            input(phone,password);
+                            input(phone, password);
                             Bundle bundle = new Bundle();
                             bundle.putSerializable("headPortrait", body.getMsg().getHeadPortrait());//头像地址
                             bundle.putSerializable("realName", body.getMsg().getRealName());//用户名字
@@ -169,7 +168,7 @@ public class LoginActivity extends App implements View.OnClickListener {
                             bundle.putSerializable("skill", body.getMsg().getSkill());//技能（先不用）
                             bundle.putSerializable("interest", body.getMsg().getSkill());//兴趣（先不用）
 
-                            input1(body.getMsg().getHeadPortrait(),body.getMsg().getRealName(),body.getMsg().getSex(),body.getMsg().getUserName(),body.getMsg().getSpared1(),body.getMsg().getIndustry(),body.getMsg().getSite(),body.getMsg().getSkill(),body.getMsg().getInterest(),body.getMsg().getConstellation(),body.getMsg().getCompanyId());
+                            input1(body.getMsg().getHeadPortrait(), body.getMsg().getRealName(), body.getMsg().getSex(), body.getMsg().getUserName(), body.getMsg().getSpared1(), body.getMsg().getIndustry(), body.getMsg().getSite(), body.getMsg().getSkill(), body.getMsg().getInterest(), body.getMsg().getConstellation(), body.getMsg().getCompanyId());
                             App.USER_ID = body.getMsg().getUserId();
                             App.SPACE_ID = body.getMsg().getSpaceId();
 
@@ -199,7 +198,6 @@ public class LoginActivity extends App implements View.OnClickListener {
 
 
     }
-
 
 
     @Override

@@ -189,6 +189,7 @@ public class RegisterActivity extends App implements View.OnClickListener {
                     if (code.length() == 0) return;
                     if (code.equals("200")) {
                         Toast.makeText(RegisterActivity.this, "注册成功", Toast.LENGTH_SHORT).show();
+                        finish();
                     } else if (code.equals("500")) {
                         Toast.makeText(RegisterActivity.this, "注册失败", Toast.LENGTH_SHORT).show();
                     }

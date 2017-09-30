@@ -254,7 +254,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Adap
         //开始请求空间列表数据
         HttpAPI api = Http.getInstance().create(HttpAPI.class);
         //调用接口
-        Call<SpaceList> call = api.getSpaceListData();
+        Call<SpaceList> call = api.getSpaceListData("c81e728d9d4c2f636f067f89cc14862c");
         call.enqueue(new Callback<SpaceList>() {
             @Override
             public void onResponse(Call<SpaceList> call, Response<SpaceList> response) {

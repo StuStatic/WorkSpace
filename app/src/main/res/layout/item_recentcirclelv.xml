@@ -15,7 +15,6 @@
         android:id="@+id/name_recentcircle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="夏侯惇"
         android:textColor="@color/colorBlue"
         android:layout_toRightOf="@id/head_recentcircle"
         android:layout_marginTop="40dp"
@@ -24,52 +23,63 @@
         android:id="@+id/content_recentcircle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="赵亮亮是放大发发发范德萨发福利可点击阿凡达酸辣粉发动机埃里克放大了疯狂大家分开打飞机拉飞机大开发廊坊骄傲了发卡机"
-        android:textColor="@color/colorBlack"
+        android:textColor="@color/black3"
         android:layout_below="@id/head_recentcircle"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="25dp"
         android:ellipsize="end"
         android:maxEms="20"/>
-    <LinearLayout
-        android:id="@+id/image_recentcircle"
+    <GridView
+        android:id="@+id/gv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_below="@id/content_recentcircle"
+        android:layout_height="wrap_content"
         android:layout_marginRight="15dp"
-        android:layout_marginLeft="15dp">
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/beijing"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"/>
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/tianjin"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"/>
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/shanghai"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"/>
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:horizontalSpacing="2dp"
+        android:numColumns="3"
+        android:verticalSpacing="8dp" />
+    <!--<LinearLayout-->
+    <!--android:id="@+id/image_recentcircle"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:layout_below="@id/content_recentcircle"-->
+    <!--android:layout_marginRight="15dp"-->
+    <!--android:layout_marginLeft="15dp">-->
+    <!--<ImageView-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_weight="1"-->
+    <!--android:src="@drawable/beijing"-->
+    <!--android:paddingLeft="5dp"-->
+    <!--android:paddingRight="5dp"/>-->
+    <!--<ImageView-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_weight="1"-->
+    <!--android:src="@drawable/tianjin"-->
+    <!--android:paddingLeft="5dp"-->
+    <!--android:paddingRight="5dp"/>-->
+    <!--<ImageView-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_weight="1"-->
+    <!--android:src="@drawable/shanghai"-->
+    <!--android:paddingLeft="5dp"-->
+    <!--android:paddingRight="5dp"/>-->
 
-    </LinearLayout>
+    <!--</LinearLayout>-->
 
     <TextView
+        android:textSize="12sp"
         android:id="@+id/time_recentcircle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:text="5分钟前"
         android:textColor="@color/colorGray"
         android:layout_marginTop="40dp"
         android:layout_marginRight="20dp"/>

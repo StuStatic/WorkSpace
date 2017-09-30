@@ -1,14 +1,12 @@
 package com.ylg.workspace.workspace.Application;
 
 import android.app.Application;
-
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 import com.umeng.socialize.Config;
 import com.umeng.socialize.PlatformConfig;
 import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.common.QueuedWork;
-
 
 public class MyApplication extends Application {
 

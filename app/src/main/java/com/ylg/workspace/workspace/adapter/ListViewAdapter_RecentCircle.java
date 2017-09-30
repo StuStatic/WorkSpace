@@ -1,15 +1,20 @@
 package com.ylg.workspace.workspace.adapter;
 
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.ylg.workspace.workspace.R;
+import com.ylg.workspace.workspace.bean.Circle;
+import com.ylg.workspace.workspace.http.Http;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -17,16 +22,17 @@ import java.util.List;
  */
 
 public class ListViewAdapter_RecentCircle extends BaseAdapter {
-    private List<String> datas;
-    private LayoutInflater inflater;
-    //构造方法
-    public ListViewAdapter_RecentCircle(Context context , List<String> datas){
-        this.datas = datas;
-        inflater = LayoutInflater.from(context);
+    private Circle list;
+    private Context context;
+
+    public ListViewAdapter_RecentCircle(Circle list, Context context) {
+        this.list = list;
+        this.context = context;
     }
+
     @Override
     public int getCount() {
-        return datas.size();
+        return list.getMsg().size();
     }
 
     @Override
@@ -42,38 +48,41 @@ public class ListViewAdapter_RecentCircle extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         ListViewAdapter_RecentCircle.ViewHolder viewHolder;
-        if(view==null){
-            view=inflater.inflate(R.layout.item_recentcirclelv,viewGroup ,false);
-            viewHolder=new ListViewAdapter_RecentCircle.ViewHolder(view);
+        if (view == null) {
+            view = View.inflate(context, R.layout.item_recentcirclelv, null);
+            viewHolder = new ListViewAdapter_RecentCircle.ViewHolder(view);
             view.setTag(viewHolder);
-        }else{
-            viewHolder=(ListViewAdapter_RecentCircle.ViewHolder) view.getTag();
+        } else {
+            viewHolder = (ListViewAdapter_RecentCircle.ViewHolder) view.getTag();
 
         }
         //设置文字
-        viewHolder.tv_content.setText(datas.get(i));
-//        viewHolder.tv_peoplenum.setText("12-14人");
-//        viewHolder.tv_floor.setText("第4层");
-//        viewHolder.tv_price.setText("150元/30分钟");
-        //日期和图片暂时不设置
+        viewHolder.tv_content.setText(list.getMsg().get(i).getTextWord());
+        viewHolder.tv_name.setText(list.getMsg().get(i).getUserName());
+        viewHolder.tv_time.setText(list.getMsg().get(i).getCreationTime());
+        Glide.with(context).load(Http.API_URL + list.getMsg().get(i).getPicture()).diskCacheStrategy(DiskCacheStrategy.ALL).into(viewHolder.img);
+        String str = list.getMsg().get(i).getSharePicture();
+        String[] arr = str.split(",");
+        List<String> l = Arrays.asList(arr);
+        viewHolder.gv.setAdapter(new CircleAdapter(l, context));
 
 
         return view;
     }
-    private class ViewHolder{
-        TextView tv_content,tv_name,tv_price,tv_floor,tv_content01,tv_content02,tv_content03,tv_content04;
+
+    private class ViewHolder {
+        TextView tv_content, tv_name, tv_time;
         ImageView img;
-        public ViewHolder(View view){
+        GridView gv;
+
+        public ViewHolder(View view) {
+            gv = (GridView) view.findViewById(R.id.gv);
             //初始化TextView
-//            tv_name=(TextView)view.findViewById(R.id.placeorder_name);
-//            tv_address=(TextView)view.findViewById(R.id.placeorder_address);
-//            tv_floor=(TextView)view.findViewById(R.id.placeorder_floor);
-            tv_content=(TextView)view.findViewById(R.id.content_recentcircle);
-//            tv_content02=(TextView)view.findViewById(R.id.placeorder_tv02);
-//            tv_content03=(TextView)view.findViewById(R.id.placeorder_tv03);
-//            tv_content04=(TextView)view.findViewById(R.id.placeorder_tv04);
+            tv_name = (TextView) view.findViewById(R.id.name_recentcircle);
+            tv_time = (TextView) view.findViewById(R.id.time_recentcircle);
+            tv_content = (TextView) view.findViewById(R.id.content_recentcircle);
 //            //初始化ImageView
-//            img=(ImageView)view.findViewById(R.id.placeorder_img);
+            img = (ImageView) view.findViewById(R.id.head_recentcircle);
 
         }
     }

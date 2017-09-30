@@ -13,13 +13,10 @@ import android.widget.ListView;
 import com.bigkoo.pickerview.TimePickerView;
 import com.ylg.workspace.workspace.R;
 import com.ylg.workspace.workspace.adapter.OtherdateAdapter_Meetroom;
-import com.ylg.workspace.workspace.adapter.OtherdateAdapter_Workplace;
-import com.ylg.workspace.workspace.adapter.TodayAdapter_Meetroom;
 import com.ylg.workspace.workspace.bean.MeetRoom;
 import com.ylg.workspace.workspace.http.Http;
 import com.ylg.workspace.workspace.http.HttpAPI;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -31,7 +28,7 @@ import retrofit2.Response;
  * A simple {@link Fragment} subclass.
  */
 public class OtherDateFragment_meetroom extends Fragment {
-    private List<MeetRoom.MsgEntity> datas;
+    private List<MeetRoom.MsgBean> datas;
     private ListView listView;
     //时间选择器
     private TimePickerView pvTime;

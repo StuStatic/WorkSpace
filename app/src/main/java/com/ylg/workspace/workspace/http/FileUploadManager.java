@@ -229,6 +229,42 @@ public class FileUploadManager {
         });
     }
 
+    //发朋友圈
+    public static void addShare(int s1, String s2, ArrayList<String> paths, final Context context, final IphoneDialog id) {
+        Map<String, RequestBody> photos = new HashMap<>();
+        if (paths.size() > 0) {
+            Log.d("zp", "order: " + paths.size());
+            for (int i = 0; i < paths.size(); i++) {
+                File file = new File(paths.get(i));
+                photos.put("file\"; filename=\"" + file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));
+            }
+        }
+        HttpAPI httpAPI1 = Http.getInstance1().create(HttpAPI.class);
+        httpAPI1.addShare(s1, s2, photos).enqueue(new Callback<Service>() {
+            @Override
+            public void onResponse(Call<Service> call, Response<Service> response) {
+                id.dismiss();
+
+                Service b = response.body();
+               // Log.d(TAG, "onResponse: " + response.body().toString());
+                if (b != null && b.getCode().equals("200")) {
+                    Toast.makeText(context, "上传成功", Toast.LENGTH_SHORT).show();
+                    ((Activity) context).finish();
+                } else {
+                    Toast.makeText(context, "上传失败", Toast.LENGTH_SHORT).show();
+                }
+                Log.d(TAG, "onResponse() called with: " + "call = [" + call + "], response = [" + response + "]");
+            }
+
+            @Override
+            public void onFailure(Call<Service> call, Throwable t) {
+                id.dismiss();
+                Toast.makeText(context, "上传失败", Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "onFailure() called with: " + "call = [" + call + "], t = [" + t + "]");
+            }
+        });
+    }
+
     //报修
     public static void questionFix(String s1, String s2, String s3, String s4, String s5, String s6, ArrayList<String> paths, final Context context, final IphoneDialog id) {
         Map<String, RequestBody> photos = new HashMap<>();

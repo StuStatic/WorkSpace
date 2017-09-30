@@ -98,7 +98,6 @@ public class App extends AppCompatActivity {
         edit2.putString("site", site);//收货地址
         edit2.putString("constellation", constellation);//星座
         edit2.putString("companyId", companyId);//星座
-
         edit2.putString("skill", skill);//技能（先不用）
         edit2.putString("interest", interest);//兴趣（先不用）
         edit2.commit();

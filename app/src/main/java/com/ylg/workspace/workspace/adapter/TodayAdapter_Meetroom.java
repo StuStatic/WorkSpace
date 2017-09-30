@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -15,28 +14,50 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.ylg.workspace.workspace.R;
+import com.ylg.workspace.workspace.activity.service.bean.Service;
 import com.ylg.workspace.workspace.bean.MeetRoom;
+import com.ylg.workspace.workspace.bean.MeetRoomOrder;
+import com.ylg.workspace.workspace.bean.StartEndTime;
 import com.ylg.workspace.workspace.http.Http;
+import com.ylg.workspace.workspace.http.HttpAPI;
+import com.ylg.workspace.workspace.view.HorizontalListView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by stu on 2017/7/11.
  */
 
 public class TodayAdapter_Meetroom extends BaseAdapter {
-    private List<MeetRoom.MsgEntity> datas;
+    private List<MeetRoomOrder> l1;
+    private List<StartEndTime> l;
+    private List<MeetRoom.MsgBean> datas;
     private LayoutInflater inflater;
     private Context context;
-    private int state01,state02,state03,state04,state05,state06,state07,state08,state09,state10,state11,state12,state13,state14,state15,state16,state17,state18,state19,state20,state21,state22,state23,state24;//未选0（空白），被别人选1（灰灰），自己选2(绿)；
+    private int state01, state02, state03, state04, state05, state06, state07, state08, state09, state10, state11, state12, state13, state14, state15, state16, state17, state18, state19, state20, state21, state22, state23, state24;//未选0（空白），被别人选1（灰灰），自己选2(绿)；
     private double totaltime;
     private int currentItem = -1; //用于记录点击的 Item 的 position，是控制 item 展开的核心
     //构造方法
-    public TodayAdapter_Meetroom(Context context , List<MeetRoom.MsgEntity> datas){
+    private String startTime = "";
+    private String endTime = "";
+    private SimpleDateFormat sdf;
+    private Date date;
+    private String date1;
+
+    public TodayAdapter_Meetroom(List<MeetRoomOrder> l1, List<StartEndTime> l, List<MeetRoom.MsgBean> datas, String date1, Context context) {
+        this.l1 = l1;
+        this.l = l;
         this.datas = datas;
         this.context = context;
-        inflater = LayoutInflater.from(context);
+        this.date1 = date1;
     }
+
     @Override
     public int getCount() {
         return datas.size();
@@ -53,35 +74,161 @@ public class TodayAdapter_Meetroom extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View view, ViewGroup viewGroup) {
+    public View getView(final int position, View view, ViewGroup viewGroup) {
         final TodayAdapter_Meetroom.ViewHolder viewHolder;
-        if(view==null){
-            view=inflater.inflate(R.layout.item_meetroomtodaylv,viewGroup ,false);
-            viewHolder=new TodayAdapter_Meetroom.ViewHolder(view);
+        if (view == null) {
+            view = View.inflate(context, R.layout.item_meetroomtodaylv, null);
+            viewHolder = new TodayAdapter_Meetroom.ViewHolder(view);
             view.setTag(viewHolder);
-        }else{
-            viewHolder=(TodayAdapter_Meetroom.ViewHolder) view.getTag();
+        } else {
+            viewHolder = (TodayAdapter_Meetroom.ViewHolder) view.getTag();
 
         }
         /**
          * 注意：我们在此给响应点击事件的区域（我的例子里是 showArea 的线性布局）添加Tag，为了记录点击的 position，我们正好用 position 设置 Tag
          * 若监听整个item布局该处使用viewHolder.item1.setTag(position)
-         * 注：listview中的item内的视图的点击事件要在adapter中写
-         * writen by stu爸爸
          */
         viewHolder.img_order_show.setTag(position);
         //设置文字datas.get(position).getConferenceName()
         viewHolder.tv_address.setText(datas.get(position).getConferenceName());
         viewHolder.tv_peoplenum.setText(datas.get(position).getConferenceDescribe());
         viewHolder.tv_floor.setText(datas.get(position).getLocation());
-        viewHolder.tv_price.setText(datas.get(position).getConferencePrice()+"");
+        viewHolder.tv_noRoom.setText("您将被安排在" + datas.get(position).getLocation());
+        viewHolder.tv_openTime.setText("会议室开放时间" + l.get(position).getStartTime() + ":00-" + l.get(position).getEndTime() + ":00");
+        viewHolder.tv_price.setText(datas.get(position).getConferencePrice() + "");
+
+        int i1 = l.get(position).getStartTime();
+        int i2 = l.get(position).getEndTime();
+        Log.d("zp", "getView: " + l1.toString());
+        Log.d("zp", "getView: " + l1.size());
+//        sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+//        try {
+//            date = sdf.parse();
+//            sdf = new SimpleDateFormat("yyyy/MM/dd");
+//            date1 = sdf.format(date)+" ";
+//            Log.d("zp", "date:"+date1);
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+
+        HorizontalListViewAdapter hlv = new HorizontalListViewAdapter(context, l1.get(position), i1, i2);
+        //hlv.notifyDataSetChanged();
+        viewHolder.horizontalListView.setAdapter(hlv);
+        viewHolder.iv_order.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (startTime.equals("")) {
+                    Toast.makeText(context, "您还未选择时间段", Toast.LENGTH_SHORT).show();
+                } else {
+                    HttpAPI api = Http.getInstance().create(HttpAPI.class);
+                    Log.d("zp", "onClick: " + datas.get(position).getSpaceId() + "---" + datas.get(position).getConferenceId());
+                    Call call = api.orderMeetRoom(datas.get(position).getSpaceId(), datas.get(position).getConferenceId(), startTime, endTime);
+
+                    call.enqueue(new Callback<Service>() {
+                        @Override
+                        public void onResponse(Call<Service> call, Response<Service> response) {
+                            Service service = response.body();
+                            Log.d("zp", "aaaaaaa:" + service.toString());
+                            if (service != null && service.getCode().equals("200")) {
+                                Toast.makeText(context, "预约成功", Toast.LENGTH_SHORT).show();
+                            } else if (service != null && service.getCode().equals("202")) {
+                                Toast.makeText(context, "该时段已被预约", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(context, "预约失败", Toast.LENGTH_SHORT).show();
+                            }
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<Service> call, Throwable t) {
+                            Toast.makeText(context, "预约失败！", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+            }
+        });
+
+        hlv.setSubClickListener(new HorizontalListViewAdapter.SubClickListener() {
+            @Override
+            public void OnTopicClickListener(double d1, double d2) {
+                Log.d("zp", "d1:" + d1 + "d2:" + d2);
+                viewHolder.tv_totaltime.setText((d2 - d1 + 0.5) + "");
+                String s2 = String.valueOf(d2);
+                String s1 = String.valueOf(d1);
+                if (s2.contains(".5")) {
+                    s2 = String.valueOf(d2 + 1.0).substring(0, s2.length() - 2);
+
+                    if (s1.contains(".5")) {
+                        s1 = s1.substring(0, s1.length() - 2);
+                        startTime = date1 + " " + s1 + ":30";
+                        endTime = date1 + " " + s2 + ":00";
+                        Log.d("zp", "OnTopicClickListener: " + startTime + "==" + endTime);
+                        viewHolder.tv_long.setText("(" + s1 + ":30-" + s2 + ":00)");
+                    } else {
+                        s1 = s1.substring(0, s1.length() - 2);
+                        startTime = date1 + " " + s1 + ":00";
+                        endTime = date1 + " " + s2 + ":00";
+                        Log.d("zp", "OnTopicClickListener: " + startTime + "==" + endTime);
+                        viewHolder.tv_long.setText("(" + s1 + ":00-" + s2 + ":00)");
+                    }
+                } else {
+                    s2 = String.valueOf(d2).substring(0, s2.length() - 2);
+
+                    if (s1.contains(".5")) {
+                        s1 = s1.substring(0, s1.length() - 2);
+                        startTime = date1 + " " + s1 + ":30";
+                        endTime = date1 + " " + s2 + ":30";
+                        Log.d("zp", "OnTopicClickListener: " + startTime + "==" + endTime);
+                        viewHolder.tv_long.setText("(" + s1 + ":30-" + s2 + ":30)");
+                    } else {
+                        s1 = s1.substring(0, s1.length() - 2);
+                        startTime = date1 + " " + s1 + ":00";
+                        endTime = date1 + " " + s2 + ":00";
+                        Log.d("zp", "OnTopicClickListener: " + startTime + "==" + endTime);
+                        viewHolder.tv_long.setText("(" + s1 + ":00-" + s2 + ":30)");
+                    }
+                }
+            }
+
+            @Override
+            public void OnTopicClickListener1(double d1, double d2) {
+                Log.d("zp", "d1:" + d1 + "d2:" + d2);
+                viewHolder.tv_totaltime.setText((d2 - d1) + "");
+                String s2 = String.valueOf(d2);
+                String s1 = String.valueOf(d1);
+                if (s2.contains(".5")) {
+                    s2 = s2.substring(0, s2.length() - 2);
+                    s1 = s1.substring(0, s1.length() - 2);
+                    startTime = date1 + " " + s1 + ":00";
+                    endTime = date1 + " " + s2 + ":30";
+                    Log.d("zp", "OnTopicClickListener: " + startTime + "==" + endTime);
+                    viewHolder.tv_long.setText("(" + s1 + ":00-" + s1 + ":30)");
+                } else {
+                    s2 = s2.substring(0, s2.length() - 2);
+                    s1 = s1.substring(0, s1.length() - 2);
+                    startTime = date1 + " " + s1 + ":30";
+                    endTime = date1 + " " + s2 + ":00";
+                    Log.d("zp", "OnTopicClickListener: " + startTime + "==" + endTime);
+                    viewHolder.tv_long.setText("(" + s1 + ":30-" + s2 + ":00)");
+                }
+            }
+        });
+
+
         //日期和图片暂时不设置
-        Glide.with(context).load(Http.API_URL+datas.get(position).getConferencePicture()).into(viewHolder.img);
+        Glide.with(context).load(Http.API_URL + datas.get(position).getConferencePicture()).into(viewHolder.img);
         //根据 currentItem 记录的点击位置来设置"对应Item"的可见性（在list依次加载列表数据时，每加载一个时都看一下是不是需改变可见性的那一条）
         if (currentItem == position) {
             viewHolder.item2.setVisibility(View.VISIBLE);
+
+
         } else {
             viewHolder.item2.setVisibility(View.GONE);
+            viewHolder.tv_totaltime.setText("0.0");
+            viewHolder.tv_long.setText("");
+//            startTime="";
+//            endTime="";
+
         }
 
 
@@ -103,485 +250,42 @@ public class TodayAdapter_Meetroom extends BaseAdapter {
         });
 
 
-        //horizontalscrollview的点击事件
-        if(viewHolder.item2.getVisibility()==View.VISIBLE){
-           viewHolder.time01.setOnClickListener(new View.OnClickListener() {
-               @Override
-               public void onClick(View view) {
-                   if(state01==0 && state01!=1 && state01!=2){//可选状态
-                       viewHolder.time01.setImageResource(R.drawable.order_greenstate);
-                       state01=2;//更改选中状态
-                       totaltime=totaltime+0.5;
-                       Log.e("totaltime1:",totaltime+"");
-                       viewHolder.tv_totaltime.setText(totaltime+"");//动态设置总时间
-                   }else if(state01==1 && state01!=0 && state01!=2){//已被预订状态
-                       Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                   }else if(state01==2 && state01!=0 && state01!=1){//自己的选定状态
-                       viewHolder.time01.setImageResource(R.drawable.item_emptystate);
-                       state01=0;
-                       totaltime=totaltime-0.5;
-                       Log.e("totaltime2:",totaltime+"");
-                       viewHolder.tv_totaltime.setText(totaltime+"");
-                   }
-
-               }
-           });
-            viewHolder.time02.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if(state02==0 && state02!=1 && state02!=2){//可选状态
-                        viewHolder.time02.setImageResource(R.drawable.order_greenstate);
-                        state02=2;
-                        totaltime=totaltime+0.5;
-                    }else if(state02==1 && state02!=0 && state02!=2){//已被预订状态
-                        Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                    }else if(state02==2 && state02!=0 && state02!=1){//自己的选定状态
-                        viewHolder.time02.setImageResource(R.drawable.item_emptystate);
-                        state02=0;
-                        totaltime=totaltime-0.5;
-                    }
-                    viewHolder.tv_totaltime.setText(totaltime+"");
-
-                }
-            });
-            viewHolder.time03.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if(state03==0 && state03!=1 && state03!=2){//可选状态
-                        viewHolder.time03.setImageResource(R.drawable.order_greenstate);
-                        state03=2;
-                        totaltime=totaltime+0.5;
-                    }else if(state03==1 && state03!=0 && state03!=2){//已被预订状态
-                        Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                    }else if(state03==2 && state03!=0 && state03!=1){//自己的选定状态
-                        viewHolder.time03.setImageResource(R.drawable.item_emptystate);
-                        state03=0;
-                        totaltime=totaltime-0.5;
-                    }
-                    viewHolder.tv_totaltime.setText(totaltime+"");
-                }
-            });
-            viewHolder.time04.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if(state04==0 && state04!=1 && state04!=2){//可选状态
-                        viewHolder.time04.setImageResource(R.drawable.order_greenstate);
-                        state04=2;
-                        totaltime=totaltime+0.5;
-                    }else if(state04==1 && state04!=0 && state04!=2){//已被预订状态
-                        Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                    }else if(state04==2 && state04!=0 && state04!=1){//自己的选定状态
-                        viewHolder.time04.setImageResource(R.drawable.item_emptystate);
-                        state04=0;
-                        totaltime=totaltime-0.5;
-                    }
-                    viewHolder.tv_totaltime.setText(totaltime+"");
-                }
-            });
-            viewHolder.time05.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if(state05==0 && state05!=1 && state05!=2){//可选状态
-                        viewHolder.time05.setImageResource(R.drawable.order_greenstate);
-                        state05=2;
-                        totaltime=totaltime+0.5;
-                    }else if(state05==1 && state05!=0 && state05!=2){//已被预订状态
-                        Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                    }else if(state05==2 && state05!=0 && state05!=1){//自己的选定状态
-                        viewHolder.time05.setImageResource(R.drawable.item_emptystate);
-                        state05=0;
-                        totaltime=totaltime-0.5;
-                    }
-                    viewHolder.tv_totaltime.setText(totaltime+"");
-                }
-            });
-            viewHolder.time06.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if(state06==0 && state06!=1 && state06!=2){//可选状态
-                        viewHolder.time06.setImageResource(R.drawable.order_greenstate);
-                        state06=2;
-                        totaltime=totaltime+0.5;
-                    }else if(state06==1 && state06!=0 && state06!=2){//已被预订状态
-                        Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                    }else if(state06==2 && state06!=0 && state06!=1){//自己的选定状态
-                        viewHolder.time06.setImageResource(R.drawable.item_emptystate);
-                        state06=0;
-                        totaltime=totaltime-0.5;
-                    }
-                    viewHolder.tv_totaltime.setText(totaltime+"");
-                }
-            });
-            viewHolder.time07.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if(state07==0 && state07!=1 && state07!=2){//可选状态
-                        viewHolder.time07.setImageResource(R.drawable.order_greenstate);
-                        state07=2;
-                        totaltime=totaltime+0.5;
-                    }else if(state07==1 && state07!=0 && state07!=2){//已被预订状态
-                        Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                    }else if(state07==2 && state07!=0 && state07!=1){//自己的选定状态
-                        viewHolder.time07.setImageResource(R.drawable.item_emptystate);
-                        state07=0;
-                        totaltime=totaltime-0.5;
-                    }
-                    viewHolder.tv_totaltime.setText(totaltime+"");
-                }
-            });
-            viewHolder.time08.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if(state08==0 && state08!=1 && state08!=2){//可选状态
-                        viewHolder.time08.setImageResource(R.drawable.order_greenstate);
-                        state08=2;
-                        totaltime=totaltime+0.5;
-                    }else if(state08==1 && state08!=0 && state08!=2){//已被预订状态
-                        Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                    }else if(state08==2 && state08!=0 && state08!=1){//自己的选定状态
-                        viewHolder.time08.setImageResource(R.drawable.item_emptystate);
-                        state08=0;
-                        totaltime=totaltime-0.5;
-                    }
-                    viewHolder.tv_totaltime.setText(totaltime+"");
-                }
-            });
-            viewHolder.time09.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if(state09==0 && state09!=1 && state09!=2){//可选状态
-                        viewHolder.time09.setImageResource(R.drawable.order_greenstate);
-                        state09=2;
-                        totaltime=totaltime+0.5;
-                    }else if(state09==1 && state09!=0 && state09!=2){//已被预订状态
-                        Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                    }else if(state09==2 && state09!=0 && state09!=1){//自己的选定状态
-                        viewHolder.time09.setImageResource(R.drawable.item_emptystate);
-                        state09=0;
-                        totaltime=totaltime-0.5;
-                    }
-                    viewHolder.tv_totaltime.setText(totaltime+"");
-                }
-            });
-            viewHolder.time10.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if(state10==0 && state10!=1 && state10!=2){//可选状态
-                        viewHolder.time10.setImageResource(R.drawable.order_greenstate);
-                        state10=2;
-                        totaltime=totaltime+0.5;
-                    }else if(state10==1 && state10!=0 && state10!=2){//已被预订状态
-                        Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                    }else if(state10==2 && state10!=0 && state10!=1){//自己的选定状态
-                        viewHolder.time10.setImageResource(R.drawable.item_emptystate);
-                        state10=0;
-                        totaltime=totaltime-0.5;
-                    }
-                    viewHolder.tv_totaltime.setText(totaltime+"");
-                }
-            });
-            viewHolder.time11.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if(state11==0 && state11!=1 && state11!=2){//可选状态
-                        viewHolder.time11.setImageResource(R.drawable.order_greenstate);
-                        state11=2;
-                        totaltime=totaltime+0.5;
-                    }else if(state11==1 && state11!=0 && state11!=2){//已被预订状态
-                        Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                    }else if(state11==2 && state11!=0 && state11!=1){//自己的选定状态
-                        viewHolder.time11.setImageResource(R.drawable.item_emptystate);
-                        state11=0;
-                        totaltime=totaltime-0.5;
-                    }
-                    viewHolder.tv_totaltime.setText(totaltime+"");
-                }
-            });
-            viewHolder.time12.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if(state12==0 && state12!=1 && state12!=2){//可选状态
-                        viewHolder.time12.setImageResource(R.drawable.order_greenstate);
-                        state12=2;
-                        totaltime=totaltime+0.5;
-                    }else if(state12==1 && state12!=0 && state12!=2){//已被预订状态
-                        Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                    }else if(state12==2 && state12!=0 && state12!=1){//自己的选定状态
-                        viewHolder.time12.setImageResource(R.drawable.item_emptystate);
-                        state12=0;
-                        totaltime=totaltime-0.5;
-                    }
-                    viewHolder.tv_totaltime.setText(totaltime+"");
-                }
-            });
-            viewHolder.time13.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if(state13==0 && state13!=1 && state13!=2){//可选状态
-                        viewHolder.time13.setImageResource(R.drawable.order_greenstate);
-                        state13=2;
-                        totaltime=totaltime+0.5;
-                    }else if(state13==1 && state13!=0 && state13!=2){//已被预订状态
-                        Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                    }else if(state13==2 && state13!=0 && state13!=1){//自己的选定状态
-                        viewHolder.time13.setImageResource(R.drawable.item_emptystate);
-                        state13=0;
-                        totaltime=totaltime-0.5;
-                    }
-                    viewHolder.tv_totaltime.setText(totaltime+"");
-                }
-            });
-            viewHolder.time14.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if(state14==0 && state14!=1 && state14!=2){//可选状态
-                        viewHolder.time14.setImageResource(R.drawable.order_greenstate);
-                        state14=2;
-                        totaltime=totaltime+0.5;
-                    }else if(state14==1 && state14!=0 && state14!=2){//已被预订状态
-                        Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                    }else if(state14==2 && state14!=0 && state14!=1){//自己的选定状态
-                        viewHolder.time14.setImageResource(R.drawable.item_emptystate);
-                        state14=0;
-                        totaltime=totaltime-0.5;
-                    }
-                    viewHolder.tv_totaltime.setText(totaltime+"");
-                }
-            });
-            viewHolder.time15.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if(state15==0 && state15!=1 && state15!=2){//可选状态
-                        viewHolder.time15.setImageResource(R.drawable.order_greenstate);
-                        state15=2;
-                        totaltime=totaltime+0.5;
-                    }else if(state15==1 && state15!=0 && state15!=2){//已被预订状态
-                        Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                    }else if(state15==2 && state15!=0 && state15!=1){//自己的选定状态
-                        viewHolder.time15.setImageResource(R.drawable.item_emptystate);
-                        state15=0;
-                        totaltime=totaltime-0.5;
-                    }
-                    viewHolder.tv_totaltime.setText(totaltime+"");
-                }
-            });
-            viewHolder.time16.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if(state16==0 && state16!=1 && state16!=2){//可选状态
-                        viewHolder.time16.setImageResource(R.drawable.order_greenstate);
-                        state16=2;
-                        totaltime=totaltime+0.5;
-                    }else if(state16==1 && state16!=0 && state16!=2){//已被预订状态
-                        Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                    }else if(state16==2 && state16!=0 && state16!=1){//自己的选定状态
-                        viewHolder.time16.setImageResource(R.drawable.item_emptystate);
-                        state16=0;
-                        totaltime=totaltime-0.5;
-                    }
-                    viewHolder.tv_totaltime.setText(totaltime+"");
-                }
-            });
-            viewHolder.time17.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if(state17==0 && state17!=1 && state17!=2){//可选状态
-                        viewHolder.time17.setImageResource(R.drawable.order_greenstate);
-                        state17=2;
-                        totaltime=totaltime+0.5;
-                    }else if(state17==1 && state17!=0 && state17!=2){//已被预订状态
-                        Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                    }else if(state17==2 && state17!=0 && state17!=1){//自己的选定状态
-                        viewHolder.time17.setImageResource(R.drawable.item_emptystate);
-                        state17=0;
-                        totaltime=totaltime-0.5;
-                    }
-                    viewHolder.tv_totaltime.setText(totaltime+"");
-                }
-            });
-            viewHolder.time18.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if(state18==0 && state18!=1 && state18!=2){//可选状态
-                        viewHolder.time18.setImageResource(R.drawable.order_greenstate);
-                        state18=2;
-                        totaltime=totaltime+0.5;
-                    }else if(state18==1 && state18!=0 && state18!=2){//已被预订状态
-                        Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                    }else if(state18==2 && state18!=0 && state18!=1){//自己的选定状态
-                        viewHolder.time18.setImageResource(R.drawable.item_emptystate);
-                        state18=0;
-                        totaltime=totaltime-0.5;
-                    }
-                    viewHolder.tv_totaltime.setText(totaltime+"");
-
-                }
-            });
-            viewHolder.time19.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if(state19==0 && state19!=1 && state19!=2){//可选状态
-                        viewHolder.time19.setImageResource(R.drawable.order_greenstate);
-                        state19=2;
-                        totaltime=totaltime+0.5;
-                    }else if(state19==1 && state19!=0 && state19!=2){//已被预订状态
-                        Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                    }else if(state19==2 && state19!=0 && state19!=1){//自己的选定状态
-                        viewHolder.time19.setImageResource(R.drawable.item_emptystate);
-                        state19=0;
-                        totaltime=totaltime-0.5;
-                    }
-                    viewHolder.tv_totaltime.setText(totaltime+"");
-                }
-            });
-            viewHolder.time20.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if(state20==0 && state20!=1 && state20!=2){//可选状态
-                        viewHolder.time20.setImageResource(R.drawable.order_greenstate);
-                        state20=2;
-                        totaltime=totaltime+0.5;
-                    }else if(state20==1 && state20!=0 && state20!=2){//已被预订状态
-                        Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                    }else if(state20==2 && state20!=0 && state20!=1){//自己的选定状态
-                        viewHolder.time20.setImageResource(R.drawable.item_emptystate);
-                        state20=0;
-                        totaltime=totaltime-0.5;
-                    }
-                    viewHolder.tv_totaltime.setText(totaltime+"");
-                }
-            });
-            viewHolder.time21.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if(state21==0 && state21!=1 && state21!=2){//可选状态
-                        viewHolder.time21.setImageResource(R.drawable.order_greenstate);
-                        state21=2;
-                        totaltime=totaltime+0.5;
-                    }else if(state21==1 && state21!=0 && state21!=2){//已被预订状态
-                        Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                    }else if(state21==2 && state21!=0 && state21!=1){//自己的选定状态
-                        viewHolder.time21.setImageResource(R.drawable.item_emptystate);
-                        state21=0;
-                        totaltime=totaltime-0.5;
-                    }
-                    viewHolder.tv_totaltime.setText(totaltime+"");
-                }
-            });
-            viewHolder.time22.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if(state22==0 && state22!=1 && state22!=2){//可选状态
-                        viewHolder.time22.setImageResource(R.drawable.order_greenstate);
-                        state22=2;
-                        totaltime=totaltime+0.5;
-                    }else if(state22==1 && state22!=0 && state22!=2){//已被预订状态
-                        Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                    }else if(state22==2 && state22!=0 && state22!=1){//自己的选定状态
-                        viewHolder.time22.setImageResource(R.drawable.item_emptystate);
-                        state22=0;
-                        totaltime=totaltime-0.5;
-                    }
-                    viewHolder.tv_totaltime.setText(totaltime+"");
-                }
-            });
-            viewHolder.time23.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                    if(state23==0 && state23!=1 && state23!=2){//可选状态
-                        viewHolder.time23.setImageResource(R.drawable.order_greenstate);
-                        state23=2;
-                        totaltime=totaltime+0.5;
-                    }else if(state23==1 && state23!=0 && state23!=2){//已被预订状态
-                        Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                    }else if(state23==2 && state23!=0 && state23!=1){//自己的选定状态
-                        viewHolder.time23.setImageResource(R.drawable.item_emptystate);
-                        state23=0;
-                        totaltime=totaltime-0.5;
-                    }
-                    viewHolder.tv_totaltime.setText(totaltime+"");
-                }
-            });
-            viewHolder.time24.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Log.e("time24_click","time24_click");
-                    if(state24==0 && state24!=1 && state24!=2){//可选状态
-                        viewHolder.time24.setImageResource(R.drawable.order_greenstate);
-                        state24=2;
-                        totaltime=totaltime+0.5;
-                    }else if(state24==1 && state24!=0 && state24!=2){//已被预订状态
-                        Toast.makeText(context, "该时间段已被预订", Toast.LENGTH_SHORT).show();
-                    }else if(state24==2 && state24!=0 && state24!=1){//自己的选定状态
-                        viewHolder.time24.setImageResource(R.drawable.item_emptystate);
-                        state24=0;
-                        totaltime=totaltime-0.5;
-                    }
-                    viewHolder.tv_totaltime.setText(totaltime+"");
-                }
-            });
-
-        }
-
-
         return view;
     }
-    private class ViewHolder{
-        TextView tv_address,tv_peoplenum,tv_price,tv_floor,tv_totaltime;
-        ImageView img,img_order_show,time01,time02,time03,time04,time05,time06,time07,time08,time09,time10,time11,time12,time13,time14,time15,time16,time17,time18,time19,time20,time21,time22,time23,time24;
+
+
+    private class ViewHolder {
+        TextView tv_address, tv_peoplenum, tv_price, tv_floor, tv_totaltime, tv_noRoom, tv_openTime, tv_long;
+        ImageView img, img_order_show, time01, iv_order;
         RelativeLayout item1;
         LinearLayout item2;
-        HorizontalScrollView hsv;
-        public ViewHolder(View view){
+        HorizontalListView horizontalListView;
+
+        public ViewHolder(View view) {
             //初始化TextView
-            tv_floor=(TextView)view.findViewById(R.id.meetroom_floor_today);
-            tv_address=(TextView)view.findViewById(R.id.meetroom_address_today);
-            tv_peoplenum=(TextView)view.findViewById(R.id.meetroom_peoplenum_today);
-            tv_price=(TextView)view.findViewById(R.id.meetroom_price_today);
+            iv_order = (ImageView) view.findViewById(R.id.iv_order);
+            tv_long = (TextView) view.findViewById(R.id.tv_long);
+            horizontalListView = (HorizontalListView) view.findViewById(R.id.horizontalListView);
+            tv_floor = (TextView) view.findViewById(R.id.meetroom_floor_today);
+            tv_address = (TextView) view.findViewById(R.id.meetroom_address_today);
+            tv_peoplenum = (TextView) view.findViewById(R.id.meetroom_peoplenum_today);
+            tv_price = (TextView) view.findViewById(R.id.meetroom_price_today);
             //初始化ImageView
-            img=(ImageView)view.findViewById(R.id.meetroom_img_today);
+            img = (ImageView) view.findViewById(R.id.meetroom_img_today);
             //明面上的订购按钮
-            img_order_show=(ImageView)view.findViewById(R.id.meetroom_order_show);
+            img_order_show = (ImageView) view.findViewById(R.id.meetroom_order_show);
             //初始化item隐藏布局item2
-            item2=(LinearLayout) view.findViewById(R.id.item2_meetroomtoday);
+            item2 = (LinearLayout) view.findViewById(R.id.item2_meetroomtoday);
             //初始化显示布局
-            item1=(RelativeLayout)view.findViewById(R.id.item1_meetroomtoday);
-            //初始化horizontalscrollview
-            hsv=(HorizontalScrollView)view.findViewById(R.id.meetroom_hsv);
+            item1 = (RelativeLayout) view.findViewById(R.id.item1_meetroomtoday);
+
             //初始化horizontalscrollview中的imageview
-            time01=(ImageView)view.findViewById(R.id.meetroom_time01);
-            time02=(ImageView)view.findViewById(R.id.meetroom_time02);
-            time03=(ImageView)view.findViewById(R.id.meetroom_time03);
-            time04=(ImageView)view.findViewById(R.id.meetroom_time04);
-            time05=(ImageView)view.findViewById(R.id.meetroom_time05);
-            time06=(ImageView)view.findViewById(R.id.meetroom_time06);
-            time07=(ImageView)view.findViewById(R.id.meetroom_time07);
-            time08=(ImageView)view.findViewById(R.id.meetroom_time08);
-            time09=(ImageView)view.findViewById(R.id.meetroom_time09);
-            time10=(ImageView)view.findViewById(R.id.meetroom_time10);
-            time11=(ImageView)view.findViewById(R.id.meetroom_time11);
-            time12=(ImageView)view.findViewById(R.id.meetroom_time12);
-            time13=(ImageView)view.findViewById(R.id.meetroom_time13);
-            time14=(ImageView)view.findViewById(R.id.meetroom_time14);
-            time15=(ImageView)view.findViewById(R.id.meetroom_time15);
-            time16=(ImageView)view.findViewById(R.id.meetroom_time16);
-            time17=(ImageView)view.findViewById(R.id.meetroom_time17);
-            time18=(ImageView)view.findViewById(R.id.meetroom_time18);
-            time19=(ImageView)view.findViewById(R.id.meetroom_time19);
-            time20=(ImageView)view.findViewById(R.id.meetroom_time20);
-            time21=(ImageView)view.findViewById(R.id.meetroom_time21);
-            time22=(ImageView)view.findViewById(R.id.meetroom_time22);
-            time23=(ImageView)view.findViewById(R.id.meetroom_time23);
-            time24=(ImageView)view.findViewById(R.id.meetroom_time24);
+            time01 = (ImageView) view.findViewById(R.id.meetroom_time01);
 
             //共计小时数
-            tv_totaltime=(TextView)view.findViewById(R.id.meetroom_totaltime);
-
-
-
-
-
+            tv_totaltime = (TextView) view.findViewById(R.id.meetroom_totaltime);
+            tv_openTime = (TextView) view.findViewById(R.id.tv_openTime);
+            tv_noRoom = (TextView) view.findViewById(R.id.tv_noRoom);
 
         }
     }

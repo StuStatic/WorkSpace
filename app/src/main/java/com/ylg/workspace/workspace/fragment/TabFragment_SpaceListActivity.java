@@ -17,16 +17,12 @@ import android.widget.Toast;
 import com.ylg.workspace.workspace.R;
 import com.ylg.workspace.workspace.activity.HtmlActivity;
 import com.ylg.workspace.workspace.adapter.ListViewAdapter_SpaceList;
-import com.ylg.workspace.workspace.adapter.NeiborAdapter_Home;
-import com.ylg.workspace.workspace.bean.NeiborCompany;
 import com.ylg.workspace.workspace.bean.SpaceList;
 import com.ylg.workspace.workspace.http.Http;
 import com.ylg.workspace.workspace.http.HttpAPI;
-import com.ylg.workspace.workspace.util.SetHomeListViewItemHeight;
 import com.ylg.workspace.workspace.util.SetSpaceListListViewItemHeight;
 import com.ylg.workspace.workspace.view.ListViewForScrollView_SpaceList;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -97,7 +93,7 @@ public class TabFragment_SpaceListActivity extends Fragment implements AdapterVi
         //开始请求空间列表数据
         HttpAPI api = Http.getInstance().create(HttpAPI.class);
         //调用接口
-        Call<SpaceList> call = api.getSpaceListData();
+        Call<SpaceList> call = api.getSpaceListData("c81e728d9d4c2f636f067f89cc14862c");
         call.enqueue(new Callback<SpaceList>() {
             @Override
             public void onResponse(Call<SpaceList> call, Response<SpaceList> response) {

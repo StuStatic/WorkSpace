@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorWhite">
-
-
-
+    android:background="@color/colorWhite"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/item1_meetroomtoday"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
+
         <ImageView
             android:id="@+id/meetroom_img_today"
             android:layout_width="match_parent"
@@ -18,557 +17,231 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:layout_marginTop="10dp"
-            android:src="@mipmap/a4"
-            android:scaleType="fitXY"/>
+            android:scaleType="fitXY"
+            android:src="@mipmap/a4" />
 
         <TextView
             android:id="@+id/meetroom_address_today"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:textColor="@color/colorBlack"
-            android:text="方圆大厦·多功能会议室"
-            android:textSize="15dp"
             android:layout_below="@id/meetroom_img_today"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:text="方圆大厦·多功能会议室"
+            android:textColor="@color/black2"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/meetroom_peoplenum_today"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="12-14人"
             android:layout_below="@id/meetroom_address_today"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/colorBlack"
-            android:textSize="10dp" />
+            android:text="12-14人"
+            android:textColor="@color/black3"
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/meetroom_floor_today"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="第4层"
             android:layout_below="@id/meetroom_peoplenum_today"
             android:layout_marginLeft="15dp"
-
             android:layout_marginTop="5dp"
-            android:textColor="@color/colorBlack"
-            android:textSize="10dp" />
+
+            android:text="第4层"
+            android:textColor="@color/black3"
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/meetroom_price_today"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:layout_below="@id/meetroom_img_today"
             android:layout_marginRight="15dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:text="150元/30分钟"
-            android:textColor="@color/colorGray"
-            android:textSize="12dp"
-            android:layout_below="@id/meetroom_img_today" />
+            android:textColor="@color/black3"
+            android:textSize="12sp" />
+
         <ImageView
             android:id="@+id/meetroom_order_show"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/order"
-            android:layout_below="@id/meetroom_price_today"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_alignBottom="@+id/meetroom_floor_today"
             android:layout_alignParentRight="true"
+            android:layout_below="@id/meetroom_price_today"
             android:layout_marginRight="15dp"
-            />
+            android:src="@drawable/order" />
     </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/item2_meetroomtoday"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/item1_meetroomtoday"
-        android:background="#fffeee"
-
-        android:visibility="gone"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/colorGrayLight" />
 
-
-        <HorizontalScrollView
-            android:id="@+id/meetroom_hsv"
+        <com.ylg.workspace.workspace.view.HorizontalListView
+            android:id="@+id/horizontalListView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:scrollbars="none">
-            <LinearLayout
-                android:id="@+id/id_gallary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+            android:layout_height="70dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp">
 
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:id="@+id/meetroom_time1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="9时"
-                            android:textColor="@color/colorGray"/>
-                        <ImageView
-                            android:id="@+id/meetroom_time01"
-                            android:layout_width="40dp"
-                            android:layout_height="50dp"
-                            android:background="@drawable/item_emptystate"
-                            android:paddingLeft="1dp"
-                            android:paddingRight="1dp"
-                            android:layout_below="@id/meetroom_time1"
-                            />
-                        <ImageView
-                            android:id="@+id/meetroom_time02"
-                            android:layout_width="40dp"
-                            android:layout_height="50dp"
-                            android:background="@drawable/item_emptystate"
-                            android:paddingLeft="1dp"
-                            android:paddingRight="1dp"
-                            android:layout_below="@id/meetroom_time1"
-                            android:layout_toRightOf="@id/meetroom_time01"/>
-                    </RelativeLayout>
+        </com.ylg.workspace.workspace.view.HorizontalListView>
 
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:id="@+id/meetroom_time2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="10时"
-                        android:textColor="@color/colorGray"/>
-                    <ImageView
-                        android:id="@+id/meetroom_time03"
-                        android:layout_width="40dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/item_emptystate"
-                        android:paddingLeft="1dp"
-                        android:paddingRight="1dp"
-                        android:layout_below="@id/meetroom_time2"
-                        />
-                    <ImageView
-                        android:id="@+id/meetroom_time04"
-                        android:layout_width="40dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/item_emptystate"
-                        android:paddingLeft="1dp"
-                        android:paddingRight="1dp"
-                        android:layout_below="@id/meetroom_time2"
-                        android:layout_toRightOf="@id/meetroom_time03"/>
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:id="@+id/meetroom_time3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="11时"
-                        android:textColor="@color/colorGray"/>
-                    <ImageView
-                        android:id="@+id/meetroom_time05"
-                        android:layout_width="40dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/item_emptystate"
-                        android:paddingLeft="1dp"
-                        android:paddingRight="1dp"
-                        android:layout_below="@id/meetroom_time3"
-                        />
-                    <ImageView
-                        android:id="@+id/meetroom_time06"
-                        android:layout_width="40dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/item_emptystate"
-                        android:paddingLeft="1dp"
-                        android:paddingRight="1dp"
-                        android:layout_below="@id/meetroom_time3"
-                        android:layout_toRightOf="@id/meetroom_time05"/>
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:id="@+id/meetroom_time4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="12时"
-                        android:textColor="@color/colorGray"/>
-                    <ImageView
-                        android:id="@+id/meetroom_time07"
-                        android:layout_width="40dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/item_emptystate"
-                        android:paddingLeft="1dp"
-                        android:paddingRight="1dp"
-                        android:layout_below="@id/meetroom_time4"
-                        />
-                    <ImageView
-                        android:id="@+id/meetroom_time08"
-                        android:layout_width="40dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/item_emptystate"
-                        android:paddingLeft="1dp"
-                        android:paddingRight="1dp"
-                        android:layout_below="@id/meetroom_time4"
-                        android:layout_toRightOf="@id/meetroom_time07"/>
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:id="@+id/meetroom_time5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="13时"
-                        android:textColor="@color/colorGray"/>
-                    <ImageView
-                        android:id="@+id/meetroom_time09"
-                        android:layout_width="40dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/item_emptystate"
-                        android:paddingLeft="1dp"
-                        android:paddingRight="1dp"
-                        android:layout_below="@id/meetroom_time5"
-                        />
-                    <ImageView
-                        android:id="@+id/meetroom_time10"
-                        android:layout_width="40dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/item_emptystate"
-                        android:paddingLeft="1dp"
-                        android:paddingRight="1dp"
-                        android:layout_below="@id/meetroom_time5"
-                        android:layout_toRightOf="@id/meetroom_time09"/>
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:id="@+id/meetroom_time6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="14时"
-                        android:textColor="@color/colorGray"/>
-                    <ImageView
-                        android:id="@+id/meetroom_time11"
-                        android:layout_width="40dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/item_emptystate"
-                        android:paddingLeft="1dp"
-                        android:paddingRight="1dp"
-                        android:layout_below="@id/meetroom_time6"
-                        />
-                    <ImageView
-                        android:id="@+id/meetroom_time12"
-                        android:layout_width="40dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/item_emptystate"
-                        android:paddingLeft="1dp"
-                        android:paddingRight="1dp"
-                        android:layout_below="@id/meetroom_time6"
-                        android:layout_toRightOf="@id/meetroom_time11"/>
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:id="@+id/meetroom_time7"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="15时"
-                        android:textColor="@color/colorGray"/>
-                    <ImageView
-                        android:id="@+id/meetroom_time13"
-                        android:layout_width="40dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/item_emptystate"
-                        android:paddingLeft="1dp"
-                        android:paddingRight="1dp"
-                        android:layout_below="@id/meetroom_time7"
-                        />
-                    <ImageView
-                        android:id="@+id/meetroom_time14"
-                        android:layout_width="40dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/item_emptystate"
-                        android:paddingLeft="1dp"
-                        android:paddingRight="1dp"
-                        android:layout_below="@id/meetroom_time7"
-                        android:layout_toRightOf="@id/meetroom_time13"/>
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:id="@+id/meetroom_time8"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="16时"
-                        android:textColor="@color/colorGray"/>
-                    <ImageView
-                        android:id="@+id/meetroom_time15"
-                        android:layout_width="40dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/item_emptystate"
-                        android:paddingLeft="1dp"
-                        android:paddingRight="1dp"
-                        android:layout_below="@id/meetroom_time8"
-                        />
-                    <ImageView
-                        android:id="@+id/meetroom_time16"
-                        android:layout_width="40dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/item_emptystate"
-                        android:paddingLeft="1dp"
-                        android:paddingRight="1dp"
-                        android:layout_below="@id/meetroom_time8"
-                        android:layout_toRightOf="@id/meetroom_time15"/>
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:id="@+id/meetroom_time9"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="17时"
-                        android:textColor="@color/colorGray"/>
-                    <ImageView
-                        android:id="@+id/meetroom_time17"
-                        android:layout_width="40dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/item_emptystate"
-                        android:paddingLeft="1dp"
-                        android:paddingRight="1dp"
-                        android:layout_below="@id/meetroom_time9"
-                        />
-                    <ImageView
-                        android:id="@+id/meetroom_time18"
-                        android:layout_width="40dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/item_emptystate"
-                        android:paddingLeft="1dp"
-                        android:paddingRight="1dp"
-                        android:layout_below="@id/meetroom_time9"
-                        android:layout_toRightOf="@id/meetroom_time17"/>
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:id="@+id/meetroom_time010"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="18时"
-                        android:textColor="@color/colorGray"/>
-                    <ImageView
-                        android:id="@+id/meetroom_time19"
-                        android:layout_width="40dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/item_emptystate"
-                        android:paddingLeft="1dp"
-                        android:paddingRight="1dp"
-                        android:layout_below="@id/meetroom_time010"
-                        />
-                    <ImageView
-                        android:id="@+id/meetroom_time20"
-                        android:layout_width="40dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/item_emptystate"
-                        android:paddingLeft="1dp"
-                        android:paddingRight="1dp"
-                        android:layout_below="@id/meetroom_time010"
-                        android:layout_toRightOf="@id/meetroom_time19"/>
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:id="@+id/meetroom_time011"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="19时"
-                        android:textColor="@color/colorGray"/>
-                    <ImageView
-                        android:id="@+id/meetroom_time21"
-                        android:layout_width="40dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/item_emptystate"
-                        android:paddingLeft="1dp"
-                        android:paddingRight="1dp"
-                        android:layout_below="@id/meetroom_time011"
-                        />
-                    <ImageView
-                        android:id="@+id/meetroom_time22"
-                        android:layout_width="40dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/item_emptystate"
-                        android:paddingLeft="1dp"
-                        android:paddingRight="1dp"
-                        android:layout_below="@id/meetroom_time011"
-                        android:layout_toRightOf="@id/meetroom_time21"/>
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:id="@+id/meetroom_time012"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="20时"
-                        android:textColor="@color/colorGray"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="21时"
-                        android:textColor="@color/colorGray"
-                        android:layout_alignParentRight="true"/>
-                    <ImageView
-                        android:id="@+id/meetroom_time23"
-                        android:layout_width="40dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/item_emptystate"
-                        android:paddingLeft="1dp"
-                        android:paddingRight="1dp"
-                        android:layout_below="@id/meetroom_time012"
-                        />
-                    <ImageView
-                        android:id="@+id/meetroom_time24"
-                        android:layout_width="40dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/item_emptystate"
-                        android:paddingLeft="1dp"
-                        android:paddingRight="1dp"
-                        android:layout_below="@id/meetroom_time012"
-                        android:layout_toRightOf="@id/meetroom_time23"/>
-                </RelativeLayout>
-            </LinearLayout>
-
-        </HorizontalScrollView>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="15dp">
-            <TextView
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="共"
-                android:textSize="15dp"
-                android:textColor="@color/colorBlack"/>
+                android:textColor="@color/colorBlack"
+                android:textSize="15dp" />
+
             <TextView
                 android:id="@+id/meetroom_totaltime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:textSize="15dp"
-                android:textColor="@color/colorBlack"/>
+                android:textColor="@color/colorBlack"
+                android:textSize="15dp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="小时"
-                android:textSize="15dp"
-                android:textColor="@color/colorBlack"/>
+                android:textColor="@color/colorBlack"
+                android:textSize="15dp" />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_long"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+           android:layout_gravity="center_horizontal"
+            android:text=""
+            android:textColor="@color/black3"
+            android:textSize="14sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:layout_marginTop="10dp"
-            android:orientation="horizontal"
-            
-            android:gravity="center_horizontal">
+            android:gravity="center_horizontal"
+
+            android:orientation="horizontal">
+
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="30dp">
+
                 <ImageView
                     android:id="@+id/img01"
                     android:layout_width="10dp"
                     android:layout_height="10dp"
-                    android:background="@drawable/item_greenstate"
-                    android:layout_centerVertical="true"/>
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/item_greenstate" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="已选"
-                    android:textColor="@color/colorGray"
+                    android:layout_centerVertical="true"
                     android:layout_toRightOf="@id/img01"
-                    android:layout_centerVertical="true"/>
+                    android:text="已选"
+                    android:textColor="@color/colorGray" />
             </RelativeLayout>
+
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp">
+
                 <ImageView
                     android:id="@+id/img02"
                     android:layout_width="10dp"
                     android:layout_height="10dp"
-                    android:background="@drawable/item_emptystate"
-                    android:layout_centerVertical="true"/>
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/item_emptystate" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="可选"
-                    android:textColor="@color/colorGray"
+                    android:layout_centerVertical="true"
                     android:layout_toRightOf="@id/img02"
-                    android:layout_centerVertical="true"/>
+                    android:text="可选"
+                    android:textColor="@color/colorGray" />
             </RelativeLayout>
+
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp">
+
                 <ImageView
                     android:id="@+id/img03"
                     android:layout_width="10dp"
                     android:layout_height="10dp"
-                    android:background="@drawable/item_graystate"
-                    android:layout_centerVertical="true"/>
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/item_graystate" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="已订"
-                    android:textColor="@color/colorGray"
+                    android:layout_centerVertical="true"
                     android:layout_toRightOf="@id/img03"
-                    android:layout_centerVertical="true"/>
+                    android:text="已订"
+                    android:textColor="@color/colorGray" />
             </RelativeLayout>
         </LinearLayout>
 
         <TextView
+            android:id="@+id/tv_noRoom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
             android:text="您将被安排在东四多动能共享会议室"
-            android:textColor="@color/colorGray"
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center_horizontal"/>
+            android:textColor="@color/colorGray" />
+
         <TextView
+            android:id="@+id/tv_openTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="会议开放时间09:00-21:00"
-            android:textColor="@color/colorGray"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
-            android:layout_gravity="center_horizontal"/>
+            android:text="会议开放时间09:00-21:00"
+            android:textColor="@color/colorGray" />
+
         <ImageView
+            android:id="@+id/iv_order"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/sureorder"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"/>
+            android:layout_marginRight="20dp"
+            android:src="@drawable/sureorder" />
 
     </LinearLayout>
 
 
-</RelativeLayout>
+</LinearLayout>

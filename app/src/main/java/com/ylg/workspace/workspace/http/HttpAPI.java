@@ -8,9 +8,12 @@ import com.ylg.workspace.workspace.activity.personaldetails.bean.MyActivity;
 import com.ylg.workspace.workspace.activity.personaldetails.bean.NotMyActivity;
 import com.ylg.workspace.workspace.activity.service.bean.Service;
 import com.ylg.workspace.workspace.activity.service.bean.ServiceType;
+import com.ylg.workspace.workspace.bean.Circle;
 import com.ylg.workspace.workspace.bean.ExerciseRecommend;
+import com.ylg.workspace.workspace.bean.FindAllSpaceToAPP;
 import com.ylg.workspace.workspace.bean.Info;
 import com.ylg.workspace.workspace.bean.MeetRoom;
+import com.ylg.workspace.workspace.bean.MeetRoomOrder;
 import com.ylg.workspace.workspace.bean.NeiborCompany;
 import com.ylg.workspace.workspace.bean.PlaceList;
 import com.ylg.workspace.workspace.bean.SlidePic;
@@ -40,6 +43,7 @@ public interface HttpAPI {
     @POST("Opinion/addOpinion")
     Call<Service> feedBack(@Query("spaceId") String s1, @Query("userId") String s2, @Query("userName") String s3,
                            @Query("tel") String s4, @Query("opinionContent") String s5, @Query("spared1") String s6);
+
     //查询所有的意见反馈
     @POST("Opinion/findByUserId")
     Call<FeedBackFrag> OfindByUserId(@Query("userId") int userId);
@@ -47,7 +51,7 @@ public interface HttpAPI {
     //发布需求
     @POST("GetFacilitator/addGetFacilitator")
     Call<Service> postRequirement(@Query("spaceId") String s1, @Query("userId") String s2, @Query("describe") String s3,
-                           @Query("facilitatorType") String s4, @Query("facilitatorLabel") String s5);
+                                  @Query("facilitatorType") String s4, @Query("facilitatorLabel") String s5);
 
     //登陆
     @POST("Login/Login")
@@ -170,31 +174,15 @@ public interface HttpAPI {
                               @Query("appointmentTime") String s5, @Query("address") String s6,
                               @PartMap Map<String, RequestBody> photo);
 
-//    //绑定设备
-//    @FormUrlEncoded
-//    @POST("tv/tv_UserAndTv")
-//    Call<Bind> bind(@Field("userId") String s1, @Query("tvId") String s2, @Field("tvStatus") String s3, @Field("tvAddress") String s4, @Query("tvLat") String s5, @Query("tvLng") String s6);
-//
-//
-//    //登录
-//    @GET("user/user_loginByUsernameAndPassword")
-//    Call<Login> login(@Query("username") String s1, @Query("password") String s2);
-//
-//    //上传图片
-//    @Multipart
-//    @POST("file/file_morefile")
-//    Call<Bind> uploadImage(@Query("userId") String s1, @Query("count") String s2,
-//                           @PartMap Map<String, RequestBody> imgs1,
-//                           @PartMap Map<String, RequestBody> imgs2);
-//
-//
-//    //解绑
-//    @POST("tv/tv_userUnbundlingTV")
-//    Call<Unbind> unbind(@Query("tvId") String s1, @Query("tvAvailable") String s2, @Query("PUnbundling") String s3);
-//
-//    //文字背景
-//    @GET("backpicture/backpicture_selectAllBackGroundPicture")
-//    Call<BackPicture> textPic();
+    //发朋友圈
+    @Multipart
+    @POST("Share/addShare")
+    Call<Service> addShare(@Query("userId") int s1, @Query("textWord") String s2,
+                           @PartMap Map<String, RequestBody> photo);
+
+    //get朋友圈
+    @POST("Share/findBySpaceId")
+    Call<Circle> getCircle(@Query("spaceId") int s1);
 
     /**
      * 修改用户设备分组
@@ -215,8 +203,10 @@ public interface HttpAPI {
 
     //空间列表
     @POST("Space/findAllSpace")
-    Call<SpaceList> getSpaceListData();
-
+    Call<SpaceList> getSpaceListData(@Query("appId") String id);
+    //空间列表
+    @POST("Space/findAllSpaceToAPP")
+    Call<FindAllSpaceToAPP> getSpaceListData1(@Query("appId") String id);
     //查找我的企业的信息
     @POST("CompanyInfo/findMyCompany")
     Call<Business> findMyCompany(@Query("companyId") String companyId);
@@ -233,9 +223,19 @@ public interface HttpAPI {
     @POST("Conference/findBySpaceId")
     Call<MeetRoom> getMeetRoomList(@Query("spaceId") int spaceId);
 
+    //会议室预定详情
+    @POST("Conferencedetails/findByIdAndTime")
+    Call<MeetRoomOrder> getMeetRoomInfo(@Query("spaceId") int spaceId, @Query("conferenceId") int conferenceId,
+                                        @Query("startTime") String date);
+
+    //预约会议室
+    @POST("Conferencedetails/subscribyTime")
+    Call<Service> orderMeetRoom(@Query("spaceId") int spaceId, @Query("conferenceId") int conferenceId,
+                                        @Query("startTime") String date1,@Query("endTime") String date2);
+
     //查找我的活动的信息
     @POST("ActivityApply/findByUserId")
-    Call<MyActivity> findByUserIdMyActivity(@Query("userId") int userId,@Query("state") String state);
+    Call<MyActivity> findByUserIdMyActivity(@Query("userId") int userId, @Query("state") String state);
 
     //查找我的活动的信息
     @POST("ActivityApply/findByUserId")
@@ -252,7 +252,6 @@ public interface HttpAPI {
     //微信支付
     @POST("placeAnOrder")
     Call<WeiXinPay> WeiXinPay(@Query("facilitator") String facilitator, @Query("carrieroperator") String carrieroperator, @Query("body") String body, @Query("total_fee") String total_fee, @Query("spbill_create_ip") String spbill_create_ip, @Query("trade_type") String trade_type);
-
 
 
 }
